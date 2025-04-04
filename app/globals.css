@@ -1,6 +1,5 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+
+
 
 :root {
   --background: #ffffff;
@@ -19,3 +18,312 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* navigation popup */
+
+/* Overlay background */
+.popup-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+/* Popup container */
+.popup-container {
+  background: white;
+  width: 550px;
+  max-width: 90%;
+  height: 470px;
+  
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  text-align: center;
+  opacity: 0;
+  transform: scale(0.9);
+  animation: fadeIn 0.3s ease-out forwards;
+  position: relative;
+}
+
+/* Smooth fade-in animation */
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Close icon */
+.popup-close-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 22px;
+  color: #555;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.popup-close-icon:hover {
+  color: red;
+}
+
+/* Popup title */
+.popup-container h2 {
+  font-size: 22px;
+  margin-bottom: 12px;
+  color: #333;
+}
+
+/* Popup description */
+.popup-container p {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 15px;
+}
+
+/* Google Maps iframe */
+.map-frame {
+  width: 100%;
+  height: 270px;
+  
+}
+
+/* Button container */
+.popup-buttons {
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+}
+
+/* Primary button */
+.popup-button {
+  text-decoration: none;
+  color: white;
+  display: inline-block;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+ 
+}
+
+/* Open Google Maps button */
+
+
+.popup-button-primary {
+  color: white;
+  height: 50px;
+  line-height: 20px;
+  padding: 20px;
+  border-radius: 0%;
+  background-color: var(--mainColor);
+  border-color: var(--mainColor);
+  text-align: center;
+ 
+ padding-bottom: 20px;
+}
+
+.popup-button-primary:hover {
+  background-color: var(--blackColor);
+  border-color: var(--blackColor);
+  color: white;
+}
+
+.popup-header {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+.countdown {
+  font-size: 16px;
+  font-weight: bold;
+  color: red;
+  margin-right: 10px;
+}
+
+.popup-close-icon {
+  font-size: 24px;
+  cursor: pointer;
+}
+
+
+.whatsapp-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #25d366;
+  color: #fff;
+  width: 55px;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 30px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  transition: 0.3s ease-in-out;
+  z-index: 1000;
+}
+
+.whatsapp-button:hover {
+  background-color: #1ebe5d;
+}
+
+.whatsapp-icon {
+  font-size: 35px;
+}
+
+@media (max-width: 768px) {
+  .whatsapp-button:hover {
+    background-color: #25d366; /* Same as the default color */
+  }
+}
+
+
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease-out, padding 0.5s ease-out;
+}
+
+.accordion-content.show {
+  max-height: 500px; /* Adjust this value based on your content's maximum height */
+  padding-top: 10px; /* Optional: Add padding for better spacing */
+}
+
+@media (max-width: 768px) {
+  .booking-area {
+    margin-top: 50px;
+    padding: 20px;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .search-box .row {
+    height: 100px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .search-box .col-6,
+  .search-box .col-4 {
+    flex: 0 0 50%;
+  }
+
+  .search-box .col-12 {
+    flex: 0 0 100%;
+  }
+
+  .search-btn {
+    font-size: 16px;
+    width: 100%;
+  }
+}
+
+
+.custom-prev,
+.custom-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #507650;
+  color: white;
+  padding: 12px 15px;
+  font-size: 20px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 10;
+  transition: 0.3s;
+}
+
+.custom-prev {
+  left: 10px;
+}
+
+.custom-next {
+  right: 10px;
+}
+
+.custom-prev:hover,
+.custom-next:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+
+@media (max-width: 768px) {
+  .custom-prev:hover,
+.custom-next:hover {
+  background: #507650;
+}
+}
+
+.header-wrap .header-top .header-top-left .mobile-info {
+  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+  padding-inline: 10px;
+  margin: 0;
+  width: 100%;
+}
+
+.header-wrap .header-top .header-top-left .mobile-info li {
+  font-size: 14px;
+  align-items: center;
+  text-align: left;
+  
+}
+
+.header-wrap .header-top .header-top-left .mobile-info li i {
+  color: #507650;
+}
+
+.header-wrap .header-top .header-top-left .mobile-info li a {
+  color: rgb(65, 60, 60);
+}
+
+
+.navmobile{
+  display: flex;
+  flex-direction: row;
+  justify-content:space-evenly
+  
+}
+
+
+
+@media (max-width: 768px) {
+.slider-stick{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+}
+
+@media only screen and (max-width: 991px) {
+  .nav-item .dropdown-menu {
+    display: none;
+    opacity: 0;
+    visibility: hidden;
+    max-height: 0;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .nav-item.open .dropdown-menu {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+    max-height: 500px; /* Allow expansion */
+  }
+}
+
