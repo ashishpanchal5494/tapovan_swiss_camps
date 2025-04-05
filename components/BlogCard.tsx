@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
@@ -6,16 +7,9 @@ interface BlogCardProps {
   image: string;
   category: string;
   title: string;
-  link: string;
 }
 
-const BlogCard: React.FC<BlogCardProps> = ({
-  id,
-  image,
-  category,
-  title,
-  link,
-}) => {
+const BlogCard: React.FC<BlogCardProps> = ({ id, image, category, title }) => {
   return (
     <div className="col-lg-4 col-md-6">
       <div
@@ -26,7 +20,12 @@ const BlogCard: React.FC<BlogCardProps> = ({
         <div className="inner">
           <div className="thumbnail">
             <Link href={`/blogs/${id}`}>
-              <img src={image} alt="Blog Image" />
+              <Image
+                width={600}
+                height={600}
+                src={image.startsWith("/") ? image : `/${image}`}
+                alt="Blog Image"
+              />
             </Link>
             <div className="blog-category">
               <Link style={{ textDecoration: "none" }} href="#">

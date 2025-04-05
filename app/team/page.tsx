@@ -3,7 +3,7 @@
 import React, { useEffect } from "react";
 import dynamic from "next/dynamic";
 import AOS from "aos";
-import $ from "jquery"; // Import jQuery
+
 import "aos/dist/aos.css";
 
 const Loading = dynamic(() => import("@/components/Loading"), { ssr: false });
@@ -51,10 +51,6 @@ const teamMembers = [
 
 const Team: React.FC = () => {
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      (window as any).$ = (window as any).jQuery = $; // Ensure jQuery is globally available
-    }
-
     AOS.init({ duration: 1200 });
   }, []);
 

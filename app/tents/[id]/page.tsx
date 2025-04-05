@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { useParams, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import Loading from "@/components/Loading";
@@ -87,10 +87,10 @@ const TentDetails: React.FC = () => {
   const id = parseInt(searchParams.get("id") || "0");
   const title = searchParams.get("title") || "";
   const price = parseInt(searchParams.get("price") || "0");
-  const image = searchParams.get("image") || "";
+  // const image = searchParams.get("image") || "";
   const beds = searchParams.get("beds") || "";
   const baths = searchParams.get("baths") || "";
-  const adults = searchParams.get("adults") || "";
+  // const adults = searchParams.get("adults") || "";
 
   const checkIn = searchParams.get("checkIn") || "";
   const checkOut = searchParams.get("checkOut") || "";

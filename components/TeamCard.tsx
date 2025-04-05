@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React from "react";
 
 interface TeamMemberProps {
@@ -31,7 +32,13 @@ const TeamCard: React.FC<TeamMemberProps> = ({
       <div className="single-team-box">
         <div className="image">
           <a href={`team/${id}`}>
-            <img src={image} alt={name} className="img-fluid" />
+            <Image
+              width={400}
+              height={400}
+              src={image.startsWith("/") ? image : `/${image}`}
+              alt={name}
+              className="img-fluid"
+            />
           </a>
           <ul className="social-link">
             <li>

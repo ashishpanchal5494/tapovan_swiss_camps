@@ -3,7 +3,6 @@
 import Loading from "@/components/Loading";
 import React, { useEffect, useState } from "react";
 import AOS from "aos";
-import $ from "jquery"; // Import jQuery
 
 function SamplePage() {
   const [isClient, setIsClient] = useState(false);
@@ -22,11 +21,6 @@ function SamplePage() {
 
   useEffect(() => {
     setIsClient(true);
-    // Ensure jQuery is loaded before OwlCarousel initializes
-    if (typeof window !== "undefined") {
-      (window as any).$ = (window as any).jQuery = $;
-    }
-
     AOS.init({ duration: 1200 });
   }, []);
 

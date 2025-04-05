@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import AOS from "aos";
-import $ from "jquery"; // Import jQuery
+
 import Link from "next/link";
 import Image from "next/image";
 import logo from "../public/assets/img/logo.png";
@@ -27,10 +27,6 @@ const Navbar = () => {
 
   useEffect(() => {
     setIsClient(true); // Set client-side rendering
-    // Ensure jQuery is loaded before OwlCarousel initializes
-    if (typeof window !== "undefined") {
-      (window as any).$ = (window as any).jQuery = $;
-    }
 
     AOS.init({ duration: 1200 }); // Initialize AOS
   }, []);
@@ -300,84 +296,84 @@ const Navbar = () => {
                     >
                       <ul className="navbar-nav ms-auto">
                         <li className="nav-item">
-                          <a href="/" className="nav-link active">
+                          <Link href="/" className="nav-link active">
                             Home
-                          </a>
+                          </Link>
                         </li>
                         <li className="nav-item">
-                          <a href="/tents" className="nav-link">
+                          <Link href="/tents" className="nav-link">
                             Tents
-                          </a>
+                          </Link>
                         </li>
                         <li className="nav-item">
-                          <a href="/about" className="nav-link">
+                          <Link href="/about" className="nav-link">
                             About Us
-                          </a>
+                          </Link>
                         </li>
                         <li className="nav-item">
-                          <a href="#" className="nav-link">
+                          <Link href="#" className="nav-link">
                             Pages <i className="ri-add-line"></i>
-                          </a>
+                          </Link>
                           <ul className="dropdown-menu">
                             <li className="nav-item">
-                              <a href="/team" className="nav-link">
+                              <Link href="/team" className="nav-link">
                                 Team
-                              </a>
+                              </Link>
                             </li>
                             <li className="nav-item">
-                              <a href="/testimonial" className="nav-link">
+                              <Link href="/testimonial" className="nav-link">
                                 Testimonial
-                              </a>
+                              </Link>
                             </li>
                             <li className="nav-item">
-                              <a href="/booking-form" className="nav-link">
+                              <Link href="/booking-form" className="nav-link">
                                 Booking Form
-                              </a>
+                              </Link>
                             </li>
                             <li className="nav-item">
-                              <a href="/account" className="nav-link">
+                              <Link href="/account" className="nav-link">
                                 My Account
-                              </a>
+                              </Link>
                             </li>
                             <li className="nav-item">
-                              <a href="/faq" className="nav-link">
+                              <Link href="/faq" className="nav-link">
                                 FAQ
-                              </a>
+                              </Link>
                             </li>
                             <li className="nav-item">
-                              <a href="/sample-page" className="nav-link">
+                              <Link href="/sample-page" className="nav-link">
                                 Sample Page
-                              </a>
+                              </Link>
                             </li>
                             <li className="nav-item">
-                              <a href="/privacy-policy" className="nav-link">
+                              <Link href="/privacy-policy" className="nav-link">
                                 Privacy Policy
-                              </a>
+                              </Link>
                             </li>
                             <li className="nav-item">
-                              <a href="/error-404" className="nav-link">
+                              <Link href="/error-404" className="nav-link">
                                 404 Error Page
-                              </a>
+                              </Link>
                             </li>
                           </ul>
                         </li>
                         <li className="nav-item">
-                          <a href="/blogs" className="nav-link">
+                          <Link href="/blogs" className="nav-link">
                             Blogs
-                          </a>
+                          </Link>
                         </li>
                         <li className="nav-item">
-                          <a href="/contact" className="nav-link">
+                          <Link href="/contact" className="nav-link">
                             Contact
-                          </a>
+                          </Link>
                         </li>
                         <li className="nav-item d-lg-none">
-                          <a
+                          <Link
                             href="/booking-form"
                             className="nav-link btn style1"
                           >
                             Book Now
-                          </a>
+                          </Link>
                         </li>
                       </ul>
                       <div className="other-options md-none">

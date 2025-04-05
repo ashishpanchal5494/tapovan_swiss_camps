@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import AOS from "aos";
-import $ from "jquery"; // Import jQuery
+
 import { useEffect, useState } from "react";
 
 import Loading from "@/components/Loading";
@@ -26,9 +26,6 @@ const Error = () => {
   useEffect(() => {
     setIsClient(true);
     // Ensure jQuery is loaded before OwlCarousel initializes
-    if (typeof window !== "undefined") {
-      (window as any).$ = (window as any).jQuery = $;
-    }
 
     AOS.init({ duration: 1200 });
   }, []);

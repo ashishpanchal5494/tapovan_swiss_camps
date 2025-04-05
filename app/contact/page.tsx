@@ -108,7 +108,7 @@ const Contact = () => {
                     type: "text",
                     placeholder: "Subject",
                   },
-                ].map(({ name, type, placeholder }, idx) => (
+                ].map(({ name, type, placeholder }) => (
                   <div key={name} className="col-lg-6 col-sm-6">
                     <div className="form-group">
                       <input

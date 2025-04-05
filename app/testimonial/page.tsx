@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
 
@@ -102,7 +103,12 @@ const TestimonialSection: React.FC = () => {
                   <p>{testimonial.text}</p>
                 </div>
                 <div className="client-info">
-                  <img src={testimonial.image} alt={testimonial.name} />
+                  <Image
+                    width={200}
+                    height={200}
+                    src={testimonial.image}
+                    alt={testimonial.name}
+                  />
                   <h3>{testimonial.name}</h3>
                   <span>{testimonial.role}</span>
                 </div>

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
@@ -40,7 +41,13 @@ const TentCard: React.FC<TentCardProps> = ({
     >
       <div className="room-item shadow rounded overflow-hidden">
         <div className="position-relative">
-          <img className="img-fluid" src={image} alt={title} />
+          <Image
+            width={400}
+            height={400}
+            className="img-fluid"
+            src={image.startsWith("/") ? image : `/${image}`}
+            alt={title}
+          />
           <small className="position-absolute start-0 top-100 translate-middle-y bg-primary text-white rounded py-1 px-3 ms-4">
             ₹{perHeadPrice} / Head
           </small>

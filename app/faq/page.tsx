@@ -3,7 +3,6 @@
 import Loading from "@/components/Loading";
 import { useEffect, useState } from "react";
 import AOS from "aos";
-import $ from "jquery"; // Import jQuery
 
 const faqData = [
   {
@@ -76,10 +75,6 @@ const FAQ = () => {
 
   useEffect(() => {
     setIsClient(true);
-    // Ensure jQuery is loaded before OwlCarousel initializes
-    if (typeof window !== "undefined") {
-      (window as any).$ = (window as any).jQuery = $;
-    }
 
     AOS.init({ duration: 1200 });
   }, []);

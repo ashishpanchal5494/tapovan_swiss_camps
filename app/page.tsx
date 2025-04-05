@@ -51,7 +51,7 @@ export default function Home() {
         setShowPopup(true);
         sessionStorage.setItem("popupShown", "true");
 
-        let countdownInterval = setInterval(() => {
+        const countdownInterval = setInterval(() => {
           setCountdown((prev) => {
             if (prev === 1) {
               setShowPopup(false);

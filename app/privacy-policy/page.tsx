@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import AOS from "aos";
-import $ from "jquery"; // Import jQuery
+
 import Loading from "@/components/Loading";
 
 function PrivacyPolicy() {
@@ -22,10 +22,6 @@ function PrivacyPolicy() {
 
   useEffect(() => {
     setIsClient(true);
-    // Ensure jQuery is loaded before OwlCarousel initializes
-    if (typeof window !== "undefined") {
-      (window as any).$ = (window as any).jQuery = $;
-    }
 
     AOS.init({ duration: 1200 });
   }, []);
@@ -100,14 +96,14 @@ function PrivacyPolicy() {
             marketing and promotional purposes Send you emails Find and prevent
             fraud Log Files Hotelo follows a standard procedure of using log
             files. These files log visitors when they visit websites. All
-            hosting companies do this and a part of hosting services' analytics.
-            The information collected by log files include internet protocol
-            (IP) addresses, browser type, Internet Service Provider (ISP), date
-            and time stamp, referring/exit pages, and possibly the number of
-            clicks. These are not linked to any information that is personally
-            identifiable. The purpose of the information is for analyzing
-            trends, administering the site, tracking users' movement on the
-            website, and gathering demographic information.
+            hosting companies do this and a part of hosting services&rsquo;
+            analytics. The information collected by log files include internet
+            protocol (IP) addresses, browser type, Internet Service Provider
+            (ISP), date and time stamp, referring/exit pages, and possibly the
+            number of clicks. These are not linked to any information that is
+            personally identifiable. The purpose of the information is for
+            analyzing trends, administering the site, tracking users&rsquo;
+            movement on the website, and gathering demographic information.
           </p>
 
           <p>
@@ -120,10 +116,11 @@ function PrivacyPolicy() {
             Third-party ad servers or ad networks uses technologies like
             cookies, JavaScript, or Web Beacons that are used in their
             respective advertisements and links that appear on Hotelo, which are
-            sent directly to users' browser. They automatically receive your IP
-            address when this occurs. These technologies are used to measure the
-            effectiveness of their advertising campaigns and/or to personalize
-            the advertising content that you see on websites that you visit.
+            sent directly to users&rsquo; browser. They automatically receive
+            your IP address when this occurs. These technologies are used to
+            measure the effectiveness of their advertising campaigns and/or to
+            personalize the advertising content that you see on websites that
+            you visit.
           </p>
 
           <p>
@@ -132,8 +129,8 @@ function PrivacyPolicy() {
           </p>
 
           <p>
-            Third Party Privacy Policies Hotelo's Privacy Policy does not apply
-            to other advertisers or websites. Thus, we are advising you to
+            Third Party Privacy Policies Hotelo&rsquo;s Privacy Policy does not
+            apply to other advertisers or websites. Thus, we are advising you to
             consult the respective Privacy Policies of these third-party ad
             servers for more detailed information. It may include their
             practices and instructions about how to opt-out of certain options.
@@ -142,7 +139,7 @@ function PrivacyPolicy() {
           <p>
             You can choose to disable cookies through your individual browser
             options. To know more detailed information about cookie management
-            with specific web browsers, it can be found at the browsers'
+            with specific web browsers, it can be found at the browsers&rsquo;
             respective websites.
           </p>
 
@@ -152,9 +149,9 @@ function PrivacyPolicy() {
           </p>
 
           <p>
-            Request that a business that collects a consumer's personal data
-            disclose the categories and specific pieces of personal data that a
-            business has collected about consumers.
+            Request that a business that collects a consumer&rsquo;s personal
+            data disclose the categories and specific pieces of personal data
+            that a business has collected about consumers.
           </p>
 
           <p>
@@ -213,7 +210,7 @@ function PrivacyPolicy() {
           </p>
 
           <p>
-            Children's Information Another part of our priority is adding
+            Children&rsquo;s Information Another part of our priority is adding
             protection for children while using the internet. We encourage
             parents and guardians to observe, participate in, and/or monitor and
             guide their online activity.

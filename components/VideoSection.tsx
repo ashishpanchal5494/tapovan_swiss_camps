@@ -6,7 +6,6 @@ import Loading from "./Loading";
 const VideoSection: React.FC = () => {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const [isLoaded, setIsLoaded] = useState(false);
-  const [isPlaying, setIsPlaying] = useState(false);
 
   const [isMobile, setIsMobile] = useState(false);
 
@@ -25,20 +24,13 @@ const VideoSection: React.FC = () => {
     if (video) {
       const playPromise = video.play();
       if (playPromise !== undefined) {
-        playPromise
-          .then(() => setIsPlaying(true))
-          .catch(() => console.warn("Autoplay blocked, showing play button"));
+        playPromise.catch(() =>
+          console.warn("Autoplay blocked, showing play button")
+        );
       }
       setIsLoaded(true);
     }
   }, []);
-
-  const handlePlay = () => {
-    if (videoRef.current) {
-      videoRef.current.play();
-      setIsPlaying(true);
-    }
-  };
 
   return (
     <section className="video-section">

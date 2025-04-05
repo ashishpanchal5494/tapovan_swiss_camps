@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import AOS from "aos";
-import $ from "jquery";
+
 import TentCard from "../../components/TentCard";
 import Loading from "@/components/Loading";
 import { useSearchParams } from "next/navigation";
@@ -120,9 +120,6 @@ const Tents: React.FC = () => {
 
   useEffect(() => {
     setIsClient(true);
-    if (typeof window !== "undefined") {
-      (window as any).$ = (window as any).jQuery = $;
-    }
     AOS.init({ duration: 1200 });
   }, []);
 
