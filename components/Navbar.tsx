@@ -35,7 +35,9 @@ const Navbar = () => {
   };
 
   useEffect(() => {
-    const handleDropdownClick = (event: any) => {
+    const handleDropdownClick = (
+      event: React.MouseEvent<HTMLButtonElement>
+    ) => {
       const parentLi = event.target.closest(".nav-item");
       if (parentLi?.querySelector(".dropdown-menu")) {
         event.preventDefault();
