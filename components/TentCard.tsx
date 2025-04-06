@@ -8,10 +8,10 @@ interface TentCardProps {
   price: number;
   image: string;
   beds: number;
-  baths: number;
-  adults: number;
-  checkIn: Date;
-  checkOut: Date;
+  baths: string | number;
+  adults: string | number;
+  checkIn: string | Date;
+  checkOut: string | Date;
   description: string;
   perHeadPrice: number;
   linkBooking: string;

@@ -17,11 +17,7 @@ function Account() {
   }, []);
 
   useEffect(() => {
-    // Initialize AOS only if it's not already initialized
-    if (typeof window !== "undefined" && !window.AOS) {
-      AOS.init({ duration: 1200 });
-      window.AOS = AOS; // Store in window to prevent re-initialization
-    }
+    AOS.init({ duration: 1200 });
   }, []);
 
   return (

@@ -60,11 +60,7 @@ const Blogs: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    // Ensure AOS initializes only once
-    if (typeof window !== "undefined" && !window.AOS) {
-      AOS.init({ duration: 1200 });
-      window.AOS = AOS; // Store in window to prevent re-initialization
-    }
+    AOS.init({ duration: 1200 });
   }, []);
 
   return (
