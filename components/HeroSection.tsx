@@ -196,7 +196,7 @@ const HeroSection: React.FC = () => {
                     <select
                       className="form-control"
                       name="tentType"
-                      value={searchData.tents}
+                      value={searchData.tentType}
                       onChange={handleChange}
                     >
                       <option value="">Select Tent Type</option>
