@@ -34,21 +34,20 @@ const Navbar = () => {
     setIsOpen(!isOpen); // Toggle mobile menu
   };
 
+  const handleDropdownClick = (event: Event) => {
+    const target = event.target as HTMLElement;
+    const parentLi = target.closest(".nav-item");
+
+    if (parentLi?.querySelector(".dropdown-menu")) {
+      event.preventDefault();
+      parentLi.classList.toggle("open");
+    }
+  };
+
   useEffect(() => {
-    const handleDropdownClick = (
-      event: React.MouseEvent<HTMLButtonElement>
-    ) => {
-      const target = event.target as HTMLElement; // 👈 Cast here
-      const parentLi = target.closest(".nav-item");
-
-      if (parentLi?.querySelector(".dropdown-menu")) {
-        event.preventDefault();
-        parentLi.classList.toggle("open");
-      }
-    };
-
     if (isMobile) {
       const items = document.querySelectorAll(".nav-item a");
+
       items.forEach((item) =>
         item.addEventListener("click", handleDropdownClick)
       );
