@@ -162,7 +162,7 @@ const HeroSection: React.FC = () => {
                     <select
                       className="form-control"
                       name="adults"
-                      value={searchData.adults as keyof typeof searchData}
+                      value={searchData.adults}
                       onChange={handleChange}
                     >
                       <option value="">Person</option>
@@ -179,7 +179,7 @@ const HeroSection: React.FC = () => {
                     <select
                       className="form-control"
                       name="children"
-                      value={searchData.children as keyof typeof searchData}
+                      value={searchData.children}
                       onChange={handleChange}
                     >
                       <option value="">Children (Below 5Yrs)</option>
@@ -196,7 +196,7 @@ const HeroSection: React.FC = () => {
                     <select
                       className="form-control"
                       name="tentType"
-                      value={searchData.tents as keyof typeof searchData}
+                      value={searchData.tents}
                       onChange={handleChange}
                     >
                       <option value="">Select Tent Type</option>
