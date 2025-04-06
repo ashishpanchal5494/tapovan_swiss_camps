@@ -30,7 +30,15 @@ const HeroSection: React.FC = () => {
   };
 
   const handleSearch = () => {
-    const query = new URLSearchParams(searchData).toString();
+    const queryObject: Record<string, string> = {
+      checkIn: searchData.checkIn,
+      checkOut: searchData.checkOut,
+      adults: String(searchData.adults),
+      children: String(searchData.children),
+      tentType: searchData.tentType,
+    };
+
+    const query = new URLSearchParams(queryObject).toString();
     router.push(`/tents?${query}`);
   };
 
