@@ -16,8 +16,8 @@ const HeroSection: React.FC = () => {
   const [activeSlide, setActiveSlide] = useState(0);
   const router = useRouter();
   const [searchData, setSearchData] = useState({
-    checkIn: "",
-    checkOut: "",
+    checkIn: null as Date | null,
+    checkOut: null as Date | null,
     adults: 0,
     children: 0,
     tentType: "",
@@ -29,10 +29,17 @@ const HeroSection: React.FC = () => {
     setSearchData({ ...searchData, [e.target.name]: e.target.value });
   };
 
+  const handleDateChange = (name: string, date: Date | null) => {
+    setSearchData((prev) => ({
+      ...prev,
+      [name]: date,
+    }));
+  };
+
   const handleSearch = () => {
     const queryObject: Record<string, string> = {
-      checkIn: searchData.checkIn,
-      checkOut: searchData.checkOut,
+      checkIn: searchData.checkIn?.toISOString().split("T")[0] || "",
+      checkOut: searchData.checkOut?.toISOString().split("T")[0] || "",
       adults: String(searchData.adults),
       children: String(searchData.children),
       tentType: searchData.tentType,
@@ -137,10 +144,8 @@ const HeroSection: React.FC = () => {
                   {["checkIn", "checkOut"].map((field) => (
                     <div className="col-xl-3 col-lg-6 col-md-6" key={field}>
                       <DatePicker
-                        selected={searchData[field as keyof typeof searchData]}
-                        onChange={(date) =>
-                          handleChange({ target: { name: field, value: date } })
-                        }
+                        selected={searchData[field as "checkIn" | "checkOut"]}
+                        onChange={(date) => handleDateChange(field, date)}
                         className="form-control"
                         placeholderText={
                           field === "checkIn"
