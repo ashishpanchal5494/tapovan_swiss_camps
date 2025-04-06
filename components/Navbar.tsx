@@ -38,7 +38,9 @@ const Navbar = () => {
     const handleDropdownClick = (
       event: React.MouseEvent<HTMLButtonElement>
     ) => {
-      const parentLi = event.target.closest(".nav-item");
+      const target = event.target as HTMLElement; // 👈 Cast here
+      const parentLi = target.closest(".nav-item");
+
       if (parentLi?.querySelector(".dropdown-menu")) {
         event.preventDefault();
         parentLi.classList.toggle("open");
