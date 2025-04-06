@@ -91,8 +91,14 @@ const TentCard: React.FC<TentCardProps> = ({
                   beds,
                   baths,
                   adults,
-                  checkIn,
-                  checkOut,
+                  checkIn:
+                    typeof checkIn === "string"
+                      ? checkIn
+                      : checkIn.toISOString(),
+                  checkOut:
+                    typeof checkOut === "string"
+                      ? checkOut
+                      : checkOut.toISOString(),
                   perHeadPrice,
                   description,
                 },
