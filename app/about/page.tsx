@@ -126,7 +126,9 @@ const About = () => {
                   <i className={counter.icon}></i>
                   <h2>
                     <span
-                      ref={(el) => (odometerRefs.current[index] = el)}
+                      ref={(el) => {
+                        odometerRefs.current[index] = el;
+                      }}
                       className="odometer"
                     >
                       0
