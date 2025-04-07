@@ -17,7 +17,7 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth <= 992);
+      setIsMobile(window.innerWidth <= 768 || window.innerWidth <= 992);
     };
 
     handleResize();
@@ -26,37 +26,30 @@ const Navbar = () => {
   }, []);
 
   useEffect(() => {
-    setIsClient(true);
-    AOS.init({ duration: 1200 });
+    setIsClient(true); // Set client-side rendering
+
+    AOS.init({ duration: 1200 }); // Initialize AOS
+  }, []);
+
+  useEffect(() => {
+    setIsClient(true); // Set client-side rendering
   }, []);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen); // Toggle mobile menu
   };
 
-  const handleDropdownClick = (event: Event) => {
-    const target = event.target as HTMLElement;
-    const parentLi = target.closest(".nav-item");
-
-    if (parentLi?.querySelector(".dropdown-menu")) {
-      event.preventDefault();
-      parentLi.classList.toggle("open");
-    }
-  };
-
   useEffect(() => {
     if (isMobile) {
-      const items = document.querySelectorAll(".nav-item a");
-
-      items.forEach((item) =>
-        item.addEventListener("click", handleDropdownClick)
-      );
-
-      return () => {
-        items.forEach((item) =>
-          item.removeEventListener("click", handleDropdownClick)
-        );
-      };
+      document.querySelectorAll(".nav-item a").forEach((item) => {
+        item.addEventListener("click", (event) => {
+          const parentLi = event.target.closest(".nav-item");
+          if (parentLi?.querySelector(".dropdown-menu")) {
+            event.preventDefault(); // Prevent navigation
+            parentLi.classList.toggle("open"); // Toggle class to show dropdown
+          }
+        });
+      });
     }
   }, [isMobile]);
 
@@ -277,11 +270,9 @@ const Navbar = () => {
                       </button>
                       <div className="mobile-menu d-lg-none">
                         <Link
-                          href="#"
-                          onClick={(e) => {
-                            e.preventDefault();
-                            toggleMenu();
-                          }}
+                          style={{ textDecoration: "none" }}
+                          href="javascript:void(0)"
+                          onClick={toggleMenu}
                         >
                           <i
                             className={
@@ -388,9 +379,7 @@ const Navbar = () => {
                       <div className="other-options md-none">
                         <div className="option-item">
                           <button
-                            className="searchbtn d-lg-none"
-                            aria-label="Toggle Search"
-                            aria-expanded={isSearchOpen}
+                            className="searchbtn d-xl-none"
                             onClick={toggleSearch}
                           >
                             <i className="ri-search-line"></i>
