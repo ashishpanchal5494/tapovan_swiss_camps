@@ -81,6 +81,7 @@ const TentCard: React.FC<TentCardProps> = ({
             <Link
               style={{ color: "white" }}
               className="btn style1 rounded py-2 px-4"
+              prefetch={true} // Explicitly enable prefetch (default in Next.js)
               href={{
                 pathname: `/tents/${id}`,
                 query: {

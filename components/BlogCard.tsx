@@ -44,6 +44,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ id, image, category, title }) => {
                 style={{ textDecoration: "none" }}
                 className="blog-btn"
                 href={`/blogs/${id}`}
+                prefetch={true} // Explicitly enable prefetch (default in Next.js)
               >
                 Read More <i className="bx bx-right-arrow-alt"></i>
               </Link>
