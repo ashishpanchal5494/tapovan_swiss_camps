@@ -3,7 +3,7 @@
 import React, { Suspense, useEffect } from "react";
 import AOS from "aos";
 import Loading from "@/components/Loading";
-import TentsClient from "../../components/tentsClient";
+import TentsClient from "@/components/TentsClient";
 
 const Tents: React.FC = () => {
   useEffect(() => {
