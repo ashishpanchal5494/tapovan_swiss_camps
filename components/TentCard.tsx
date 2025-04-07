@@ -42,8 +42,8 @@ const TentCard: React.FC<TentCardProps> = ({
       <div className="room-item shadow rounded overflow-hidden">
         <div className="position-relative">
           <Image
-            width={400}
-            height={400}
+            width={600}
+            height={600}
             className="img-fluid"
             src={image.startsWith("/") ? image : `/${image}`}
             alt={title}
