@@ -43,6 +43,8 @@ const Navbar = () => {
     if (isMobile) {
       document.querySelectorAll(".nav-item a").forEach((item) => {
         item.addEventListener("click", (event) => {
+          if (!(event.target instanceof Element)) return;
+
           const parentLi = event.target.closest(".nav-item");
           if (parentLi?.querySelector(".dropdown-menu")) {
             event.preventDefault(); // Prevent navigation
