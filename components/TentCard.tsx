@@ -68,8 +68,14 @@ const TentCard: React.FC<TentCardProps> = ({
               <i className="bx bx-bed text-primary me-2"></i>
               {adults ? adults : beds} Bed
             </span>
-            <span className="border-end me-3 pe-3">
-              <i className="bx bx-bath text-primary me-2"></i>
+            <span
+              style={{ fontSize: 11, marginTop: 4 }}
+              className="border-end me-3 pe-3"
+            >
+              <i
+                className="bx bx-bath text-primary me-2"
+                style={{ fontSize: 17 }}
+              ></i>
               {baths} Washroom
             </span>
             <span>

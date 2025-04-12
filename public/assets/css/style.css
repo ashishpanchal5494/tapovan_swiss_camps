@@ -1260,9 +1260,6 @@ p:empty {
 /*-------------------------------
   User Account CSS
 -------------------------------*/
-.user-account {
-  margin-left: 15px;
-}
 
 .user-account i {
   position: relative;
@@ -1907,9 +1904,7 @@ p:empty {
   .search-area form a i {
     font-size: 18px;
   }
-  .user-account {
-    margin-top: 10px;
-  }
+  
   .select-lang {
     margin-top: 13px;
   }
@@ -1941,9 +1936,7 @@ p:empty {
   .select-lang {
     padding-left: 18px;
   }
-  .user-account {
-    margin-left: 12px;
-  }
+ 
   .header-wrap .header-bottom .other-options .btn {
     font-size: 15px;
     padding: 12px 20px;
@@ -1960,9 +1953,7 @@ p:empty {
   .header-wrap .header-top {
     padding: 12px 0;
   }
-  .user-account {
-    margin-top: 10px;
-  }
+ 
   .header-wrap .header-top .header-top-left .contact-info li {
     margin-right: 8px;
     padding-right: 8px;

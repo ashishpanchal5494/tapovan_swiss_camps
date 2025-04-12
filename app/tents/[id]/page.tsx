@@ -26,7 +26,7 @@ const tentRooms = [
       { id: 5, url: "/assets/img/room/garden-2.jpeg", alt: "garden 2" },
       { id: 6, url: "/assets/img/room/dining.jpeg", alt: "dining" },
       { id: 7, url: "/assets/img/room/pool.jpeg", alt: "pool" },
-      { id: 8, url: "/assets/img/room/vollyball.JPG", alt: "vollyball" },
+      { id: 8, url: "/assets/img/room/vollyball.jpg", alt: "vollyball" },
       { id: 9, url: "/assets/img/room/group.jpeg", alt: "group" },
     ],
     beds: 5,

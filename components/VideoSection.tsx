@@ -1,70 +1,83 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/pagination";
 import Loading from "./Loading";
 
-const VideoSection: React.FC = () => {
-  const videoRef = useRef<HTMLVideoElement | null>(null);
-  const [isLoaded, setIsLoaded] = useState(false);
+const videos = [
+  "/assets/video/resort-mobile-1.MOV",
+  "/assets/video/IMG_9302.MOV",
+  "/assets/video/IMG_9298.MOV",
+];
 
+const VideoSection: React.FC = () => {
   const [isMobile, setIsMobile] = useState(false);
+  const [loadedVideos, setLoadedVideos] = useState<boolean[]>(
+    new Array(videos.length).fill(false)
+  );
 
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 768);
     };
-
     handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  useEffect(() => {
-    const video = videoRef.current;
-    if (video) {
-      const playPromise = video.play();
-      if (playPromise !== undefined) {
-        playPromise.catch(() =>
-          console.warn("Autoplay blocked, showing play button")
-        );
-      }
-      setIsLoaded(true);
-    }
-  }, []);
+  const handleVideoLoad = (index: number) => {
+    const updated = [...loadedVideos];
+    updated[index] = true;
+    setLoadedVideos(updated);
+  };
 
   return (
     <section className="video-section">
-      <div className="video-container">
-        {isMobile ? (
-          <video
-            ref={videoRef}
-            className="video"
-            src="../assets/video/resort.webm"
-            autoPlay
-            loop
-            muted
-            playsInline
-            onCanPlayThrough={() => setIsLoaded(true)}
-          />
-        ) : (
-          <video
-            ref={videoRef}
-            className="video"
-            src="../assets/video/resort.mp4"
-            autoPlay
-            loop
-            muted
-            playsInline
-            onCanPlayThrough={() => setIsLoaded(true)}
-          />
-        )}
+      {/* Custom Arrows */}
+      <div className="swiper-button-prev custom-nav">←</div>
+      <div className="swiper-button-next custom-nav">→</div>
 
-        {!isLoaded && (
-          <div className="video-overlay">
-            <Loading />
-          </div>
-        )}
-      </div>
+      <Swiper
+        modules={[Navigation]}
+        navigation={{
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        }}
+        slidesPerView={1}
+        loop
+      >
+        {videos.map((videoSrc, index) => (
+          <SwiperSlide key={index}>
+            <div className="video-container">
+              <video
+                ref={(el) => {
+                  if (el) {
+                    el.playbackRate = 0.9; // Slow down to 0.5x speed
+                  }
+                }}
+                key={videoSrc}
+                className="video"
+                src={videoSrc}
+                autoPlay
+                loop
+                muted
+                playsInline
+                preload="auto"
+                onCanPlayThrough={() => handleVideoLoad(index)}
+              />
+              {!loadedVideos[index] && (
+                <div className="video-overlay">
+                  <Loading />
+                </div>
+              )}
+            </div>
+          </SwiperSlide>
+        ))}
+      </Swiper>
+
       <style jsx>{`
         .video-section {
           display: flex;
@@ -75,16 +88,19 @@ const VideoSection: React.FC = () => {
           height: 500px;
           overflow: hidden;
         }
+
         .video-container {
           width: 100%;
           height: 100%;
           position: relative;
         }
+
         .video {
           width: 100%;
           height: 100%;
           object-fit: cover;
         }
+
         .video-overlay {
           position: absolute;
           top: 0;
@@ -94,35 +110,40 @@ const VideoSection: React.FC = () => {
           display: flex;
           justify-content: center;
           align-items: center;
-          background: rgba(0, 0, 0, 0.5);
-          color: white;
-          font-size: 1.5rem;
         }
-        .play-button {
+
+        .custom-nav {
           position: absolute;
           top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          background: rgba(0, 0, 0, 0.7);
+          transform: translateY(-50%);
+          z-index: 10;
+          background: rgba(0, 0, 0, 0.5);
           color: white;
-          border: none;
-          padding: 10px 20px;
-          font-size: 1.5rem;
+          padding: 10px;
           cursor: pointer;
-          border-radius: 5px;
+          font-size: 24px;
+          border-radius: 50%;
+          user-select: none;
         }
+
+        .swiper-button-prev {
+          left: 10px;
+        }
+
+        .swiper-button-next {
+          right: 10px;
+        }
+
         @media (max-width: 768px) {
           .video-section {
             height: 400px;
           }
-          .video-overlay {
-            font-size: 1rem;
-          }
-          .play-button {
-            font-size: 1rem;
-            padding: 8px 16px;
+          .custom-nav {
+            font-size: 18px;
+            padding: 8px;
           }
         }
+
         @media (max-width: 480px) {
           .video-section {
             height: 300px;
