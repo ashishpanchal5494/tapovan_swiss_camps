@@ -116,6 +116,10 @@ const TentDetails: React.FC = () => {
   }, []);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
     setIsClient(true);
   }, []);
 
