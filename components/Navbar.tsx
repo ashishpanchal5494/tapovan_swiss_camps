@@ -298,7 +298,7 @@ const Navbar = () => {
                     >
                       <ul className="navbar-nav ms-auto">
                         <li className="nav-item">
-                          <Link href="/" className="nav-link active">
+                          <Link href="/" className="nav-link">
                             Home
                           </Link>
                         </li>

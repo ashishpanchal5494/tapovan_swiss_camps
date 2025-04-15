@@ -57,12 +57,14 @@ const HeroSection: React.FC = () => {
     () => ({
       dots: false,
       infinite: true,
-      speed: 800, // Reduced speed for a smoother transition
+      speed: 800,
       slidesToShow: 1,
       slidesToScroll: 1,
       autoplay: true,
       autoplaySpeed: 5000,
-
+      pauseOnHover: true,
+      pauseOnFocus: true,
+      cssEase: "ease-in-out",
       beforeChange: (_: number, newIndex: number) =>
         setActiveSlide(() => newIndex),
     }),
@@ -111,13 +113,13 @@ const HeroSection: React.FC = () => {
                       animate={
                         index === activeSlide
                           ? { opacity: 1, x: 0 }
-                          : { opacity: 0 }
+                          : { opacity: 0, x: "-100%" }
                       }
                       transition={{ duration: 0.8, ease: "easeOut" }}
                       className="banner-iner"
                       style={{
                         marginTop: "130px",
-                        willChange: "opacity, transform",
+                        pointerEvents: index === activeSlide ? "auto" : "none", // Important!
                       }}
                     >
                       <h5>{title}</h5>
