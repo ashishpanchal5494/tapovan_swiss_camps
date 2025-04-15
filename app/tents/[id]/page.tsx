@@ -12,6 +12,8 @@ import "swiper/css/navigation";
 import "swiper/css/thumbs";
 import { FaChevronRight } from "react-icons/fa6";
 import { FaChevronLeft } from "react-icons/fa6";
+import { FaLocationDot } from "react-icons/fa6";
+import { FaImage } from "react-icons/fa6";
 
 const tentRooms = [
   {
@@ -47,7 +49,7 @@ const tentRooms = [
       { id: 5, url: "/assets/img/room/garden-2.jpeg", alt: "garden 2" },
       { id: 6, url: "/assets/img/room/dining.jpeg", alt: "dining" },
       { id: 7, url: "/assets/img/room/pool.jpeg", alt: "pool" },
-      { id: 8, url: "/assets/img/room/vollyball.JPG", alt: "vollyball" },
+      { id: 8, url: "/assets/img/room/vollyball.jpg", alt: "vollyball" },
       { id: 9, url: "/assets/img/room/group.jpeg", alt: "group" },
     ],
     beds: 5,
@@ -67,7 +69,7 @@ const tentRooms = [
       { id: 4, url: "/assets/img/room/garden-2.jpeg", alt: "garden 2" },
       { id: 5, url: "/assets/img/room/dining.jpeg", alt: "dining" },
       { id: 6, url: "/assets/img/room/pool.jpeg", alt: "pool" },
-      { id: 7, url: "/assets/img/room/vollyball.JPG", alt: "vollyball" },
+      { id: 7, url: "/assets/img/room/vollyball.jpg", alt: "vollyball" },
       { id: 8, url: "/assets/img/room/group.jpeg", alt: "group" },
     ],
     beds: 3,
@@ -328,20 +330,20 @@ const TentDetails: React.FC = () => {
                     <button
                       className={`nav-link shadow ${
                         activeTab === "photo" ? "active" : ""
-                      }`}
+                      } ${isMobile && "p-2"}`}
                       onClick={() => setActiveTab("photo")}
                     >
-                      Photos
+                      {isMobile ? <FaImage /> : "Photos"}
                     </button>
                   </li>
                   <li className="nav-item">
                     <button
                       className={`nav-link shadow ${
                         activeTab === "map" ? "active" : ""
-                      }`}
+                      } ${isMobile && "p-2"}`} // Adjust padding based on isMobile
                       onClick={() => setActiveTab("map")}
                     >
-                      Map
+                      {isMobile ? <FaLocationDot /> : "Map"}
                     </button>
                   </li>
                 </ul>
