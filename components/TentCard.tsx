@@ -82,7 +82,10 @@ const TentCard: React.FC<TentCardProps> = ({
               <i className="bx bx-wifi text-primary me-2"></i>Wifi
             </span>
           </div>
-          <p className="text-body mb-3">{description}</p>
+          <p className="text-body mb-3">
+            {description.split(" ").slice(0, 20).join(" ")}
+            {description.split(" ").length > 20 && "..."}
+          </p>
           <div className="d-flex justify-content-between">
             <Link
               style={{ color: "white" }}

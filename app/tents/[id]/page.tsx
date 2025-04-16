@@ -92,7 +92,7 @@ const TentDetails: React.FC = () => {
   // const image = searchParams.get("image") || "";
   const beds = searchParams.get("beds") || "";
   const baths = searchParams.get("baths") || "";
-  // const adults = searchParams.get("adults") || "";
+  const adults = searchParams.get("adults") || "";
 
   const checkIn = searchParams.get("checkIn") || "";
   const checkOut = searchParams.get("checkOut") || "";
@@ -147,7 +147,9 @@ const TentDetails: React.FC = () => {
                 <div className="mb-4">
                   <h3 className="title">{title}</h3>
                   <span className="price d-block">₹{price}.00</span>
-                  <small className="d-block mb-2">₹{perHeadPrice} / Head</small>
+                  <small className="d-block mb-2">
+                    ₹{perHeadPrice} / Head for {adults} Person
+                  </small>
                   {!checkIn && (
                     <div className="mb-4">
                       <h4>
@@ -161,10 +163,21 @@ const TentDetails: React.FC = () => {
                     </div>
                   )}
 
-                  <span className="d-block mb-4">
+                  <Link
+                    href={
+                      "https://www.google.com/maps/place/Tapovan+Swiss+Camp+in+Rishikesh+and+Rafting+in+Rishikesh+and+Bike+rent+in+Rishikesh/@30.1394342,78.3127861,17z/data=!3m1!4b1!4m9!3m8!1s0x390917d95828f9b7:0x5628ba3506250e88!5m2!4m1!1i2!8m2!3d30.1394296!4d78.315361!16s%2Fg%2F11sxvndwwz?entry=ttu&g_ep=EgoyMDI1MDIyNi4xIKXMDSoJLDEwMjExNDUzSAFQAw%3D%3D"
+                    }
+                    className="d-block mb-4"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      textDecoration: "none",
+                      color: "black",
+                    }}
+                  >
                     <i className="bx bx-location-plus pe-2"></i>
                     Deecon Valley Road, Vill. Dholshoot Tapovan, Rishikesh(UK)
-                  </span>
+                  </Link>
                   <ul className="room-detail-meta list-unstyled">
                     <li>
                       <Link
@@ -259,7 +272,7 @@ const TentDetails: React.FC = () => {
                       </Link>
                     </h6>
                     <Link className="btn btn-link p-0 ms-auto" href="/tents">
-                      <u>View All Rooms</u>
+                      <u>View All Tents</u>
                     </Link>
                   </div>
                   <form>
@@ -304,7 +317,7 @@ const TentDetails: React.FC = () => {
                         borderColor: "#507650",
                         paddingBlock: "15px",
                       }}
-                      className="btn btn-primary d-grid style5"
+                      className="btn d-grid style5"
                       href="#"
                     >
                       Send Message
@@ -440,7 +453,7 @@ const TentDetails: React.FC = () => {
                       <div className="col-sm-6">
                         <ul className="room-list list-unstyled">
                           <li>
-                            <b>Tent ID:</b> {id}
+                            <b>Adults:</b> {adults}
                           </li>
                           <li>
                             <b>Price:</b> ₹{price}.00
@@ -448,11 +461,15 @@ const TentDetails: React.FC = () => {
                           <li>
                             <b>Per Head Price:</b> ₹{perHeadPrice}
                           </li>
-                          <li>
-                            <b>Bedrooms:</b> {beds}
-                          </li>
+
                           <li>
                             <b>Bathrooms:</b> {baths}
+                          </li>
+                          <li>
+                            <b>Check-in: {checkIn}</b> 12:00 PM
+                          </li>
+                          <li>
+                            <b>Check-out: {checkOut}</b> 11:00 AM
                           </li>
                         </ul>
                       </div>
@@ -462,16 +479,12 @@ const TentDetails: React.FC = () => {
                             <b>Tent Type:</b> {title}
                           </li>
                           <li>
-                            <b>Facilities:</b> Wifi, Dining, Pool
+                            <b>Facilities:</b> Wifi, Dining, Food, Pool, Games,
+                            Meals (Lunch, Dinner, Breakfast)
                           </li>
                           <li>
-                            <b>Activities:</b> Volleyball, Campfire
-                          </li>
-                          <li>
-                            <b>Check-in: {checkIn}</b> 12:00 PM
-                          </li>
-                          <li>
-                            <b>Check-out: {checkOut}</b> 11:00 AM
+                            <b>Activities:</b> Volleyball, Cricket, Badminton,
+                            Bonfire
                           </li>
                         </ul>
                       </div>
@@ -488,7 +501,7 @@ const TentDetails: React.FC = () => {
                     <h5>Description</h5>
                   </div>
                   <div className="col-sm-9">
-                    <p>{description}</p>
+                    <p dangerouslySetInnerHTML={{ __html: description }}></p>
                   </div>
                 </div>
               </div>
@@ -509,19 +522,21 @@ const TentDetails: React.FC = () => {
                           <li>24/7 Water Supply</li>
                           <li>Power Backup</li>
                           <li>Swimming Pool</li>
-                          <li>Laundry Service</li>
+                          <li>Greenery With Flowers</li>
                           <li>Dining Area</li>
+                          <li>Meals(Lunch, Dinner, Breakfast)</li>
                         </ul>
                       </div>
                       <div className="col-sm-6">
                         <ul className="room-list-style-2 list-unstyled mb-0">
-                          <li>Campfire Area</li>
+                          <li>Bonfire Area</li>
                           <li>Outdoor Seating</li>
-                          <li>Volleyball Court</li>
+                          <li>Volleyball Court, Cricket, badminton</li>
                           <li>Free Parking</li>
                           <li>WiFi</li>
-                          <li>Security</li>
+                          <li>Security (CCTV)</li>
                           <li>First Aid</li>
+                          <li>Menu (Order to Have)</li>
                         </ul>
                       </div>
                     </div>
@@ -547,7 +562,7 @@ const TentDetails: React.FC = () => {
                             <b>Village:</b> Dholshoot Tapovan
                           </li>
                           <li>
-                            <b>District:</b> Rishikesh
+                            <b>District:</b> Tehri Garhwal (Rishikesh)
                           </li>
                         </ul>
                       </div>
@@ -608,17 +623,17 @@ const TentDetails: React.FC = () => {
                         <ul className="room-list list-unstyled mb-0">
                           <li className="d-flex">
                             <span className="me-1">
-                              <b>Tapovan</b> (2.10 km)
+                              <b>Tapovan</b> (1.10 km)
                             </span>
                           </li>
                           <li className="d-flex">
                             <span className="me-1">
-                              <b>Triveni Ghat</b> (12 km)
+                              <b>Triveni Ghat</b> (4.5 km)
                             </span>
                           </li>
                           <li className="d-flex">
                             <span className="me-1">
-                              <b>Neelkanth Mahadev Temple</b> (25 km)
+                              <b>Neelkanth Mahadev Temple</b> (22 km)
                             </span>
                           </li>
                         </ul>
@@ -633,12 +648,17 @@ const TentDetails: React.FC = () => {
                         <ul className="room-list list-unstyled mb-0">
                           <li className="d-flex">
                             <span className="me-1">
-                              <b>White Water Rafting</b> (5 km)
+                              <b>Secret Waterfall</b> (1 km)
                             </span>
                           </li>
                           <li className="d-flex">
                             <span className="me-1">
-                              <b>Bungee Jumping</b> (15 km)
+                              <b>River Rafting</b> (1 km)
+                            </span>
+                          </li>
+                          <li className="d-flex">
+                            <span className="me-1">
+                              <b>Bungee Jumping</b> (7 km)
                             </span>
                           </li>
                           <li className="d-flex">
@@ -658,17 +678,17 @@ const TentDetails: React.FC = () => {
                         <ul className="room-list list-unstyled mb-0">
                           <li className="d-flex">
                             <span className="me-1">
-                              <b>Local Cafes</b> (1 km)
+                              <b>Local Cafes</b> (0.5 km)
                             </span>
                           </li>
                           <li className="d-flex">
                             <span className="me-1">
-                              <b>Riverside Restaurants</b> (3 km)
+                              <b>Riverside Restaurants</b> (1.5 km)
                             </span>
                           </li>
                           <li className="d-flex">
                             <span className="me-1">
-                              <b>Street Food Markets</b> (12 km)
+                              <b>Street Food Markets</b> (1 km)
                             </span>
                           </li>
                         </ul>

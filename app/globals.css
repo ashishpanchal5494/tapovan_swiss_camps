@@ -327,3 +327,13 @@ body {
   }
 }
 
+
+@media only screen and (max-width: 991px) {
+  .video-section .custom-prev {
+    font-size: 10px;
+  }
+  .video-section .custom-next {
+    font-size: 10px;
+  }
+}
+  

@@ -6,6 +6,7 @@ import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import Loading from "./Loading";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 const videos = [
   "/assets/video/resort-mobile-1.MOV",
@@ -37,14 +38,20 @@ const VideoSection: React.FC = () => {
   return (
     <section className="video-section">
       {/* Custom Arrows */}
-      <div className="swiper-button-prev custom-nav">←</div>
-      <div className="swiper-button-next custom-nav">→</div>
+
+      {/* Custom Navigation Buttons */}
+      <div className="custom-prev">
+        <FaChevronLeft />
+      </div>
+      <div className="custom-next">
+        <FaChevronRight />
+      </div>
 
       <Swiper
         modules={[Navigation]}
         navigation={{
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev",
+          nextEl: ".custom-next",
+          prevEl: ".custom-prev",
         }}
         slidesPerView={1}
         loop
