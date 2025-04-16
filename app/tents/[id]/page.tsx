@@ -90,7 +90,7 @@ const TentDetails: React.FC = () => {
   const title = searchParams.get("title") || "";
   const price = parseInt(searchParams.get("price") || "0");
   // const image = searchParams.get("image") || "";
-  const beds = searchParams.get("beds") || "";
+  // const beds = searchParams.get("beds") || "";
   const baths = searchParams.get("baths") || "";
   const adults = searchParams.get("adults") || "";
 
