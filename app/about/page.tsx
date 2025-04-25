@@ -154,8 +154,8 @@ const About = () => {
 
                 <p>
                   At Tapovan Swiss Camps, we are committed to delivering
-                  hospitality that’s warm, personal, and unforgettable. We don’t
-                  just offer a stay — we offer an experience.
+                  hospitality that&lsquo;s warm, personal, and unforgettable. We
+                  don&lsquo;t just offer a stay — we offer an experience.
                 </p>
 
                 <Link href="/contact" className="btn style5">

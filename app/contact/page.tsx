@@ -69,10 +69,11 @@ const Contact = () => {
         <div className="section-title text-center">
           <h2>Get In Touch</h2>
           <p>
-            Have questions, feedback, or planning your next getaway? We’d love
-            to hear from you! Fill out the form below and our team will get back
-            to you shortly. Whether you're booking a stay, exploring partnership
-            opportunities, or just saying hello — we're here for you.
+            Have questions, feedback, or planning your next getaway? We&lsquo;d
+            love to hear from you! Fill out the form below and our team will get
+            back to you shortly. Whether you're booking a stay, exploring
+            partnership opportunities, or just saying hello — we're here for
+            you.
           </p>
         </div>
 
@@ -83,10 +84,10 @@ const Contact = () => {
               className="contact__form contact-form"
               onSubmit={handleSubmit}
             >
-              <h3>We’re Just One Message Away</h3>
+              <h3>We&lsquo;re Just One Message Away</h3>
               <p>
-                Let us know how we can assist you — we’ll get back within 24
-                hours.
+                Let us know how we can assist you — we&lsquo;ll get back within
+                24 hours.
               </p>
               <div className="row">
                 {[
