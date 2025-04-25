@@ -83,14 +83,49 @@ const tentRooms = [
 const TentDetails: React.FC = () => {
   const [activeTab, setActiveTab] = useState("photo");
   const [isClient, setIsClient] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    address: "",
+    message: "",
+  });
+
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    const { name, address, message } = formData;
+
+    const fullMessage = `Hello, my name is ${name}. I live at ${address}. I have a query: ${message}`;
+    const encodedMessage = encodeURIComponent(fullMessage);
+
+    window.open(
+      `https://api.whatsapp.com/send?phone=+918077570122&text=${encodedMessage}`,
+      "_blank"
+    );
+
+    // Reset the form data
+    setFormData({
+      name: "",
+      address: "",
+      message: "",
+    });
+  };
+
   const searchParams = useSearchParams();
 
   // Get all parameters from the URL
   const id = parseInt(searchParams.get("id") || "0");
   const title = searchParams.get("title") || "";
   const price = parseInt(searchParams.get("price") || "0");
-  // const image = searchParams.get("image") || "";
-  // const beds = searchParams.get("beds") || "";
+  const mainPrice = parseInt(searchParams.get("mainPrice") || "0");
   const baths = searchParams.get("baths") || "";
   const adults = searchParams.get("adults") || "";
 
@@ -146,20 +181,40 @@ const TentDetails: React.FC = () => {
                 {/* Room Details */}
                 <div className="mb-4">
                   <h3 className="title">{title}</h3>
-                  <span className="price d-block">₹{price}.00</span>
+                  <span className="price d-block">
+                    {" "}
+                    <span
+                      style={{
+                        textDecoration: "line-through",
+                        color: "#F2003D",
+                        marginRight: 5,
+                      }}
+                    >
+                      ₹{mainPrice}
+                    </span>{" "}
+                    ₹{price}.00
+                  </span>
                   <small className="d-block mb-2">
-                    ₹{perHeadPrice} / Head for {adults} Person
+                    ₹{perHeadPrice} per person (based on {adults} adults)
                   </small>
-                  {!checkIn && (
+                  {!checkIn ? (
                     <div className="mb-4">
                       <h4>
-                        The listed price is based on an occupancy of up to five
-                        persons.
+                        The displayed price is based on an occupancy of up to
+                        five guests.
                         <p className="mt-2">
                           Please check the pricing based on your occupancy{" "}
                           <Link href="/">Home</Link>
                         </p>
                       </h4>
+                    </div>
+                  ) : (
+                    <div className="mb-2">
+                      <p>
+                        Enjoy a clean and spacious tent equipped with
+                        comfortable beds and warm blankets. We pride ourselves
+                        on excellent service and delicious meals.
+                      </p>
                     </div>
                   )}
 
@@ -275,26 +330,38 @@ const TentDetails: React.FC = () => {
                       <u>View All Tents</u>
                     </Link>
                   </div>
-                  <form>
+                  <form onSubmit={handleSubmit}>
                     <div className="mb-3">
                       <input
-                        type="email"
+                        type="text"
+                        name="name"
                         className="form-control"
-                        placeholder="Your Email Address"
+                        placeholder="Your Name"
+                        required
+                        value={formData.name}
+                        onChange={handleChange}
                       />
                     </div>
                     <div className="mb-3">
                       <input
                         type="text"
+                        name="address"
                         className="form-control"
-                        placeholder="Your Phone Number"
+                        placeholder="Your Address"
+                        required
+                        value={formData.address}
+                        onChange={handleChange}
                       />
                     </div>
                     <div className="mb-3">
                       <textarea
+                        name="message"
                         className="form-control"
                         rows={3}
                         placeholder="Write Message"
+                        required
+                        value={formData.message}
+                        onChange={handleChange}
                       ></textarea>
                     </div>
                     <div className="form-check mb-3">
@@ -303,6 +370,7 @@ const TentDetails: React.FC = () => {
                         type="checkbox"
                         value=""
                         id="flexCheckDefault"
+                        required
                       />
                       <label
                         className="form-check-label text-white"
@@ -311,22 +379,22 @@ const TentDetails: React.FC = () => {
                         I hereby agree for processing my personal data.
                       </label>
                     </div>
-                    <Link
+                    <button
+                      type="submit"
                       style={{
                         borderRadius: "0px",
                         borderColor: "#507650",
                         paddingBlock: "15px",
                       }}
-                      className="btn d-grid style5"
-                      href="#"
+                      className="btn d-grid w-100 style5"
                     >
                       Send Message
-                    </Link>
+                    </button>
                   </form>
                 </div>
                 <Link
                   style={{ borderRadius: "0px", paddingBlock: "15px" }}
-                  className="btn style5 mt-5"
+                  className="btn style5 mt-5 w-100"
                   href={linkBooking}
                 >
                   Book Now

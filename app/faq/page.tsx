@@ -6,54 +6,54 @@ import AOS from "aos";
 
 const faqData = [
   {
-    question: "What do we mean by business?",
+    question: "How can I book a stay in the camp?",
     answer:
-      "Business refers to an organization or enterprising entity engaged in commercial, industrial, or professional activities.",
+      "You can book your stay directly through our website by selecting your dates, tent type, and confirming the payment. It’s fast, secure, and you'll get the best rates guaranteed.",
   },
   {
-    question: "What are the positive aspects of business?",
+    question: "What is your cancellation policy?",
     answer:
-      "Positive aspects include financial independence, job creation, innovation, and economic growth.",
+      "Cancellations made up to 48 hours before check-in are eligible for a full refund. Cancellations after this period may incur charges.",
   },
   {
-    question: "What are the negative aspects of business?",
+    question: "Are pets allowed at the camp area?",
     answer:
-      "Challenges include financial risk, competition, long working hours, and economic uncertainty.",
+      "Yes, we are a pet-friendly camp! Please mention your pet while booking to ensure the availability of pet-friendly areas or tents.",
   },
   {
-    question: "What is the way to grow a business?",
+    question: "What facilities are available at the camp?",
     answer:
-      "Effective growth strategies include marketing, customer retention, innovation, and strategic partnerships.",
+      "Our camp offers a swimming pool, indoor & outdoor games, free Wi-Fi, yoga, spa, cafe, food service, included meals, guided tours, and more to ensure your comfort and enjoyment.",
   },
   {
-    question: "Where should my business be involved?",
+    question: "Do you offer pickup and drop-off services?",
     answer:
-      "Choosing the right market and industry depends on expertise, demand, and economic trends.",
+      "Yes, we offer convenient transfer services at an additional charge. You can add this option during the booking process or contact our support team.",
   },
   {
-    question: "How much money can be used to start a business?",
+    question: "Is early check-in or late checkout available?",
     answer:
-      "Startup costs vary based on industry, business model, and operational needs.",
+      "Early check-in and late checkout are subject to availability. Please contact us in advance to make arrangements.",
   },
   {
-    question: "What are the benefits to business customers?",
+    question: "Are there any special offers or discounts available?",
     answer:
-      "Customers benefit from quality products, services, reliability, and innovation.",
+      "Yes! We regularly offer seasonal discounts and promotional packages. Check our 'Offers' page or follow us on social media to stay updated.",
   },
   {
-    question: "Ten easy rules to expand your business.",
+    question: "Is it safe to make payments during booking?",
     answer:
-      "1. Understand your market 2. Build a strong brand 3. Leverage digital marketing 4. Focus on customer experience 5. Offer quality services 6. Optimize operations 7. Innovate 8. Expand strategically 9. Network effectively 10. Monitor performance.",
+      "Absolutely. We use secure payment gateways with end-to-end encryption to protect your transaction details.",
   },
   {
-    question: "How do I highlight in the name of the business?",
+    question: "Can I modify my reservation after booking?",
     answer:
-      "Choose a memorable, unique, and relevant name that reflects your brand identity.",
+      "Yes, you can modify your reservation dates or guest details by contacting our manager or support team.",
   },
   {
-    question: "How do I analyze the promotion of the business?",
+    question: "Where is the camp located and how do I reach there?",
     answer:
-      "Use data analytics, customer feedback, marketing KPIs, and A/B testing to evaluate promotional effectiveness.",
+      "We are located in Main Tapovan, Rishikesh, Uttarakhand. The camp is easily accessible by road, train, or air. You can find directions on our Contact page or via Google Maps.",
   },
 ];
 

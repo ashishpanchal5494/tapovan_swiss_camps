@@ -11,6 +11,7 @@ import { useSearchParams } from "next/navigation";
 interface Tent {
   id: number;
   title: string;
+  mainPrice: number;
   price: number;
   image: string;
   beds: number;
@@ -24,6 +25,7 @@ const tentRooms: Tent[] = [
   {
     id: 1,
     title: "Luxury AC Tent",
+    mainPrice: 2499,
     price: 1799,
     image: "assets/img/room/actent-1.JPG",
     beds: 5,
@@ -35,6 +37,7 @@ const tentRooms: Tent[] = [
   {
     id: 2,
     title: "Luxury Cooler Tent",
+    mainPrice: 1999,
     price: 1499,
     image: "assets/img/room/coolertent-1.JPG",
     beds: 5,
@@ -46,6 +49,7 @@ const tentRooms: Tent[] = [
   {
     id: 3,
     title: "Ordinary Tent",
+    mainPrice: 1199,
     price: 999,
     image: "assets/img/room/ordinarytent-1.jpeg",
     beds: 3,
@@ -88,24 +92,32 @@ const Tents: React.FC = () => {
   }, [checkIn, checkOut]);
 
   // Function to calculate price per tent
-  const calculatePrice = (basePrice: number, beds: number) => {
+  const calculatePrice = (
+    basePrice: number,
+    beds: number,
+    mainBasePrice: number
+  ) => {
     let perHeadPrice = basePrice;
+    let perHeadMainPrice = mainBasePrice;
 
     // Increase price based on occupancy for AC & Cooler tents
     if (beds === 5) {
       if (personsPerTent === 2) {
         perHeadPrice = Math.round(basePrice * 1.4);
+        perHeadMainPrice = Math.round(mainBasePrice * 1.4);
       } else if (personsPerTent === 3) {
         perHeadPrice = Math.round(basePrice * 1.3);
+        perHeadMainPrice = Math.round(mainBasePrice * 1.3);
       } else if (personsPerTent === 4) {
         perHeadPrice = Math.round(basePrice * 1.2);
+        perHeadMainPrice = Math.round(mainBasePrice * 1.2);
       }
     }
 
-    // Total price per tent for selected days
     const totalPrice = perHeadPrice * personsPerTent * totalDays;
+    const totalMainPrice = perHeadMainPrice * personsPerTent * totalDays;
 
-    return { perHeadPrice, totalPrice };
+    return { perHeadPrice, perHeadMainPrice, totalPrice, totalMainPrice };
   };
 
   useEffect(() => {
@@ -136,11 +148,12 @@ const Tents: React.FC = () => {
         </div>
         <div className="row justify-content-center">
           {tentRooms.map((room, index) => {
-            const { perHeadPrice, totalPrice } = calculatePrice(
-              room.price,
-              room.beds
-            );
-
+            const {
+              perHeadPrice,
+              perHeadMainPrice,
+              totalPrice,
+              totalMainPrice,
+            } = calculatePrice(room.price, room.beds, room.mainPrice);
             return (
               <TentCard
                 key={room.id}
@@ -154,8 +167,10 @@ const Tents: React.FC = () => {
                 checkOut={checkOut}
                 description={room.description}
                 linkBooking={room.linkBooking}
-                price={totalPrice} // Show total calculated price
-                perHeadPrice={perHeadPrice} // Show per head price
+                mainPrice={totalMainPrice} // 💡 total of original price
+                price={totalPrice} // 💸 total after discount
+                perHeadMainPrice={perHeadMainPrice}
+                perHeadPrice={perHeadPrice}
                 dataAosDuration={1200 + index * 200}
               />
             );

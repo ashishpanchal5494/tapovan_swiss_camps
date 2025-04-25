@@ -118,7 +118,7 @@ const HeroSection: React.FC = () => {
                       transition={{ duration: 0.8, ease: "easeOut" }}
                       className="banner-iner"
                       style={{
-                        marginTop: "130px",
+                        marginTop: "100px",
                         pointerEvents: index === activeSlide ? "auto" : "none", // Important!
                       }}
                     >
@@ -139,88 +139,161 @@ const HeroSection: React.FC = () => {
       <div className="hotel-search-area">
         <div className="container">
           <div className="bg-white shadow p-4">
-            <div className="row g-2">
-              <div className="col-md-10">
-                <div className="row g-2">
-                  {/* Check-in and Check-out */}
-                  {["checkIn", "checkOut"].map((field) => (
-                    <div className="col-xl-3 col-lg-6 col-md-6" key={field}>
-                      <DatePicker
-                        selected={searchData[field as "checkIn" | "checkOut"]}
-                        onChange={(date) => handleDateChange(field, date)}
-                        className="form-control"
-                        placeholderText={
-                          field === "checkIn"
-                            ? "Check-in Date"
-                            : "Check-out Date"
-                        }
-                        dateFormat="yyyy-MM-dd"
-                      />
-                    </div>
-                  ))}
-
-                  {/* Adults Dropdown */}
-                  <div className="col-xl-2 col-lg-4 col-md-4">
-                    <select
-                      className="form-control"
-                      name="adults"
-                      value={searchData.adults}
-                      onChange={handleChange}
-                    >
-                      <option value="">Person</option>
-                      {[...Array(100)].map((_, i) => (
-                        <option key={i} value={i + 1}>
-                          {i + 1}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-
-                  {/* Children Dropdown */}
-                  <div className="col-xl-2 col-lg-4 col-md-4">
-                    <select
-                      className="form-control"
-                      name="children"
-                      value={searchData.children}
-                      onChange={handleChange}
-                    >
-                      <option value="">Children (Below 5Yrs)</option>
-                      {[...Array(4)].map((_, i) => (
-                        <option key={i} value={i + 1}>
-                          {i}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-
-                  {/* Tent Type Dropdown */}
-                  <div className="col-xl-2 col-lg-4 col-md-4">
-                    <select
-                      className="form-control"
-                      name="tentType"
-                      value={searchData.tentType}
-                      onChange={handleChange}
-                    >
-                      <option value="">Select Tent Type</option>
-                      <option value="Luxury AC tent">Luxury AC Tent</option>
-                      <option value="Luxury Cooler tent">
-                        Luxury Cooler Tent
-                      </option>
-                      <option value="Ordinary tent">Ordinary Tent</option>
-                    </select>
-                  </div>
+            {/* Mobile View (2 rows) */}
+            <div className="d-lg-none">
+              <div className="row g-2 mb-2">
+                {/* First Mobile Row - 3 elements */}
+                <div className="col-6">
+                  <DatePicker
+                    selected={searchData.checkIn}
+                    onChange={(date) => handleDateChange("checkIn", date)}
+                    className="form-control w-100"
+                    placeholderText="Check-in"
+                    dateFormat="yyyy-MM-dd"
+                  />
+                </div>
+                <div className="col-6">
+                  <DatePicker
+                    selected={searchData.checkOut}
+                    onChange={(date) => handleDateChange("checkOut", date)}
+                    className="form-control w-100"
+                    placeholderText="Check-out"
+                    dateFormat="yyyy-MM-dd"
+                  />
                 </div>
               </div>
+              <div className="row g-2 mb-2">
+                <div className="col-4">
+                  <select
+                    className="form-control w-100"
+                    name="adults"
+                    value={searchData.adults}
+                    onChange={handleChange}
+                  >
+                    <option value="">Person</option>
+                    {[...Array(100)].map((_, i) => (
+                      <option key={i} value={i + 1}>
+                        {i + 1}
+                      </option>
+                    ))}
+                  </select>
+                </div>
 
-              {/* Search Button */}
-              <div className="col-xl-2 col-lg-2 col-md-3">
-                <button
-                  className="btn btn-primary w-100"
-                  style={{ padding: "10px", lineHeight: "25px" }}
-                  onClick={handleSearch}
-                >
-                  Search
-                </button>
+                {/* Second Mobile Row - 3 elements */}
+                <div className="col-4">
+                  <select
+                    className="form-control w-100"
+                    name="children"
+                    value={searchData.children}
+                    onChange={handleChange}
+                  >
+                    <option value="">Children</option>
+                    {[...Array(4)].map((_, i) => (
+                      <option key={i} value={i + 1}>
+                        {i}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+                <div className="col-4">
+                  <select
+                    className="form-control w-100"
+                    name="tentType"
+                    value={searchData.tentType}
+                    onChange={handleChange}
+                  >
+                    <option value="">Tent Type</option>
+                    <option value="Luxury AC tent">Luxury AC Tent</option>
+                    <option value="Luxury Cooler tent">
+                      Luxury Cooler Tent
+                    </option>
+                    <option value="Ordinary tent">Ordinary Tent</option>
+                  </select>
+                </div>
+              </div>
+              <div className="row g-2 mb-2">
+                <div className="col-12">
+                  <button
+                    className="btn btn-primary w-100"
+                    style={{ padding: "10px", lineHeight: "25px" }}
+                    onClick={handleSearch}
+                  >
+                    Search
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            {/* Desktop View (single row) */}
+            <div className="d-none d-lg-block">
+              <div className="row g-2">
+                {["checkIn", "checkOut"].map((field) => (
+                  <div className="col-xl-2 col-lg-2" key={field}>
+                    <DatePicker
+                      selected={searchData[field as "checkIn" | "checkOut"]}
+                      onChange={(date) => handleDateChange(field, date)}
+                      className="form-control"
+                      placeholderText={
+                        field === "checkIn" ? "Check-in Date" : "Check-out Date"
+                      }
+                      dateFormat="yyyy-MM-dd"
+                    />
+                  </div>
+                ))}
+                <div className="col-xl-2 col-lg-2">
+                  <select
+                    className="form-control"
+                    name="adults"
+                    value={searchData.adults}
+                    onChange={handleChange}
+                  >
+                    <option value="">Person</option>
+                    {[...Array(100)].map((_, i) => (
+                      <option key={i} value={i + 1}>
+                        {i + 1}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+                <div className="col-xl-2 col-lg-2">
+                  <select
+                    className="form-control"
+                    name="children"
+                    value={searchData.children}
+                    onChange={handleChange}
+                  >
+                    <option value="">Children(Below 5 yrs)</option>
+                    {[...Array(4)].map((_, i) => (
+                      <option key={i} value={i + 1}>
+                        {i}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+                <div className="col-xl-2 col-lg-2">
+                  <select
+                    className="form-control"
+                    name="tentType"
+                    value={searchData.tentType}
+                    onChange={handleChange}
+                  >
+                    <option value="">Tent Type</option>
+                    <option value="Luxury AC tent">Luxury AC Tent</option>
+                    <option value="Luxury Cooler tent">
+                      Luxury Cooler Tent
+                    </option>
+                    <option value="Ordinary tent">Ordinary Tent</option>
+                  </select>
+                </div>
+                <div className="col-xl-2 col-lg-2 col-md-3">
+                  <button
+                    className="btn btn-primary w-100"
+                    style={{ padding: "10px", lineHeight: "25px" }}
+                    onClick={handleSearch}
+                  >
+                    Search
+                  </button>
+                </div>
               </div>
             </div>
           </div>

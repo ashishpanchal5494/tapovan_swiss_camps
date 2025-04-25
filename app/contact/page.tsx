@@ -57,7 +57,7 @@ const Contact = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     // TODO: Replace with actual API call
-    setSuccessMessage("Your message was sent successfully.");
+    setSuccessMessage("Thanks for reaching out! We'll be in touch very soon.");
     setTimeout(() => setSuccessMessage(""), 5000);
   };
 
@@ -69,8 +69,10 @@ const Contact = () => {
         <div className="section-title text-center">
           <h2>Get In Touch</h2>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt dolore magna aliqua.
+            Have questions, feedback, or planning your next getaway? We’d love
+            to hear from you! Fill out the form below and our team will get back
+            to you shortly. Whether you're booking a stay, exploring partnership
+            opportunities, or just saying hello — we're here for you.
           </p>
         </div>
 
@@ -81,7 +83,11 @@ const Contact = () => {
               className="contact__form contact-form"
               onSubmit={handleSubmit}
             >
-              <h3>Drop Us A Message</h3>
+              <h3>We’re Just One Message Away</h3>
+              <p>
+                Let us know how we can assist you — we’ll get back within 24
+                hours.
+              </p>
               <div className="row">
                 {[
                   {
@@ -100,7 +106,7 @@ const Contact = () => {
                     label: "Phone",
                     name: "phone_number",
                     type: "text",
-                    placeholder: "+1 (414) 312-4433",
+                    placeholder: "+91 333 673 2945",
                   },
                   {
                     label: "Subject",

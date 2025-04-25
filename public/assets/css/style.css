@@ -3799,11 +3799,11 @@ About Area CSS
 }
 
 .about-img-two {
-  background-image: url(../../assets/img/about.png);
+  background-image: url(../../assets/img/about.jpg);
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
-  height: 100%;
+  height: 500px;
   position: relative;
   border-radius: 10px;
 }
@@ -5190,27 +5190,30 @@ Slider Area CSS
 
 @media only screen and (max-width: 767px) {
   .banner-slider .single-banner-part {
-    height: 500px;
+    height: 350px;
   }
   .banner-slider .single-banner-part .banner-iner h5 {
-    line-height: 28px;
+    font-size: 12px;
+    
   }
   .banner-slider .single-banner-part .banner-iner h2 {
-    font-size: 25px;
-    line-height: 35px;
+    font-size: 20px;
+    line-height: 20px;
   }
   .banner-btn {
     width: 150px;
   }
 }
 
+
+
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .banner-slider .single-banner-part .banner-iner h5 {
     line-height: 28px;
   }
   .banner-slider .single-banner-part .banner-iner h2 {
-    font-size: 40px;
-    line-height: 50px;
+    font-size: 20px;
+    line-height: 30px;
   }
   .banner-btn {
     width: 150px;

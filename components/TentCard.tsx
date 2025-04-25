@@ -5,6 +5,7 @@ import React from "react";
 interface TentCardProps {
   id: number;
   title: string;
+  mainPrice: number;
   price: number;
   image: string;
   beds: number;
@@ -14,6 +15,7 @@ interface TentCardProps {
   checkOut: string | Date;
   description: string;
   perHeadPrice: number;
+  perHeadMainPrice: number;
   linkBooking: string;
   dataAosDuration: number;
 }
@@ -21,6 +23,7 @@ interface TentCardProps {
 const TentCard: React.FC<TentCardProps> = ({
   id,
   title,
+  mainPrice,
   price,
   image,
   beds,
@@ -29,10 +32,35 @@ const TentCard: React.FC<TentCardProps> = ({
   checkIn,
   checkOut,
   perHeadPrice,
+  perHeadMainPrice,
   description,
   linkBooking,
   dataAosDuration,
 }) => {
+  const getBathCount = (
+    adults: number | string,
+    defaultBaths: number | string
+  ): number => {
+    const adultCount =
+      typeof adults === "string" ? parseInt(adults, 10) : adults;
+
+    if (adultCount > 50) return 10;
+    if (adultCount > 45) return 9;
+    if (adultCount > 40) return 8;
+    if (adultCount > 34) return 7;
+    if (adultCount > 28) return 6;
+    if (adultCount > 23) return 5;
+    if (adultCount > 18) return 4;
+    if (adultCount > 12) return 3;
+    if (adultCount > 6) return 2;
+
+    return typeof defaultBaths === "string"
+      ? parseInt(defaultBaths, 10)
+      : defaultBaths;
+  };
+
+  const bathCount = getBathCount(adults, baths);
+
   return (
     <div
       className="col-lg-4 col-md-6"
@@ -49,7 +77,16 @@ const TentCard: React.FC<TentCardProps> = ({
             alt={title}
           />
           <small className="position-absolute start-0 top-100 translate-middle-y bg-primary text-white rounded py-1 px-3 ms-4">
-            ₹{perHeadPrice} / Head
+            <span
+              style={{
+                textDecoration: "line-through",
+                color: "#F7C901",
+                marginRight: 5,
+              }}
+            >
+              ₹{perHeadMainPrice}
+            </span>
+            <span className=" text-white">₹{perHeadPrice}</span> / Head
           </small>
         </div>
         <div className="p-4 mt-2">
@@ -76,7 +113,7 @@ const TentCard: React.FC<TentCardProps> = ({
                 className="bx bx-bath text-primary me-2"
                 style={{ fontSize: 17 }}
               ></i>
-              {baths} Washroom
+              {bathCount ? bathCount : baths} Washroom
             </span>
             <span>
               <i className="bx bx-wifi text-primary me-2"></i>Wifi
@@ -90,16 +127,17 @@ const TentCard: React.FC<TentCardProps> = ({
             <Link
               style={{ color: "white" }}
               className="btn style1 rounded py-2 px-4"
-              prefetch={true} // Explicitly enable prefetch (default in Next.js)
+              prefetch={true}
               href={{
                 pathname: `/tents/${id}`,
                 query: {
                   id,
                   title,
+                  mainPrice,
                   price,
                   image,
                   beds,
-                  baths,
+                  baths: bathCount,
                   adults,
                   checkIn:
                     typeof checkIn === "string"

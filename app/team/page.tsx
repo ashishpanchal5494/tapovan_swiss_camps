@@ -19,33 +19,57 @@ const teamMembers = [
     id: 1,
     name: "Anuj Panchal",
     role: "Manager",
-    image: "/assets/img/team/team-1.jpg",
+    image: "/assets/img/team/avatar.png",
     animationDuration: 1200,
-    socialLinks: { facebook: "#", twitter: "#", instagram: "#", linkedin: "#" },
+    socialLinks: {
+      facebook: "https://www.facebook.com/panchalanuj419",
+      twitter: "#",
+      instagram: "https://www.instagram.com/anuj_panchal_003/",
+      whatsApp:
+        "https://api.whatsapp.com/send?phone=+919205182131&text=I have a query",
+    },
   },
   {
     id: 2,
     name: "Rohit Panchal",
     role: "Property Manager",
-    image: "/assets/img/team/team-2.jpg",
+    image: "/assets/img/team/rohit.jpeg",
     animationDuration: 1400,
-    socialLinks: { facebook: "#", twitter: "#", instagram: "#", linkedin: "#" },
+    socialLinks: {
+      facebook: "https://www.facebook.com/ro.hit.3785",
+      twitter: "#",
+      instagram: "https://www.instagram.com/rohit_panchal7055/",
+      whatsApp:
+        "https://api.whatsapp.com/send?phone=+918077570122&text=I have a query",
+    },
   },
   {
     id: 3,
     name: "Ramesh Panchal",
     role: "Owner",
-    image: "/assets/img/team/team-3.jpg",
+    image: "/assets/img/team/avatar.png",
     animationDuration: 1600,
-    socialLinks: { facebook: "#", twitter: "#", instagram: "#", linkedin: "#" },
+    socialLinks: {
+      facebook: "#",
+      twitter: "#",
+      instagram: "#",
+      whatsApp:
+        "https://api.whatsapp.com/send?phone=+919897317071&text=I have a query",
+    },
   },
   {
     id: 4,
     name: "Ashish Panchal",
     role: "Developer",
-    image: "/assets/img/team/team-4.jpg",
+    image: "/assets/img/team/ashish.png",
     animationDuration: 1800,
-    socialLinks: { facebook: "#", twitter: "#", instagram: "#", linkedin: "#" },
+    socialLinks: {
+      facebook: "https://www.facebook.com/profile.php?id=100027377063868",
+      twitter: "#",
+      instagram: "https://www.instagram.com/ashishpanchal_5494/",
+      whatsApp:
+        "https://api.whatsapp.com/send?phone=+917060839220&text=I have a query",
+    },
   },
 ];
 
@@ -65,9 +89,12 @@ const Team: React.FC = () => {
         >
           <h2>Our Team</h2>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt dolore magna aliqua. Quis ipsum
-            suspendisse ultrices gravida.
+            Meet the dedicated team behind Tapovan Swiss Camps – a group of
+            passionate individuals working together to ensure every guest
+            experiences comfort, adventure, and genuine hospitality. From
+            management and operations to tech and innovation, each member brings
+            a unique skill set that makes our resort a peaceful and well-run
+            escape into nature.
           </p>
         </div>
         <div className="row justify-content-center">

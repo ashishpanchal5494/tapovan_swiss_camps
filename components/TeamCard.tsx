@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 interface TeamMemberProps {
@@ -11,7 +12,7 @@ interface TeamMemberProps {
     facebook: string;
     twitter: string;
     instagram: string;
-    linkedin: string;
+    whatsApp: string;
   };
 }
 
@@ -31,7 +32,21 @@ const TeamCard: React.FC<TeamMemberProps> = ({
     >
       <div className="single-team-box">
         <div className="image">
-          <a href={`team/${id}`}>
+          <Link
+            href={{
+              pathname: `/team/${id}`,
+              query: {
+                name: name,
+                role: role,
+                image: image,
+                description: `This is ${name}, serving as our ${role}. They ensure top-tier quality at Tapovan Swiss Camps.`, // Or add real one
+                facebook: socialLinks.facebook,
+                twitter: socialLinks.twitter,
+                whatsApp: socialLinks.whatsApp,
+                instagram: socialLinks.instagram,
+              },
+            }}
+          >
             <Image
               width={400}
               height={400}
@@ -39,27 +54,47 @@ const TeamCard: React.FC<TeamMemberProps> = ({
               alt={name}
               className="img-fluid"
             />
-          </a>
+          </Link>
           <ul className="social-link">
             <li>
-              <a href={socialLinks.facebook} className="facebook">
+              <Link
+                href={socialLinks.facebook}
+                className="facebook"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <i className="bx bxl-facebook"></i>
-              </a>
+              </Link>
             </li>
             <li>
-              <a href={socialLinks.twitter} className="twitter">
+              <Link
+                href={socialLinks.twitter}
+                className="twitter"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <i className="bx bxl-twitter"></i>
-              </a>
+              </Link>
             </li>
             <li>
-              <a href={socialLinks.instagram} className="instagram">
+              <Link
+                href={socialLinks.instagram}
+                className="instagram"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <i className="bx bxl-instagram"></i>
-              </a>
+              </Link>
             </li>
             <li>
-              <a href={socialLinks.linkedin} className="linkedin">
-                <i className="bx bxl-linkedin"></i>
-              </a>
+              <Link
+                href={socialLinks.whatsApp}
+                className="linkedin"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <i className="bx bxl-whatsapp"></i>
+              </Link>
             </li>
           </ul>
         </div>

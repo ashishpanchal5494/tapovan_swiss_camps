@@ -1,12 +1,13 @@
 "use client";
 
-import Loading from "@/components/Loading";
 import React, { useEffect, useState } from "react";
 import AOS from "aos";
+import "aos/dist/aos.css";
+import Loading from "@/components/Loading";
+import Link from "next/link";
 
 function SamplePage() {
   const [isClient, setIsClient] = useState(false);
-
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -29,79 +30,85 @@ function SamplePage() {
   }
 
   return (
-    <>
-      <div
-        className={isMobile ? "page-content ptb-200" : "page-content ptb-60"}
-      >
-        <div className="container">
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
-            ut enim sagittis, lacinia elit non, fermentum mauris. Morbi lectus
-            urna, molestie quis nisi ut, rutrum consequat eros. Praesent
-            commodo, nunc varius fermentum dictum, erat tortor commodo nunc, eu
-            mollis purus ante vitae ex. Proin facilisis condimentum mi vitae
-            porta. Aliquam nunc nisi, ultrices et rhoncus vitae, mattis nec ex.
-            Sed at urna eget lectus rutrum ornare ut quis nibh. In tincidunt
-            interdum mollis. Quisque quam nunc, faucibus sit amet ex sit amet,
-            varius porttitor felis. Maecenas placerat risus lectus. Orci varius
-            natoque penatibus et magnis dis parturient montes, nascetur
-            ridiculus mus. In tempus gravida libero sed pharetra. Proin
-            fringilla posuere elit, in sagittis magna auctor quis. Fusce
-            ullamcorper luctus leo a egestas. Mauris eget condimentum orci, at
-            consectetur felis. Donec porttitor feugiat pellentesque.
+    <div className={isMobile ? "page-content ptb-200" : "page-content ptb-60"}>
+      <div className="container mx-auto px-4">
+        {/* Hero Section */}
+        <section data-aos="fade-up" className="mb-20 text-center">
+          <h1 className="text-3xl font-bold mb-4">
+            Welcome to Tapovan Swiss Camps
+          </h1>
+          <p className="text-lg text-gray-700">
+            Experience nature, comfort, and peace at our luxury Swiss tent stay
+            in the heart of Rishikesh.
           </p>
+        </section>
 
-          <p>
-            Orci varius natoque penatibus et magnis dis parturient montes,
-            nascetur ridiculus mus. Phasellus ut rhoncus purus, id imperdiet
-            elit. Praesent turpis risus, gravida vel orci quis, faucibus posuere
-            ante. Curabitur sem est, varius id velit mattis, pellentesque
-            ultrices magna. Donec vestibulum commodo orci non tincidunt. Nam
-            tortor augue, tristique sed velit at, malesuada condimentum magna.
-            Cras scelerisque dignissim dignissim. Sed fermentum nisl at dolor
-            semper sollicitudin. Lorem ipsum dolor sit amet, consectetur
-            adipiscing elit.
-          </p>
+        {/* Why Choose Us */}
+        <section data-aos="fade-up" className="mb-10">
+          <h2 className="text-2xl font-semibold mb-4">Why Choose Us?</h2>
+          <ul className="list-disc list-inside text-gray-700 space-y-2">
+            <li>🛏️ Swiss tents with private bathrooms</li>
+            <li>🌄 Surrounded by nature and Himalayan views</li>
+            <li>🔥 Bonfire nights & live music (on request)</li>
+            <li>🧘 Yoga sessions and meditation space</li>
+            <li>🌊 Close to the Ganga & rafting start points</li>
+          </ul>
+        </section>
 
-          <p>
-            Aliquam erat volutpat. Nam elit elit, condimentum sed sem sit amet,
-            aliquam maximus lorem. Praesent finibus metus libero, iaculis
-            pulvinar dolor iaculis in. Aenean molestie aliquam leo vitae
-            fringilla. Quisque sit amet nibh enim. Sed non sem ullamcorper,
-            dictum metus vitae, pharetra tellus. Nunc sed justo id neque
-            interdum laoreet vitae gravida sapien. Fusce id justo rhoncus, porta
-            ipsum non, tempus ex. Cras id leo vel nisl rhoncus convallis.
-          </p>
+        {/* Things to Do */}
+        <section data-aos="fade-up" className="mb-10">
+          <h2 className="text-2xl font-semibold mb-4">
+            Activities You Can Enjoy
+          </h2>
+          <ul className="list-disc list-inside text-gray-700 space-y-2">
+            <li>🚣 River rafting on the Ganges</li>
+            <li>🏞️ Hiking & nature walks</li>
+            <li>🧘 Sunrise yoga sessions</li>
+            <li>🔥 Campfire evenings under the stars</li>
+            <li>🕌 Visit nearby temples & the Beatles Ashram</li>
+          </ul>
+        </section>
 
-          <p>
-            Suspendisse auctor leo id tempus ultricies. Proin sit amet quam vel
-            ligula lobortis ultrices. Aliquam magna nisi, finibus vitae dui
-            vitae, laoreet imperdiet lectus. Curabitur eu lorem id nunc
-            vulputate aliquet a ut purus. Etiam eu nulla eros. Integer efficitur
-            egestas quam, a efficitur enim porttitor id. Nam elementum nunc nec
-            orci sollicitudin venenatis. Aliquam consequat ex nunc, varius
-            blandit leo efficitur et. Aenean arcu magna, vehicula sit amet orci
-            a, venenatis pharetra ante. Nunc sit amet arcu metus. Fusce vitae
-            sapien dapibus, porttitor tellus ut, sagittis magna. Quisque auctor
-            ligula tellus, pulvinar rutrum ex finibus ac. Vivamus ac pretium
-            libero. Aenean convallis leo ut lectus gravida, quis tincidunt
-            turpis ullamcorper. Suspendisse et tristique risus, sed molestie
-            tellus. Ut aliquam luctus erat in porttitor.
-          </p>
+        {/* Testimonials */}
+        <section data-aos="fade-up" className="mb-10">
+          <h2 className="text-2xl font-semibold mb-4">What Our Guests Say</h2>
+          <div className="text-gray-700 space-y-4">
+            <blockquote className="italic border-l-4 border-primary pl-4">
+              “A peaceful escape from the city — the tents were clean, food was
+              great, and the team was super welcoming!” – Neha M.
+            </blockquote>
+            <blockquote className="italic border-l-4 border-primary pl-4">
+              “Loved the bonfire evenings and yoga mornings. Would definitely
+              come back!” – Ankit R.
+            </blockquote>
+          </div>
+        </section>
 
-          <p>
-            Fusce vitae turpis suscipit, pharetra elit quis, mattis nibh. Nulla
-            volutpat diam sit amet ultrices accumsan. In at iaculis urna.
-            Suspendisse elit dolor, ornare condimentum lacinia sed, auctor
-            maximus lectus. Nullam sodales congue lacus a gravida. In volutpat
-            semper justo, condimentum semper justo dignissim ac. Morbi commodo
-            mauris vel neque sollicitudin, sit amet laoreet augue sagittis. In
-            ac congue purus. Aenean nunc turpis, vestibulum nec lacus sed,
-            sagittis mattis velit.
+        {/* Location */}
+        <section data-aos="fade-up" className="mb-20">
+          <h2 className="text-2xl font-semibold mb-4">How to Reach Us</h2>
+          <p className="text-gray-700">
+            📍 We’re located in Tapovan, just 1.5 km from Laxman Jhula and 20 km
+            from Dehradun Airport. Easy road access from Haridwar and Rishikesh.
           </p>
-        </div>
+        </section>
+
+        {/* Call to Action */}
+        <section data-aos="fade-up" className="text-center">
+          <h2 className="text-2xl font-bold mb-4 ">Book Your Stay Today!</h2>
+          <p className="text-gray-700 ">
+            Tap into nature and unwind at Tapovan Swiss Camps.
+          </p>
+          <Link
+            style={{ borderRadius: "0px", paddingBlock: "15px" }}
+            className="btn style5 mt-5 w-auto"
+            href="/booking-form"
+          >
+            Book Now
+          </Link>
+        </section>
       </div>
-    </>
+    </div>
   );
 }
 

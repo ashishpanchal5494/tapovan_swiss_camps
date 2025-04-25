@@ -11,10 +11,10 @@ const BookingArea: React.FC = () => {
     email: "",
     phone: "",
     date: "",
-    days: 1,
-    adults: 1,
-    children: 1,
-    amount: 1000,
+    days: "1",
+    adults: "1",
+    children: "1",
+    amount: "1000",
     tentType: "",
     ratingType: "",
   });
@@ -22,6 +22,36 @@ const BookingArea: React.FC = () => {
   useEffect(() => {
     AOS.init({ duration: 1200 });
   }, []);
+
+  const calculateTentPrice = (
+    basePrice: number,
+    beds: number,
+    mainBasePrice: number,
+    totalPersons: number,
+    totalDays: number
+  ) => {
+    let perHeadPrice = basePrice;
+    let perHeadMainPrice = mainBasePrice;
+    const personsPerTent = totalPersons; // assuming 1 tent per booking form
+
+    if (beds === 5) {
+      if (personsPerTent === 2) {
+        perHeadPrice = Math.round(basePrice * 1.4);
+        perHeadMainPrice = Math.round(mainBasePrice * 1.4);
+      } else if (personsPerTent === 3) {
+        perHeadPrice = Math.round(basePrice * 1.3);
+        perHeadMainPrice = Math.round(mainBasePrice * 1.3);
+      } else if (personsPerTent === 4) {
+        perHeadPrice = Math.round(basePrice * 1.2);
+        perHeadMainPrice = Math.round(mainBasePrice * 1.2);
+      }
+    }
+
+    const totalPrice = perHeadPrice * personsPerTent * totalDays;
+    const totalMainPrice = perHeadMainPrice * personsPerTent * totalDays;
+
+    return { perHeadPrice, totalPrice, perHeadMainPrice, totalMainPrice };
+  };
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -33,6 +63,15 @@ const BookingArea: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
+    const totalPersons = parseInt(formData.adults || "1");
+    const totalDays = parseInt(formData.days || "1");
+
+    const tentData = {
+      "Luxury (AC) Tent": { price: 1799, mainPrice: 2499, beds: 5 },
+      "Luxury (Cooler) Tent": { price: 1499, mainPrice: 1999, beds: 5 },
+      "Ordinary Tent": { price: 999, mainPrice: 1199, beds: 3 },
+    }[formData.tentType];
+
     let message = `${
       activeTab === "camping"
         ? `Camping Booking Details:`
@@ -41,12 +80,10 @@ const BookingArea: React.FC = () => {
       formData.email
     }\nPhone: ${formData.phone}`;
 
-    // Add Date for both Camping and Rafting
     if (formData.date) {
       message += `\nDate: ${formData.date}`;
     }
 
-    // Add Days only for Camping
     if (activeTab === "camping") {
       message += `\nDays: ${formData.days}`;
     }
@@ -65,6 +102,19 @@ const BookingArea: React.FC = () => {
       message += `\nRafting Type: ${formData.ratingType}`;
     }
 
+    if (tentData) {
+      const { perHeadPrice, totalPrice } = calculateTentPrice(
+        tentData.price,
+        tentData.beds,
+        tentData.mainPrice,
+        totalPersons,
+        totalDays
+      );
+
+      message += `\nPer head price Amount: ₹${perHeadPrice}`;
+      message += `\nTotal price Amount: ₹${totalPrice}`;
+    }
+
     message += `\nBooking Amount: ${formData.amount}`;
 
     const encodedMessage = encodeURIComponent(message);
@@ -73,6 +123,21 @@ const BookingArea: React.FC = () => {
       `https://api.whatsapp.com/send?phone=+917906924003&text=${encodedMessage}`,
       "_blank"
     );
+
+    // Reset form data
+    setFormData({
+      name: "",
+      address: "",
+      email: "",
+      phone: "",
+      date: "",
+      days: "1",
+      adults: "1",
+      children: "1",
+      amount: "1000",
+      tentType: "",
+      ratingType: "",
+    });
   };
 
   return (
@@ -82,7 +147,6 @@ const BookingArea: React.FC = () => {
           <h2>Book Your Adventure Today!</h2>
         </div>
 
-        {/* Tabs */}
         <nav className="booking-tabs-button ptb-40">
           <div className="nav nav-tabs">
             <button
@@ -100,7 +164,6 @@ const BookingArea: React.FC = () => {
           </div>
         </nav>
 
-        {/* Booking Form */}
         <div className="product-tabs-content">
           <div className="tab-content">
             <div className="col-12 contact-form book-form">
@@ -116,6 +179,7 @@ const BookingArea: React.FC = () => {
                     name="name"
                     type="text"
                     placeholder="Enter your name"
+                    value={formData.name}
                     required
                     onChange={handleChange}
                   />
@@ -124,6 +188,7 @@ const BookingArea: React.FC = () => {
                     name="address"
                     type="text"
                     placeholder="Enter your address"
+                    value={formData.address}
                     required
                     onChange={handleChange}
                   />
@@ -132,6 +197,7 @@ const BookingArea: React.FC = () => {
                     name="email"
                     type="email"
                     placeholder="Enter your email"
+                    value={formData.email}
                     required
                     onChange={handleChange}
                   />
@@ -140,6 +206,7 @@ const BookingArea: React.FC = () => {
                     name="phone"
                     type="tel"
                     placeholder="Enter your phone number"
+                    value={formData.phone}
                     required
                     onChange={handleChange}
                   />
@@ -147,6 +214,7 @@ const BookingArea: React.FC = () => {
                     label="Date"
                     name="date"
                     type="date"
+                    value={formData.date}
                     required
                     onChange={handleChange}
                   />
@@ -155,7 +223,7 @@ const BookingArea: React.FC = () => {
                       label="Days"
                       name="days"
                       type="number"
-                      defaultValue={1}
+                      value={formData.days}
                       required
                       onChange={handleChange}
                     />
@@ -165,7 +233,7 @@ const BookingArea: React.FC = () => {
                     label="Adults"
                     name="adults"
                     type="number"
-                    defaultValue={1}
+                    value={formData.adults}
                     required
                     onChange={handleChange}
                   />
@@ -174,7 +242,7 @@ const BookingArea: React.FC = () => {
                       label="Childrens"
                       name="children"
                       type="number"
-                      defaultValue={1}
+                      value={formData.children}
                       required
                       onChange={handleChange}
                     />
@@ -183,6 +251,7 @@ const BookingArea: React.FC = () => {
                     <SelectField
                       label="Tent Type"
                       name="tentType"
+                      value={formData.tentType}
                       options={[
                         "Luxury (AC) Tent",
                         "Luxury (Cooler) Tent",
@@ -195,13 +264,19 @@ const BookingArea: React.FC = () => {
                     <SelectField
                       label="Rafting Type"
                       name="ratingType"
-                      options={["Shivpuri", "Brahmpuri"]}
+                      value={formData.ratingType}
+                      options={[
+                        "Marine Drive(22km)",
+                        "Shivpuri(16km)",
+                        "Brahmpuri(12km)",
+                      ]}
                       onChange={handleChange}
                     />
                   )}
                   <SelectField
                     label="Booking Amount"
                     name="amount"
+                    value={formData.amount}
                     options={["1000 IND", "1500 IND", "2000 IND"]}
                     onChange={handleChange}
                   />
@@ -224,16 +299,15 @@ const BookingArea: React.FC = () => {
   );
 };
 
-// Reusable Input Component
 const InputField: React.FC<{
   label: string;
   name: string;
   type: string;
+  value: string;
   placeholder?: string;
   required?: boolean;
-  defaultValue?: number;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-}> = ({ label, name, type, placeholder, required, defaultValue, onChange }) => (
+}> = ({ label, name, type, value, placeholder, required, onChange }) => (
   <div className="mt-4 col-md-6">
     <label className="form-label">{label}</label>
     <input
@@ -242,23 +316,28 @@ const InputField: React.FC<{
       className="form-control"
       placeholder={placeholder}
       required={required}
-      defaultValue={defaultValue}
+      value={value}
       onChange={onChange}
     />
   </div>
 );
 
-// Reusable Select Component
 const SelectField: React.FC<{
   label: string;
   name: string;
+  value: string;
   options: string[];
   onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
-}> = ({ label, name, options, onChange }) => (
+}> = ({ label, name, value, options, onChange }) => (
   <div className="mt-4 col-md-12">
     <label className="form-label">{label}</label>
-    <select className="form-control" name={name} onChange={onChange}>
-      <option>Select {label}</option>
+    <select
+      className="form-control"
+      name={name}
+      value={value}
+      onChange={onChange}
+    >
+      <option value="">Select {label}</option>
       {options.map((option, index) => (
         <option key={index} value={option}>
           {option}
