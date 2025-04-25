@@ -73,9 +73,9 @@ const About = () => {
                   is a peaceful getaway designed for travelers seeking both
                   relaxation and adventure. At Tapovan Swiss Camps, we pride
                   ourselves on offering a perfect blend of modern comfort and
-                  natural charm. Whether you're planning a family vacation, a
-                  weekend escape, or a group retreat, our resort promises a
-                  memorable experience like no other.
+                  natural charm. Whether you&lsquo;re planning a family
+                  vacation, a weekend escape, or a group retreat, our resort
+                  promises a memorable experience like no other.
                 </p>
 
                 <h5>🌿 What We Offer</h5>

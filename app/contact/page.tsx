@@ -71,9 +71,9 @@ const Contact = () => {
           <p>
             Have questions, feedback, or planning your next getaway? We&lsquo;d
             love to hear from you! Fill out the form below and our team will get
-            back to you shortly. Whether you're booking a stay, exploring
-            partnership opportunities, or just saying hello — we're here for
-            you.
+            back to you shortly. Whether you&lsquo;re booking a stay, exploring
+            partnership opportunities, or just saying hello — we&lsquo;re here
+            for you.
           </p>
         </div>
 
