@@ -26,7 +26,7 @@ const TeamCard: React.FC<TeamMemberProps> = ({
 }) => {
   return (
     <div
-      className="col-lg-3 col-md-6 col-sm-6"
+      className="col-6 col-sm-6 col-md-6 col-lg-3"
       data-aos="fade-up"
       data-aos-duration={animationDuration}
     >
