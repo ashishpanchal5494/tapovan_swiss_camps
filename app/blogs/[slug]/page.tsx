@@ -351,7 +351,7 @@ Would you like a **featured image** for this blog? I can generate one showing a 
   Group discounts available
 
   🚀 Conclusion
-  Riding through Rishikesh on a bike is more than just travel—it&lsquo;s an experience. With bike rental services easily available, there's no reason to miss out on the hidden beauty of this Himalayan town. Whether it&lsquo;s adventure or peace you seek, a two-wheeler gives you the perfect balance.
+  Riding through Rishikesh on a bike is more than just travel—it&lsquo;s an experience. With bike rental services easily available, there&lsquo;s no reason to miss out on the hidden beauty of this Himalayan town. Whether it&lsquo;s adventure or peace you seek, a two-wheeler gives you the perfect balance.
 
   👉 Book your bike rental in Rishikesh now and explore like a local!`,
   },
@@ -361,9 +361,6 @@ const BlogDetails: React.FC = () => {
   const [isMobile, setIsMobile] = useState(false);
 
   const { slug } = useParams();
-  const blog = blogData.find((b) => b.slug === slug);
-
-  if (!blog) return notFound();
 
   useEffect(() => {
     AOS.init({ duration: 1200 });
@@ -378,6 +375,9 @@ const BlogDetails: React.FC = () => {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
+  const blog = blogData.find((b) => b.slug === slug);
+  if (!blog) return notFound();
 
   return (
     <div
