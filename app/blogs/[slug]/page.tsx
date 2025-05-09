@@ -15,7 +15,7 @@ const blogData = [
     title:
       "Camping in Rishikesh: The Ultimate Guide to an Unforgettable Experience",
     slug: "camping-in-rishikesh",
-    content: `Rishikesh, nestled in the foothills of the Himalayas and along the banks of the Ganga, is a paradise for adventure lovers. Among its many offerings, camping in Rishikesh is an experience that blends nature, thrill, and peace. Whether you're a solo traveler, a couple, or a family, camping here brings you close to the serene beauty of Uttarakhand.
+    content: `Rishikesh, nestled in the foothills of the Himalayas and along the banks of the Ganga, is a paradise for adventure lovers. Among its many offerings, camping in Rishikesh is an experience that blends nature, thrill, and peace. Whether you&lsquo;re a solo traveler, a couple, or a family, camping here brings you close to the serene beauty of Uttarakhand.
 
 Why Choose Rishikesh for Camping?
 - Breathtaking Views: Enjoy stunning riverside or jungle surroundings.
@@ -67,7 +67,7 @@ Q. Are meals included in the package?
 A. Yes, most packages include breakfast, lunch, and dinner.
 
 Conclusion
-Camping in Rishikesh is more than just a stay — it’s a refreshing break from daily life. Whether it’s sitting around a bonfire, rafting through wild rapids, or gazing at starry skies, the memories you make here will stay forever. Book your experience today!
+Camping in Rishikesh is more than just a stay — it&lsquo;s a refreshing break from daily life. Whether it&lsquo;s sitting around a bonfire, rafting through wild rapids, or gazing at starry skies, the memories you make here will stay forever. Book your experience today!
 
 \ud83d\udc49 Book Your Rishikesh Camping Experience Now`,
   },
@@ -124,7 +124,7 @@ Camping in Rishikesh is more than just a stay — it’s a refreshing break from
 - Always wear a life jacket and helmet.
 - Listen carefully to your rafting instructor.
 - Avoid rafting if you have major health conditions.
-- Don’t carry valuables or electronics.
+- Don&lsquo;t carry valuables or electronics.
 - Never attempt rafting under the influence of alcohol.
 
 ---
@@ -163,7 +163,7 @@ Absolutely. Life jackets are mandatory and guides are trained for all situations
 ---
 
 ## Conclusion  
-**Rafting in Rishikesh** is not just an adventure—it’s a life-changing experience that combines nature, thrill, and serenity. Whether you come with friends, family, or solo, it’s bound to be unforgettable. Book your rafting + camping combo with **Tapovan Swiss Camp** today and make memories that flow with the Ganga!
+**Rafting in Rishikesh** is not just an adventure—it&lsquo;s a life-changing experience that combines nature, thrill, and serenity. Whether you come with friends, family, or solo, it&lsquo;s bound to be unforgettable. Book your rafting + camping combo with **Tapovan Swiss Camp** today and make memories that flow with the Ganga!
 
 👉 **Ready to raft? [Contact Us Now on WhatsApp]**
 
@@ -183,7 +183,7 @@ Would you like a **featured image** for this blog? I can generate one showing a 
   
   ## Why Try Bungee Jumping in Rishikesh?
   
-  - **India’s Highest Bungee Site:** With a height of 83 meters (272 feet), Rishikesh is home to the country’s tallest fixed-platform jump.
+  - **India&lsquo;s Highest Bungee Site:** With a height of 83 meters (272 feet), Rishikesh is home to the country&lsquo;s tallest fixed-platform jump.
   - **Scenic Location:** Jump off a cliff surrounded by the Shivalik Hills, over a river stream for a breathtaking view.
   - **Safety First:** Operated by trained professionals and safety experts from New Zealand.
   - **Bucket List Worthy:** This is not just a sport—it's a personal achievement you'll never forget.
@@ -242,7 +242,7 @@ Would you like a **featured image** for this blog? I can generate one showing a 
   **Q. Is bungee jumping in Rishikesh safe?**  
   Yes, especially with licensed operators like Jumpin Heights, following strict safety standards.
   
-  **Q. Can I jump if I’ve never done it before?**  
+  **Q. Can I jump if I&lsquo;ve never done it before?**  
   Absolutely. Most jumpers are first-timers, and staff guide you through every step.
   
   **Q. Can I get a video of my jump?**  
@@ -263,7 +263,7 @@ Would you like a **featured image** for this blog? I can generate one showing a 
     category: "India",
     title: "Bike Rent in Rishikesh – Ultimate Guide for 2025",
     slug: "bike-rent-in-rishikesh",
-    content: `Want to explore Rishikesh on two wheels? Renting a bike in Rishikesh is the smartest, most adventurous way to soak in the Himalayan vibes and spiritual charm. Whether you're here for a short trip or an extended stay, a rented scooter or Royal Enfield gives you the freedom to ride at your own pace.
+    content: `Want to explore Rishikesh on two wheels? Renting a bike in Rishikesh is the smartest, most adventurous way to soak in the Himalayan vibes and spiritual charm. Whether you&lsquo;re here for a short trip or an extended stay, a rented scooter or Royal Enfield gives you the freedom to ride at your own pace.
 
   🏍️ Why Choose Bike Rental in Rishikesh?
   Freedom to Explore: No fixed routes—ride to waterfalls, temples, or cafes when you want.
@@ -324,7 +324,7 @@ Would you like a **featured image** for this blog? I can generate one showing a 
 
   Avoid riding at night in hilly or forested areas
 
-  Don’t overspeed—enjoy the journey, not just the destination!
+  Don&lsquo;t overspeed—enjoy the journey, not just the destination!
 
   💬 FAQs
   Q: Is bike rental safe in Rishikesh?
@@ -351,7 +351,7 @@ Would you like a **featured image** for this blog? I can generate one showing a 
   Group discounts available
 
   🚀 Conclusion
-  Riding through Rishikesh on a bike is more than just travel—it’s an experience. With bike rental services easily available, there's no reason to miss out on the hidden beauty of this Himalayan town. Whether it’s adventure or peace you seek, a two-wheeler gives you the perfect balance.
+  Riding through Rishikesh on a bike is more than just travel—it&lsquo;s an experience. With bike rental services easily available, there's no reason to miss out on the hidden beauty of this Himalayan town. Whether it&lsquo;s adventure or peace you seek, a two-wheeler gives you the perfect balance.
 
   👉 Book your bike rental in Rishikesh now and explore like a local!`,
   },
@@ -366,6 +366,10 @@ const BlogDetails: React.FC = () => {
   if (!blog) return notFound();
 
   useEffect(() => {
+    AOS.init({ duration: 1200 });
+  }, []);
+
+  useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 768);
     };
@@ -373,10 +377,6 @@ const BlogDetails: React.FC = () => {
     handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  useEffect(() => {
-    AOS.init({ duration: 1200 });
   }, []);
 
   return (

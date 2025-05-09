@@ -143,9 +143,9 @@ Crew faculty awesome everyone’s friendly nature and good persons👍.`,
             Discover real experiences from travelers who have stayed at our
             campsite in the serene hills of Tapovan, Rishikesh. Our guests
             consistently praise our hospitality, scenic mountain views,
-            delicious food, and peaceful atmosphere. Whether you're looking for
-            an adventure-packed weekend or a quiet getaway, see why our guests
-            recommend us as the{" "}
+            delicious food, and peaceful atmosphere. Whether you&lsquo;re
+            looking for an adventure-packed weekend or a quiet getaway, see why
+            our guests recommend us as the{" "}
             <strong>best budget camping site near Tapovan, Rishikesh</strong>.
           </p>
         </div>
