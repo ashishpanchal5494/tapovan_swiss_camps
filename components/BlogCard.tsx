@@ -3,13 +3,18 @@ import Link from "next/link";
 import React from "react";
 
 interface BlogCardProps {
-  id: number;
   image: string;
   category: string;
   title: string;
+  slug: string;
 }
 
-const BlogCard: React.FC<BlogCardProps> = ({ id, image, category, title }) => {
+const BlogCard: React.FC<BlogCardProps> = ({
+  image,
+  category,
+  title,
+  slug,
+}) => {
   return (
     <div className="col-lg-4 col-md-6">
       <div
@@ -19,7 +24,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ id, image, category, title }) => {
       >
         <div className="inner">
           <div className="thumbnail">
-            <Link href={`/blogs/${id}`}>
+            <Link href={`/blogs/${slug}`}>
               <Image
                 width={600}
                 height={600}
@@ -35,7 +40,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ id, image, category, title }) => {
           </div>
           <div className="content">
             <h5 className="title">
-              <Link style={{ textDecoration: "none" }} href={`/blogs/${id}`}>
+              <Link style={{ textDecoration: "none" }} href={`/blogs/${slug}`}>
                 {title}
               </Link>
             </h5>
@@ -43,8 +48,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ id, image, category, title }) => {
               <Link
                 style={{ textDecoration: "none" }}
                 className="blog-btn"
-                href={`/blogs/${id}`}
-                prefetch={true} // Explicitly enable prefetch (default in Next.js)
+                href={`/blogs/${slug}`}
               >
                 Read More <i className="bx bx-right-arrow-alt"></i>
               </Link>

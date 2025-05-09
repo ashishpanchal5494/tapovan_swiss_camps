@@ -1,8 +1,11 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import Image from "next/image";
+
 import AOS from "aos";
-import BlogCard from "@/components/BlogCard";
+import "aos/dist/aos.css";
+import { notFound, useParams } from "next/navigation";
 
 const blogData = [
   {
@@ -262,101 +265,105 @@ Would you like a **featured image** for this blog? I can generate one showing a 
     slug: "bike-rent-in-rishikesh",
     content: `Want to explore Rishikesh on two wheels? Renting a bike in Rishikesh is the smartest, most adventurous way to soak in the Himalayan vibes and spiritual charm. Whether you're here for a short trip or an extended stay, a rented scooter or Royal Enfield gives you the freedom to ride at your own pace.
 
-🏍️ Why Choose Bike Rental in Rishikesh?
-Freedom to Explore: No fixed routes—ride to waterfalls, temples, or cafes when you want.
+  🏍️ Why Choose Bike Rental in Rishikesh?
+  Freedom to Explore: No fixed routes—ride to waterfalls, temples, or cafes when you want.
 
-Cost-Effective Travel: Save money on taxis and travel like a local.
+  Cost-Effective Travel: Save money on taxis and travel like a local.
 
-Scenic Routes: Ride along the Ganges, through forests, and up to hilltops.
+  Scenic Routes: Ride along the Ganges, through forests, and up to hilltops.
 
-Adventure Friendly: Great for solo travelers, couples, and even groups.
+  Adventure Friendly: Great for solo travelers, couples, and even groups.
 
-🔥 Popular Bikes Available for Rent
-Bike Model	Ideal For	Rental (Per Day)
-Activa / Jupiter	City travel	₹400 – ₹600
-Royal Enfield 350	Long distances	₹900 – ₹1300
-Avenger / Pulsar	Comfort rides	₹700 – ₹1000
-Himalayan / Xpulse	Off-road travel	₹1200 – ₹1600
+  🔥 Popular Bikes Available for Rent
+  Bike Model	Ideal For	Rental (Per Day)
+  Activa / Jupiter	City travel	₹400 – ₹600
+  Royal Enfield 350	Long distances	₹900 – ₹1300
+  Avenger / Pulsar	Comfort rides	₹700 – ₹1000
+  Himalayan / Xpulse	Off-road travel	₹1200 – ₹1600
 
-Prices may vary by season and rental duration.
+  Prices may vary by season and rental duration.
 
-📍 Top Places to Ride Your Bike in Rishikesh
-Neer Garh Waterfall – Just 6 km away, a serene trek & bike combo.
+  📍 Top Places to Ride Your Bike in Rishikesh
+  Neer Garh Waterfall – Just 6 km away, a serene trek & bike combo.
 
-Laxman Jhula to Shivpuri Stretch – Scenic riverside road.
+  Laxman Jhula to Shivpuri Stretch – Scenic riverside road.
 
-Beatles Ashram (Chaurasi Kutia) – Spiritual ride with forest views.
+  Beatles Ashram (Chaurasi Kutia) – Spiritual ride with forest views.
 
-Kunjapuri Temple – Sunrise ride to a mountain-top temple.
+  Kunjapuri Temple – Sunrise ride to a mountain-top temple.
 
-Vashishta Cave – Peaceful meditation spot outside the city buzz.
+  Vashishta Cave – Peaceful meditation spot outside the city buzz.
 
-✅ Requirements for Bike Rental
-Valid Driving License
+  ✅ Requirements for Bike Rental
+  Valid Driving License
 
-Original ID Proof (Aadhar, Passport, etc.)
+  Original ID Proof (Aadhar, Passport, etc.)
 
-Security Deposit (₹500 – ₹2000 depending on the vehicle)
+  Security Deposit (₹500 – ₹2000 depending on the vehicle)
 
-Age: 18+ for gearless, 21+ for geared bikes
+  Age: 18+ for gearless, 21+ for geared bikes
 
-🔧 Inclusions & Add-ons
-Free helmets (mandatory)
+  🔧 Inclusions & Add-ons
+  Free helmets (mandatory)
 
-Unlimited kilometers (check with provider)
+  Unlimited kilometers (check with provider)
 
-Pickup/drop at Tapovan Swiss Camp (optional)
+  Pickup/drop at Tapovan Swiss Camp (optional)
 
-Add-ons: Raincoat, luggage carrier, mobile holder
+  Add-ons: Raincoat, luggage carrier, mobile holder
 
-🕒 Best Time for Bike Rides in Rishikesh
-October to April: Cool breeze, clear skies – perfect for outdoor rides.
+  🕒 Best Time for Bike Rides in Rishikesh
+  October to April: Cool breeze, clear skies – perfect for outdoor rides.
 
-Avoid July–August: Rainy season can be slippery and dangerous.
+  Avoid July–August: Rainy season can be slippery and dangerous.
 
-🔐 Safety Tips Before You Ride
-Inspect brakes, lights, horn before renting
+  🔐 Safety Tips Before You Ride
+  Inspect brakes, lights, horn before renting
 
-Always wear a helmet and follow local traffic rules
+  Always wear a helmet and follow local traffic rules
 
-Avoid riding at night in hilly or forested areas
+  Avoid riding at night in hilly or forested areas
 
-Don’t overspeed—enjoy the journey, not just the destination!
+  Don’t overspeed—enjoy the journey, not just the destination!
 
-💬 FAQs
-Q: Is bike rental safe in Rishikesh?
-Yes, especially if you follow traffic rules and rent from a trusted provider.
+  💬 FAQs
+  Q: Is bike rental safe in Rishikesh?
+  Yes, especially if you follow traffic rules and rent from a trusted provider.
 
-Q: Can I rent a bike without a license?
-No, a valid license is mandatory.
+  Q: Can I rent a bike without a license?
+  No, a valid license is mandatory.
 
-Q: Are bikes available for self-drive only?
-Yes, most rentals are self-drive. Some providers offer guided rides too.
+  Q: Are bikes available for self-drive only?
+  Yes, most rentals are self-drive. Some providers offer guided rides too.
 
-Q: Do I need to refill fuel?
-Yes, bikes are usually provided with limited fuel. You refill as needed.
+  Q: Do I need to refill fuel?
+  Yes, bikes are usually provided with limited fuel. You refill as needed.
 
-📞 Why Book Bike Rental with Tapovan Swiss Camp?
-Trusted local tie-ups for best rates
+  📞 Why Book Bike Rental with Tapovan Swiss Camp?
+  Trusted local tie-ups for best rates
 
-Hassle-free bike delivery at campsite
+  Hassle-free bike delivery at campsite
 
-Combo deals: Bike + Camping + Rafting packages
+  Combo deals: Bike + Camping + Rafting packages
 
-24/7 assistance & flexible booking
+  24/7 assistance & flexible booking
 
-Group discounts available
+  Group discounts available
 
-🚀 Conclusion
-Riding through Rishikesh on a bike is more than just travel—it’s an experience. With bike rental services easily available, there's no reason to miss out on the hidden beauty of this Himalayan town. Whether it’s adventure or peace you seek, a two-wheeler gives you the perfect balance.
+  🚀 Conclusion
+  Riding through Rishikesh on a bike is more than just travel—it’s an experience. With bike rental services easily available, there's no reason to miss out on the hidden beauty of this Himalayan town. Whether it’s adventure or peace you seek, a two-wheeler gives you the perfect balance.
 
-👉 Book your bike rental in Rishikesh now and explore like a local!
-    `,
+  👉 Book your bike rental in Rishikesh now and explore like a local!`,
   },
 ];
 
-const Blogs: React.FC = () => {
+const BlogDetails: React.FC = () => {
   const [isMobile, setIsMobile] = useState(false);
+
+  const { slug } = useParams();
+  const blog = blogData.find((b) => b.slug === slug);
+
+  if (!blog) return notFound();
 
   useEffect(() => {
     const handleResize = () => {
@@ -374,32 +381,47 @@ const Blogs: React.FC = () => {
 
   return (
     <div
-      className={isMobile ? "blog-area ptb-200" : "blog-area ptb-60"}
-      suppressHydrationWarning
+      className={
+        isMobile
+          ? "blog-area blog-details-area ptb-200"
+          : "blog-area blog-details-area pt-60"
+      }
     >
       <div className="container">
-        <div
-          className="section-title"
-          data-aos="fade-up"
-          data-aos-duration="1200"
-        >
-          <h2>Our Latest Blog</h2>
-          <p>
-            Discover expert tips, industry insights, and the latest updates in
-            our blog to help you stay ahead in travel trends, destination
-            guides, and adventure planning. Whether you're a first-time explorer
-            or a seasoned traveler, our latest articles are crafted to inspire,
-            inform, and ignite your wanderlust.
-          </p>
+        {/* Blog Image */}
+        <div className="blog-details-image" data-aos="fade-up">
+          <Image
+            src={blog.image}
+            alt={blog.title}
+            width={600}
+            height={400}
+            priority
+          />
         </div>
-        <div className="row">
-          {blogData.map((blog, index) => (
-            <BlogCard key={blog.id ?? index} {...blog} />
-          ))}
+
+        {/* Blog Title */}
+        <h3 data-aos="fade-up" data-aos-duration="1400">
+          {blog.title}
+        </h3>
+
+        {/* Blog Content */}
+        <div
+          className="blog-details-content"
+          data-aos="fade-up"
+          data-aos-duration="1600"
+        >
+          <div>
+            {blog.content.split("\n").map((para, idx) => (
+              <div
+                dangerouslySetInnerHTML={{ __html: para.trim() }}
+                key={idx}
+              ></div>
+            ))}
+          </div>
         </div>
       </div>
     </div>
   );
 };
 
-export default Blogs;
+export default BlogDetails;
