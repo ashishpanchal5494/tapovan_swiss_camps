@@ -387,9 +387,9 @@ const Blogs: React.FC = () => {
           <p>
             Discover expert tips, industry insights, and the latest updates in
             our blog to help you stay ahead in travel trends, destination
-            guides, and adventure planning. Whether you're a first-time explorer
-            or a seasoned traveler, our latest articles are crafted to inspire,
-            inform, and ignite your wanderlust.
+            guides, and adventure planning. Whether you&lsquo;re a first-time
+            explorer or a seasoned traveler, our latest articles are crafted to
+            inspire, inform, and ignite your wanderlust.
           </p>
         </div>
         <div className="row">
