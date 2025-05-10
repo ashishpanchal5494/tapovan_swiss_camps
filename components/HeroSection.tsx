@@ -36,10 +36,18 @@ const HeroSection: React.FC = () => {
     }));
   };
 
+  const formatDateLocal = (date: Date | null): string => {
+    if (!date) return "";
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+    return `${year}-${month}-${day}`;
+  };
+
   const handleSearch = () => {
     const queryObject: Record<string, string> = {
-      checkIn: searchData.checkIn?.toISOString().split("T")[0] || "",
-      checkOut: searchData.checkOut?.toISOString().split("T")[0] || "",
+      checkIn: formatDateLocal(searchData.checkIn),
+      checkOut: formatDateLocal(searchData.checkOut),
       adults: String(searchData.adults),
       children: String(searchData.children),
       tentType: searchData.tentType,

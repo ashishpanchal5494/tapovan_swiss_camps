@@ -20,6 +20,8 @@ const teamMembers = [
     name: "Anuj Panchal",
     role: "Manager",
     image: "/assets/img/team/avatar.png",
+    description:
+      "Anuj Panchal holds a Master’s degree and brings a wealth of knowledge and leadership to the team. With exceptional management skills and a strong ability to coordinate staff operations smoothly, he ensures the highest standards of service and organization at Tapovan Swiss Camps. His polite demeanor and professional attitude make him highly respected by both guests and team members alike.",
     animationDuration: 1200,
     socialLinks: {
       facebook: "https://www.facebook.com/panchalanuj419",
@@ -34,6 +36,8 @@ const teamMembers = [
     name: "Rohit Panchal",
     role: "Property Manager",
     image: "/assets/img/team/rohit.jpeg",
+    description:
+      "Rohit Panchal is a certified professional yoga instructor with over 5 years of experience in teaching and practicing yoga. He holds a Master’s degree in Yoga from Gurukul Kangri University, Haridwar, and brings a deep sense of discipline and mindfulness to the team. As the Property Manager at Tapovan Swiss Camps, he takes full responsibility for maintaining the space, ensuring cleanliness, comfort, and smooth operations throughout the resort. His dedication to both physical wellness and efficient management makes him a vital part of delivering a serene and rejuvenating experience for our guests.",
     animationDuration: 1400,
     socialLinks: {
       facebook: "https://www.facebook.com/ro.hit.3785",
@@ -48,6 +52,9 @@ const teamMembers = [
     name: "Ramesh Panchal",
     role: "Owner",
     image: "/assets/img/team/avatar.png",
+    description:
+      "Ramesh Panchal is the visionary founder and owner of Tapovan Swiss Camps. With years of experience in the hospitality and tourism industry, he has built the camp with a mission to offer guests an unforgettable stay amidst the natural beauty of Tapovan. In addition to running the resort, he also owns *Vishwakarma Water*, a reputed construction company operating across multiple states in India. His entrepreneurial spirit, commitment to excellence, and dedication to quality service are the pillars that make Tapovan Swiss Camps a trusted and welcoming destination for guests from all over the country.",
+
     animationDuration: 1600,
     socialLinks: {
       facebook: "#",
@@ -62,6 +69,7 @@ const teamMembers = [
     name: "Ashish Panchal",
     role: "Developer",
     image: "/assets/img/team/ashish.png",
+    description: "",
     animationDuration: 1800,
     socialLinks: {
       facebook: "https://www.facebook.com/profile.php?id=100027377063868",

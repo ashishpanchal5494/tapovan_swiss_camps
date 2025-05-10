@@ -80,8 +80,8 @@ const TeamDetails: React.FC = () => {
                   className="paralax-image"
                   src={image}
                   alt="Thumbnail"
-                  width={400} // Set appropriate width
-                  height={500} // Set appropriate height
+                  width={400}
+                  height={500}
                   priority
                 />
               </div>

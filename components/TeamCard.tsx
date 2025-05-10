@@ -7,6 +7,7 @@ interface TeamMemberProps {
   name: string;
   role: string;
   image: string;
+  description: string;
   animationDuration: number;
   socialLinks: {
     facebook: string;
@@ -21,6 +22,7 @@ const TeamCard: React.FC<TeamMemberProps> = ({
   name,
   role,
   image,
+  description,
   animationDuration,
   socialLinks,
 }) => {
@@ -39,7 +41,7 @@ const TeamCard: React.FC<TeamMemberProps> = ({
                 name: name,
                 role: role,
                 image: image,
-                description: `This is ${name}, serving as our ${role}. They ensure top-tier quality at Tapovan Swiss Camps.`, // Or add real one
+                description: description,
                 facebook: socialLinks.facebook,
                 twitter: socialLinks.twitter,
                 whatsApp: socialLinks.whatsApp,
