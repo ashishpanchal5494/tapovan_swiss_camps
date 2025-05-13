@@ -10,7 +10,7 @@ import { notFound, useParams } from "next/navigation";
 const blogData = [
   {
     id: 1,
-    image: "/assets/img/blog/camping_rishikesh.PNG",
+    image: "/assets/img/blog/camping_rishikesh.webp",
     category: "India",
     title:
       "Camping in Rishikesh: The Ultimate Guide to an Unforgettable Experience",
@@ -73,7 +73,7 @@ Camping in Rishikesh is more than just a stay — it&lsquo;s a refreshing break 
   },
   {
     id: 2,
-    image: "/assets/img/blog/rafting_rishikesh.png",
+    image: "/assets/img/blog/rafting_rishikesh.webp",
     category: "India",
     title: "Rafting in Rishikesh – The Ultimate Adventure on the Ganga",
     slug: "rafting-in-rishikesh",
@@ -173,7 +173,7 @@ Would you like a **featured image** for this blog? I can generate one showing a 
   },
   {
     id: 3,
-    image: "/assets/img/blog/bangee_rishikesh.jpg",
+    image: "/assets/img/blog/bangee_rishikesh.webp",
     category: "India",
     title: "Bungee Jumping in Rishikesh – Leap into the Ultimate Thrill",
     slug: "bungee-jumping-in-rishikesh",
@@ -259,7 +259,7 @@ Would you like a **featured image** for this blog? I can generate one showing a 
   },
   {
     id: 4,
-    image: "/assets/img/blog/bike_rent_rishikesh.png",
+    image: "/assets/img/blog/bike_rent_rishikesh.webp",
     category: "India",
     title: "Bike Rent in Rishikesh – Ultimate Guide for 2025",
     slug: "bike-rent-in-rishikesh",

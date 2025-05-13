@@ -213,7 +213,7 @@ const Footer = () => {
                         <li key={index}>
                           <Link
                             style={{ textDecoration: "none" }}
-                            href="/team-details"
+                            href={`team/${index}`}
                           >
                             {member}
                           </Link>

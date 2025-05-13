@@ -27,7 +27,7 @@ const tentRooms: Tent[] = [
     title: "Luxury AC Tent",
     mainPrice: 2499,
     price: 1799,
-    image: "assets/img/room/actent-1.JPG",
+    image: "assets/img/room/actent-1.webp",
     beds: 5,
     baths: 1,
     description:
@@ -39,7 +39,7 @@ const tentRooms: Tent[] = [
     title: "Luxury Cooler Tent",
     mainPrice: 1999,
     price: 1499,
-    image: "assets/img/room/coolertent-1.JPG",
+    image: "assets/img/room/coolertent-1.webp",
     beds: 5,
     baths: 1,
     description:
@@ -51,7 +51,7 @@ const tentRooms: Tent[] = [
     title: "Ordinary Tent",
     mainPrice: 1199,
     price: 999,
-    image: "assets/img/room/ordinarytent-1.jpeg",
+    image: "assets/img/room/ordinarytent-1.webp",
     beds: 3,
     baths: "Common",
     description:

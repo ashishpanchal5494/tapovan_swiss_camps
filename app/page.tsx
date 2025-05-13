@@ -17,10 +17,7 @@ const FAQ = dynamic(() => import("./faq/page"), {
   ssr: false,
   loading: () => <Loading />,
 });
-const Team = dynamic(() => import("./team/page"), {
-  ssr: false,
-  loading: () => <Loading />,
-});
+
 const Blogs = dynamic(() => import("./blogs/page"), {
   ssr: false,
   loading: () => <Loading />,
@@ -114,7 +111,6 @@ export default function Home() {
       <Tents />
       <VideoSection />
       <Testimonial />
-      <Team />
       <FAQ />
       <Blogs />
 

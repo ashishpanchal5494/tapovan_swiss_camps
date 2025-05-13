@@ -19,13 +19,13 @@ const TestimonialSection: React.FC = () => {
 
   const testimonials = [
     {
-      image: "/assets/img/testimonial/review1.png",
+      image: "/assets/img/testimonial/review1.webp",
       name: "Rishav Pandey",
 
       text: "It is 3KM above tapovan in the mountains. Very quite and full of scenic views. They offer a great 4 time food service. It is a great place to enjoy your morning away from all the rishikesh traffic noise.",
     },
     {
-      image: "/assets/img/testimonial/review2.png",
+      image: "/assets/img/testimonial/review2.webp",
       name: "lucky singh",
 
       text: `The best thing is pick up and drop service from main road. Normal driver can't drive easily.Anuji ji very cooperative.
@@ -36,44 +36,44 @@ const TestimonialSection: React.FC = () => {
 5. All overall good experience.`,
     },
     {
-      image: "/assets/img/testimonial/review3.png",
+      image: "/assets/img/testimonial/review3.webp",
       name: "Rachna Choudary",
 
       text: `Great place for the price you pay here. Service was amazing,they took care of the food preferences and made sure are served well!
 Must visit this place if you are visiting Rishikesh and want to spend sometime in quiet ❤️.`,
     },
     {
-      image: "/assets/img/testimonial/review4.png",
+      image: "/assets/img/testimonial/review4.webp",
       name: "AMAN KASHYAP",
 
       text: "Great service provided quality is awesome definitely i will prefer and refer this property if someone is planning camping great thanks for best stay.",
     },
     {
-      image: "/assets/img/testimonial/review5.png",
+      image: "/assets/img/testimonial/review5.webp",
       name: "Vishal Gupta",
 
       text: "One of the best camp in Rishikesh. I really loved this beautiful campsite. Come here and enjoy your stay with the good food and good staff.",
     },
     {
-      image: "/assets/img/testimonial/review6.png",
+      image: "/assets/img/testimonial/review6.webp",
       name: "Praveen Kumar",
 
       text: "It is a quiet good place near to Laxman jhula ..it is located in mid of hill..it is okay okay properly with small size swimming pool and simple place.",
     },
     {
-      image: "/assets/img/testimonial/review7.png",
+      image: "/assets/img/testimonial/review7.webp",
       name: "Rajesh Kumar",
 
       text: "Great service food quality is awesome definitely i will prefer and refer this property if someone is planning for Camping and they provide all services like scooty and rafting.. great thanks great stay.",
     },
     {
-      image: "/assets/img/testimonial/review8.png",
+      image: "/assets/img/testimonial/review8.webp",
       name: "Parveen Pannu",
 
       text: "Beautiful place with the good service and best accommodation with tasty food. Must recommended 👌.",
     },
     {
-      image: "/assets/img/testimonial/review9.png",
+      image: "/assets/img/testimonial/review9.webp",
       name: "Lovika Chutani",
 
       text: `Best budget trip!
@@ -81,26 +81,26 @@ Fully enjoyed at their camp.
 Would recommend everyone pls go once over there u would definitely enjoy their hostile environment and friendly behaviour of their staff as well..`,
     },
     {
-      image: "/assets/img/testimonial/review10.png",
+      image: "/assets/img/testimonial/review10.webp",
       name: "Gourav Kumar",
 
       text: `This property is very amazing. Camp staff is very humble food like home made
 Good service and location is very beautiful my experience was very cool ,tent is very good .`,
     },
     {
-      image: "/assets/img/testimonial/review11.png",
+      image: "/assets/img/testimonial/review11.webp",
       name: "Chitransh Gupta",
 
       text: `Beautiful camp. We enjoyed so much here. I heardly recommend this to people who planing their trip in Rishikesh ❤️.`,
     },
     {
-      image: "/assets/img/testimonial/review12.png",
+      image: "/assets/img/testimonial/review12.webp",
       name: "Sumit Kumar",
 
       text: `Very good experience.. best place for family visits.. The owner's behaviour is very nice.`,
     },
     {
-      image: "/assets/img/testimonial/review13.png",
+      image: "/assets/img/testimonial/review13.webp",
       name: "Ankit Yadav",
 
       text: `Best camping 👍👍place
@@ -108,13 +108,13 @@ Best food facility♥️
 Crew faculty awesome everyone’s friendly nature and good persons👍.`,
     },
     {
-      image: "/assets/img/testimonial/review14.png",
+      image: "/assets/img/testimonial/review14.webp",
       name: "Deepika Thapa",
 
       text: `It's my first experience i love it ❤️ whenever I came i surely visit there.... I recommend my frnds nd family. Service nd rooms are very gud it's a cheapest rooms nd there food is too much gud.`,
     },
     {
-      image: "/assets/img/testimonial/review15.png",
+      image: "/assets/img/testimonial/review15.webp",
       name: "Piyush Maheshwari",
 
       text: `Very Nice place with awesome View.. enjoyed with my Family..`,

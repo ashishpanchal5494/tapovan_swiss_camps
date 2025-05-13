@@ -3,21 +3,15 @@ import type { Metadata } from "next";
 import { Readex_Pro } from "next/font/google";
 
 import "./globals.css";
-import "../public/assets/css/dark-theme.css";
+
 import "../public/assets/css/remixicon.css";
-import "../public/assets/css/fancybox.css";
-import "../public/assets/css/animate.css";
-import "../public/assets/css/aos.css";
-import "../public/assets/css/slick-theme.css";
-import "../public/assets/css/style.css";
 import "../public/assets/css/responsive.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "boxicons/css/boxicons.min.css";
-import "aos/dist/aos.css";
-import "owl.carousel/dist/assets/owl.carousel.css";
-import "owl.carousel/dist/assets/owl.theme.default.css";
+
 import Layout from "@/components/Layout";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import Head from "next/head";
 
 const readexPro = Readex_Pro({
   subsets: ["latin"],
@@ -85,9 +79,32 @@ export const metadata: Metadata = {
   icons: {
     icon: "/favicon.ico",
     shortcut: "/favicon.ico",
-    apple: "/apple-touch-icon.png", // Add this icon if available
+    apple: "/apple-touch-icon.png",
   },
 };
+
+<Head>
+  <script type="application/ld+json">
+    {`
+      {
+        "@context": "https://schema.org",
+        "@type": "Campground",
+        "name": "Tapovan Swiss Camps",
+        "image": "https://www.tapovanswisscampsofficial.com/assets/img/room/garden.PNG",
+        "description": "Luxury riverside camping in Rishikesh with rafting, swimming pool, bonfire nights, and adventure activities.",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Rishikesh",
+          "addressRegion": "Uttarakhand",
+          "postalCode": "249201",
+          "addressCountry": "IN"
+        },
+        "url": "https://www.tapovanswisscampsofficial.com",
+        "telephone": "+91-7906924003"
+      }
+    `}
+  </script>
+</Head>;
 
 export default function RootLayout({
   children,
