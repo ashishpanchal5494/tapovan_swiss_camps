@@ -300,7 +300,7 @@ const TentDetails: React.FC = () => {
                     <div className="agent-contact-avatar me-3">
                       <Image
                         className="img-fluid rounded-circle avatar avatar-lg"
-                        src="/assets/img/team/team-1.jpg"
+                        src="/assets/img/team/rohit.jpeg"
                         alt="Agent"
                         width={64}
                         height={64}

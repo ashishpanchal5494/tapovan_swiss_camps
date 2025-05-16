@@ -2,20 +2,59 @@
 
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
-import Slider from "react-slick";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useKeenSlider } from "keen-slider/react";
+import "keen-slider/keen-slider.min.css";
+import Loading from "@/components/Loading";
 
 const TestimonialSection: React.FC = () => {
   const [isMobile, setIsMobile] = useState(false);
+  const [isClient, setIsClient] = useState(false);
+
+  const [sliderRef, slider] = useKeenSlider<HTMLDivElement>({
+    loop: true,
+    slides: {
+      perView: isMobile ? 1 : 3,
+      spacing: 15,
+    },
+    breakpoints: {
+      "(max-width: 992px)": {
+        slides: { perView: 2, spacing: 15 },
+      },
+      "(max-width: 768px)": {
+        slides: { perView: 1, spacing: 10 },
+      },
+    },
+  });
 
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 768);
     };
-
     handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
+  useEffect(() => {
+    setIsClient(true);
+    AOS.init({ duration: 1200 });
+  }, []);
+
+  useEffect(() => {
+    let interval: NodeJS.Timeout;
+    if (slider && slider.current) {
+      interval = setInterval(() => {
+        slider.current?.next();
+      }, 5000);
+    }
+    return () => clearInterval(interval);
+  }, [slider]);
+
+  if (!isClient) {
+    return <Loading />;
+  }
 
   const testimonials = [
     {
@@ -121,17 +160,8 @@ Crew faculty awesome everyone’s friendly nature and good persons👍.`,
     },
   ];
 
-  const settings = {
-    infinite: true,
-    speed: 500,
-    slidesToShow: isMobile ? 1 : 3,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 3000,
-  };
-
   return (
-    <div className="testimonial-area ptb-60">
+    <div className={`testimonial-area ${isMobile ? "ptb-200" : "ptb-60"}`}>
       <div className="container">
         <div
           className="section-title"
@@ -150,9 +180,9 @@ Crew faculty awesome everyone’s friendly nature and good persons👍.`,
           </p>
         </div>
 
-        <Slider {...settings}>
+        <div ref={sliderRef} className="keen-slider">
           {testimonials.map((testimonial, index) => (
-            <div key={index} className="col-lg-4 col-md-6 col-sm-12">
+            <div className="keen-slider__slide" key={index}>
               <div
                 className="single-testimonial-box px-2"
                 data-aos="fade-up"
@@ -173,17 +203,18 @@ Crew faculty awesome everyone’s friendly nature and good persons👍.`,
                 </div>
                 <div className="client-info">
                   <Image
-                    width={200}
-                    height={200}
+                    width={80}
+                    height={80}
                     src={testimonial.image}
                     alt={testimonial.name}
+                    loading="lazy"
                   />
                   <h3>{testimonial.name}</h3>
                 </div>
               </div>
             </div>
           ))}
-        </Slider>
+        </div>
       </div>
     </div>
   );

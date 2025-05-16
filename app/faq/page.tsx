@@ -75,8 +75,6 @@ const FAQ = () => {
 
   useEffect(() => {
     setIsClient(true);
-
-    AOS.init({ duration: 1200 });
   }, []);
 
   if (!isClient) {
@@ -146,8 +144,14 @@ const FAQ = () => {
                               className={`accordion-content ${
                                 activeIndex === actualIndex ? "show" : ""
                               }`}
+                              style={{
+                                height:
+                                  activeIndex === actualIndex ? "auto" : "0",
+                              }}
                             >
-                              <p>{item.answer}</p>
+                              <div className="accordion-content-inner">
+                                <p>{item.answer}</p>
+                              </div>
                             </div>
                           </li>
                         );

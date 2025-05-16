@@ -9,9 +9,9 @@ import Loading from "./Loading";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 const videos = [
-  "/assets/video/resort-mobile-1.MOV",
-  "/assets/video/IMG_9302.MOV",
-  "/assets/video/IMG_9298.MOV",
+  "/assets/video/garden.mp4",
+  "/assets/video/pool.mp4",
+  "/assets/video/vollyball.mp4",
 ];
 
 const VideoSection: React.FC = () => {
@@ -19,15 +19,6 @@ const VideoSection: React.FC = () => {
   const [loadedVideos, setLoadedVideos] = useState<boolean[]>(
     new Array(videos.length).fill(false)
   );
-
-  // useEffect(() => {
-  //   const handleResize = () => {
-  //     setIsMobile(window.innerWidth <= 768);
-  //   };
-  //   handleResize();
-  //   window.addEventListener("resize", handleResize);
-  //   return () => window.removeEventListener("resize", handleResize);
-  // }, []);
 
   const handleVideoLoad = (index: number) => {
     const updated = [...loadedVideos];
