@@ -2,7 +2,6 @@
 
 import Loading from "@/components/Loading";
 import { useEffect, useState } from "react";
-import AOS from "aos";
 
 const faqData = [
   {
