@@ -14,6 +14,11 @@ const videos = [
   "/assets/video/vollyball.mp4",
 ];
 
+const videoPosters = [
+  "/assets/img/room/garden.webp",
+  "/assets/img/room/pool.webp",
+  "/assets/img/room/vollyball.webp",
+];
 const VideoSection: React.FC = () => {
   // const [isMobile, setIsMobile] = useState(false);
   const [loadedVideos, setLoadedVideos] = useState<boolean[]>(
@@ -64,7 +69,7 @@ const VideoSection: React.FC = () => {
                 muted
                 playsInline
                 preload="none"
-                poster="/assets/img/room/garden.webp"
+                poster={videoPosters[index]}
                 onCanPlayThrough={() => handleVideoLoad(index)}
               />
               {!loadedVideos[index] && (
