@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 const BookingArea: React.FC = () => {
   const [activeTab, setActiveTab] = useState<"camping" | "rafting">("camping");

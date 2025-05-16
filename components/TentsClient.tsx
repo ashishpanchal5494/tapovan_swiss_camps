@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import AOS from "aos";
 
 import TentCard from "../components/TentCard";
 import Loading from "@/components/Loading";
