@@ -3,7 +3,7 @@
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import { useEffect, useRef, useState } from "react";
-import AOS from "aos";
+
 import "aos/dist/aos.css";
 import "odometer/themes/odometer-theme-default.css";
 
@@ -34,8 +34,6 @@ const About = () => {
   }, []);
 
   useEffect(() => {
-    AOS.init({ duration: 1200 });
-
     if (typeof window !== "undefined") {
       import("odometer").then((module) => {
         counters.forEach((counter, index) => {

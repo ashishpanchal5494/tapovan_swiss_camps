@@ -2,8 +2,7 @@
 
 import React, { useEffect, useState, useMemo } from "react";
 import Slider from "react-slick";
-import AOS from "aos";
-import "aos/dist/aos.css";
+
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Link from "next/link";
@@ -56,10 +55,6 @@ const HeroSection: React.FC = () => {
     const query = new URLSearchParams(queryObject).toString();
     router.push(`/tents?${query}`);
   };
-
-  useEffect(() => {
-    AOS.init({ duration: 1200 });
-  }, []);
 
   const sliderSettings = useMemo(
     () => ({

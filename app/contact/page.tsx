@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useCallback } from "react";
 import Image from "next/image";
-import AOS from "aos";
+
 import "aos/dist/aos.css";
 import Loading from "@/components/Loading";
 
@@ -43,7 +43,6 @@ const Contact = () => {
   // AOS Init & Client Check
   useEffect(() => {
     setIsClient(true);
-    AOS.init({ duration: 1200 });
   }, []);
 
   const handleChange = useCallback(

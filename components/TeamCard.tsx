@@ -23,15 +23,10 @@ const TeamCard: React.FC<TeamMemberProps> = ({
   role,
   image,
   description,
-  animationDuration,
   socialLinks,
 }) => {
   return (
-    <div
-      className="col-6 col-sm-6 col-md-6 col-lg-3"
-      data-aos="fade-up"
-      data-aos-duration={animationDuration}
-    >
+    <div className="col-6 col-sm-6 col-md-6 col-lg-3">
       <div className="single-team-box">
         <div className="image">
           <Link

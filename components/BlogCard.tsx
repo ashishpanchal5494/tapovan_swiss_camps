@@ -17,11 +17,7 @@ const BlogCard: React.FC<BlogCardProps> = ({
 }) => {
   return (
     <div className="col-lg-4 col-md-6">
-      <div
-        className="content-blog blog-grid"
-        data-aos="fade-up"
-        data-aos-duration="1200"
-      >
+      <div className="content-blog blog-grid">
         <div className="inner">
           <div className="thumbnail">
             <Link href={`/blogs/${slug}`}>

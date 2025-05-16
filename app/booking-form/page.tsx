@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import AOS from "aos";
 
 const BookingArea: React.FC = () => {
   const [activeTab, setActiveTab] = useState<"camping" | "rafting">("camping");
@@ -18,10 +17,6 @@ const BookingArea: React.FC = () => {
     tentType: "",
     ratingType: "",
   });
-
-  useEffect(() => {
-    AOS.init({ duration: 1200 });
-  }, []);
 
   const calculateTentPrice = (
     basePrice: number,

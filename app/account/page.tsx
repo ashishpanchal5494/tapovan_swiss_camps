@@ -1,6 +1,5 @@
 "use client";
 
-import AOS from "aos";
 import React, { useEffect, useState } from "react";
 
 function Account() {
@@ -14,10 +13,6 @@ function Account() {
     handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  useEffect(() => {
-    AOS.init({ duration: 1200 });
   }, []);
 
   return (

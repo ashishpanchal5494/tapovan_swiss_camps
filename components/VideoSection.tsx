@@ -63,7 +63,8 @@ const VideoSection: React.FC = () => {
                 loop
                 muted
                 playsInline
-                preload="auto"
+                preload="none"
+                poster="/assets/img/room/garden.webp"
                 onCanPlayThrough={() => handleVideoLoad(index)}
               />
               {!loadedVideos[index] && (

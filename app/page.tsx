@@ -5,7 +5,7 @@ import dynamic from "next/dynamic";
 import HeroSection from "@/components/HeroSection";
 import Loading from "@/components/Loading";
 import { IoClose, IoLocationSharp } from "react-icons/io5";
-import AOS from "aos";
+
 import VideoSection from "@/components/VideoSection";
 import Link from "next/link";
 
@@ -92,8 +92,6 @@ export default function Home() {
         }
       }, 2000);
     }
-
-    AOS.init({ duration: 1200 });
   }, []);
 
   const getGoogleMapsUrl = () => {

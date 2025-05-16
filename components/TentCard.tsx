@@ -35,7 +35,6 @@ const TentCard: React.FC<TentCardProps> = ({
   perHeadMainPrice,
   description,
   linkBooking,
-  dataAosDuration,
 }) => {
   const getBathCount = (
     adults: number | string,
@@ -62,11 +61,7 @@ const TentCard: React.FC<TentCardProps> = ({
   const bathCount = getBathCount(adults, baths);
 
   return (
-    <div
-      className="col-lg-4 col-md-6"
-      data-aos="fade-up"
-      data-aos-duration={dataAosDuration}
-    >
+    <div className="col-lg-4 col-md-6">
       <div className="room-item shadow rounded overflow-hidden">
         <div className="position-relative">
           <Image

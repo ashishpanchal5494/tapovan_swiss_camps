@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import AOS from "aos";
+
 import Loading from "@/components/Loading";
 
 function PrivacyPolicy() {
@@ -20,7 +20,6 @@ function PrivacyPolicy() {
 
   useEffect(() => {
     setIsClient(true);
-    AOS.init({ duration: 1200 });
   }, []);
 
   if (!isClient) {
@@ -35,7 +34,7 @@ function PrivacyPolicy() {
           At Tapovan Swiss Camps, your privacy is of utmost importance to us.
           This Privacy Policy explains how we collect, use, and protect your
           information when you visit our website:{" "}
-          <strong>https://tapovanswisscamp.com</strong>.
+          <strong>https://tapovanswisscampsofficial.com</strong>.
         </p>
 
         <h2>1. Information We Collect</h2>

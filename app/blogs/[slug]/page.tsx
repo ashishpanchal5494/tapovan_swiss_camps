@@ -3,7 +3,6 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 
-import AOS from "aos";
 import "aos/dist/aos.css";
 import { notFound, useParams } from "next/navigation";
 
@@ -363,10 +362,6 @@ const BlogDetails: React.FC = () => {
   const { slug } = useParams();
 
   useEffect(() => {
-    AOS.init({ duration: 1200 });
-  }, []);
-
-  useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 768);
     };
@@ -389,7 +384,7 @@ const BlogDetails: React.FC = () => {
     >
       <div className="container">
         {/* Blog Image */}
-        <div className="blog-details-image" data-aos="fade-up">
+        <div className="blog-details-image">
           <Image
             src={blog.image}
             alt={blog.title}
@@ -400,16 +395,10 @@ const BlogDetails: React.FC = () => {
         </div>
 
         {/* Blog Title */}
-        <h3 data-aos="fade-up" data-aos-duration="1400">
-          {blog.title}
-        </h3>
+        <h3 data-aos="fade-up">{blog.title}</h3>
 
         {/* Blog Content */}
-        <div
-          className="blog-details-content"
-          data-aos="fade-up"
-          data-aos-duration="1600"
-        >
+        <div className="blog-details-content">
           <div>
             {blog.content.split("\n").map((para, idx) => (
               <div

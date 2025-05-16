@@ -1,8 +1,7 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React from "react";
 import dynamic from "next/dynamic";
-import AOS from "aos";
 
 import "aos/dist/aos.css";
 
@@ -82,19 +81,10 @@ const teamMembers = [
 ];
 
 const Team: React.FC = () => {
-  useEffect(() => {
-    AOS.init({ duration: 1200 });
-  }, []);
-
   return (
     <section style={{ marginTop: "50px" }} className="team-area pb-60">
       <div className="container">
-        <div
-          className="section-title"
-          data-aos="fade-up"
-          data-aos-duration="1200"
-          suppressHydrationWarning
-        >
+        <div className="section-title" suppressHydrationWarning>
           <h2>Our Team</h2>
           <p>
             Meet the dedicated team behind Tapovan Swiss Camps – a group of

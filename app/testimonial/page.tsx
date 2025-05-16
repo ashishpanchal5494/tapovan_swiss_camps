@@ -2,8 +2,7 @@
 
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
-import AOS from "aos";
-import "aos/dist/aos.css";
+
 import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
 import Loading from "@/components/Loading";
@@ -39,7 +38,6 @@ const TestimonialSection: React.FC = () => {
 
   useEffect(() => {
     setIsClient(true);
-    AOS.init({ duration: 1200 });
   }, []);
 
   useEffect(() => {
@@ -163,11 +161,7 @@ Crew faculty awesome everyone’s friendly nature and good persons👍.`,
   return (
     <div className={`testimonial-area ${isMobile ? "ptb-200" : "ptb-60"}`}>
       <div className="container">
-        <div
-          className="section-title"
-          data-aos="fade-up"
-          data-aos-duration="1200"
-        >
+        <div className="section-title">
           <h2>What Our Guests Say – Verified Camping Reviews in Rishikesh</h2>
           <p>
             Discover real experiences from travelers who have stayed at our
@@ -183,11 +177,7 @@ Crew faculty awesome everyone’s friendly nature and good persons👍.`,
         <div ref={sliderRef} className="keen-slider">
           {testimonials.map((testimonial, index) => (
             <div className="keen-slider__slide" key={index}>
-              <div
-                className="single-testimonial-box px-2"
-                data-aos="fade-up"
-                data-aos-duration={1200 + index * 400}
-              >
+              <div className="single-testimonial-box px-2">
                 <div className="content-bg">
                   <ul>
                     {[...Array(5)].map((_, i) => (

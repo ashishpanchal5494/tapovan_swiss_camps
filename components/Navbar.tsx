@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import AOS from "aos";
 
 import Link from "next/link";
 import Image from "next/image";
@@ -27,8 +26,6 @@ const Navbar = () => {
 
   useEffect(() => {
     setIsClient(true); // Set client-side rendering
-
-    AOS.init({ duration: 1200 }); // Initialize AOS
   }, []);
 
   useEffect(() => {

@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import AOS from "aos";
 
 import { useEffect, useState } from "react";
 
@@ -25,9 +24,6 @@ const Error = () => {
 
   useEffect(() => {
     setIsClient(true);
-    // Ensure jQuery is loaded before OwlCarousel initializes
-
-    AOS.init({ duration: 1200 });
   }, []);
 
   if (!isClient) {
@@ -51,19 +47,12 @@ const Error = () => {
               data-aos="fade-up"
               data-aos-duration="1200"
             />
-            <h3 data-aos="fade-up" data-aos-duration="1400">
-              Error 404 : Page Not Found
-            </h3>
-            <p data-aos="fade-up" data-aos-duration="1600">
+            <h3>Error 404 : Page Not Found</h3>
+            <p>
               The page you are looking for might have been removed, had its name
               changed, or is temporarily unavailable.
             </p>
-            <Link
-              href="/"
-              className="btn style3 icon"
-              data-aos="fade-up"
-              data-aos-duration="1800"
-            >
+            <Link href="/" className="btn style3 icon">
               <i className="bx bx-home-circle"></i> Back to Home
             </Link>
           </div>

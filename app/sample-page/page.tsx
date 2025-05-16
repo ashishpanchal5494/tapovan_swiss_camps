@@ -1,8 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import AOS from "aos";
-import "aos/dist/aos.css";
+
 import Loading from "@/components/Loading";
 import Link from "next/link";
 
@@ -22,7 +21,6 @@ function SamplePage() {
 
   useEffect(() => {
     setIsClient(true);
-    AOS.init({ duration: 1200 });
   }, []);
 
   if (!isClient) {
@@ -33,7 +31,7 @@ function SamplePage() {
     <div className={isMobile ? "page-content ptb-200" : "page-content ptb-60"}>
       <div className="container mx-auto px-4">
         {/* Hero Section */}
-        <section data-aos="fade-up" className="mb-20 text-center">
+        <section className="mb-20 text-center">
           <h1 className="text-3xl font-bold mb-4">
             Welcome to Tapovan Swiss Camps
           </h1>
@@ -44,7 +42,7 @@ function SamplePage() {
         </section>
 
         {/* Why Choose Us */}
-        <section data-aos="fade-up" className="mb-10">
+        <section className="mb-10">
           <h2 className="text-2xl font-semibold mb-4">Why Choose Us?</h2>
           <ul className="list-disc list-inside text-gray-700 space-y-2">
             <li>🛏️ Swiss tents with private bathrooms</li>
@@ -56,7 +54,7 @@ function SamplePage() {
         </section>
 
         {/* Things to Do */}
-        <section data-aos="fade-up" className="mb-10">
+        <section className="mb-10">
           <h2 className="text-2xl font-semibold mb-4">
             Activities You Can Enjoy
           </h2>
@@ -70,7 +68,7 @@ function SamplePage() {
         </section>
 
         {/* Testimonials */}
-        <section data-aos="fade-up" className="mb-10">
+        <section className="mb-10">
           <h2 className="text-2xl font-semibold mb-4">What Our Guests Say</h2>
           <div className="text-gray-700 space-y-4">
             <blockquote className="italic border-l-4 border-primary pl-4">
@@ -85,7 +83,7 @@ function SamplePage() {
         </section>
 
         {/* Location */}
-        <section data-aos="fade-up" className="mb-20">
+        <section className="mb-20">
           <h2 className="text-2xl font-semibold mb-4">How to Reach Us</h2>
           <p className="text-gray-700">
             📍 We’re located in Tapovan, just 1.5 km from Laxman Jhula and 20 km
@@ -94,7 +92,7 @@ function SamplePage() {
         </section>
 
         {/* Call to Action */}
-        <section data-aos="fade-up" className="text-center">
+        <section className="text-center">
           <h2 className="text-2xl font-bold mb-4 ">Book Your Stay Today!</h2>
           <p className="text-gray-700 ">
             Tap into nature and unwind at Tapovan Swiss Camps.

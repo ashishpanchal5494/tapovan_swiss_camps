@@ -92,11 +92,7 @@ const FAQ = () => {
         }
       >
         <div className="container">
-          <div
-            className="section-title"
-            data-aos="fade-up"
-            data-aos-duration="1200"
-          >
+          <div className="section-title">
             <h2>Frequently Asked Questions</h2>
             <p>
               Find answers to the most common questions about our services and
@@ -107,11 +103,7 @@ const FAQ = () => {
           <div className="row align-items-center">
             {[0, 1].map((colIndex) => (
               <div key={colIndex} className="col-xl-6 col-lg-12">
-                <div
-                  className="faq-accordion"
-                  data-aos="fade-up"
-                  data-aos-duration="1600"
-                >
+                <div className="faq-accordion">
                   <ul className="accordion">
                     {faqData
                       .slice(colIndex * 5, colIndex * 5 + 5)

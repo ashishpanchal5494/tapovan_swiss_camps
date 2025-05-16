@@ -132,7 +132,6 @@ const Tents: React.FC = () => {
 
   useEffect(() => {
     setIsClient(true);
-    AOS.init({ duration: 1200 });
   }, []);
 
   if (!isClient) {
@@ -142,7 +141,7 @@ const Tents: React.FC = () => {
   return (
     <section className={isMobile ? "room-area ptb-200" : "room-area ptb-60"}>
       <div className="container">
-        <div className="section-title" data-aos="fade-up">
+        <div className="section-title">
           <h2>Explore Our Tents</h2>
           <p>Find the best accommodation for your stay.</p>
         </div>

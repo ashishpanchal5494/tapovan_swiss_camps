@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import AOS from "aos";
+
 import BlogCard from "@/components/BlogCard";
 
 const blogData = [
@@ -368,21 +368,13 @@ const Blogs: React.FC = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  useEffect(() => {
-    AOS.init({ duration: 1200 });
-  }, []);
-
   return (
     <div
       className={isMobile ? "blog-area ptb-200" : "blog-area ptb-60"}
       suppressHydrationWarning
     >
       <div className="container">
-        <div
-          className="section-title"
-          data-aos="fade-up"
-          data-aos-duration="1200"
-        >
+        <div className="section-title">
           <h2>Our Latest Blog</h2>
           <p>
             Discover expert tips, industry insights, and the latest updates in

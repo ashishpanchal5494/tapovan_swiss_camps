@@ -4,7 +4,6 @@ import { useSearchParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import AOS from "aos";
 
 const TeamDetails: React.FC = () => {
   const searchParams = useSearchParams();
@@ -18,10 +17,6 @@ const TeamDetails: React.FC = () => {
     handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  useEffect(() => {
-    AOS.init({ duration: 1200 });
   }, []);
 
   const name = searchParams.get("name") || "Team Member";
@@ -70,11 +65,7 @@ const TeamDetails: React.FC = () => {
             </div>
           </div>
           <div className="col-xl-4 col-lg-5">
-            <div
-              className="team-details-thumb"
-              data-aos="fade-up"
-              data-aos-duration="1600"
-            >
+            <div className="team-details-thumb">
               <div className="thumbnail">
                 <Image
                   className="paralax-image"
