@@ -11,22 +11,6 @@ const TestimonialSection: React.FC = () => {
   const [isMobile, setIsMobile] = useState(false);
   const [isClient, setIsClient] = useState(false);
 
-  const [sliderRef, slider] = useKeenSlider<HTMLDivElement>({
-    loop: true,
-    slides: {
-      perView: isMobile ? 1 : 3,
-      spacing: 15,
-    },
-    breakpoints: {
-      "(max-width: 992px)": {
-        slides: { perView: 2, spacing: 15 },
-      },
-      "(max-width: 768px)": {
-        slides: { perView: 1, spacing: 10 },
-      },
-    },
-  });
-
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 768);
@@ -40,15 +24,25 @@ const TestimonialSection: React.FC = () => {
     setIsClient(true);
   }, []);
 
-  useEffect(() => {
-    let interval: NodeJS.Timeout;
-    if (slider && slider.current) {
-      interval = setInterval(() => {
-        slider.current?.next();
-      }, 5000);
-    }
-    return () => clearInterval(interval);
-  }, [slider]);
+  const [sliderRef] = useKeenSlider<HTMLDivElement>({
+    loop: true,
+    slides: {
+      perView: isMobile ? 1 : 3,
+      spacing: 15,
+    },
+    breakpoints: {
+      "(max-width: 992px)": {
+        slides: { perView: 2, spacing: 15 },
+      },
+      "(max-width: 768px)": {
+        slides: { perView: 1, spacing: 10 },
+      },
+    },
+    created(slider) {
+      const id = setInterval(() => slider.next(), 5000);
+      slider.on("destroyed", () => clearInterval(id)); // tidy up
+    },
+  });
 
   if (!isClient) {
     return <Loading />;
