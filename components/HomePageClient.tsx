@@ -107,7 +107,11 @@ export default function HomePageClient() {
   return (
     <>
       {/* ✅ Schema Markup for Local Business */}
-      <Script type="application/ld+json" strategy="afterInteractive">
+      <Script
+        type="application/ld+json"
+        id="local-business-schema"
+        strategy="afterInteractive"
+      >
         {JSON.stringify({
           "@context": "https://schema.org",
           "@type": "Campground",
