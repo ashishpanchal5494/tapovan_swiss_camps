@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from "react";
 
 import "aos/dist/aos.css";
 import "odometer/themes/odometer-theme-default.css";
+import Head from "next/head";
 
 // Lazy-load Odometer only on the client
 const Testimonial = dynamic(() => import("../testimonial/page"), {
@@ -55,6 +56,59 @@ const About = () => {
 
   return (
     <>
+      {/* ✅ SEO Optimized Head Tags */}
+      <Head>
+        <title>About Us | Tapovan Swiss Camps</title>
+        <meta
+          name="description"
+          content="Learn more about Tapovan Swiss Camps – your peaceful nature retreat with luxury tents, best food, modern amenities, and unforgettable experiences in Rishikesh."
+        />
+        <meta
+          name="keywords"
+          content="Tapovan Swiss Camps, camping in Rishikesh, luxury tents, camps and resort in nature, outdoor activities, Rishikesh retreats"
+        />
+        <meta name="author" content="Tapovan Swiss Camps" />
+        <meta property="og:title" content="About Tapovan Swiss Camps" />
+        <meta
+          property="og:description"
+          content="Discover who we are and what makes Tapovan Swiss Camps your ideal nature stay in Rishikesh."
+        />
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:url"
+          content="https://www.tapovanswisscampsofficial.com/about"
+        />
+        <meta
+          property="og:image"
+          content="https://tapovanswisscampsofficial.com/_next/image?url=%2Fassets%2Fimg%2Froom%2Fvollyball.webp&w=1920&q=75"
+        />
+        <link
+          rel="canonical"
+          href="https://www.tapovanswisscampsofficial.com/about"
+        />
+        {/* ✅ Structured Data for Google */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "campside",
+              name: "Tapovan Swiss Camps",
+              url: "https://www.tapovanswisscampsofficial.com",
+              address: {
+                "@type": "PostalAddress",
+                addressLocality: "Rishikesh",
+                addressRegion: "Uttarakhand",
+                addressCountry: "India",
+              },
+              description:
+                "Tapovan Swiss Camps offers luxury tent stays, peaceful nature views, and adventure activities in Rishikesh.",
+              telephone: "+91-7906924003",
+            }),
+          }}
+        />
+      </Head>
+
       <section
         className={isMobile ? "about-area ptb-200" : "about-area ptb-60"}
       >

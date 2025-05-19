@@ -11,7 +11,8 @@ import "boxicons/css/boxicons.min.css";
 
 import Layout from "@/components/Layout";
 import WhatsAppButton from "@/components/WhatsAppButton";
-import Head from "next/head";
+
+import Script from "next/script";
 
 const readexPro = Readex_Pro({
   subsets: ["latin"],
@@ -83,28 +84,30 @@ export const metadata: Metadata = {
   },
 };
 
-<Head>
-  <script type="application/ld+json">
-    {`
-      {
-        "@context": "https://schema.org",
-        "@type": "Campground",
-        "name": "Tapovan Swiss Camps",
-        "image": "https://www.tapovanswisscampsofficial.com/assets/img/room/garden.PNG",
-        "description": "Luxury riverside camping in Rishikesh with rafting, swimming pool, bonfire nights, and adventure activities.",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Rishikesh",
-          "addressRegion": "Uttarakhand",
-          "postalCode": "249201",
-          "addressCountry": "IN"
-        },
-        "url": "https://www.tapovanswisscampsofficial.com",
-        "telephone": "+91-7906924003"
-      }
-    `}
-  </script>
-</Head>;
+<Script
+  type="application/ld+json"
+  id="structured-data"
+  strategy="afterInteractive"
+>
+  {JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Campground",
+    name: "Tapovan Swiss Camps",
+    image:
+      "https://tapovanswisscampsofficial.com/_next/image?url=%2Fassets%2Fimg%2Froom%2Fgarden.webp&w=1920&q=75",
+    description:
+      "Luxury riverside camping in Rishikesh with rafting, swimming pool, bonfire nights, and adventure activities.",
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Rishikesh",
+      addressRegion: "Uttarakhand",
+      postalCode: "249201",
+      addressCountry: "IN",
+    },
+    url: "https://www.tapovanswisscampsofficial.com",
+    telephone: "+91-7906924003",
+  })}
+</Script>;
 
 export default function RootLayout({
   children,
