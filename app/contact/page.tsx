@@ -5,6 +5,7 @@ import Image from "next/image";
 
 import "aos/dist/aos.css";
 import Loading from "@/components/Loading";
+import Head from "next/head";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -63,121 +64,250 @@ const Contact = () => {
   if (!isClient) return <Loading />;
 
   return (
-    <section className={`contact-form-area ${isMobile ? "ptb-200" : "ptb-60"}`}>
-      <div className="container">
-        <div className="section-title text-center">
-          <h2>Get In Touch</h2>
-          <p>
-            Have questions, feedback, or planning your next getaway? We&lsquo;d
-            love to hear from you! Fill out the form below and our team will get
-            back to you shortly. Whether you&lsquo;re booking a stay, exploring
-            partnership opportunities, or just saying hello — we&lsquo;re here
-            for you.
-          </p>
-        </div>
+    <>
+      <Head>
+        <title>
+          Contact Tapovan Swiss Camps | Rishikesh Camping & Rafting Experts
+        </title>
+        <meta
+          name="description"
+          content="Get in touch with Tapovan Swiss Camps for booking inquiries, partnerships, or questions about our luxury camping and rafting adventures in Rishikesh."
+        />
+        <meta
+          name="keywords"
+          content="contact rishikesh camping, ganga rafting booking, swiss tents inquiry, adventure sports rishikesh contact"
+        />
+        <link
+          rel="canonical"
+          href="https://tapovanswisscampsofficial.com/contact"
+        />
 
-        <div className="row align-items-end">
-          {/* Form */}
-          <div className="col-lg-6">
-            <form
-              className="contact__form contact-form"
-              onSubmit={handleSubmit}
-            >
-              <h3>We&lsquo;re Just One Message Away</h3>
-              <p>
-                Let us know how we can assist you — we&lsquo;ll get back within
-                24 hours.
-              </p>
-              <div className="row">
-                {[
-                  {
-                    label: "Name",
-                    name: "name",
-                    type: "text",
-                    placeholder: "Name",
-                  },
-                  {
-                    label: "Email",
-                    name: "email",
-                    type: "email",
-                    placeholder: "example@gmail.com",
-                  },
-                  {
-                    label: "Phone",
-                    name: "phone_number",
-                    type: "text",
-                    placeholder: "+91 333 673 2945",
-                  },
-                  {
-                    label: "Subject",
-                    name: "msg_subject",
-                    type: "text",
-                    placeholder: "Subject",
-                  },
-                ].map(({ name, type, placeholder }) => (
-                  <div key={name} className="col-lg-6 col-sm-6">
+        {/* Open Graph / Social Media Meta Tags */}
+        <meta
+          property="og:title"
+          content="Contact Tapovan Swiss Camps | Rishikesh Adventure Specialists"
+        />
+        <meta
+          property="og:description"
+          content="Reach out for bookings, questions or partnership opportunities regarding our premium camping and rafting experiences in Rishikesh."
+        />
+        <meta
+          property="og:url"
+          content="https://tapovanswisscampsofficial.com/contact"
+        />
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:image"
+          content="https://tapovanswisscampsofficial.com/assets/img/room/pool.webp"
+        />
+
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content="Contact Tapovan Swiss Camps | Rishikesh"
+        />
+        <meta
+          name="twitter:description"
+          content="Get in touch for luxury camping and rafting adventures in Rishikesh. Quick responses guaranteed."
+        />
+        <meta
+          name="twitter:image"
+          content="https://tapovanswisscampsofficial.com/assets/img/room/pool.webp"
+        />
+
+        {/* Schema.org markup */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "ContactPage",
+            name: "Contact Tapovan Swiss Camps",
+            description:
+              "Contact page for adventure camping and rafting bookings in Rishikesh",
+            url: "https://tapovanswisscampsofficial.com/contact",
+            potentialAction: {
+              "@type": "ContactAction",
+              target: {
+                "@type": "EntryPoint",
+                urlTemplate: "https://tapovanswisscampsofficial.com/contact",
+                actionPlatform: [
+                  "http://schema.org/DesktopWebPlatform",
+                  "http://schema.org/MobileWebPlatform",
+                ],
+              },
+              "query-input":
+                "required name=name email=email phone=phone_number subject=msg_subject message=message",
+            },
+          })}
+        </script>
+
+        {/* Local Business Schema */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "TravelAgency",
+            name: "Tapovan Swiss Camps",
+            image: "https://tapovanswisscampsofficial.com/img/logo.png",
+            "@id": "https://tapovanswisscampsofficial.com",
+            url: "https://tapovanswisscampsofficial.com",
+            telephone: "+917906924003",
+            priceRange: "₹999-₹1799",
+            address: {
+              "@type": "PostalAddress",
+              streetAddress: "Near Tapovan",
+              addressLocality: "Rishikesh",
+              postalCode: "249201",
+              addressCountry: "IN",
+            },
+            geo: {
+              "@type": "GeoCoordinates",
+              latitude: 30.129,
+              longitude: 78.3153,
+            },
+            openingHoursSpecification: {
+              "@type": "OpeningHoursSpecification",
+              dayOfWeek: [
+                "Monday",
+                "Tuesday",
+                "Wednesday",
+                "Thursday",
+                "Friday",
+                "Saturday",
+                "Sunday",
+              ],
+              opens: "00:00",
+              closes: "23:59",
+            },
+            sameAs: [
+              "https://www.facebook.com/61574061994310",
+              "https://www.instagram.com/tapovanswisscampsofficial",
+            ],
+          })}
+        </script>
+      </Head>
+
+      <section
+        className={`contact-form-area ${isMobile ? "ptb-200" : "ptb-60"}`}
+      >
+        <div className="container">
+          <div className="section-title text-center">
+            <h1>Get In Touch With Our Adventure Team</h1>
+            <p className="lead">
+              Have questions about our <strong>luxury camping packages</strong>{" "}
+              or <strong>Ganga river rafting</strong> adventures? Our
+              Rishikesh-based experts are ready to help you plan your perfect
+              getaway.
+            </p>
+          </div>
+
+          <div className="row align-items-end">
+            {/* Form */}
+            <div className="col-lg-6">
+              <form
+                className="contact__form contact-form"
+                onSubmit={handleSubmit}
+              >
+                <h3>We&lsquo;re Just One Message Away</h3>
+                <p className="form-intro">
+                  Fill this form for fastest response regarding:
+                </p>
+                <ul className="benefit-list">
+                  <li>✓ Camping & rafting bookings</li>
+                  <li>✓ Group discount inquiries</li>
+                  <li>✓ Custom adventure packages</li>
+                  <li>✓ Partnership opportunities</li>
+                </ul>
+                <div className="row">
+                  {[
+                    {
+                      label: "Name",
+                      name: "name",
+                      type: "text",
+                      placeholder: "Name",
+                    },
+                    {
+                      label: "Email",
+                      name: "email",
+                      type: "email",
+                      placeholder: "example@gmail.com",
+                    },
+                    {
+                      label: "Phone",
+                      name: "phone_number",
+                      type: "text",
+                      placeholder: "+91 333 673 2945",
+                    },
+                    {
+                      label: "Subject",
+                      name: "msg_subject",
+                      type: "text",
+                      placeholder: "Subject",
+                    },
+                  ].map(({ name, type, placeholder }) => (
+                    <div key={name} className="col-lg-6 col-sm-6">
+                      <div className="form-group">
+                        <input
+                          type={type}
+                          name={name}
+                          className="form-control"
+                          placeholder={placeholder}
+                          required
+                          value={formData[name as keyof typeof formData]}
+                          onChange={handleChange}
+                        />
+                      </div>
+                    </div>
+                  ))}
+
+                  {/* Message */}
+                  <div className="col-12">
                     <div className="form-group">
-                      <input
-                        type={type}
-                        name={name}
+                      <textarea
+                        name="message"
                         className="form-control"
-                        placeholder={placeholder}
+                        cols={30}
+                        rows={6}
+                        placeholder="Your message here"
                         required
-                        value={formData[name as keyof typeof formData]}
+                        value={formData.message}
                         onChange={handleChange}
                       />
                     </div>
                   </div>
-                ))}
 
-                {/* Message */}
-                <div className="col-12">
-                  <div className="form-group">
-                    <textarea
-                      name="message"
-                      className="form-control"
-                      cols={30}
-                      rows={6}
-                      placeholder="Your message here"
-                      required
-                      value={formData.message}
-                      onChange={handleChange}
-                    />
+                  <div className="col-lg-12 col-md-12">
+                    <button type="submit" className="submit-btn">
+                      Send Message <i className="bx bx-chevron-right"></i>
+                    </button>
                   </div>
-                </div>
 
-                <div className="col-lg-12 col-md-12">
-                  <button type="submit" className="submit-btn">
-                    Send Message <i className="bx bx-chevron-right"></i>
-                  </button>
-                </div>
-
-                {successMessage && (
-                  <div className="col-12">
-                    <div className="alert alert-success contact__msg">
-                      {successMessage}
+                  {successMessage && (
+                    <div className="col-12">
+                      <div className="alert alert-success contact__msg">
+                        {successMessage}
+                      </div>
                     </div>
-                  </div>
-                )}
-              </div>
-            </form>
-          </div>
+                  )}
+                </div>
+              </form>
+            </div>
 
-          {/* Image */}
-          <div className="col-lg-6">
-            <div className="contact-img">
-              <Image
-                src="/assets/img/contact-img.png"
-                alt="Contact"
-                width={300}
-                height={200}
-                priority
-              />
+            {/* Image */}
+            <div className="col-lg-6">
+              <div className="contact-img">
+                <Image
+                  src="/assets/img/contact-img.png"
+                  alt="Contact"
+                  width={300}
+                  height={200}
+                  priority
+                />
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
 

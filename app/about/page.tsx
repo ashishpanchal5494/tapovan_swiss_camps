@@ -58,16 +58,15 @@ const About = () => {
     <>
       {/* ✅ SEO Optimized Head Tags */}
       <Head>
-        <title>About Us | Tapovan Swiss Camps</title>
+        <title>About Tapovan Swiss Camps | Luxury Camping in Rishikesh</title>
         <meta
           name="description"
           content="Learn more about Tapovan Swiss Camps – your peaceful nature retreat with luxury tents, best food, modern amenities, and unforgettable experiences in Rishikesh."
         />
-        <meta
-          name="keywords"
-          content="Tapovan Swiss Camps, camping in Rishikesh, luxury tents, camps and resort in nature, outdoor activities, Rishikesh retreats"
-        />
+
         <meta name="author" content="Tapovan Swiss Camps" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="robots" content="index, follow" />
         <meta property="og:title" content="About Tapovan Swiss Camps" />
         <meta
           property="og:description"
@@ -92,9 +91,12 @@ const About = () => {
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "campside",
+              "@type": "LodgingBusiness",
               name: "Tapovan Swiss Camps",
               url: "https://www.tapovanswisscampsofficial.com",
+              image:
+                "https://tapovanswisscampsofficial.com/_next/image?url=%2Fassets%2Fimg%2Froom%2Fvollyball.webp&w=1920&q=75",
+              telephone: "+91-7906924003",
               address: {
                 "@type": "PostalAddress",
                 addressLocality: "Rishikesh",
@@ -103,7 +105,6 @@ const About = () => {
               },
               description:
                 "Tapovan Swiss Camps offers luxury tent stays, peaceful nature views, and adventure activities in Rishikesh.",
-              telephone: "+91-7906924003",
             }),
           }}
         />

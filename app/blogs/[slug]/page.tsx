@@ -5,6 +5,8 @@ import Image from "next/image";
 
 import "aos/dist/aos.css";
 import { notFound, useParams } from "next/navigation";
+import Head from "next/head";
+import Link from "next/link";
 
 const blogData = [
   {
@@ -46,7 +48,7 @@ What to Pack for Your Camping Trip
 - Reusable water bottle
 - Sunglasses & sunscreen
 
-Why Book with Tapovan Swiss Camp?
+Why Book with Tapovan Swiss Camps?
 - Riverside location with mountain views
 - Clean, hygienic Swiss tents
 - Home-cooked meals & bonfire nights
@@ -138,7 +140,7 @@ Camping in Rishikesh is more than just a stay — it&lsquo;s a refreshing break 
 
 ---
 
-## Why Book Rafting with Tapovan Swiss Camp?
+## Why Book Rafting with Tapovan Swiss Camps?
 
 - Certified rafting partners with licensed guides  
 - Packages available with camping + rafting combo  
@@ -226,7 +228,7 @@ Would you like a **featured image** for this blog? I can generate one showing a 
   
   ---
   
-  ## Why Book with Tapovan Swiss Camp?
+  ## Why Book with Tapovan Swiss Camps?
   
   - Easy cab arrangements to Jumpin Heights  
   - Discounted combos of **camping + bungee jumping**  
@@ -375,41 +377,178 @@ const BlogDetails: React.FC = () => {
   if (!blog) return notFound();
 
   return (
-    <div
-      className={
-        isMobile
-          ? "blog-area blog-details-area ptb-200"
-          : "blog-area blog-details-area pt-60"
-      }
-    >
-      <div className="container">
-        {/* Blog Image */}
-        <div className="blog-details-image">
-          <Image
-            src={blog.image}
-            alt={blog.title}
-            width={600}
-            height={400}
-            priority
-          />
-        </div>
+    <>
+      <Head>
+        <title>{blog.title} | Tapovan Swiss Camps</title>
+        <meta
+          name="description"
+          content={blog.content.substring(0, 160) + "..."}
+        />
+        <meta property="og:title" content={blog.title} />
+        <meta
+          property="og:description"
+          content={blog.content.substring(0, 160) + "..."}
+        />
+        <meta property="og:image" content={blog.image} />
+        <meta property="og:type" content="article" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="keywords"
+          content={`Rishikesh, ${blog.category}, ${blog.title
+            .split(" ")
+            .join(", ")}, adventure`}
+        />
 
-        {/* Blog Title */}
-        <h3 data-aos="fade-up">{blog.title}</h3>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            headline: blog.title,
+            description: blog.content.substring(0, 160) + "...",
+            image: blog.image,
+            author: {
+              "@type": "Organization",
+              name: "Tapovan Swiss Camps",
+            },
+            publisher: {
+              "@type": "Organization",
+              name: "Tapovan Swiss Camps",
+              logo: {
+                "@type": "ImageObject",
+                url: "https://tapovanswisscampsofficial.com/logo.png",
+              },
+            },
+            datePublished: new Date().toISOString(),
+            dateModified: new Date().toISOString(),
+          })}
+        </script>
+      </Head>
 
-        {/* Blog Content */}
-        <div className="blog-details-content">
-          <div>
-            {blog.content.split("\n").map((para, idx) => (
-              <div
-                dangerouslySetInnerHTML={{ __html: para.trim() }}
-                key={idx}
-              ></div>
-            ))}
+      <div
+        className={
+          isMobile
+            ? "blog-area blog-details-area ptb-200"
+            : "blog-area blog-details-area pt-60"
+        }
+      >
+        <div className="container">
+          {/* Breadcrumbs */}
+
+          {/* Blog Image */}
+          <div className="blog-details-image">
+            <Image
+              src={blog.image}
+              alt={`${blog.title} - Tapovan Swiss Camp`}
+              width={600}
+              height={400}
+              priority
+              quality={85}
+            />
+          </div>
+
+          {/* Blog Title */}
+          <h1>{blog.title}</h1>
+
+          {/* Blog Content */}
+          <div className="blog-details-content">
+            <div>
+              {blog.content.split("\n").map((para, idx) => (
+                <div
+                  dangerouslySetInnerHTML={{ __html: para.trim() }}
+                  key={idx}
+                ></div>
+              ))}
+            </div>
+          </div>
+
+          {/* Social Sharing */}
+          <div className="social-sharing">
+            <Link
+              style={{ textDecoration: "none" }}
+              href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(
+                blog.title
+              )}&url=${encodeURIComponent(
+                `https://tapovanswisscampsofficial.com/blog/${blog.slug}`
+              )}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Share on Twitter
+            </Link>
+            <Link
+              style={{ textDecoration: "none" }}
+              href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
+                `https://tapovanswisscampsofficial.com/blogs/${blog.slug}`
+              )}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Share on Facebook
+            </Link>
+          </div>
+
+          {/* Related Posts */}
+          <div className="related-posts">
+            <h3>You Might Also Like</h3>
+            <div className="row">
+              {blogData
+                .filter((b) => b.id !== blog.id)
+                .slice(0, 3)
+                .map((related) => (
+                  <div className="col-lg-4 col-md-6">
+                    <div className="content-blog blog-grid">
+                      <div className="inner">
+                        <div className="thumbnail">
+                          <Link
+                            href={`/blogs/${related.slug}`}
+                            key={related.id}
+                          >
+                            <Image
+                              width={600}
+                              height={600}
+                              src={
+                                related.image.startsWith("/")
+                                  ? related.image
+                                  : `/${related.image}`
+                              }
+                              alt={related.title}
+                            />
+                          </Link>
+                          <div className="blog-category">
+                            <Link style={{ textDecoration: "none" }} href="#">
+                              {related.category}
+                            </Link>
+                          </div>
+                        </div>
+                        <div className="content">
+                          <h5 className="title">
+                            <Link
+                              style={{ textDecoration: "none" }}
+                              href={`/blogs/${related.slug}`}
+                            >
+                              {related.title}
+                            </Link>
+                          </h5>
+                          <div className="read-more-btn">
+                            <Link
+                              style={{ textDecoration: "none" }}
+                              className="blog-btn"
+                              href={`/blogs/${related.slug}`}
+                            >
+                              Read More{" "}
+                              <i className="bx bx-right-arrow-alt"></i>
+                            </Link>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

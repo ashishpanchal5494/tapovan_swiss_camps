@@ -4242,6 +4242,12 @@ Blog Area CSS
   font-size: 22px;
 }
 
+.social-sharing{
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
 @media only screen and (max-width: 767px) {
   .content-blog {
     padding: 15px;

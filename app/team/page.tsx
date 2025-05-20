@@ -2,8 +2,7 @@
 
 import React from "react";
 import dynamic from "next/dynamic";
-
-import "aos/dist/aos.css";
+import Head from "next/head";
 
 const Loading = dynamic(() => import("@/components/Loading"), { ssr: false });
 
@@ -81,27 +80,122 @@ const teamMembers = [
 ];
 
 const Team: React.FC = () => {
+  // Generate Person schema for each team member
+  const teamSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "Tapovan Swiss Camps",
+    url: "https://tapovanswisscampsofficial.com",
+    logo: "https://tapovanswisscampsofficial.com/assets/img/logo.png",
+    employee: teamMembers.map((member) => ({
+      "@type": "Person",
+      name: member.name,
+      jobTitle: member.role,
+      description: member.description,
+      image: `https://tapovanswisscampsofficial.com/${member.image}`,
+
+      sameAs: Object.values(member.socialLinks).filter((link) => link !== "#"),
+    })),
+  };
+
   return (
-    <section style={{ marginTop: "50px" }} className="team-area pb-60">
-      <div className="container">
-        <div className="section-title" suppressHydrationWarning>
-          <h2>Our Team</h2>
-          <p>
-            Meet the dedicated team behind Tapovan Swiss Camps – a group of
-            passionate individuals working together to ensure every guest
-            experiences comfort, adventure, and genuine hospitality. From
-            management and operations to tech and innovation, each member brings
-            a unique skill set that makes our resort a peaceful and well-run
-            escape into nature.
-          </p>
+    <>
+      <Head>
+        <title>
+          Meet Our Team | Tapovan Swiss Camps - Rishikesh Luxury Camping Experts
+        </title>
+        <meta
+          name="description"
+          content="Get to know the passionate team behind Tapovan Swiss Camps in Rishikesh. Our dedicated professionals ensure exceptional hospitality and memorable camping experiences."
+        />
+        <meta
+          name="keywords"
+          content="tapovan swiss camps team, rishikesh camping staff, luxury tents management, ganga riverside camp owners, adventure resort leadership"
+        />
+        <link
+          rel="canonical"
+          href="https://tapovanswisscampsofficial.com/team"
+        />
+
+        {/* Open Graph / Social Media Meta Tags */}
+        <meta
+          property="og:title"
+          content="Our Expert Team | Tapovan Swiss Camps Rishikesh"
+        />
+        <meta
+          property="og:description"
+          content="Meet the passionate professionals who make your luxury camping experience in Rishikesh unforgettable. From management to hospitality experts."
+        />
+        <meta
+          property="og:url"
+          content="https://tapovanswisscampsofficial.com/team"
+        />
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:image"
+          content="https://tapovanswisscampsofficial.com/assets/img/team-social.jpg"
+        />
+
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content="The Team Behind Tapovan Swiss Camps | Rishikesh"
+        />
+        <meta
+          name="twitter:description"
+          content="Discover the dedicated team that creates magical camping experiences by the Ganges in Rishikesh."
+        />
+        <meta
+          name="twitter:image"
+          content="https://tapovanswisscampsofficial.com/assets/img/team-social.jpg"
+        />
+
+        {/* Organization & Team Schema */}
+        <script type="application/ld+json">{JSON.stringify(teamSchema)}</script>
+
+        {/* Breadcrumb Schema */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              {
+                "@type": "ListItem",
+                position: 1,
+                name: "Home",
+                item: "https://tapovanswisscampsofficial.com",
+              },
+              {
+                "@type": "ListItem",
+                position: 2,
+                name: "Our Team",
+                item: "https://tapovanswisscampsofficial.com/team",
+              },
+            ],
+          })}
+        </script>
+      </Head>
+      <section style={{ marginTop: "50px" }} className="team-area pb-60">
+        <div className="container">
+          <div className="section-title">
+            <h1>Meet Our Tapovan Swiss Camps Team</h1>
+            <p className="lead">
+              The heart and soul behind your unforgettable Rishikesh camping
+              experience. Our dedicated team combines{" "}
+              <strong>local expertise</strong> with{" "}
+              <strong>international hospitality standards</strong> to create
+              magical moments by the Ganges.
+            </p>
+          </div>
+          <div className="row justify-content-center">
+            {teamMembers.map((member) => (
+              <TeamCard key={member.id} {...member} />
+            ))}
+          </div>
         </div>
-        <div className="row justify-content-center">
-          {teamMembers.map((member) => (
-            <TeamCard key={member.id} {...member} />
-          ))}
-        </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
 

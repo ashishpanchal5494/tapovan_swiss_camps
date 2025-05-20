@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react";
 
 import BlogCard from "@/components/BlogCard";
+import Head from "next/head";
 
 const blogData = [
   {
@@ -369,28 +370,96 @@ const Blogs: React.FC = () => {
   }, []);
 
   return (
-    <div
-      className={isMobile ? "blog-area ptb-200" : "blog-area ptb-60"}
-      suppressHydrationWarning
-    >
-      <div className="container">
-        <div className="section-title">
-          <h2>Our Latest Blog</h2>
-          <p>
-            Discover expert tips, industry insights, and the latest updates in
-            our blog to help you stay ahead in travel trends, destination
-            guides, and adventure planning. Whether you&lsquo;re a first-time
-            explorer or a seasoned traveler, our latest articles are crafted to
-            inspire, inform, and ignite your wanderlust.
-          </p>
-        </div>
-        <div className="row">
-          {blogData.map((blog, index) => (
-            <BlogCard key={blog.id ?? index} {...blog} />
-          ))}
+    <>
+      <Head>
+        <title>Adventure Blogs – Tapovan Swiss Camps, Rishikesh</title>
+        <meta
+          name="description"
+          content="Explore our adventure blogs covering camping, rafting, bungee jumping, and travel tips in Rishikesh. Plan your unforgettable trip with Tapovan Swiss Camps."
+        />
+        <meta name="robots" content="index, follow" />
+        <meta
+          property="og:title"
+          content="Adventure Blog – Tapovan Swiss Camps"
+        />
+        <meta
+          property="og:description"
+          content="Camping, rafting, bungee jumping, and travel experiences in Rishikesh – all in one blog from Tapovan Swiss Camps."
+        />
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:url"
+          content="https://www.tapovanswisscampsofficial.com/blogs"
+        />
+        <meta property="og:image" content="/assets/img/logo.webp" />
+        <link
+          rel="canonical"
+          href="https://www.tapovanswisscampsofficial.com/blogs"
+        />
+
+        {/* ✅ Structured Data for Google */}
+
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Blog",
+              name: "Tapovan Swiss Camps Blogs",
+              url: "https://www.tapovanswisscampsofficial.com/blogs",
+              description:
+                "Adventure travel blog with articles on camping, rafting, and things to do in Rishikesh.",
+              publisher: {
+                "@type": "Organization",
+                name: "Tapovan Swiss Camps",
+                logo: {
+                  "@type": "ImageObject",
+                  url: "https://www.tapovanswisscampsofficial.com/assets/img/logo.webp",
+                },
+              },
+              blogPost: blogData.map((post) => ({
+                "@type": "BlogPosting",
+                headline: post.title,
+                image: `https://www.tapovanswisscampsofficial.com/${post.image}`,
+                url: `https://www.tapovanswisscampsofficial.com/blog/${post.slug}`,
+                author: {
+                  "@type": "Organization",
+                  name: "Tapovan Swiss Camps",
+                },
+                publisher: {
+                  "@type": "Organization",
+                  name: "Tapovan Swiss Camps",
+                },
+                mainEntityOfPage: {
+                  "@type": "WebPage",
+                  "@id": `https://www.tapovanswisscampsofficial.com/blogs/${post.slug}`,
+                },
+              })),
+            }),
+          }}
+        />
+      </Head>
+
+      <div
+        className={isMobile ? "blog-area ptb-200" : "blog-area ptb-60"}
+        suppressHydrationWarning
+      >
+        <div className="container">
+          <div className="section-title">
+            <h2>Adventure Blogs – Tapovan Swiss Camps</h2>
+            <p>
+              Read exciting stories and travel tips about camping, rafting,
+              bungee jumping, and bike rentals in Rishikesh.
+            </p>
+          </div>
+          <div className="row">
+            {blogData.map((blog, index) => (
+              <BlogCard key={blog.id ?? index} {...blog} />
+            ))}
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

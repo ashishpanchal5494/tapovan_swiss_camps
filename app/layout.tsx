@@ -38,6 +38,12 @@ export const metadata: Metadata = {
     "Yoga retreat Rishikesh",
   ],
   metadataBase: new URL("https://www.tapovanswisscampsofficial.com"),
+  alternates: {
+    canonical: "https://www.tapovanswisscampsofficial.com",
+    languages: {
+      "en-IN": "https://www.tapovanswisscampsofficial.com",
+    },
+  },
   authors: [
     {
       name: "Tapovan Swiss Camp",
@@ -52,7 +58,7 @@ export const metadata: Metadata = {
     siteName: "Tapovan Swiss Camps",
     images: [
       {
-        url: "/assets/img/room/garden.PNG",
+        url: "https://www.tapovanswisscampsofficial.com/assets/img/room/garden.webp",
         width: 1200,
         height: 630,
         alt: "Tapovan Swiss Camps Rishikesh - Riverside Luxury Camping",
@@ -66,7 +72,11 @@ export const metadata: Metadata = {
     title: "Tapovan Swiss Camps | Riverside Luxury Camping in Rishikesh",
     description:
       "Tapovan Swiss Camp offers riverside luxury tents, yoga, adventure sports, and more in the scenic beauty of Rishikesh.",
-    images: ["/assets/img/room/garden.PNG"],
+    images: [
+      {
+        url: "https://www.tapovanswisscampsofficial.com/assets/img/room/garden.webp",
+      },
+    ],
   },
   robots: {
     index: true,
@@ -84,31 +94,6 @@ export const metadata: Metadata = {
   },
 };
 
-<Script
-  type="application/ld+json"
-  id="structured-data"
-  strategy="afterInteractive"
->
-  {JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "Campground",
-    name: "Tapovan Swiss Camps",
-    image:
-      "https://tapovanswisscampsofficial.com/_next/image?url=%2Fassets%2Fimg%2Froom%2Fgarden.webp&w=1920&q=75",
-    description:
-      "Luxury riverside camping in Rishikesh with rafting, swimming pool, bonfire nights, and adventure activities.",
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: "Rishikesh",
-      addressRegion: "Uttarakhand",
-      postalCode: "249201",
-      addressCountry: "IN",
-    },
-    url: "https://www.tapovanswisscampsofficial.com",
-    telephone: "+91-7906924003",
-  })}
-</Script>;
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -116,9 +101,37 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={readexPro.variable}>
+      <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </head>
       <body>
         <Layout>
           {children}
+          <Script
+            type="application/ld+json"
+            id="structured-data"
+            strategy="afterInteractive"
+          >
+            {JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Campground",
+              name: "Tapovan Swiss Camps",
+              image:
+                "https://www.tapovanswisscampsofficial.com/assets/img/room/garden.webp",
+              description:
+                "Luxury riverside camping in Rishikesh with rafting, swimming pool, bonfire nights, and adventure activities.",
+              address: {
+                "@type": "PostalAddress",
+                addressLocality: "Rishikesh",
+                addressRegion: "Uttarakhand",
+                postalCode: "249201",
+                addressCountry: "IN",
+              },
+              url: "https://www.tapovanswisscampsofficial.com",
+              telephone: "+91-7906924003",
+            })}
+          </Script>
+          ;
           <WhatsAppButton />
         </Layout>
       </body>
