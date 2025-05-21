@@ -270,7 +270,7 @@ function PrivacyPolicy() {
               itemScope
               itemType="https://schema.org/WebPageElement"
             >
-              <h2 itemProp="name">7. Children's Privacy</h2>
+              <h2 itemProp="name">7. Children&lsquo;s Privacy</h2>
               <p itemProp="text">
                 Tapovan Swiss Camps does not knowingly collect personal
                 information from children under 13 years of age. If we discover

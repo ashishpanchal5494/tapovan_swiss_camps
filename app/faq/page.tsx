@@ -261,8 +261,8 @@ const FAQ = () => {
             <p className="lead">
               Everything you need to know before booking your{" "}
               <strong>luxury camping</strong> or{" "}
-              <strong>rafting adventure</strong> in Rishikesh. Can't find your
-              answer? <Link href="/contact">Contact our team</Link> for
+              <strong>rafting adventure</strong> in Rishikesh. Can&lsquo;t find
+              your answer? <Link href="/contact">Contact our team</Link> for
               personalized assistance.
             </p>
           </div>

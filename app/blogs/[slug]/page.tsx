@@ -494,8 +494,8 @@ const BlogDetails: React.FC = () => {
               {blogData
                 .filter((b) => b.id !== blog.id)
                 .slice(0, 3)
-                .map((related) => (
-                  <div className="col-lg-4 col-md-6">
+                .map((related, key) => (
+                  <div key={key} className="col-lg-4 col-md-6">
                     <div className="content-blog blog-grid">
                       <div className="inner">
                         <div className="thumbnail">
