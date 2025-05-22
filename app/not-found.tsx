@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 
 import Loading from "@/components/Loading";
 
-const Error = () => {
+const Page = () => {
   const [isClient, setIsClient] = useState(false);
 
   const [isMobile, setIsMobile] = useState(false);
@@ -62,4 +62,4 @@ const Error = () => {
   );
 };
 
-export default Error;
+export default Page;

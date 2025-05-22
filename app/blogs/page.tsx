@@ -391,7 +391,10 @@ const Blogs: React.FC = () => {
           property="og:url"
           content="https://www.tapovanswisscampsofficial.com/blogs"
         />
-        <meta property="og:image" content="/assets/img/logo.webp" />
+        <meta
+          property="og:image"
+          content="https://www.tapovanswisscampsofficial.com/assets/img/blog/camping_rishikesh.webp"
+        />
         <link
           rel="canonical"
           href="https://www.tapovanswisscampsofficial.com/blogs"
@@ -414,14 +417,14 @@ const Blogs: React.FC = () => {
                 name: "Tapovan Swiss Camps",
                 logo: {
                   "@type": "ImageObject",
-                  url: "https://www.tapovanswisscampsofficial.com/assets/img/logo.webp",
+                  url: "https://www.tapovanswisscampsofficial.com/assets/img/blog/camping_rishikesh.webp",
                 },
               },
               blogPost: blogData.map((post) => ({
                 "@type": "BlogPosting",
                 headline: post.title,
                 image: `https://www.tapovanswisscampsofficial.com/${post.image}`,
-                url: `https://www.tapovanswisscampsofficial.com/blog/${post.slug}`,
+                url: `https://www.tapovanswisscampsofficial.com/blogs/${post.slug}`,
                 author: {
                   "@type": "Organization",
                   name: "Tapovan Swiss Camps",

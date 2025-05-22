@@ -316,12 +316,12 @@ function PrivacyPolicy() {
                   <br />
                   Email:{" "}
                   <a href="mailto:info@tswisscamps@gmail.com" itemProp="email">
-                    info@tswisscamps@gmail.com
+                    tswisscamps@gmail.com
                   </a>
                   <br />
                   Phone:{" "}
                   <a href="tel:+917906924003" itemProp="telephone">
-                    +91 79069 24003
+                    +91 7906924003
                   </a>
                 </p>
               </address>

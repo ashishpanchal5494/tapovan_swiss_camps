@@ -16,6 +16,8 @@ module.exports = {
       "/testimonial": 0.7,
       "/faq": 0.8,
       "/privacy-policy": 0.8,
+      "/booking-form": 0.8,
+      "/team": 0.8,
     };
 
     return {

@@ -14,6 +14,7 @@ import { FaChevronRight } from "react-icons/fa6";
 import { FaChevronLeft } from "react-icons/fa6";
 import { FaLocationDot } from "react-icons/fa6";
 import { FaImage } from "react-icons/fa6";
+import Head from "next/head";
 
 const tentRooms = [
   {
@@ -33,47 +34,6 @@ const tentRooms = [
     ],
     beds: 5,
     baths: 1,
-    description:
-      "Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet lorem.",
-    linkBooking: "/booking-form",
-  },
-  {
-    id: 2,
-    title: "Luxury Cooler Tent",
-    price: 1499,
-    images: [
-      { id: 1, url: "/assets/img/room/actent-3.webp", alt: "tent 1" },
-      { id: 2, url: "/assets/img/room/coolertent-1.webp", alt: "tent 2" },
-      { id: 3, url: "/assets/img/room/actent-2.webp", alt: "tent 3" },
-      { id: 4, url: "/assets/img/room/garden.webp", alt: "garden" },
-      { id: 5, url: "/assets/img/room/garden-2.webp", alt: "garden 2" },
-      { id: 6, url: "/assets/img/room/dining.webp", alt: "dining" },
-      { id: 7, url: "/assets/img/room/pool.webp", alt: "pool" },
-      { id: 8, url: "/assets/img/room/vollyball.webp", alt: "vollyball" },
-      { id: 9, url: "/assets/img/room/group.webp", alt: "group" },
-    ],
-    beds: 5,
-    baths: 1,
-    description:
-      "Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet lorem.",
-    linkBooking: "/booking-form",
-  },
-  {
-    id: 3,
-    title: "Ordinary Tent",
-    price: 999,
-    images: [
-      { id: 1, url: "/assets/img/room/ordinarytent-1.webp", alt: "tent 1" },
-      { id: 2, url: "/assets/img/room/ordinarytent-2.webp", alt: "tent 2" },
-      { id: 3, url: "/assets/img/room/ordinarytent-3.webp", alt: "tent 3" },
-      { id: 4, url: "/assets/img/room/garden-2.webp", alt: "garden 2" },
-      { id: 5, url: "/assets/img/room/dining.webp", alt: "dining" },
-      { id: 6, url: "/assets/img/room/pool.webp", alt: "pool" },
-      { id: 7, url: "/assets/img/room/vollyball.webp", alt: "vollyball" },
-      { id: 8, url: "/assets/img/room/group.webp", alt: "group" },
-    ],
-    beds: 3,
-    baths: "Common",
     description:
       "Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet lorem.",
     linkBooking: "/booking-form",
@@ -166,8 +126,104 @@ const TentDetails: React.FC = () => {
     return <p className="text-center text-danger">Tent not found.</p>;
   }
 
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: title,
+    description: description.replace(/<[^>]*>/g, "").substring(0, 160),
+    brand: {
+      "@type": "Brand",
+      name: "Tapovan Swiss Camps",
+    },
+    offers: {
+      "@type": "Offer",
+      url: `https://tapovanswisscampsofficial.com/tents?id=${id}`,
+      priceCurrency: "INR",
+      price: price,
+      priceValidUntil: "2024-12-31",
+      itemCondition: "https://schema.org/NewCondition",
+      availability: "https://schema.org/InStock",
+    },
+    image: tent.images[0].url,
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: "5",
+      reviewCount: "50",
+    },
+    additionalProperty: {
+      "@type": "PropertyValue",
+      name: "Tent Type",
+      value: title,
+    },
+    location: {
+      "@type": "Place",
+      name: "Tapovan Swiss Camps",
+      geo: {
+        "@type": "GeoCoordinates",
+        latitude: "30.1394342",
+        longitude: "78.3127861",
+      },
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "Deecon Valley Road, Vill. Dholshoot Tapovan",
+        addressLocality: "Rishikesh",
+        addressRegion: "Uttarakhand",
+        postalCode: "249192",
+        addressCountry: "IN",
+      },
+    },
+  };
+
   return (
     <>
+      <Head>
+        <title>{`${title} | Tapovan Swiss Camps - Luxury Glamping in Rishikesh`}</title>
+        <meta
+          name="description"
+          content={`Book ${title} at Tapovan Swiss Camps. ${description
+            .replace(/<[^>]*>/g, "")
+            .substring(0, 155)}...`}
+        />
+        <meta
+          name="keywords"
+          content={`${title}, luxury tents Rishikesh, glamping near Ganga, ${title} price, camping in Rishikesh`}
+        />
+        <link
+          rel="canonical"
+          href={`https://tapovanwisscampsofficial.com/tents?id=${id}`}
+        />
+
+        {/* Open Graph / Facebook */}
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:url"
+          content={`https://tapovanwisscampsofficial.com/tents?id=${id}`}
+        />
+        <meta property="og:title" content={`${title} | Tapovan Swiss Camps`} />
+        <meta
+          property="og:description"
+          content={`Experience premium ${title} accommodation in Rishikesh with modern amenities amidst nature.`}
+        />
+        <meta property="og:image" content={tent.images[0].url} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={`${title} | Tapovan Swiss Camps`} />
+        <meta
+          name="twitter:description"
+          content={`Book ${title} at Tapovan Swiss Camps for an unforgettable glamping experience in Rishikesh.`}
+        />
+        <meta name="twitter:image" content={tent.images[0].url} />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1"
+        />
+        <script type="application/ld+json">
+          {JSON.stringify(structuredData)}
+        </script>
+      </Head>
       <section
         className={
           isMobile ? "room-details-area ptb-200" : "room-details-area ptb-60"
@@ -453,11 +509,13 @@ const TentDetails: React.FC = () => {
                           {tent.images.map((item) => (
                             <SwiperSlide key={item.id}>
                               <Image
-                                className="img-responsive m-auto"
                                 src={item.url}
-                                alt={item.alt}
+                                alt={`${title} at Tapovan Swiss Camps - ${item.alt}`}
                                 width={800}
-                                height={400}
+                                height={500}
+                                loading="lazy"
+                                className="img-responsive m-auto"
+                                quality={85}
                               />
                             </SwiperSlide>
                           ))}

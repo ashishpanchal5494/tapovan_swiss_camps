@@ -3,8 +3,6 @@
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import { useEffect, useRef, useState } from "react";
-
-import "aos/dist/aos.css";
 import "odometer/themes/odometer-theme-default.css";
 import Head from "next/head";
 
@@ -79,7 +77,7 @@ const About = () => {
         />
         <meta
           property="og:image"
-          content="https://tapovanswisscampsofficial.com/_next/image?url=%2Fassets%2Fimg%2Froom%2Fvollyball.webp&w=1920&q=75"
+          content="https://tapovanswisscampsofficial.com/assets/img/about.webp"
         />
         <link
           rel="canonical"
@@ -95,7 +93,7 @@ const About = () => {
               name: "Tapovan Swiss Camps",
               url: "https://www.tapovanswisscampsofficial.com",
               image:
-                "https://tapovanswisscampsofficial.com/_next/image?url=%2Fassets%2Fimg%2Froom%2Fvollyball.webp&w=1920&q=75",
+                "https://tapovanswisscampsofficial.com/assets/img/about.webp",
               telephone: "+91-7906924003",
               address: {
                 "@type": "PostalAddress",

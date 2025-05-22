@@ -106,7 +106,7 @@ export default function HomePageClient() {
 
   return (
     <>
-      {/* ✅ Schema Markup for Local Business */}
+      {/* ✅ Enhanced Structured Data */}
       <Script
         type="application/ld+json"
         id="local-business-schema"
@@ -114,17 +114,19 @@ export default function HomePageClient() {
       >
         {JSON.stringify({
           "@context": "https://schema.org",
-          "@type": "Campground",
+          "@type": ["Campground", "LodgingBusiness", "TouristAttraction"],
           name: "Tapovan Swiss Camps",
           description:
-            "Luxury riverside and waterfall side camping experience in Rishikesh with AC tents, best food, adventure, yoga, and rafting.",
-          image:
-            "https://tapovanswisscampsofficial.com/_next/image?url=%2Fassets%2Fimg%2Froom%2Fgarden.webp&w=1920&q=75",
+            "Rishikesh's premier luxury camping destination with AC tents, adventure sports, and yoga retreats by the Ganges River.",
+          image: [
+            "https://www.tapovanswisscampsofficial.com/assets/img/room/garden.webp",
+            "https://www.tapovanswisscampsofficial.com/assets/img/room/actent-2.webp",
+          ],
           priceRange: "₹999 - ₹1799",
           telephone: "+91-7906924003",
           address: {
             "@type": "PostalAddress",
-            streetAddress: "Neelkanth Road",
+            streetAddress: "Neelkanth Road, Tapovan",
             addressLocality: "Rishikesh",
             addressRegion: "Uttarakhand",
             postalCode: "249201",
@@ -136,6 +138,92 @@ export default function HomePageClient() {
             longitude: 78.3056896,
           },
           url: "https://www.tapovanswisscampsofficial.com",
+          sameAs: [
+            "https://www.facebook.com/61574061994310",
+            "https://www.instagram.com/tapovanswisscampsofficial",
+          ],
+          openingHoursSpecification: {
+            "@type": "OpeningHoursSpecification",
+            dayOfWeek: [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday",
+              "Saturday",
+              "Sunday",
+            ],
+            opens: "00:00",
+            closes: "23:59",
+          },
+          starRating: {
+            "@type": "Rating",
+            ratingValue: "4.9",
+            bestRating: "5",
+            ratingCount: "250",
+          },
+          hasOfferCatalog: {
+            "@type": "OfferCatalog",
+            name: "Camping Packages",
+            itemListElement: [
+              {
+                "@type": "OfferCatalog",
+                name: "Luxury Tent Stays",
+                itemListElement: [
+                  {
+                    "@type": "Offer",
+                    name: "Deluxe Cooler Tent",
+                    price: "1499",
+                    priceCurrency: "INR",
+                  },
+                  {
+                    "@type": "Offer",
+                    name: "Premium AC Tent",
+                    price: "1799",
+                    priceCurrency: "INR",
+                  },
+                ],
+              },
+              {
+                "@type": "OfferCatalog",
+                name: "Adventure Packages",
+                itemListElement: [
+                  {
+                    "@type": "Offer",
+                    name: "Rafting + Camping Combo",
+                    price: "2499",
+                    priceCurrency: "INR",
+                  },
+                ],
+              },
+            ],
+          },
+        })}
+      </Script>
+
+      {/* ✅ Breadcrumb Schema */}
+      <Script
+        type="application/ld+json"
+        id="breadcrumb-schema"
+        strategy="afterInteractive"
+      >
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            {
+              "@type": "ListItem",
+              position: 1,
+              name: "Home",
+              item: "https://www.tapovanswisscampsofficial.com",
+            },
+            {
+              "@type": "ListItem",
+              position: 2,
+              name: "Rishikesh Luxury Camping",
+              item: "https://www.tapovanswisscampsofficial.com/tents",
+            },
+          ],
         })}
       </Script>
 

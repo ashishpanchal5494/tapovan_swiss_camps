@@ -262,8 +262,11 @@ const FAQ = () => {
               Everything you need to know before booking your{" "}
               <strong>luxury camping</strong> or{" "}
               <strong>rafting adventure</strong> in Rishikesh. Can&lsquo;t find
-              your answer? <Link href="/contact">Contact our team</Link> for
-              personalized assistance.
+              your answer?{" "}
+              <Link className="text-black" href="/contact">
+                Contact our team
+              </Link>{" "}
+              for personalized assistance.
             </p>
           </div>
 
@@ -335,19 +338,19 @@ const FAQ = () => {
 
           {/* Additional CTA Section */}
           <div className="faq-cta mt-5">
-            <div className="cta-box bg-primary text-white p-5 rounded">
+            <div className="cta-box bg-white text-black p-5 rounded border border-2 border-gray">
               <h3>Still Have Questions?</h3>
               <p className="mb-4">
                 Our adventure specialists are available 24/7 to help you plan
                 your perfect Rishikesh getaway.
               </p>
-              <a
+              <Link
                 href="/contact"
-                className="btn btn-light"
+                className="btn style1 rounded py-2 px-4 text-white"
                 aria-label="Contact our support team"
               >
                 Contact Support
-              </a>
+              </Link>
             </div>
           </div>
         </div>

@@ -415,7 +415,7 @@ const BlogDetails: React.FC = () => {
               name: "Tapovan Swiss Camps",
               logo: {
                 "@type": "ImageObject",
-                url: "https://tapovanswisscampsofficial.com/logo.png",
+                url: "https://tapovanswisscampsofficial.com/assets/img/logo.png",
               },
             },
             datePublished: new Date().toISOString(),

@@ -133,7 +133,7 @@ const Team: React.FC = () => {
         <meta property="og:type" content="website" />
         <meta
           property="og:image"
-          content="https://tapovanswisscampsofficial.com/assets/img/team-social.jpg"
+          content="https://tapovanswisscampsofficial.com/assets/img/room/vollyball.webp"
         />
 
         {/* Twitter Card */}
@@ -148,7 +148,7 @@ const Team: React.FC = () => {
         />
         <meta
           name="twitter:image"
-          content="https://tapovanswisscampsofficial.com/assets/img/team-social.jpg"
+          content="https://tapovanswisscampsofficial.com/assets/img/room/vollyball.webp"
         />
 
         {/* Organization & Team Schema */}

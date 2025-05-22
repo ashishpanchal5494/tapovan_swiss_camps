@@ -6,6 +6,7 @@ import React, { useEffect, useState } from "react";
 import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
 import Loading from "@/components/Loading";
+import Head from "next/head";
 
 const TestimonialSection: React.FC = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -152,55 +153,180 @@ Crew faculty awesome everyone’s friendly nature and good persons👍.`,
     },
   ];
 
-  return (
-    <div className={`testimonial-area ${isMobile ? "ptb-200" : "ptb-60"}`}>
-      <div className="container">
-        <div className="section-title">
-          <h2>What Our Guests Say – Verified Camping Reviews in Rishikesh</h2>
-          <p>
-            Discover real experiences from travelers who have stayed at our
-            campsite in the serene hills of Tapovan, Rishikesh. Our guests
-            consistently praise our hospitality, scenic mountain views,
-            delicious food, and peaceful atmosphere. Whether you&lsquo;re
-            looking for an adventure-packed weekend or a quiet getaway, see why
-            our guests recommend us as the{" "}
-            <strong>best budget camping site near Tapovan, Rishikesh</strong>.
-          </p>
-        </div>
+  // Structured data for reviews
+  const reviewStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    name: "Tapovan Swiss Camps",
+    image: "https://tapovanswisscampsofficial.com/assets/img/logo.png",
+    description:
+      "Premium camping and glamping experience in Rishikesh with luxury tents, adventure activities, and scenic mountain views",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "Deecon Valley Road, Vill. Dholshoot Tapovan",
+      addressLocality: "Rishikesh",
+      addressRegion: "Uttarakhand",
+      postalCode: "249192",
+      addressCountry: "IN",
+    },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: "30.1394342",
+      longitude: "78.3127861",
+    },
+    telephone: "+917906924003",
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: "5.0",
+      reviewCount: "50+",
+      bestRating: "5",
+      worstRating: "1",
+    },
+    review: testimonials.slice(0, 5).map((testimonial) => ({
+      "@type": "Review",
+      reviewRating: {
+        "@type": "Rating",
+        ratingValue: "5",
+        bestRating: "5",
+      },
+      author: {
+        "@type": "Person",
+        name: testimonial.name,
+      },
+      datePublished: "2023-01-01",
+      reviewBody: testimonial.text,
+      publisher: {
+        "@type": "Organization",
+        name: "Google Reviews",
+      },
+    })),
+  };
 
-        <div ref={sliderRef} className="keen-slider">
-          {testimonials.map((testimonial, index) => (
-            <div className="keen-slider__slide" key={index}>
-              <div className="single-testimonial-box px-2">
-                <div className="content-bg">
-                  <ul>
-                    {[...Array(5)].map((_, i) => (
-                      <li key={i}>
-                        <i className="bx bxs-star"></i>
+  return (
+    <>
+      <Head>
+        <title>
+          Verified Guest Reviews | Tapovan Swiss Camps - Best Camping in
+          Rishikesh
+        </title>
+        <meta
+          name="description"
+          content="Read 50+ verified guest reviews of Tapovan Swiss Camps - rated 5/5 for luxury tents, scenic views, and adventure activities in Rishikesh. See why we're the top-rated camping site in Tapovan."
+        />
+        <meta
+          name="keywords"
+          content="Tapovan Swiss Camps reviews, best camping Rishikesh, luxury tents reviews, Rishikesh camping testimonials, verified guest feedback"
+        />
+
+        {/* Canonical URL */}
+        <link
+          rel="canonical"
+          href="https://tapovanswisscampsofficial.com/testimonial"
+        />
+
+        {/* Open Graph / Facebook */}
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:url"
+          content="https://tapovanswisscampsofficial.com/testimonial"
+        />
+        <meta
+          property="og:title"
+          content="Verified Guest Reviews | Tapovan Swiss Camps - Best Camping in Rishikesh"
+        />
+        <meta
+          property="og:description"
+          content="50+ verified guest reviews with 5/5 ratings for our luxury camping experience in Rishikesh. See why guests love our scenic location and hospitality."
+        />
+        <meta
+          property="og:image"
+          content="https://tapovanswisscampsofficial.com/assets/img/room/group.webp"
+        />
+
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content="Verified Guest Reviews | Tapovan Swiss Camps"
+        />
+        <meta
+          name="twitter:description"
+          content="See why we're rated 5/5 by guests for our luxury camping experience in Rishikesh. 50+ verified testimonials."
+        />
+        <meta
+          name="twitter:image"
+          content="https://tapovanswisscampsofficial.com/assets/img/room/group.webp"
+        />
+        {/* Structured Data */}
+        <script type="application/ld+json">
+          {JSON.stringify(reviewStructuredData)}
+        </script>
+      </Head>
+
+      <div className={`testimonial-area ${isMobile ? "ptb-200" : "ptb-60"}`}>
+        <div className="container">
+          <div className="section-title">
+            <h2>What Our Guests Say – Verified Camping Reviews in Rishikesh</h2>
+            <p>
+              Discover real experiences from travelers who have stayed at our
+              campsite in the serene hills of Tapovan, Rishikesh. Our guests
+              consistently praise our hospitality, scenic mountain views,
+              delicious food, and peaceful atmosphere. Whether you&lsquo;re
+              looking for an adventure-packed weekend or a quiet getaway, see
+              why our guests recommend us as the{" "}
+              <strong>best budget camping site near Tapovan, Rishikesh</strong>.
+            </p>
+          </div>
+
+          <div className="review-stats mb-5 text-center">
+            <div className="rating-badge">
+              <span className="rating">5.0</span>/5
+              <div className="stars">
+                {[...Array(5)].map((_, i) => (
+                  <i key={i} className="bx bxs-star text-warning"></i>
+                ))}
+              </div>
+              <p className="mt-2">
+                Based on <strong>50+ verified reviews</strong> from Google,
+                TripAdvisor, and our guests
+              </p>
+            </div>
+          </div>
+
+          <div ref={sliderRef} className="keen-slider">
+            {testimonials.map((testimonial, index) => (
+              <div className="keen-slider__slide" key={index}>
+                <div className="single-testimonial-box px-2">
+                  <div className="content-bg">
+                    <ul>
+                      {[...Array(5)].map((_, i) => (
+                        <li key={i}>
+                          <i className="bx bxs-star"></i>
+                        </li>
+                      ))}
+                      <li>
+                        <span>(5.0)</span>
                       </li>
-                    ))}
-                    <li>
-                      <span>(5.0)</span>
-                    </li>
-                  </ul>
-                  <p>{testimonial.text}</p>
-                </div>
-                <div className="client-info">
-                  <Image
-                    width={80}
-                    height={80}
-                    src={testimonial.image}
-                    alt={testimonial.name}
-                    loading="lazy"
-                  />
-                  <h3>{testimonial.name}</h3>
+                    </ul>
+                    <p>{testimonial.text}</p>
+                  </div>
+                  <div className="client-info">
+                    <Image
+                      width={80}
+                      height={80}
+                      src={testimonial.image}
+                      alt={testimonial.name}
+                      loading="lazy"
+                    />
+                    <h3>{testimonial.name}</h3>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

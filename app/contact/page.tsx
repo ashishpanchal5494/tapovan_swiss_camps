@@ -2,8 +2,6 @@
 
 import { useEffect, useState, useCallback } from "react";
 import Image from "next/image";
-
-import "aos/dist/aos.css";
 import Loading from "@/components/Loading";
 import Head from "next/head";
 
@@ -147,14 +145,14 @@ const Contact = () => {
             "@context": "https://schema.org",
             "@type": "TravelAgency",
             name: "Tapovan Swiss Camps",
-            image: "https://tapovanswisscampsofficial.com/img/logo.png",
+            image: "https://tapovanswisscampsofficial.com/assets/img/logo.png",
             "@id": "https://tapovanswisscampsofficial.com",
             url: "https://tapovanswisscampsofficial.com",
             telephone: "+917906924003",
             priceRange: "₹999-₹1799",
             address: {
               "@type": "PostalAddress",
-              streetAddress: "Near Tapovan",
+              streetAddress: "Tapovan",
               addressLocality: "Rishikesh",
               postalCode: "249201",
               addressCountry: "IN",

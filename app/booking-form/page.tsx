@@ -185,13 +185,13 @@ const BookingArea: React.FC = () => {
               addressLocality: "Rishikesh",
               addressRegion: "Uttarakhand",
               postalCode: "249192",
-              streetAddress: "Near Tapovan, Rishikesh",
+              streetAddress: "Tapovan, Rishikesh",
             },
             image:
               activeTab === "camping"
-                ? "https://tapovanswisscampsofficial.com/assets/img/camping-main.jpg"
-                : "https://tapovanswisscampsofficial.com/assets/img/rafting-main.jpg",
-            priceRange: activeTab === "camping" ? "₹999-₹2499" : "₹800-₹2000",
+                ? "https://tapovanswisscampsofficial.com/assets/img/blog/camping_rishikesh.webp"
+                : "https://tapovanswisscampsofficial.com/assets/img/blog/rafting_rishikesh.webp",
+            priceRange: activeTab === "camping" ? "₹999-₹1799" : "₹799-₹1499",
             telephone: "+917906924003",
             openingHoursSpecification: {
               "@type": "OpeningHoursSpecification",
