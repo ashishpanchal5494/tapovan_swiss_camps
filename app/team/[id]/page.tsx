@@ -155,7 +155,6 @@ const TeamDetails: React.FC = () => {
       <script type="application/ld+json">
         {JSON.stringify(teamMemberStructuredData)}
       </script>
-
       <div
         className={
           isMobile ? "team-details-area ptb-200" : "team-details-area ptb-60"

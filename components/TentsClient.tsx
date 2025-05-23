@@ -36,7 +36,7 @@ const tentRooms: Tent[] = [
     baths: 1,
     description:
       "Experience unparalleled comfort in our Luxury AC Tents, designed for those who seek a perfect blend of nature and modern amenities. These spacious 5-bed tents feature climate control to ensure your comfort in all seasons, along with attached bathrooms for privacy. Enjoy premium bedding, tasteful decor, and ample space to relax after a day of adventure. <br/> <i>Please note</i>: To maintain a healthy environment for all guests, smoking and consumption of alcohol are strictly prohibited in all tents. We kindly request all guests to help us keep the tents clean and in excellent condition for everyone's enjoyment. <br/> Located amidst lush greenery, our AC tents offer a serene retreat while keeping you connected with essential conveniences. Perfect for families or groups looking for a luxurious camping experience without compromising on comfort.",
-    linkBooking: "/book-luxury-tent-rishikesh",
+    linkBooking: "/booking-form",
   },
   {
     id: 2,
@@ -52,7 +52,7 @@ const tentRooms: Tent[] = [
     baths: 1,
     description:
       "Stay cool and comfortable in our Luxury Cooler Tents, designed to provide natural ventilation and temperature regulation. These well-appointed tents feature 5 comfortable beds and attached bathrooms, offering a perfect balance between outdoor living and essential comforts. <br/> <i>Important rules</i>: For the safety and comfort of all guests, smoking and drinking alcohol inside the tents is not permitted. We appreciate your cooperation in maintaining cleanliness and taking care of the tent facilities during your stay. <br/> The evaporative cooling system ensures a pleasant environment even during warmer days. Enjoy the sounds of nature from your private tent, surrounded by our beautifully landscaped property. Ideal for those who want a comfortable camping experience with a touch of traditional cooling methods.",
-    linkBooking: "/book-cooler-tent-rishikesh",
+    linkBooking: "/booking-form",
   },
   {
     id: 3,
@@ -68,7 +68,7 @@ const tentRooms: Tent[] = [
     baths: "Common",
     description:
       "For the authentic camping enthusiasts, our Ordinary Tents offer a genuine outdoor experience with basic comforts. These 3-bed tents provide shared bathroom facilities and simple, clean accommodations. <br/> <i>Guest policies </i>: We maintain a strict no-smoking and no-alcohol policy in all tents to ensure a pleasant environment for all visitors. Guests are expected to keep their tents tidy and report any issues to our staff immediately. <br/> Perfect for budget-conscious travelers and backpackers who want to immerse themselves in nature without distractions. Located in our scenic property, these tents allow you to enjoy starry nights and fresh mountain air while still having access to our common amenities like dining areas and recreational spaces.",
-    linkBooking: "/book-camping-tent-rishikesh",
+    linkBooking: "/booking-form",
   },
 ];
 
@@ -182,7 +182,6 @@ const TentsClient: React.FC = () => {
             the Himalayan foothills.
           </p>
         </header>
-
         <div className="seo-content-section mt-4">
           <h2>Premium Camping Experience in Rishikesh</h2>
           <p>
@@ -193,7 +192,6 @@ const TentsClient: React.FC = () => {
             couple retreats, or group accommodations, our AC and cooler tents
             ensure a memorable stay.
           </p>
-
           <h3>Why Choose Our Tents?</h3>
           <ul>
             <li>Spacious tents with 3-5 beds each</li>
@@ -205,7 +203,6 @@ const TentsClient: React.FC = () => {
             </li>
           </ul>
         </div>
-
         <div className="row justify-content-center">
           {tentRooms.map((room, index) => {
             const {
