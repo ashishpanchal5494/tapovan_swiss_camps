@@ -189,9 +189,9 @@ const TentsClient: React.FC = () => {
             Our luxury tents in Rishikesh offer the perfect blend of nature and
             comfort. Located just minutes from the Ganges river, we provide the
             best glamping experience with modern amenities amidst the Himalayan
-            foothills. Whether you're looking for family camping tents, couple
-            retreats, or group accommodations, our AC and cooler tents ensure a
-            memorable stay.
+            foothills. Whether you&lsquo;re looking for family camping tents,
+            couple retreats, or group accommodations, our AC and cooler tents
+            ensure a memorable stay.
           </p>
 
           <h3>Why Choose Our Tents?</h3>
