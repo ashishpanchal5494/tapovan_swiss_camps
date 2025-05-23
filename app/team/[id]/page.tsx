@@ -155,7 +155,6 @@ const TeamDetails: React.FC = () => {
       <script type="application/ld+json">
         {JSON.stringify(teamMemberStructuredData)}
       </script>
-
       <div
         className={
           isMobile ? "team-details-area ptb-200" : "team-details-area ptb-60"
@@ -242,8 +241,8 @@ const TeamDetails: React.FC = () => {
                     As our {data.role.toLowerCase()}, {data.name.split(" ")[0]}{" "}
                     plays a key role in ensuring our guests have an
                     unforgettable camping experience in Rishikesh.{" "}
-                    {data.name.split(" ")[0]}'s expertise contributes to making
-                    Tapovan Swiss Camps one of the{" "}
+                    {data.name.split(" ")[0]}&lsquo;s expertise contributes to
+                    making Tapovan Swiss Camps one of the{" "}
                     <strong>
                       top-rated camping destinations near the Ganges
                     </strong>
@@ -253,10 +252,10 @@ const TeamDetails: React.FC = () => {
                   <h3>Guest Testimonials</h3>
                   <div className="testimonial-quote">
                     <blockquote>
-                      "The team at Tapovan Swiss Camps made our stay
+                      &ldquo;The team at Tapovan Swiss Camps made our stay
                       exceptional. {data.name.split(" ")[0]}
                       went above and beyond to ensure we had everything we
-                      needed for our adventure."
+                      needed for our adventure.&ldquo;
                       <footer>- Happy Guest, Google Review</footer>
                     </blockquote>
                   </div>
