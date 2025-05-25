@@ -366,11 +366,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
   return { paths, fallback: false };
 };
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const blog = blogData.find((b) => b.slug === params?.slug);
-  return { props: { blog } };
-};
-
 const BlogDetails: React.FC = () => {
   const [isMobile, setIsMobile] = useState(false);
 
