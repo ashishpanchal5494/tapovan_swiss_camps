@@ -7,7 +7,6 @@ import "aos/dist/aos.css";
 import { notFound, useParams } from "next/navigation";
 import Head from "next/head";
 import Link from "next/link";
-import { GetStaticPaths } from "next";
 
 const blogData = [
   {
@@ -358,13 +357,6 @@ Would you like a **featured image** for this blog? I can generate one showing a 
   👉 Book your bike rental in Rishikesh now and explore like a local!`,
   },
 ];
-
-export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = blogData.map((blog) => ({
-    params: { slug: blog.slug },
-  }));
-  return { paths, fallback: false };
-};
 
 const BlogDetails: React.FC = () => {
   const [isMobile, setIsMobile] = useState(false);
