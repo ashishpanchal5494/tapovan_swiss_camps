@@ -149,12 +149,12 @@ const TeamDetails: React.FC = () => {
               : data.image
           }
         />
+        {/* Structured Data */}
+        <script type="application/ld+json">
+          {JSON.stringify(teamMemberStructuredData)}
+        </script>
       </Head>
 
-      {/* Structured Data */}
-      <script type="application/ld+json">
-        {JSON.stringify(teamMemberStructuredData)}
-      </script>
       <div
         className={
           isMobile ? "team-details-area ptb-200" : "team-details-area ptb-60"

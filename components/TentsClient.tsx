@@ -1,9 +1,10 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import TentCard from "../components/TentCard";
 import Loading from "@/components/Loading";
 import { useSearchParams } from "next/navigation";
+import Head from "next/head";
 
 interface Tent {
   id: number;
@@ -147,95 +148,106 @@ const TentsClient: React.FC = () => {
     return <Loading />;
   }
 
-  const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "ItemList",
-    itemListElement: tentRooms.map((room, index) => ({
-      "@type": "ListItem",
-      position: index + 1,
-      item: {
-        "@type": "Product",
-        name: room.title,
-        description: room.description.replace(/<[^>]*>/g, "").substring(0, 160),
-        image: room.image,
-        offers: {
-          "@type": "Offer",
-          price: room.price,
-          priceCurrency: "INR",
-          availability: "https://schema.org/InStock",
+  const structuredData = useMemo(
+    () => ({
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      itemListElement: tentRooms.map((room, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        item: {
+          "@type": "Product",
+          name: room.title,
+          description: room.description
+            .replace(/<[^>]*>/g, "")
+            .substring(0, 160),
+          image: room.image,
+          offers: {
+            "@type": "Offer",
+            price: room.price,
+            priceCurrency: "INR",
+            availability: "https://schema.org/InStock",
+          },
         },
-      },
-    })),
-  };
-
+      })),
+    }),
+    []
+  );
   return (
-    <section className={isMobile ? "room-area ptb-200" : "room-area ptb-60"}>
-      <script type="application/ld+json">
-        {JSON.stringify(structuredData)}
-      </script>
+    <>
+      <Head>
+        <script type="application/ld+json">
+          {JSON.stringify(structuredData)}
+        </script>
+      </Head>
+      <section className={isMobile ? "room-area ptb-200" : "room-area ptb-60"}>
+        <script type="application/ld+json">
+          {JSON.stringify(structuredData)}
+        </script>
 
-      <div className="container">
-        <header className="section-title">
-          <h1>Explore Our Luxury Camping Tents in Rishikesh</h1>
-          <p className="lead">
-            Find the perfect glamping accommodation for your nature retreat in
-            the Himalayan foothills.
-          </p>
-        </header>
-        <div className="seo-content-section mt-4">
-          <h2>Premium Camping Experience in Rishikesh</h2>
-          <p>
-            Our luxury tents in Rishikesh offer the perfect blend of nature and
-            comfort. Located just minutes from the Ganges river, we provide the
-            best glamping experience with modern amenities amidst the Himalayan
-            foothills. Whether you&lsquo;re looking for family camping tents,
-            couple retreats, or group accommodations, our AC and cooler tents
-            ensure a memorable stay.
-          </p>
-          <h3>Why Choose Our Tents?</h3>
-          <ul>
-            <li>Spacious tents with 3-5 beds each</li>
-            <li>Private or shared bathroom facilities</li>
-            <li>Eco-friendly camping experience</li>
-            <li>Stunning views of the Himalayan foothills</li>
-            <li>
-              Close to popular attractions like Laxman Jhula and Triveni Ghat
-            </li>
-          </ul>
+        <div className="container">
+          <header className="section-title">
+            <h1>Explore Our Luxury Camping Tents in Rishikesh</h1>
+            <p className="lead">
+              Find the perfect glamping accommodation for your nature retreat in
+              the Himalayan foothills.
+            </p>
+          </header>
+          <div className="seo-content-section mt-4">
+            <h2>Premium Camping Experience in Rishikesh</h2>
+            <p>
+              Our luxury tents in Rishikesh offer the perfect blend of nature
+              and comfort. Located just minutes from the Ganges river, we
+              provide the best glamping experience with modern amenities amidst
+              the Himalayan foothills. Whether you&lsquo;re looking for family
+              camping tents, couple retreats, or group accommodations, our AC
+              and cooler tents ensure a memorable stay.
+            </p>
+            <h3>Why Choose Our Tents?</h3>
+            <ul>
+              <li>Spacious tents with 3-5 beds each</li>
+              <li>Private or shared bathroom facilities</li>
+              <li>Eco-friendly camping experience</li>
+              <li>Stunning views of the Himalayan foothills</li>
+              <li>
+                Close to popular attractions like Laxman Jhula and Triveni Ghat
+              </li>
+            </ul>
+          </div>
+          <div className="row justify-content-center">
+            {tentRooms.map((room, index) => {
+              const {
+                perHeadPrice,
+                perHeadMainPrice,
+                totalPrice,
+                totalMainPrice,
+              } = calculatePrice(room.price, room.beds, room.mainPrice);
+              return (
+                <TentCard
+                  key={room.id}
+                  id={room.id}
+                  title={room.title}
+                  image={room.image}
+                  altText={room.altText}
+                  beds={room.beds}
+                  adults={adults}
+                  baths={room.baths}
+                  checkIn={checkIn}
+                  checkOut={checkOut}
+                  description={room.description}
+                  linkBooking={room.linkBooking}
+                  mainPrice={totalMainPrice}
+                  price={totalPrice}
+                  perHeadMainPrice={perHeadMainPrice}
+                  perHeadPrice={perHeadPrice}
+                  dataAosDuration={1200 + index * 200}
+                />
+              );
+            })}
+          </div>
         </div>
-        <div className="row justify-content-center">
-          {tentRooms.map((room, index) => {
-            const {
-              perHeadPrice,
-              perHeadMainPrice,
-              totalPrice,
-              totalMainPrice,
-            } = calculatePrice(room.price, room.beds, room.mainPrice);
-            return (
-              <TentCard
-                key={room.id}
-                id={room.id}
-                title={room.title}
-                image={room.image}
-                altText={room.altText}
-                beds={room.beds}
-                adults={adults}
-                baths={room.baths}
-                checkIn={checkIn}
-                checkOut={checkOut}
-                description={room.description}
-                linkBooking={room.linkBooking}
-                mainPrice={totalMainPrice}
-                price={totalPrice}
-                perHeadMainPrice={perHeadMainPrice}
-                perHeadPrice={perHeadPrice}
-                dataAosDuration={1200 + index * 200}
-              />
-            );
-          })}
-        </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
 

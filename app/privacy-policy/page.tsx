@@ -12,7 +12,6 @@ function PrivacyPolicy() {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 768);
     };
-
     handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
@@ -26,7 +25,6 @@ function PrivacyPolicy() {
     return <Loading />;
   }
 
-  // Generate FAQ Schema for common privacy questions
   const privacyFAQSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -58,6 +56,25 @@ function PrivacyPolicy() {
     ],
   };
 
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://tapovanswisscampsofficial.com",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Privacy Policy",
+        item: "https://tapovanswisscampsofficial.com/privacy-policy",
+      },
+    ],
+  };
+
   return (
     <>
       <Head>
@@ -77,7 +94,7 @@ function PrivacyPolicy() {
           href="https://tapovanswisscampsofficial.com/privacy-policy"
         />
 
-        {/* Open Graph / Social Media Meta Tags */}
+        {/* Open Graph Tags */}
         <meta
           property="og:title"
           content="Privacy Policy | Tapovan Swiss Camps"
@@ -103,32 +120,15 @@ function PrivacyPolicy() {
           content="Your data security matters to us. Read how we handle information for Rishikesh camping bookings and website interactions."
         />
 
-        {/* FAQ Schema */}
-        <script type="application/ld+json">
-          {JSON.stringify(privacyFAQSchema)}
-        </script>
-
-        {/* Breadcrumb Schema */}
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "BreadcrumbList",
-            itemListElement: [
-              {
-                "@type": "ListItem",
-                position: 1,
-                name: "Home",
-                item: "https://tapovanswisscampsofficial.com",
-              },
-              {
-                "@type": "ListItem",
-                position: 2,
-                name: "Privacy Policy",
-                item: "https://tapovanswisscampsofficial.com/privacy-policy",
-              },
-            ],
-          })}
-        </script>
+        {/* Structured Data */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(privacyFAQSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+        />
       </Head>
 
       <div
@@ -138,169 +138,124 @@ function PrivacyPolicy() {
           <article itemScope itemType="https://schema.org/PrivacyPolicy">
             <h1 itemProp="name">Privacy Policy - Tapovan Swiss Camps</h1>
             <p itemProp="description">
-              At <strong itemProp="organization">Tapovan Swiss Camps</strong>,
-              your privacy is of utmost importance to us. This Privacy Policy
-              explains how we collect, use, and protect your information when
-              you visit our website:{" "}
+              At <strong itemProp="publisher">Tapovan Swiss Camps</strong>, your
+              privacy is of utmost importance. This policy outlines how we
+              collect, use, and protect your data when you visit our website:{" "}
               <strong>https://tapovanswisscampsofficial.com</strong>.
             </p>
 
-            <section
-              itemProp="hasPart"
-              itemScope
-              itemType="https://schema.org/WebPageElement"
-            >
+            {/* Section 1 */}
+            <section itemScope itemType="https://schema.org/WebPageElement">
               <h2 itemProp="name">1. Information We Collect</h2>
               <p itemProp="text">
-                When you interact with our website or make a booking, we may
-                collect the following information:
+                When you interact with our site or book with us, we collect:
               </p>
               <ul>
-                <li>Name, email address, phone number</li>
-                <li>Billing and payment information</li>
-                <li>Device and browser type, IP address</li>
-                <li>Check-in/check-out dates and preferences</li>
+                <li>Name, email, and phone number</li>
+                <li>Billing and payment details</li>
+                <li>Device/browser type and IP address</li>
+                <li>Booking dates and user preferences</li>
               </ul>
             </section>
 
-            <section
-              itemProp="hasPart"
-              itemScope
-              itemType="https://schema.org/WebPageElement"
-            >
+            {/* Section 2 */}
+            <section itemScope itemType="https://schema.org/WebPageElement">
               <h2 itemProp="name">2. How We Use Your Information</h2>
-              <p itemProp="text">We use the collected data to:</p>
+              <p itemProp="text">We use your data to:</p>
               <ul>
-                <li>Confirm and manage your bookings</li>
-                <li>Enhance your experience on our website</li>
-                <li>Send relevant promotional offers (with consent)</li>
-                <li>Improve our services and facilities</li>
-                <li>Comply with legal obligations</li>
+                <li>Confirm/manage bookings</li>
+                <li>Enhance user experience</li>
+                <li>Send promotions (if opted-in)</li>
+                <li>Improve services</li>
+                <li>Meet legal obligations</li>
               </ul>
             </section>
 
-            <section
-              itemProp="hasPart"
-              itemScope
-              itemType="https://schema.org/WebPageElement"
-            >
-              <h2 itemProp="name">3. Cookies and Tracking Technologies</h2>
+            {/* Section 3 */}
+            <section itemScope itemType="https://schema.org/WebPageElement">
+              <h2 itemProp="name">3. Cookies and Tracking</h2>
               <p itemProp="text">
-                Our website uses cookies to understand user behavior and enhance
-                your browsing experience. You can control cookie preferences
-                through your browser settings. We categorize cookies as:
+                We use cookies to analyze traffic and enhance performance.
+                Types:
               </p>
               <ul>
                 <li>
-                  <strong>Essential:</strong> Required for core functionality
+                  <strong>Essential:</strong> Core functionality
                 </li>
                 <li>
-                  <strong>Analytical:</strong> Helps improve user experience
+                  <strong>Analytics:</strong> Usage insights
                 </li>
                 <li>
-                  <strong>Marketing:</strong> Used for personalized offers
-                  (opt-in required)
+                  <strong>Marketing:</strong> Personalized offers (optional)
                 </li>
               </ul>
             </section>
 
-            <section
-              itemProp="hasPart"
-              itemScope
-              itemType="https://schema.org/WebPageElement"
-            >
+            {/* Section 4 */}
+            <section itemScope itemType="https://schema.org/WebPageElement">
               <h2 itemProp="name">4. Third-Party Services</h2>
               <p itemProp="text">
-                We may partner with trusted third-party tools (like Google
-                Analytics and booking engines) to analyze data and optimize our
-                services. These partners may also collect data in accordance
-                with their own privacy policies. Key partners include:
+                We collaborate with third-party tools to improve services:
               </p>
               <ul>
-                <li>Google Analytics (website analytics)</li>
-                <li>Payment processors (Razorpay/Stripe)</li>
+                <li>Google Analytics</li>
+                <li>Payment processors (Razorpay, Stripe)</li>
                 <li>Email service providers</li>
               </ul>
             </section>
 
-            <section
-              itemProp="hasPart"
-              itemScope
-              itemType="https://schema.org/WebPageElement"
-            >
+            {/* Section 5 */}
+            <section itemScope itemType="https://schema.org/WebPageElement">
               <h2 itemProp="name">5. Data Security</h2>
-              <p itemProp="text">
-                We implement multiple security measures to protect your
-                information:
-              </p>
+              <p itemProp="text">Your data is protected through:</p>
               <ul>
-                <li>SSL/TLS encryption for all data transfers</li>
-                <li>PCI-DSS compliant payment processing</li>
-                <li>Regular security audits and vulnerability testing</li>
-                <li>Limited employee access to sensitive data</li>
+                <li>SSL/TLS encryption</li>
+                <li>PCI-compliant payments</li>
+                <li>Regular audits</li>
+                <li>Restricted access</li>
               </ul>
             </section>
 
-            <section
-              itemProp="hasPart"
-              itemScope
-              itemType="https://schema.org/WebPageElement"
-            >
-              <h2 itemProp="name">6. Your Privacy Rights</h2>
-              <p itemProp="text">
-                Depending on your location, you may have rights including:
-              </p>
+            {/* Section 6 */}
+            <section itemScope itemType="https://schema.org/WebPageElement">
+              <h2 itemProp="name">6. Your Rights</h2>
+              <p itemProp="text">You may request:</p>
               <ul>
-                <li>Access to your personal data</li>
-                <li>Correction of inaccurate information</li>
-                <li>Deletion of your data (where applicable)</li>
-                <li>Opt-out of marketing communications</li>
+                <li>Access to your data</li>
+                <li>Correction of errors</li>
+                <li>Data deletion (where legal)</li>
+                <li>Unsubscribing from promotions</li>
               </ul>
               <p>
-                To exercise these rights, contact us at{" "}
-                <a href="mailto:info@tswisscamps@gmail.com" itemProp="email">
-                  info@tswisscamps@gmail.com
+                Contact us at{" "}
+                <a href="mailto:info@tapovanswisscamp.com" itemProp="email">
+                  info@tapovanswisscamp.com
                 </a>
-                .
               </p>
             </section>
 
-            <section
-              itemProp="hasPart"
-              itemScope
-              itemType="https://schema.org/WebPageElement"
-            >
-              <h2 itemProp="name">7. Children&lsquo;s Privacy</h2>
+            {/* Section 7 */}
+            <section itemScope itemType="https://schema.org/WebPageElement">
+              <h2 itemProp="name">7. Children’s Privacy</h2>
               <p itemProp="text">
-                Tapovan Swiss Camps does not knowingly collect personal
-                information from children under 13 years of age. If we discover
-                we have inadvertently collected such data, it will be promptly
-                deleted.
+                We do not knowingly collect data from children under 13. If we
+                become aware, we will delete the data immediately.
               </p>
             </section>
 
-            <section
-              itemProp="hasPart"
-              itemScope
-              itemType="https://schema.org/WebPageElement"
-            >
-              <h2 itemProp="name">8. Changes to This Policy</h2>
+            {/* Section 8 */}
+            <section itemScope itemType="https://schema.org/WebPageElement">
+              <h2 itemProp="name">8. Policy Updates</h2>
               <p itemProp="text">
-                We may update this Privacy Policy periodically. The last update
-                was on <strong itemProp="dateModified">May 15, 2025</strong>.
-                Any changes will be posted here with an updated date.
+                We may revise this policy. Last updated:{" "}
+                <strong itemProp="dateModified">May 15, 2025</strong>.
               </p>
             </section>
 
-            <section
-              itemProp="hasPart"
-              itemScope
-              itemType="https://schema.org/WebPageElement"
-            >
+            {/* Section 9 */}
+            <section itemScope itemType="https://schema.org/WebPageElement">
               <h2 itemProp="name">9. Contact Us</h2>
-              <p itemProp="text">
-                For privacy-related inquiries or requests, please contact:
-              </p>
+              <p itemProp="text">For questions, reach us at:</p>
               <address
                 itemProp="address"
                 itemScope
@@ -311,20 +266,15 @@ function PrivacyPolicy() {
                   <br />
                   <span itemProp="streetAddress">Main Tapovan</span>,<br />
                   <span itemProp="addressLocality">Rishikesh</span>,<br />
-                  <span itemProp="addressRegion">Uttarakhand</span>{" "}
-                  <span itemProp="postalCode">249201</span>
-                  <br />
-                  Email:{" "}
-                  <a href="mailto:info@tswisscamps@gmail.com" itemProp="email">
-                    tswisscamps@gmail.com
-                  </a>
-                  <br />
-                  Phone:{" "}
-                  <a href="tel:+917906924003" itemProp="telephone">
-                    +91 7906924003
-                  </a>
+                  <span itemProp="addressRegion">Uttarakhand</span>, India
                 </p>
               </address>
+              <p>
+                Email:{" "}
+                <a href="mailto:info@tapovanswisscamp.com" itemProp="email">
+                  info@tapovanswisscamp.com
+                </a>
+              </p>
             </section>
           </article>
         </div>

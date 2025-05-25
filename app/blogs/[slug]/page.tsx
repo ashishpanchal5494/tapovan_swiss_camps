@@ -7,6 +7,7 @@ import "aos/dist/aos.css";
 import { notFound, useParams } from "next/navigation";
 import Head from "next/head";
 import Link from "next/link";
+import { GetStaticPaths, GetStaticProps } from "next";
 
 const blogData = [
   {
@@ -358,6 +359,18 @@ Would you like a **featured image** for this blog? I can generate one showing a 
   },
 ];
 
+export const getStaticPaths: GetStaticPaths = async () => {
+  const paths = blogData.map((blog) => ({
+    params: { slug: blog.slug },
+  }));
+  return { paths, fallback: false };
+};
+
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const blog = blogData.find((b) => b.slug === params?.slug);
+  return { props: { blog } };
+};
+
 const BlogDetails: React.FC = () => {
   const [isMobile, setIsMobile] = useState(false);
 
@@ -379,51 +392,9 @@ const BlogDetails: React.FC = () => {
   return (
     <>
       <Head>
-        <title>{blog.title} | Tapovan Swiss Camps</title>
-        <meta
-          name="description"
-          content={blog.content.substring(0, 160) + "..."}
-        />
-        <meta property="og:title" content={blog.title} />
-        <meta
-          property="og:description"
-          content={blog.content.substring(0, 160) + "..."}
-        />
-        <meta property="og:image" content={blog.image} />
-        <meta property="og:type" content="article" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta
-          name="keywords"
-          content={`Rishikesh, ${blog.category}, ${blog.title
-            .split(" ")
-            .join(", ")}, adventure`}
-        />
-
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "BlogPosting",
-            headline: blog.title,
-            description: blog.content.substring(0, 160) + "...",
-            image: blog.image,
-            author: {
-              "@type": "Organization",
-              name: "Tapovan Swiss Camps",
-            },
-            publisher: {
-              "@type": "Organization",
-              name: "Tapovan Swiss Camps",
-              logo: {
-                "@type": "ImageObject",
-                url: "https://tapovanswisscampsofficial.com/assets/img/logo.png",
-              },
-            },
-            datePublished: new Date().toISOString(),
-            dateModified: new Date().toISOString(),
-          })}
-        </script>
+        <title>{blog.title}</title>
+        <meta name="description" content={blog.title} />
       </Head>
-
       <div
         className={
           isMobile

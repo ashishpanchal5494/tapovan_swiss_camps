@@ -177,20 +177,30 @@ const TentDetails: React.FC = () => {
   return (
     <>
       <Head>
-        <title>{`${title} | Tapovan Swiss Camps - Luxury Glamping in Rishikesh`}</title>
+        <title>{`${title} Tent in Rishikesh | Tapovan Swiss Camps`}</title>
         <meta
           name="description"
-          content={`Book ${title} at Tapovan Swiss Camps. ${description
-            .replace(/<[^>]*>/g, "")
-            .substring(0, 155)}...`}
+          content={`Book ${title} Tent at Tapovan Swiss Camps. Enjoy nature, comfort, and adventure in Rishikesh with our premium glamping experience.`}
         />
+
         <meta
           name="keywords"
           content={`${title}, luxury tents Rishikesh, glamping near Ganga, ${title} price, camping in Rishikesh`}
         />
+        <meta name="robots" content="index, follow" />
+        <meta httpEquiv="Content-Language" content="en" />
         <link
           rel="canonical"
-          href={`https://tapovanwisscampsofficial.com/tents?id=${id}`}
+          href={`https://tapovanswisscampsofficial.com/tents?id=${id}`}
+        />
+        <link
+          rel="alternate"
+          hrefLang="en-IN"
+          href={`https://tapovanswisscampsofficial.com/tents?id=${id}`}
+        />
+        <link
+          rel="canonical"
+          href={`https://tapovanswisscampsofficial.com/tents?id=${id}`}
         />
 
         {/* Open Graph / Facebook */}
@@ -202,24 +212,27 @@ const TentDetails: React.FC = () => {
         <meta property="og:title" content={`${title} | Tapovan Swiss Camps`} />
         <meta
           property="og:description"
-          content={`Experience premium ${title} accommodation in Rishikesh with modern amenities amidst nature.`}
+          content={`Stay in ${title} Tent at Tapovan Swiss Camps. Best glamping in Rishikesh with nature and luxury.`}
         />
         <meta property="og:image" content={tent.images[0].url} />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
+        <meta
+          property="og:image:alt"
+          content={`${title} Tent at Tapovan Swiss Camps`}
+        />
 
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={`${title} | Tapovan Swiss Camps`} />
+        <meta name="twitter:title" content={`${title} Tent in Rishikesh`} />
         <meta
           name="twitter:description"
           content={`Book ${title} at Tapovan Swiss Camps for an unforgettable glamping experience in Rishikesh.`}
         />
         <meta name="twitter:image" content={tent.images[0].url} />
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1, maximum-scale=1"
-        />
+        {/* Preload Image */}
+        <link rel="preload" as="image" href={tent.images[0].url} />
+
         <script type="application/ld+json">
           {JSON.stringify(structuredData)}
         </script>

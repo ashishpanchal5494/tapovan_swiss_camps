@@ -4,7 +4,7 @@ import Link from "next/link";
 import dynamic from "next/dynamic";
 import { useEffect, useRef, useState } from "react";
 import "odometer/themes/odometer-theme-default.css";
-import Head from "next/head";
+// import Head from "next/head";
 
 // Lazy-load Odometer only on the client
 const Testimonial = dynamic(() => import("../testimonial/page"), {
@@ -55,7 +55,7 @@ const About = () => {
   return (
     <>
       {/* ✅ SEO Optimized Head Tags */}
-      <Head>
+      {/* <Head>
         <title>About Tapovan Swiss Camps | Luxury Camping in Rishikesh</title>
         <meta
           name="description"
@@ -82,9 +82,9 @@ const About = () => {
         <link
           rel="canonical"
           href="https://www.tapovanswisscampsofficial.com/about"
-        />
-        {/* ✅ Structured Data for Google */}
-        <script
+        /> */}
+      {/* ✅ Structured Data for Google */}
+      {/* <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
@@ -105,8 +105,8 @@ const About = () => {
                 "Tapovan Swiss Camps offers luxury tent stays, peaceful nature views, and adventure activities in Rishikesh.",
             }),
           }}
-        />
-      </Head>
+        /> */}
+      {/* </Head> */}
 
       <section
         className={isMobile ? "about-area ptb-200" : "about-area ptb-60"}

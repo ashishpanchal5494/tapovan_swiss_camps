@@ -1,9 +1,6 @@
 import type { Metadata } from "next";
-
 import { Readex_Pro } from "next/font/google";
-
 import "./globals.css";
-
 import "../public/assets/css/remixicon.css";
 import "../public/assets/css/responsive.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -11,7 +8,6 @@ import "boxicons/css/boxicons.min.css";
 
 import Layout from "@/components/Layout";
 import WhatsAppButton from "@/components/WhatsAppButton";
-
 import Script from "next/script";
 
 const readexPro = Readex_Pro({
@@ -44,9 +40,9 @@ export const metadata: Metadata = {
   ],
   metadataBase: new URL("https://www.tapovanswisscampsofficial.com"),
   alternates: {
-    canonical: "/",
+    canonical: "https://www.tapovanswisscampsofficial.com/",
     languages: {
-      "en-IN": "/en-IN",
+      "en-IN": "https://www.tapovanswisscampsofficial.com/en-IN",
     },
   },
   authors: [
@@ -171,7 +167,7 @@ const schemaData = {
     closes: "23:59",
   },
   sameAs: [
-    "https://www.facebook.com/tapovanswisscamps",
+    "https://www.facebook.com/61574061994310",
     "https://www.instagram.com/tapovanswisscamps",
   ],
   hasOfferCatalog: {
@@ -227,7 +223,10 @@ export default function RootLayout({
         <meta name="application-name" content="Tapovan Swiss Camps" />
         <meta name="msapplication-TileColor" content="#507650" />
 
-        {/* Preload critical resources */}
+        <link
+          rel="canonical"
+          href="https://www.tapovanswisscampsofficial.com/"
+        />
         <link rel="preload" href="/assets/css/remixicon.css" as="style" />
         <link rel="preload" href="/assets/css/responsive.css" as="style" />
         <link
@@ -236,7 +235,6 @@ export default function RootLayout({
           as="style"
         />
 
-        {/* Preconnect to important origins */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
           rel="preconnect"

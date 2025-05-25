@@ -315,8 +315,9 @@ Crew faculty awesome everyone’s friendly nature and good persons👍.`,
                       width={80}
                       height={80}
                       src={testimonial.image}
-                      alt={testimonial.name}
+                      alt={`Review by ${testimonial.name}`}
                       loading="lazy"
+                      layout="responsive"
                     />
                     <h3>{testimonial.name}</h3>
                   </div>

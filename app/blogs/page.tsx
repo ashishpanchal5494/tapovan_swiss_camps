@@ -372,74 +372,10 @@ const Blogs: React.FC = () => {
   return (
     <>
       <Head>
-        <title>Adventure Blogs – Tapovan Swiss Camps, Rishikesh</title>
+        <title>Blogs – Tapovan Swiss Camps</title>
         <meta
           name="description"
-          content="Explore our adventure blogs covering camping, rafting, bungee jumping, and travel tips in Rishikesh. Plan your unforgettable trip with Tapovan Swiss Camps."
-        />
-        <meta name="robots" content="index, follow" />
-        <meta
-          property="og:title"
-          content="Adventure Blog – Tapovan Swiss Camps"
-        />
-        <meta
-          property="og:description"
-          content="Camping, rafting, bungee jumping, and travel experiences in Rishikesh – all in one blog from Tapovan Swiss Camps."
-        />
-        <meta property="og:type" content="website" />
-        <meta
-          property="og:url"
-          content="https://www.tapovanswisscampsofficial.com/blogs"
-        />
-        <meta
-          property="og:image"
-          content="https://www.tapovanswisscampsofficial.com/assets/img/blog/camping_rishikesh.webp"
-        />
-        <link
-          rel="canonical"
-          href="https://www.tapovanswisscampsofficial.com/blogs"
-        />
-
-        {/* ✅ Structured Data for Google */}
-
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Blog",
-              name: "Tapovan Swiss Camps Blogs",
-              url: "https://www.tapovanswisscampsofficial.com/blogs",
-              description:
-                "Adventure travel blog with articles on camping, rafting, and things to do in Rishikesh.",
-              publisher: {
-                "@type": "Organization",
-                name: "Tapovan Swiss Camps",
-                logo: {
-                  "@type": "ImageObject",
-                  url: "https://www.tapovanswisscampsofficial.com/assets/img/blog/camping_rishikesh.webp",
-                },
-              },
-              blogPost: blogData.map((post) => ({
-                "@type": "BlogPosting",
-                headline: post.title,
-                image: `https://www.tapovanswisscampsofficial.com/${post.image}`,
-                url: `https://www.tapovanswisscampsofficial.com/blogs/${post.slug}`,
-                author: {
-                  "@type": "Organization",
-                  name: "Tapovan Swiss Camps",
-                },
-                publisher: {
-                  "@type": "Organization",
-                  name: "Tapovan Swiss Camps",
-                },
-                mainEntityOfPage: {
-                  "@type": "WebPage",
-                  "@id": `https://www.tapovanswisscampsofficial.com/blogs/${post.slug}`,
-                },
-              })),
-            }),
-          }}
+          content="Explore travel tips and adventure guides for Rishikesh including camping, rafting, and more from Tapovan Swiss Camps."
         />
       </Head>
 

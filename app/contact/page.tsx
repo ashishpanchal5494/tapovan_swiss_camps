@@ -114,7 +114,7 @@ const Contact = () => {
           content="https://tapovanswisscampsofficial.com/assets/img/room/pool.webp"
         />
 
-        {/* Schema.org markup */}
+        {/* Schema.org ContactPage markup */}
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
@@ -179,6 +179,28 @@ const Contact = () => {
             sameAs: [
               "https://www.facebook.com/61574061994310",
               "https://www.instagram.com/tapovanswisscampsofficial",
+            ],
+          })}
+        </script>
+
+        {/* Breadcrumb Schema */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              {
+                "@type": "ListItem",
+                position: 1,
+                name: "Home",
+                item: "https://tapovanswisscampsofficial.com",
+              },
+              {
+                "@type": "ListItem",
+                position: 2,
+                name: "Contact",
+                item: "https://tapovanswisscampsofficial.com/contact",
+              },
             ],
           })}
         </script>

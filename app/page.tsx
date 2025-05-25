@@ -1,7 +1,8 @@
 import HomePageClient from "@/components/HomePageClient";
+import { Metadata } from "next";
 
 // ✅ Enhanced SEO Metadata with Semantic Structure
-export const metadata = {
+export const metadata: Metadata = {
   title:
     "Luxury Camping in Rishikesh | AC Tents, Yoga, Rafting - Tapovan Swiss Camps",
   description:
@@ -52,7 +53,7 @@ export const metadata = {
     description:
       "5-star camping experience with AC tents, adventure sports, and yoga retreats by the Ganges. Perfect for couples and families.",
     images: [
-      "https://tapovanswisscampsofficial.com/assets/assets/img/room/garden.webp",
+      "https://tapovanswisscampsofficial.com/assets/img/room/garden.webp",
     ],
     site: "@TapovanSwissCamps",
     creator: "@TapovanSwissCamps",
@@ -82,11 +83,6 @@ export const metadata = {
   icons: {
     icon: "/favicon.ico",
     apple: "/apple-touch-icon.png",
-  },
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-    maximumScale: 1,
   },
 };
 

@@ -287,11 +287,10 @@ const FAQ = () => {
                             itemProp="mainEntity"
                             itemType="https://schema.org/Question"
                           >
-                            <a
+                            <button
                               className={`accordion-title ${
                                 activeIndex === actualIndex ? "active" : ""
                               }`}
-                              href="#"
                               onClick={(e) => {
                                 e.preventDefault();
                                 toggleAccordion(actualIndex);
@@ -308,7 +307,7 @@ const FAQ = () => {
                                 }`}
                               ></i>
                               {`${actualIndex + 1}. ${item.question}`}
-                            </a>
+                            </button>
 
                             <div
                               className={`accordion-content ${
