@@ -7,7 +7,7 @@ import "aos/dist/aos.css";
 import { notFound, useParams } from "next/navigation";
 import Head from "next/head";
 import Link from "next/link";
-import { GetStaticPaths, GetStaticProps } from "next";
+import { GetStaticPaths } from "next";
 
 const blogData = [
   {

@@ -144,12 +144,9 @@ const TentsClient: React.FC = () => {
     setIsClient(true);
   }, []);
 
-  if (!isClient) {
-    return <Loading />;
-  }
-
-  const structuredData = useMemo(
-    () => ({
+  const structuredData = useMemo(() => {
+    if (!isClient) return null;
+    return {
       "@context": "https://schema.org",
       "@type": "ItemList",
       itemListElement: tentRooms.map((room, index) => ({
@@ -170,9 +167,13 @@ const TentsClient: React.FC = () => {
           },
         },
       })),
-    }),
-    []
-  );
+    };
+  }, [isClient]);
+
+  if (!isClient) {
+    return <Loading />;
+  }
+
   return (
     <>
       <Head>
