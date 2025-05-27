@@ -375,9 +375,15 @@ const cleanContentForDescription = (content: string, maxLength = 160) => {
   return cleaned;
 };
 
-const BlogDetailsPage: React.FC = () => {
+export default function BlogDetailsPage({
+  params,
+}: {
+  params: { slug: string };
+}) {
   const [isMobile, setIsMobile] = useState(false);
   const { slug } = useParams();
+
+  console.log(params);
 
   useEffect(() => {
     const handleResize = () => {
@@ -556,6 +562,4 @@ const BlogDetailsPage: React.FC = () => {
       </div>
     </>
   );
-};
-
-export default BlogDetailsPage;
+}

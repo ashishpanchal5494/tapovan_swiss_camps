@@ -503,8 +503,6 @@ export async function generateMetadata({
     },
   };
 }
-const BlogDetails: React.FC = () => {
-  return <BlogDetailsPage />;
-};
-
-export default BlogDetails;
+export default function BlogDetails({ params }: { params: { slug: string } }) {
+  return <BlogDetailsPage params={params} />;
+}
