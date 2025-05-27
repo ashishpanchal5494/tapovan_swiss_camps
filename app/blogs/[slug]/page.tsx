@@ -432,7 +432,7 @@ const extractKeywords = (title: string, content: string, category: string) => {
 export async function generateMetadata({
   params,
 }: {
-  params: { slug: string };
+  params: { slug: any };
 }): Promise<Metadata> {
   // Make sure this is an async function
   const blog = blogData.find((b) => b.slug === params.slug); // This is synchronous, but if you were fetching data, you'd await it
