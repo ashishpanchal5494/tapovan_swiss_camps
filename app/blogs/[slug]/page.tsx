@@ -503,6 +503,6 @@ export async function generateMetadata({
     },
   };
 }
-export default function BlogDetails({ params }: { params: string }) {
+export default function BlogDetails({ params }: { params: any }) {
   return <BlogDetailsPage params={params} />;
 }

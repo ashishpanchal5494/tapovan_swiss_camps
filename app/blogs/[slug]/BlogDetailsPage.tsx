@@ -375,7 +375,7 @@ const cleanContentForDescription = (content: string, maxLength = 160) => {
   return cleaned;
 };
 
-export default function BlogDetailsPage({ params }: { params: string }) {
+export default function BlogDetailsPage({ params }: { params: any }) {
   const [isMobile, setIsMobile] = useState(false);
   const { slug } = useParams();
 
