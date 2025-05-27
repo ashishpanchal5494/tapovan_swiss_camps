@@ -1,5 +1,9 @@
-import { Metadata } from "next"; // Import Metadata type
-import BlogDetailsPage from "./BlogDetailsPage";
+"use client";
+
+import React, { useEffect, useState } from "react";
+import Image from "next/image";
+import { notFound, useParams } from "next/navigation";
+import Link from "next/link";
 
 // --- Blog Data (Assuming this is fetched or imported) ---
 const blogData = [
@@ -356,155 +360,202 @@ Would you like a **featured image** for this blog? I can generate one showing a 
 const BASE_URL = "https://www.tapovanswisscampsofficial.com"; // **IMPORTANT: Replace with your actual domain**
 
 // // Function to clean up content for meta description (remove HTML entities like &lsquo; and shorten)
-// Function to clean up content for meta description
 const cleanContentForDescription = (content: string, maxLength = 160) => {
-  // Replace common HTML entities and markdown syntax
-  const replacements: Record<string, string> = {
-    "&lsquo;": "'",
-    "&rsquo;": "'",
-    "&ldquo;": '"',
-    "&rdquo;": '"',
-    "&mdash;": "—",
-    "&nbsp;": " ",
-    "\\*\\*": "", // Remove markdown bold
-    "\\*": "", // Remove markdown italics
-    "\\[.*\\]\\(.*\\)": "", // Remove markdown links
-    "#+": "", // Remove markdown headings
-    "-\\s": "", // Remove list markers
-  };
-
-  let cleaned = content;
-  for (const [pattern, replacement] of Object.entries(replacements)) {
-    cleaned = cleaned.replace(new RegExp(pattern, "g"), replacement);
-  }
-
-  // Remove HTML tags
-  cleaned = cleaned.replace(/(<([^>]+)>)/gi, "");
-
-  // Get the first meaningful paragraph (not empty after cleaning)
-  const paragraphs = cleaned.split("\n").filter((p) => p.trim().length > 0);
-  cleaned = paragraphs.length > 0 ? paragraphs[0] : cleaned;
-
-  // Trim to max length without cutting words in middle
+  let cleaned = content
+    .replace(/&lsquo;/g, "'")
+    .replace(/&ldquo;/g, '"')
+    .replace(/&rdquo;/g, '"')
+    .replace(/&mdash;/g, "—")
+    .replace(/&nbsp;/g, " ")
+    .replace(/(<([^>]+)>)/gi, ""); // Remove HTML tags
+  cleaned = cleaned.split("\n")[0].trim(); // Take only the first paragraph
   if (cleaned.length > maxLength) {
-    cleaned = cleaned.substring(0, maxLength);
-    cleaned =
-      cleaned.substring(0, Math.min(cleaned.length, cleaned.lastIndexOf(" "))) +
-      "...";
+    cleaned = cleaned.substring(0, maxLength - 3) + "...";
   }
-
   return cleaned;
 };
 
-// Function to extract keywords from content
-const extractKeywords = (title: string, content: string, category: string) => {
-  const commonWords = new Set([
-    "the",
-    "and",
-    "for",
-    "with",
-    "your",
-    "this",
-    "that",
-  ]);
-  const words = [
-    ...title.toLowerCase().split(/\s+/),
-    ...content.toLowerCase().split(/\s+/),
-    category.toLowerCase(),
-  ];
+const BlogDetailsPage: React.FC = () => {
+  const [isMobile, setIsMobile] = useState(false);
+  const { slug } = useParams();
 
-  // Count word frequency
-  const wordCount: Record<string, number> = {};
-  words.forEach((word) => {
-    const cleanWord = word.replace(/[^a-z0-9']/g, "");
-    if (cleanWord.length > 2 && !commonWords.has(cleanWord)) {
-      wordCount[cleanWord] = (wordCount[cleanWord] || 0) + 1;
-    }
-  });
-
-  // Sort by frequency and take top 15
-  return Object.entries(wordCount)
-    .sort((a, b) => b[1] - a[1])
-    .slice(0, 15)
-    .map(([word]) => word);
-};
-
-export async function generateMetadata({
-  params,
-}: {
-  params: { slug: string };
-}): Promise<Metadata> {
-  // Make sure this is an async function
-  const blog = blogData.find((b) => b.slug === params.slug); // This is synchronous, but if you were fetching data, you'd await it
-
-  if (!blog) {
-    return {
-      title: "Blog Post Not Found - Tapovan Swiss Camps",
-      description: "The blog post you are looking for does not exist.",
-      alternates: {
-        canonical: `${BASE_URL}/blog/${params.slug}`,
-      },
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
     };
-  }
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
-  const description = cleanContentForDescription(blog.content);
-  const keywords = extractKeywords(blog.title, blog.content, blog.category);
-  const publishedTime = "2023-05-02T12:00:00Z"; // Should be dynamic in real app
-  const modifiedTime = "2024-05-22T12:00:00Z"; // Should be dynamic in real app
+  const blog = blogData.find((b) => b.slug === slug);
+  if (!blog) return notFound();
 
-  return {
-    metadataBase: new URL(BASE_URL),
-    title: `${blog.title} | Tapovan Swiss Camps Blog`,
-    description,
-    keywords,
-    alternates: {
-      canonical: `${BASE_URL}/blogs/${blog.slug}`,
+  // // Structured Data (JSON-LD) for Article Schema
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: blog.title,
+    image: [`${BASE_URL}${blog.image}`],
+    publishedTime: "2023-05-02T12:00:00Z",
+    modifiedTime: "2024-05-22T12:00:00Z",
+    author: {
+      "@type": "Organization", // Or "Person" if you have specific authors
+      name: "Tapovan Swiss Camps", // Or author's name if "Person"
+      url: BASE_URL,
     },
-    openGraph: {
-      title: `${blog.title} | Tapovan Swiss Camps`,
-      description,
-      url: `${BASE_URL}/blogs/${blog.slug}`,
-      siteName: "Tapovan Swiss Camps",
-      locale: "en_IN",
-      type: "article",
-      publishedTime,
-      modifiedTime,
-      authors: ["Tapovan Swiss Camps"],
-      tags: keywords,
-      images: [
-        {
-          url: `${BASE_URL}${blog.image}`,
-          width: 1200,
-          height: 630,
-          alt: blog.title,
-          type: "image/webp",
-        },
-      ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: `${blog.title} | Tapovan Swiss Camps`,
-      description,
-      creator: "@tapovancamps", // Add your Twitter handle
-      images: [`${BASE_URL}${blog.image}`],
-    },
-    robots: {
-      index: true,
-      follow: true,
-      nocache: false,
-      googleBot: {
-        index: true,
-        follow: true,
-        noimageindex: false,
-        "max-video-preview": -1,
-        "max-image-preview": "large",
-        "max-snippet": -1,
+    publisher: {
+      "@type": "Organization",
+      name: "Tapovan Swiss Camps",
+      logo: {
+        "@type": "ImageObject",
+        url: `${BASE_URL}/assets/img/logo.png`, // **IMPORTANT: Replace with path to your organization's logo**
+        width: 600,
+        height: 60,
       },
+    },
+    description: cleanContentForDescription(blog.content, 500), // Longer description for schema
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `${BASE_URL}/blogs/${blog.slug}`,
     },
   };
-}
-const BlogDetails: React.FC = () => {
-  return <BlogDetailsPage />;
+
+  return (
+    <>
+      {/* Structured Data Script (for Article Schema) */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
+
+      <div
+        className={
+          isMobile
+            ? "blog-area blog-details-area ptb-200"
+            : "blog-area blog-details-area pt-60"
+        }
+      >
+        <div className="container">
+          {/* Blog Image */}
+          <div className="blog-details-image">
+            <Image
+              src={blog.image}
+              alt={`${blog.title} - Tapovan Swiss Camp`}
+              width={600} // Increased width for better quality
+              height={400} // Adjusted height for common aspect ratio (16:9)
+              priority
+              quality={85}
+            />
+          </div>
+
+          {/* Blog Title */}
+          <h1>{blog.title}</h1>
+
+          {/* Blog Content */}
+          <div className="blog-details-content">
+            {/* Using dangerouslySetInnerHTML on the full content can be risky if content isn't sanitized.
+                Consider a library like 'html-react-parser' or sanitizing input properly.
+                For demonstration, keeping your current approach. */}
+            <div>
+              {blog.content.split("\n").map((para, idx) => (
+                <div
+                  dangerouslySetInnerHTML={{ __html: para.trim() }}
+                  key={idx}
+                ></div>
+              ))}
+            </div>
+          </div>
+
+          {/* Social Sharing */}
+          <div className="social-sharing">
+            <Link
+              style={{ textDecoration: "none" }}
+              href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(
+                blog.title
+              )}&url=${encodeURIComponent(
+                `${BASE_URL}/blog/${blog.slug}` // Use BASE_URL here
+              )}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Share on Twitter
+            </Link>
+            <Link
+              style={{ textDecoration: "none" }}
+              href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
+                `${BASE_URL}/blog/${blog.slug}` // Use BASE_URL here
+              )}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Share on Facebook
+            </Link>
+          </div>
+
+          {/* Related Posts */}
+          <div className="related-posts">
+            <h3>You Might Also Like</h3>
+            <div className="row">
+              {blogData
+                .filter((b) => b.id !== blog.id)
+                .slice(0, 3)
+                .map((related, key) => (
+                  <div key={key} className="col-lg-4 col-md-6">
+                    <div className="content-blog blog-grid">
+                      <div className="inner">
+                        <div className="thumbnail">
+                          <Link
+                            href={`/blogs/${related.slug}`} // Consistent slug path
+                            key={related.id}
+                          >
+                            <Image
+                              width={600}
+                              height={400} // Adjusted height for consistency
+                              src={
+                                related.image.startsWith("/")
+                                  ? related.image
+                                  : `/${related.image}`
+                              }
+                              alt={related.title}
+                            />
+                          </Link>
+                          <div className="blog-category">
+                            <Link style={{ textDecoration: "none" }} href="#">
+                              {related.category}
+                            </Link>
+                          </div>
+                        </div>
+                        <div className="content">
+                          <h5 className="title">
+                            <Link
+                              style={{ textDecoration: "none" }}
+                              href={`/blog/${related.slug}`} // Consistent slug path
+                            >
+                              {related.title}
+                            </Link>
+                          </h5>
+                          <div className="read-more-btn">
+                            <Link
+                              style={{ textDecoration: "none" }}
+                              className="blog-btn"
+                              href={`/blog/${related.slug}`} // Consistent slug path
+                            >
+                              Read More{" "}
+                              <i className="bx bx-right-arrow-alt"></i>
+                            </Link>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
 };
 
-export default BlogDetails;
+export default BlogDetailsPage;

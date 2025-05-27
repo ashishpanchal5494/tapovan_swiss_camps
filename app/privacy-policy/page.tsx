@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import Head from "next/head";
+
 import Loading from "@/components/Loading";
 
 function PrivacyPolicy() {
@@ -77,59 +77,15 @@ function PrivacyPolicy() {
 
   return (
     <>
-      <Head>
-        <title>
-          Privacy Policy | Tapovan Swiss Camps - Rishikesh Luxury Camping
-        </title>
-        <meta
-          name="description"
-          content="Read our comprehensive privacy policy explaining how Tapovan Swiss Camps collects, uses, and protects your personal data for bookings and website interactions."
-        />
-        <meta
-          name="keywords"
-          content="privacy policy rishikesh camping, data protection swiss tents, tapovan camps privacy, booking data security, cookie policy adventure camps"
-        />
-        <link
-          rel="canonical"
-          href="https://tapovanswisscampsofficial.com/privacy-policy"
-        />
-
-        {/* Open Graph Tags */}
-        <meta
-          property="og:title"
-          content="Privacy Policy | Tapovan Swiss Camps"
-        />
-        <meta
-          property="og:description"
-          content="Learn how we protect your personal information when you book luxury camping experiences in Rishikesh with Tapovan Swiss Camps."
-        />
-        <meta
-          property="og:url"
-          content="https://tapovanswisscampsofficial.com/privacy-policy"
-        />
-        <meta property="og:type" content="website" />
-
-        {/* Twitter Card */}
-        <meta name="twitter:card" content="summary" />
-        <meta
-          name="twitter:title"
-          content="Privacy Policy - Tapovan Swiss Camps"
-        />
-        <meta
-          name="twitter:description"
-          content="Your data security matters to us. Read how we handle information for Rishikesh camping bookings and website interactions."
-        />
-
-        {/* Structured Data */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(privacyFAQSchema) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-        />
-      </Head>
+      {/* Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(privacyFAQSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
 
       <div
         className={isMobile ? "page-content ptb-200" : "page-content ptb-60"}

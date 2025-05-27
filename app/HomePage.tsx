@@ -10,18 +10,16 @@ import VideoSection from "@/components/VideoSection";
 import Link from "next/link";
 import Script from "next/script";
 
-// import BlogPage from "./blogs/blogPage";
-
 const Tents = dynamic(() => import("../app/tents/page"), {
   ssr: false,
   loading: () => <Loading />,
 });
-const FAQPage = dynamic(() => import("./faq/FAQPage"), {
+const FAQ = dynamic(() => import("../app/faq/page"), {
   ssr: false,
   loading: () => <Loading />,
 });
 
-const BlogPage = dynamic(() => import("./blogs/blogPage"), {
+const Blogs = dynamic(() => import("../app/blogs/page"), {
   ssr: false,
   loading: () => <Loading />,
 });
@@ -30,7 +28,7 @@ const Testimonial = dynamic(() => import("../app/testimonial/page"), {
   loading: () => <Loading />,
 });
 
-export default function Home() {
+export default function HomePage() {
   const [showPopup, setShowPopup] = useState(false);
   const [countdown, setCountdown] = useState(5);
   const [userLocation, setUserLocation] = useState<{
@@ -234,8 +232,8 @@ export default function Home() {
         <Tents />
         <VideoSection />
         <Testimonial />
-        <FAQPage />
-        <BlogPage />
+        <FAQ />
+        <Blogs />
 
         {/* Google Maps Popup */}
         {showPopup && (
