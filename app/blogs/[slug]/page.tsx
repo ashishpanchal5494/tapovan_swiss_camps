@@ -506,12 +506,11 @@ export async function generateMetadata({
   };
 }
 
-interface PageProps {
-  params: {
-    slug: string;
-  };
-}
-export default function BlogDetails({ params }: PageProps) {
+type BlogPageProps = PageProps<{
+  params: { slug: string };
+  searchParams: Record<string, string | string[] | undefined>;
+}>;
+export default function BlogDetails({ params }: BlogPageProps) {
   const { slug } = params;
   const blog = blogData.find((item) => item.slug === slug);
 
