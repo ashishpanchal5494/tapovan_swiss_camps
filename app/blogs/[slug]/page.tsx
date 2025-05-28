@@ -1,4 +1,4 @@
-import { Metadata } from "next"; // Import Metadata type
+import { Metadata, ResolvingMetadata } from "next"; // Import Metadata type
 import BlogDetailsPage from "./BlogDetailsPage";
 import { notFound } from "next/navigation";
 
@@ -430,14 +430,19 @@ const extractKeywords = (title: string, content: string, category: string) => {
     .map(([word]) => word);
 };
 
-export async function generateMetadata({
-  params,
-}: {
+type Props = {
   params: { slug: string };
-}): Promise<Metadata> {
+  searchParams: { [key: string]: string | string[] | undefined };
+};
+
+export async function generateMetadata(
+  { params, searchParams }: Props,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
   // Make sure this is an async function
-  const { slug } = await params;
+  const { slug } = params;
   const blog = blogData.find((b) => b.slug === slug); // This is synchronous, but if you were fetching data, you'd await it
+  console.log(searchParams);
 
   if (!blog) {
     return {
@@ -449,6 +454,7 @@ export async function generateMetadata({
     };
   }
 
+  const previousImages = (await parent).openGraph?.images || [];
   const description = cleanContentForDescription(blog.content);
   const keywords = extractKeywords(blog.title, blog.content, blog.category);
   const publishedTime = "2023-05-02T12:00:00Z"; // Should be dynamic in real app
@@ -481,6 +487,7 @@ export async function generateMetadata({
           alt: blog.title,
           type: "image/webp",
         },
+        ...previousImages,
       ],
     },
     twitter: {
@@ -506,12 +513,8 @@ export async function generateMetadata({
   };
 }
 
-export default async function BlogDetails({
-  params,
-}: {
-  params: { slug: string };
-}) {
-  const { slug } = await params;
+export default function BlogDetails({ params }: { params: { slug: string } }) {
+  const { slug } = params;
   const blog = blogData.find((item) => item.slug === slug);
 
   if (!blog) return notFound();
