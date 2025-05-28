@@ -513,10 +513,6 @@ Would you like a **featured image** for this blog? I can generate one showing a 
 //   };
 // }
 
-export default function BlogDetails({ params }: { params: { slug: string } }) {
-  const { slug } = params;
-  const blog = blogData.find((item) => item.slug === slug);
-
-  if (!blog) return notFound();
-  return <BlogDetailsPage blog={blog} />;
+export default function BlogDetails() {
+  return <BlogDetailsPage />;
 }

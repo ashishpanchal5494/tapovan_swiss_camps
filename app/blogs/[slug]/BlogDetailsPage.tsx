@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import { notFound } from "next/navigation";
+import { notFound, useParams } from "next/navigation";
 import Link from "next/link";
 
 type Blog = {
@@ -383,8 +383,9 @@ const cleanContentForDescription = (content: string, maxLength = 160) => {
   return cleaned;
 };
 
-export default function BlogDetailsPage({ blog }: { blog: Blog }) {
+export default function BlogDetailsPage() {
   const [isMobile, setIsMobile] = useState(false);
+  const { slug } = useParams();
 
   useEffect(() => {
     const handleResize = () => {
@@ -395,6 +396,7 @@ export default function BlogDetailsPage({ blog }: { blog: Blog }) {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  const blog = blogData.find((item) => item.slug === slug);
   if (!blog) return notFound();
 
   // // Structured Data (JSON-LD) for Article Schema
