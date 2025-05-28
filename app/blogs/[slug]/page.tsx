@@ -434,9 +434,10 @@ export async function generateMetadata({
   params,
 }: {
   params: { slug: string };
+  searchParams?: Record<string, string | string[] | undefined>;
 }): Promise<Metadata> {
   // Make sure this is an async function
-  const { slug } = params;
+  const { slug } = await params;
   const blog = blogData.find((b) => b.slug === slug); // This is synchronous, but if you were fetching data, you'd await it
 
   if (!blog) {
@@ -506,12 +507,13 @@ export async function generateMetadata({
   };
 }
 
-type BlogPageProps = PageProps<{
+export default async function BlogDetails({
+  params,
+}: {
   params: { slug: string };
-  searchParams: Record<string, string | string[] | undefined>;
-}>;
-export default function BlogDetails({ params }: BlogPageProps) {
-  const { slug } = params;
+  searchParams?: Record<string, string | string[] | undefined>;
+}) {
+  const { slug } = await params;
   const blog = blogData.find((item) => item.slug === slug);
 
   if (!blog) return notFound();
