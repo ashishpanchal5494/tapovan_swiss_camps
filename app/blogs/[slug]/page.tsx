@@ -1,5 +1,6 @@
 import { Metadata } from "next"; // Import Metadata type
 import BlogDetailsPage from "./BlogDetailsPage";
+import { notFound } from "next/navigation";
 
 // --- Blog Data (Assuming this is fetched or imported) ---
 const blogData = [
@@ -432,10 +433,11 @@ const extractKeywords = (title: string, content: string, category: string) => {
 export async function generateMetadata({
   params,
 }: {
-  params: { slug: any };
+  params: { slug: string };
 }): Promise<Metadata> {
   // Make sure this is an async function
-  const blog = blogData.find((b) => b.slug === params.slug); // This is synchronous, but if you were fetching data, you'd await it
+  const { slug } = await params;
+  const blog = blogData.find((b) => b.slug === slug); // This is synchronous, but if you were fetching data, you'd await it
 
   if (!blog) {
     return {
@@ -503,6 +505,14 @@ export async function generateMetadata({
     },
   };
 }
-export default function BlogDetails() {
-  return <BlogDetailsPage />;
+export default async function BlogDetails({
+  params,
+}: {
+  params: { slug: string };
+}) {
+  const { slug } = await params;
+  const blog = blogData.find((item) => item.slug === slug);
+
+  if (!blog) return notFound();
+  return <BlogDetailsPage blog={blog} />;
 }

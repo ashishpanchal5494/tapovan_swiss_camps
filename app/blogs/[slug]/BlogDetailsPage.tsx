@@ -2,10 +2,18 @@
 
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import { notFound, useParams } from "next/navigation";
+import { notFound } from "next/navigation";
 import Link from "next/link";
 
-// --- Blog Data (Assuming this is fetched or imported) ---
+type Blog = {
+  id: number;
+  image: string;
+  category: string;
+  title: string;
+  slug: string;
+  content: string;
+};
+
 const blogData = [
   {
     id: 1,
@@ -375,9 +383,8 @@ const cleanContentForDescription = (content: string, maxLength = 160) => {
   return cleaned;
 };
 
-export default function BlogDetailsPage() {
+export default function BlogDetailsPage({ blog }: { blog: Blog }) {
   const [isMobile, setIsMobile] = useState(false);
-  const { slug } = useParams();
 
   useEffect(() => {
     const handleResize = () => {
@@ -388,7 +395,6 @@ export default function BlogDetailsPage() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const blog = blogData.find((b) => b.slug === slug);
   if (!blog) return notFound();
 
   // // Structured Data (JSON-LD) for Article Schema
