@@ -1,4 +1,4 @@
-import { Metadata, ResolvingMetadata } from "next"; // Import Metadata type
+// import { Metadata, ResolvingMetadata } from "next"; // Import Metadata type
 import BlogDetailsPage from "./BlogDetailsPage";
 import { notFound } from "next/navigation";
 
@@ -354,164 +354,164 @@ Would you like a **featured image** for this blog? I can generate one showing a 
 ];
 
 // Define your website's base URL for canonical and Open Graph URLs
-const BASE_URL = "https://www.tapovanswisscampsofficial.com"; // **IMPORTANT: Replace with your actual domain**
+// const BASE_URL = "https://www.tapovanswisscampsofficial.com"; // **IMPORTANT: Replace with your actual domain**
 
 // // Function to clean up content for meta description (remove HTML entities like &lsquo; and shorten)
 // Function to clean up content for meta description
-const cleanContentForDescription = (content: string, maxLength = 160) => {
-  // Replace common HTML entities and markdown syntax
-  const replacements: Record<string, string> = {
-    "&lsquo;": "'",
-    "&rsquo;": "'",
-    "&ldquo;": '"',
-    "&rdquo;": '"',
-    "&mdash;": "—",
-    "&nbsp;": " ",
-    "\\*\\*": "", // Remove markdown bold
-    "\\*": "", // Remove markdown italics
-    "\\[.*\\]\\(.*\\)": "", // Remove markdown links
-    "#+": "", // Remove markdown headings
-    "-\\s": "", // Remove list markers
-  };
+// const cleanContentForDescription = (content: string, maxLength = 160) => {
+//   // Replace common HTML entities and markdown syntax
+//   const replacements: Record<string, string> = {
+//     "&lsquo;": "'",
+//     "&rsquo;": "'",
+//     "&ldquo;": '"',
+//     "&rdquo;": '"',
+//     "&mdash;": "—",
+//     "&nbsp;": " ",
+//     "\\*\\*": "", // Remove markdown bold
+//     "\\*": "", // Remove markdown italics
+//     "\\[.*\\]\\(.*\\)": "", // Remove markdown links
+//     "#+": "", // Remove markdown headings
+//     "-\\s": "", // Remove list markers
+//   };
 
-  let cleaned = content;
-  for (const [pattern, replacement] of Object.entries(replacements)) {
-    cleaned = cleaned.replace(new RegExp(pattern, "g"), replacement);
-  }
+//   let cleaned = content;
+//   for (const [pattern, replacement] of Object.entries(replacements)) {
+//     cleaned = cleaned.replace(new RegExp(pattern, "g"), replacement);
+//   }
 
-  // Remove HTML tags
-  cleaned = cleaned.replace(/(<([^>]+)>)/gi, "");
+//   // Remove HTML tags
+//   cleaned = cleaned.replace(/(<([^>]+)>)/gi, "");
 
-  // Get the first meaningful paragraph (not empty after cleaning)
-  const paragraphs = cleaned.split("\n").filter((p) => p.trim().length > 0);
-  cleaned = paragraphs.length > 0 ? paragraphs[0] : cleaned;
+//   // Get the first meaningful paragraph (not empty after cleaning)
+//   const paragraphs = cleaned.split("\n").filter((p) => p.trim().length > 0);
+//   cleaned = paragraphs.length > 0 ? paragraphs[0] : cleaned;
 
-  // Trim to max length without cutting words in middle
-  if (cleaned.length > maxLength) {
-    cleaned = cleaned.substring(0, maxLength);
-    cleaned =
-      cleaned.substring(0, Math.min(cleaned.length, cleaned.lastIndexOf(" "))) +
-      "...";
-  }
+//   // Trim to max length without cutting words in middle
+//   if (cleaned.length > maxLength) {
+//     cleaned = cleaned.substring(0, maxLength);
+//     cleaned =
+//       cleaned.substring(0, Math.min(cleaned.length, cleaned.lastIndexOf(" "))) +
+//       "...";
+//   }
 
-  return cleaned;
-};
+//   return cleaned;
+// };
 
 // Function to extract keywords from content
-const extractKeywords = (title: string, content: string, category: string) => {
-  const commonWords = new Set([
-    "the",
-    "and",
-    "for",
-    "with",
-    "your",
-    "this",
-    "that",
-  ]);
-  const words = [
-    ...title.toLowerCase().split(/\s+/),
-    ...content.toLowerCase().split(/\s+/),
-    category.toLowerCase(),
-  ];
+// const extractKeywords = (title: string, content: string, category: string) => {
+//   const commonWords = new Set([
+//     "the",
+//     "and",
+//     "for",
+//     "with",
+//     "your",
+//     "this",
+//     "that",
+//   ]);
+//   const words = [
+//     ...title.toLowerCase().split(/\s+/),
+//     ...content.toLowerCase().split(/\s+/),
+//     category.toLowerCase(),
+//   ];
 
-  // Count word frequency
-  const wordCount: Record<string, number> = {};
-  words.forEach((word) => {
-    const cleanWord = word.replace(/[^a-z0-9']/g, "");
-    if (cleanWord.length > 2 && !commonWords.has(cleanWord)) {
-      wordCount[cleanWord] = (wordCount[cleanWord] || 0) + 1;
-    }
-  });
+//   // Count word frequency
+//   const wordCount: Record<string, number> = {};
+//   words.forEach((word) => {
+//     const cleanWord = word.replace(/[^a-z0-9']/g, "");
+//     if (cleanWord.length > 2 && !commonWords.has(cleanWord)) {
+//       wordCount[cleanWord] = (wordCount[cleanWord] || 0) + 1;
+//     }
+//   });
 
-  // Sort by frequency and take top 15
-  return Object.entries(wordCount)
-    .sort((a, b) => b[1] - a[1])
-    .slice(0, 15)
-    .map(([word]) => word);
-};
+//   // Sort by frequency and take top 15
+//   return Object.entries(wordCount)
+//     .sort((a, b) => b[1] - a[1])
+//     .slice(0, 15)
+//     .map(([word]) => word);
+// };
 
-type Props = {
-  params: { slug: string };
-  searchParams: { [key: string]: string | string[] | undefined };
-};
+// type Props = {
+//   params: { slug: string };
+//   searchParams: { [key: string]: string | string[] | undefined };
+// };
 
-export async function generateMetadata(
-  { params, searchParams }: Props,
-  parent: ResolvingMetadata
-): Promise<Metadata> {
-  // Make sure this is an async function
-  const { slug } = params;
-  const blog = blogData.find((b) => b.slug === slug); // This is synchronous, but if you were fetching data, you'd await it
-  console.log(searchParams);
+// export async function generateMetadata(
+//   { params, searchParams }: Props,
+//   parent: ResolvingMetadata
+// ): Promise<Metadata> {
+//   // Make sure this is an async function
+//   const { slug } = params;
+//   const blog = blogData.find((b) => b.slug === slug); // This is synchronous, but if you were fetching data, you'd await it
+//   console.log(searchParams);
 
-  if (!blog) {
-    return {
-      title: "Blog Post Not Found - Tapovan Swiss Camps",
-      description: "The blog post you are looking for does not exist.",
-      alternates: {
-        canonical: `${BASE_URL}/blog/${params.slug}`,
-      },
-    };
-  }
+//   if (!blog) {
+//     return {
+//       title: "Blog Post Not Found - Tapovan Swiss Camps",
+//       description: "The blog post you are looking for does not exist.",
+//       alternates: {
+//         canonical: `${BASE_URL}/blog/${params.slug}`,
+//       },
+//     };
+//   }
 
-  const previousImages = (await parent).openGraph?.images || [];
-  const description = cleanContentForDescription(blog.content);
-  const keywords = extractKeywords(blog.title, blog.content, blog.category);
-  const publishedTime = "2023-05-02T12:00:00Z"; // Should be dynamic in real app
-  const modifiedTime = "2024-05-22T12:00:00Z"; // Should be dynamic in real app
+//   const previousImages = (await parent).openGraph?.images || [];
+//   const description = cleanContentForDescription(blog.content);
+//   const keywords = extractKeywords(blog.title, blog.content, blog.category);
+//   const publishedTime = "2023-05-02T12:00:00Z"; // Should be dynamic in real app
+//   const modifiedTime = "2024-05-22T12:00:00Z"; // Should be dynamic in real app
 
-  return {
-    metadataBase: new URL(BASE_URL),
-    title: `${blog.title} | Tapovan Swiss Camps Blog`,
-    description,
-    keywords,
-    alternates: {
-      canonical: `${BASE_URL}/blogs/${blog.slug}`,
-    },
-    openGraph: {
-      title: `${blog.title} | Tapovan Swiss Camps`,
-      description,
-      url: `${BASE_URL}/blogs/${blog.slug}`,
-      siteName: "Tapovan Swiss Camps",
-      locale: "en_IN",
-      type: "article",
-      publishedTime,
-      modifiedTime,
-      authors: ["Tapovan Swiss Camps"],
-      tags: keywords,
-      images: [
-        {
-          url: `${BASE_URL}${blog.image}`,
-          width: 1200,
-          height: 630,
-          alt: blog.title,
-          type: "image/webp",
-        },
-        ...previousImages,
-      ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: `${blog.title} | Tapovan Swiss Camps`,
-      description,
-      creator: "@tapovancamps", // Add your Twitter handle
-      images: [`${BASE_URL}${blog.image}`],
-    },
-    robots: {
-      index: true,
-      follow: true,
-      nocache: false,
-      googleBot: {
-        index: true,
-        follow: true,
-        noimageindex: false,
-        "max-video-preview": -1,
-        "max-image-preview": "large",
-        "max-snippet": -1,
-      },
-    },
-  };
-}
+//   return {
+//     metadataBase: new URL(BASE_URL),
+//     title: `${blog.title} | Tapovan Swiss Camps Blog`,
+//     description,
+//     keywords,
+//     alternates: {
+//       canonical: `${BASE_URL}/blogs/${blog.slug}`,
+//     },
+//     openGraph: {
+//       title: `${blog.title} | Tapovan Swiss Camps`,
+//       description,
+//       url: `${BASE_URL}/blogs/${blog.slug}`,
+//       siteName: "Tapovan Swiss Camps",
+//       locale: "en_IN",
+//       type: "article",
+//       publishedTime,
+//       modifiedTime,
+//       authors: ["Tapovan Swiss Camps"],
+//       tags: keywords,
+//       images: [
+//         {
+//           url: `${BASE_URL}${blog.image}`,
+//           width: 1200,
+//           height: 630,
+//           alt: blog.title,
+//           type: "image/webp",
+//         },
+//         ...previousImages,
+//       ],
+//     },
+//     twitter: {
+//       card: "summary_large_image",
+//       title: `${blog.title} | Tapovan Swiss Camps`,
+//       description,
+//       creator: "@tapovancamps", // Add your Twitter handle
+//       images: [`${BASE_URL}${blog.image}`],
+//     },
+//     robots: {
+//       index: true,
+//       follow: true,
+//       nocache: false,
+//       googleBot: {
+//         index: true,
+//         follow: true,
+//         noimageindex: false,
+//         "max-video-preview": -1,
+//         "max-image-preview": "large",
+//         "max-snippet": -1,
+//       },
+//     },
+//   };
+// }
 
 export default function BlogDetails({ params }: { params: { slug: string } }) {
   const { slug } = params;
