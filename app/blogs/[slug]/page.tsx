@@ -1,5 +1,5 @@
 // import { Metadata, ResolvingMetadata } from "next"; // Import Metadata type
-import { Metadata, ResolvingMetadata } from "next";
+import { Metadata } from "next";
 import BlogDetailsPage from "./BlogDetailsPage";
 
 // --- Blog Data (Assuming this is fetched or imported) ---
