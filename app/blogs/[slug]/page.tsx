@@ -505,7 +505,13 @@ export async function generateMetadata({
     },
   };
 }
-export default function BlogDetails({ params }: { params: { slug: string } }) {
+
+interface PageProps {
+  params: {
+    slug: string;
+  };
+}
+export default function BlogDetails({ params }: PageProps) {
   const { slug } = params;
   const blog = blogData.find((item) => item.slug === slug);
 
