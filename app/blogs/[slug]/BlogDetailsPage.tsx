@@ -5,15 +5,6 @@ import Image from "next/image";
 import { notFound, useParams } from "next/navigation";
 import Link from "next/link";
 
-type Blog = {
-  id: number;
-  image: string;
-  category: string;
-  title: string;
-  slug: string;
-  content: string;
-};
-
 const blogData = [
   {
     id: 1,
