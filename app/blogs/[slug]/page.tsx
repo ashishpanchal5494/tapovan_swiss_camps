@@ -436,7 +436,7 @@ export async function generateMetadata({
   params: { slug: string };
 }): Promise<Metadata> {
   // Make sure this is an async function
-  const { slug } = await params;
+  const { slug } = params;
   const blog = blogData.find((b) => b.slug === slug); // This is synchronous, but if you were fetching data, you'd await it
 
   if (!blog) {
@@ -505,12 +505,8 @@ export async function generateMetadata({
     },
   };
 }
-export default async function BlogDetails({
-  params,
-}: {
-  params: { slug: string };
-}) {
-  const { slug } = await params;
+export default function BlogDetails({ params }: { params: { slug: string } }) {
+  const { slug } = params;
   const blog = blogData.find((item) => item.slug === slug);
 
   if (!blog) return notFound();
