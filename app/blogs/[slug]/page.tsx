@@ -2,6 +2,6 @@
 
 import BlogDetailsPage from "./BlogDetailsPage";
 
-export default function BlogDetails({ params }: { params: { slug: string } }) {
+export default function BlogDetails({ params }: { params: { slug: any } }) {
   return <BlogDetailsPage params={params} />;
 }

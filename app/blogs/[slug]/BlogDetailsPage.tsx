@@ -493,9 +493,8 @@ export default function BlogDetailsPage({
 }: {
   params: { slug: string };
 }) {
+  console.log(params.slug); // This will log "camping-in-rishikesh"
   const blog = blogData.find((item) => item.slug === params.slug);
-  if (!blog) return notFound();
-
   if (!blog) return notFound();
 
   // // Structured Data (JSON-LD) for Article Schema
