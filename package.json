@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-     "postbuild": "next-sitemap",
+    "postbuild": "next-sitemap",
     "start": "next start",
     "lint": "next lint"
   },
@@ -22,7 +22,7 @@
     "jquery": "^3.7.1",
     "keen-slider": "^6.8.6",
     "magnific-popup": "^1.2.0",
-    "next": "15.1.7",
+    "next": "^15.3.2",
     "next-sitemap": "^4.2.3",
     "odometer": "^0.4.8",
     "react": "^19.0.0",
