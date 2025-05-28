@@ -434,7 +434,6 @@ export async function generateMetadata({
   params,
 }: {
   params: { slug: string };
-  searchParams?: Record<string, string | string[] | undefined>;
 }): Promise<Metadata> {
   // Make sure this is an async function
   const { slug } = await params;
@@ -511,8 +510,7 @@ export default async function BlogDetails({
   params,
 }: {
   params: { slug: string };
-  searchParams?: Record<string, string | string[] | undefined>;
-}) {
+} & { params: any }) {
   const { slug } = await params;
   const blog = blogData.find((item) => item.slug === slug);
 
