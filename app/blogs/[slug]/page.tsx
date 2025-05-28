@@ -510,7 +510,7 @@ export default async function BlogDetails({
   params,
 }: {
   params: { slug: string };
-} & { params: any }) {
+}) {
   const { slug } = await params;
   const blog = blogData.find((item) => item.slug === slug);
 
