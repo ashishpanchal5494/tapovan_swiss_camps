@@ -488,8 +488,12 @@ export async function generateMetadata(
   };
 }
 
-export default function BlogDetails({ params }: { params: { slug: string } }) {
-  console.log(params.slug); // This will log "camping-in-rishikesh"
+export default function BlogDetails(
+  { params, searchParams }: Props,
+  parent: ResolvingMetadata
+) {
+  console.log(searchParams);
+  console.log(parent);
   const blog = blogData.find((item) => item.slug === params.slug);
   if (!blog) return notFound();
 
