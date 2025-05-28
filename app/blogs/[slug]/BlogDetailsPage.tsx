@@ -1,7 +1,9 @@
+"use client";
+
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import { notFound } from "next/navigation";
+import { notFound, useParams } from "next/navigation";
 import Link from "next/link";
-import { Metadata, ResolvingMetadata } from "next";
 
 const blogData = [
   {
@@ -372,129 +374,20 @@ const cleanContentForDescription = (content: string, maxLength = 160) => {
   return cleaned;
 };
 
-// Function to extract keywords from content
-const extractKeywords = (title: string, content: string, category: string) => {
-  const commonWords = new Set([
-    "the",
-    "and",
-    "for",
-    "with",
-    "your",
-    "this",
-    "that",
-  ]);
-  const words = [
-    ...title.toLowerCase().split(/\s+/),
-    ...content.toLowerCase().split(/\s+/),
-    category.toLowerCase(),
-  ];
+export default function BlogDetailsPage() {
+  const [isMobile, setIsMobile] = useState(false);
+  const { slug } = useParams();
 
-  // Count word frequency
-  const wordCount: Record<string, number> = {};
-  words.forEach((word) => {
-    const cleanWord = word.replace(/[^a-z0-9']/g, "");
-    if (cleanWord.length > 2 && !commonWords.has(cleanWord)) {
-      wordCount[cleanWord] = (wordCount[cleanWord] || 0) + 1;
-    }
-  });
-
-  // Sort by frequency and take top 15
-  return Object.entries(wordCount)
-    .sort((a, b) => b[1] - a[1])
-    .slice(0, 15)
-    .map(([word]) => word);
-};
-
-type Props = {
-  params: { slug: string };
-  searchParams: { [key: string]: string | string[] | undefined };
-};
-
-export async function generateMetadata(
-  { params, searchParams }: Props,
-  parent: ResolvingMetadata
-): Promise<Metadata> {
-  // Make sure this is an async function
-  const { slug } = params;
-  const blog = blogData.find((b) => b.slug === slug); // This is synchronous, but if you were fetching data, you'd await it
-  console.log(searchParams);
-
-  if (!blog) {
-    return {
-      title: "Blog Post Not Found - Tapovan Swiss Camps",
-      description: "The blog post you are looking for does not exist.",
-      alternates: {
-        canonical: `${BASE_URL}/blog/${params.slug}`,
-      },
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
     };
-  }
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
-  const previousImages = (await parent).openGraph?.images || [];
-  const description = cleanContentForDescription(blog.content);
-  const keywords = extractKeywords(blog.title, blog.content, blog.category);
-  const publishedTime = "2023-05-02T12:00:00Z"; // Should be dynamic in real app
-  const modifiedTime = "2024-05-22T12:00:00Z"; // Should be dynamic in real app
-
-  return {
-    metadataBase: new URL(BASE_URL),
-    title: `${blog.title} | Tapovan Swiss Camps Blog`,
-    description,
-    keywords,
-    alternates: {
-      canonical: `${BASE_URL}/blogs/${blog.slug}`,
-    },
-    openGraph: {
-      title: `${blog.title} | Tapovan Swiss Camps`,
-      description,
-      url: `${BASE_URL}/blogs/${blog.slug}`,
-      siteName: "Tapovan Swiss Camps",
-      locale: "en_IN",
-      type: "article",
-      publishedTime,
-      modifiedTime,
-      authors: ["Tapovan Swiss Camps"],
-      tags: keywords,
-      images: [
-        {
-          url: `${BASE_URL}${blog.image}`,
-          width: 1200,
-          height: 630,
-          alt: blog.title,
-          type: "image/webp",
-        },
-        ...previousImages,
-      ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: `${blog.title} | Tapovan Swiss Camps`,
-      description,
-      creator: "@tapovancamps", // Add your Twitter handle
-      images: [`${BASE_URL}${blog.image}`],
-    },
-    robots: {
-      index: true,
-      follow: true,
-      nocache: false,
-      googleBot: {
-        index: true,
-        follow: true,
-        noimageindex: false,
-        "max-video-preview": -1,
-        "max-image-preview": "large",
-        "max-snippet": -1,
-      },
-    },
-  };
-}
-
-export default function BlogDetailsPage({
-  params,
-}: {
-  params: { slug: string };
-}) {
-  console.log(params.slug); // This will log "camping-in-rishikesh"
-  const blog = blogData.find((item) => item.slug === params.slug);
+  const blog = blogData.find((item) => item.slug === slug);
   if (!blog) return notFound();
 
   // // Structured Data (JSON-LD) for Article Schema
@@ -535,7 +428,13 @@ export default function BlogDetailsPage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
       />
 
-      <div className="blog-area blog-details-area pt-60">
+      <div
+        className={
+          isMobile
+            ? "blog-area blog-details-area ptb-200"
+            : "blog-area blog-details-area pt-60"
+        }
+      >
         <div className="container">
           {/* Blog Image */}
           <div className="blog-details-image">

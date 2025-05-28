@@ -1,8 +1,8 @@
-import Image from "next/image";
-import { notFound } from "next/navigation";
-import Link from "next/link";
+// import { Metadata, ResolvingMetadata } from "next"; // Import Metadata type
 import { Metadata, ResolvingMetadata } from "next";
+import BlogDetailsPage from "./BlogDetailsPage";
 
+// --- Blog Data (Assuming this is fetched or imported) ---
 const blogData = [
   {
     id: 1,
@@ -88,23 +88,23 @@ Camping in Rishikesh is more than just a stay — it&lsquo;s a refreshing break 
 
 ## Popular Rafting Routes
 
-1. **Brahmapuri to Rishikesh (9 KM)**  
-   - Ideal for families and first-timers  
-   - Grade I & II rapids  
-   - Duration: 1.5 to 2 hours  
+1. **Brahmapuri to Rishikesh (9 KM)**
+   - Ideal for families and first-timers
+   - Grade I & II rapids
+   - Duration: 1.5 to 2 hours
 
-2. **Shivpuri to Rishikesh (16 KM)**  
-   - Most popular stretch  
-   - Includes rapids like Roller Coaster & Golf Course  
-   - Duration: 2 to 3 hours  
+2. **Shivpuri to Rishikesh (16 KM)**
+   - Most popular stretch
+   - Includes rapids like Roller Coaster & Golf Course
+   - Duration: 2 to 3 hours
 
-3. **Marine Drive to Rishikesh (24 KM)**  
-   - Moderate level, perfect for group thrill  
-   - Duration: 3 to 4 hours  
+3. **Marine Drive to Rishikesh (24 KM)**
+   - Moderate level, perfect for group thrill
+   - Duration: 3 to 4 hours
 
-4. **Kaudiyala to Rishikesh (36 KM)**  
-   - Advanced route with Grade IV rapids like “The Wall”  
-   - Only for experienced rafters  
+4. **Kaudiyala to Rishikesh (36 KM)**
+   - Advanced route with Grade IV rapids like “The Wall”
+   - Only for experienced rafters
 
 ---
 
@@ -137,28 +137,28 @@ Camping in Rishikesh is more than just a stay — it&lsquo;s a refreshing break 
 
 ## Why Book Rafting with Tapovan Swiss Camps?
 
-- Certified rafting partners with licensed guides  
-- Packages available with camping + rafting combo  
-- Free transport from campsite to rafting point  
-- Riverside Swiss tents with meals and bonfire  
+- Certified rafting partners with licensed guides
+- Packages available with camping + rafting combo
+- Free transport from campsite to rafting point
+- Riverside Swiss tents with meals and bonfire
 - Special discounts for groups and couples
 
 ---
 
 ## FAQs
 
-**Q. Is rafting in Rishikesh safe for beginners?**  
+**Q. Is rafting in Rishikesh safe for beginners?**
 Yes, routes like Brahmapuri and Shivpuri are safe and perfect for beginners with trained guides.
 
-**Q. What is the age limit for rafting?**  
+**Q. What is the age limit for rafting?**
 Generally, 14 to 60 years, but may vary slightly by operator and river conditions.
 
-**Q. Can non-swimmers go rafting?**  
+**Q. Can non-swimmers go rafting?**
 Absolutely. Life jackets are mandatory and guides are trained for all situations.
 
 ---
 
-## Conclusion  
+## Conclusion
 **Rafting in Rishikesh** is not just an adventure—it&lsquo;s a life-changing experience that combines nature, thrill, and serenity. Whether you come with friends, family, or solo, it&lsquo;s bound to be unforgettable. Book your rafting + camping combo with **Tapovan Swiss Camp** today and make memories that flow with the Ganga!
 
 👉 **Ready to raft? [Contact Us Now on WhatsApp]**
@@ -174,82 +174,82 @@ Would you like a **featured image** for this blog? I can generate one showing a 
     title: "Bungee Jumping in Rishikesh – Leap into the Ultimate Thrill",
     slug: "bungee-jumping-in-rishikesh",
     content: `Rishikesh, the adventure capital of India, offers one of the most thrilling experiences you can imagine – **bungee jumping**. If you crave an adrenaline rush and want to conquer your fears, this is your chance to take a leap (literally) over the stunning river valley of the Ganges.
- 
+
   ---
- 
+
   ## Why Try Bungee Jumping in Rishikesh?
- 
+
   - **India&lsquo;s Highest Bungee Site:** With a height of 83 meters (272 feet), Rishikesh is home to the country&lsquo;s tallest fixed-platform jump.
   - **Scenic Location:** Jump off a cliff surrounded by the Shivalik Hills, over a river stream for a breathtaking view.
   - **Safety First:** Operated by trained professionals and safety experts from New Zealand.
   - **Bucket List Worthy:** This is not just a sport—it's a personal achievement you'll never forget.
- 
+
   ---
- 
+
   ## Top Bungee Spot in Rishikesh
- 
-  **Jumpin Heights – Mohan Chatti**  
-  - Height: 83 meters  
-  - Location: 20 km from Tapovan  
-  - Certified by international safety standards  
+
+  **Jumpin Heights – Mohan Chatti**
+  - Height: 83 meters
+  - Location: 20 km from Tapovan
+  - Certified by international safety standards
   - Also offers: Flying Fox and Giant Swing
- 
+
   ---
- 
+
   ## Best Time for Bungee Jumping
- 
+
   - **October to June** is the perfect time with clear skies and pleasant weather.
   - **Avoid Monsoon Season** (July–September) due to safety concerns from rain and high winds.
- 
+
   ---
- 
+
   ## Safety Guidelines
- 
-  - Age Limit: 12 years and above  
-  - Weight Limit: 40 kg to 110 kg  
-  - People with heart conditions, high BP, or recent surgeries should avoid the jump  
-  - Wear comfortable, tight-fitting clothes  
+
+  - Age Limit: 12 years and above
+  - Weight Limit: 40 kg to 110 kg
+  - People with heart conditions, high BP, or recent surgeries should avoid the jump
+  - Wear comfortable, tight-fitting clothes
   - Avoid jumping on a full stomach
- 
+
   ---
- 
+
   ## What to Expect
- 
-  - A short briefing by certified instructors  
-  - Harnessing and security checks  
-  - A walk to the edge (the most thrilling part!)  
-  - The jump and rebound  
+
+  - A short briefing by certified instructors
+  - Harnessing and security checks
+  - A walk to the edge (the most thrilling part!)
+  - The jump and rebound
   - Certificate of completion and video (optional extra)
- 
+
   ---
- 
+
   ## Why Book with Tapovan Swiss Camps?
- 
-  - Easy cab arrangements to Jumpin Heights  
-  - Discounted combos of **camping + bungee jumping**  
-  - Clean, safe Swiss tents near Tapovan  
-  - Meals, bonfire, and adventure all in one package  
+
+  - Easy cab arrangements to Jumpin Heights
+  - Discounted combos of **camping + bungee jumping**
+  - Clean, safe Swiss tents near Tapovan
+  - Meals, bonfire, and adventure all in one package
   - Personalized itinerary for groups and couples
- 
+
   ---
- 
+
   ## FAQs
- 
-  **Q. Is bungee jumping in Rishikesh safe?**  
+
+  **Q. Is bungee jumping in Rishikesh safe?**
   Yes, especially with licensed operators like Jumpin Heights, following strict safety standards.
- 
-  **Q. Can I jump if I&lsquo;ve never done it before?**  
+
+  **Q. Can I jump if I&lsquo;ve never done it before?**
   Absolutely. Most jumpers are first-timers, and staff guide you through every step.
- 
-  **Q. Can I get a video of my jump?**  
+
+  **Q. Can I get a video of my jump?**
   Yes, professional HD videos and photos are available for purchase at the site.
- 
+
   ---
- 
+
   ## Conclusion
- 
+
   **Bungee jumping in Rishikesh** is more than an adventure—it's a memory of courage, freedom, and joy. Ready to feel alive like never before? Book your **bungee + camping combo** with Tapovan Swiss Camp and jump into one of the wildest experiences of your life.
- 
+
   👉 **Book Now via WhatsApp or contact us online!**
   `,
   },
@@ -357,18 +357,43 @@ Would you like a **featured image** for this blog? I can generate one showing a 
 const BASE_URL = "https://www.tapovanswisscampsofficial.com"; // **IMPORTANT: Replace with your actual domain**
 
 // // Function to clean up content for meta description (remove HTML entities like &lsquo; and shorten)
+// Function to clean up content for meta description
 const cleanContentForDescription = (content: string, maxLength = 160) => {
-  let cleaned = content
-    .replace(/&lsquo;/g, "'")
-    .replace(/&ldquo;/g, '"')
-    .replace(/&rdquo;/g, '"')
-    .replace(/&mdash;/g, "—")
-    .replace(/&nbsp;/g, " ")
-    .replace(/(<([^>]+)>)/gi, ""); // Remove HTML tags
-  cleaned = cleaned.split("\n")[0].trim(); // Take only the first paragraph
-  if (cleaned.length > maxLength) {
-    cleaned = cleaned.substring(0, maxLength - 3) + "...";
+  // Replace common HTML entities and markdown syntax
+  const replacements: Record<string, string> = {
+    "&lsquo;": "'",
+    "&rsquo;": "'",
+    "&ldquo;": '"',
+    "&rdquo;": '"',
+    "&mdash;": "—",
+    "&nbsp;": " ",
+    "\\*\\*": "", // Remove markdown bold
+    "\\*": "", // Remove markdown italics
+    "\\[.*\\]\\(.*\\)": "", // Remove markdown links
+    "#+": "", // Remove markdown headings
+    "-\\s": "", // Remove list markers
+  };
+
+  let cleaned = content;
+  for (const [pattern, replacement] of Object.entries(replacements)) {
+    cleaned = cleaned.replace(new RegExp(pattern, "g"), replacement);
   }
+
+  // Remove HTML tags
+  cleaned = cleaned.replace(/(<([^>]+)>)/gi, "");
+
+  // Get the first meaningful paragraph (not empty after cleaning)
+  const paragraphs = cleaned.split("\n").filter((p) => p.trim().length > 0);
+  cleaned = paragraphs.length > 0 ? paragraphs[0] : cleaned;
+
+  // Trim to max length without cutting words in middle
+  if (cleaned.length > maxLength) {
+    cleaned = cleaned.substring(0, maxLength);
+    cleaned =
+      cleaned.substring(0, Math.min(cleaned.length, cleaned.lastIndexOf(" "))) +
+      "...";
+  }
+
   return cleaned;
 };
 
@@ -415,7 +440,8 @@ export async function generateMetadata(
   parent: ResolvingMetadata
 ): Promise<Metadata> {
   // Make sure this is an async function
-  const { slug } = params;
+  const slug = (await params).slug;
+
   const blog = blogData.find((b) => b.slug === slug); // This is synchronous, but if you were fetching data, you'd await it
   console.log(searchParams);
 
@@ -488,172 +514,6 @@ export async function generateMetadata(
   };
 }
 
-export default function BlogDetails(
-  { params, searchParams }: Props,
-  parent: ResolvingMetadata
-) {
-  console.log(searchParams);
-  console.log(parent);
-  const blog = blogData.find((item) => item.slug === params.slug);
-  if (!blog) return notFound();
-
-  // // Structured Data (JSON-LD) for Article Schema
-  const articleSchema = {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    headline: blog.title,
-    image: [`${BASE_URL}${blog.image}`],
-    publishedTime: "2023-05-02T12:00:00Z",
-    modifiedTime: "2024-05-22T12:00:00Z",
-    author: {
-      "@type": "Organization", // Or "Person" if you have specific authors
-      name: "Tapovan Swiss Camps", // Or author's name if "Person"
-      url: BASE_URL,
-    },
-    publisher: {
-      "@type": "Organization",
-      name: "Tapovan Swiss Camps",
-      logo: {
-        "@type": "ImageObject",
-        url: `${BASE_URL}/assets/img/logo.png`, // **IMPORTANT: Replace with path to your organization's logo**
-        width: 600,
-        height: 60,
-      },
-    },
-    description: cleanContentForDescription(blog.content, 500), // Longer description for schema
-    mainEntityOfPage: {
-      "@type": "WebPage",
-      "@id": `${BASE_URL}/blogs/${blog.slug}`,
-    },
-  };
-
-  return (
-    <>
-      {/* Structured Data Script (for Article Schema) */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
-      />
-
-      <div className="blog-area blog-details-area pt-60">
-        <div className="container">
-          {/* Blog Image */}
-          <div className="blog-details-image">
-            <Image
-              src={blog.image}
-              alt={`${blog.title} - Tapovan Swiss Camp`}
-              width={600} // Increased width for better quality
-              height={400} // Adjusted height for common aspect ratio (16:9)
-              priority
-              quality={85}
-            />
-          </div>
-
-          {/* Blog Title */}
-          <h1>{blog.title}</h1>
-
-          {/* Blog Content */}
-          <div className="blog-details-content">
-            {/* Using dangerouslySetInnerHTML on the full content can be risky if content isn't sanitized.
-                Consider a library like 'html-react-parser' or sanitizing input properly.
-                For demonstration, keeping your current approach. */}
-            <div>
-              {blog.content.split("\n").map((para, idx) => (
-                <div
-                  dangerouslySetInnerHTML={{ __html: para.trim() }}
-                  key={idx}
-                ></div>
-              ))}
-            </div>
-          </div>
-
-          {/* Social Sharing */}
-          <div className="social-sharing">
-            <Link
-              style={{ textDecoration: "none" }}
-              href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(
-                blog.title
-              )}&url=${encodeURIComponent(
-                `${BASE_URL}/blog/${blog.slug}` // Use BASE_URL here
-              )}`}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Share on Twitter
-            </Link>
-            <Link
-              style={{ textDecoration: "none" }}
-              href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
-                `${BASE_URL}/blog/${blog.slug}` // Use BASE_URL here
-              )}`}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Share on Facebook
-            </Link>
-          </div>
-
-          {/* Related Posts */}
-          <div className="related-posts">
-            <h3>You Might Also Like</h3>
-            <div className="row">
-              {blogData
-                .filter((b) => b.id !== blog.id)
-                .slice(0, 3)
-                .map((related, key) => (
-                  <div key={key} className="col-lg-4 col-md-6">
-                    <div className="content-blog blog-grid">
-                      <div className="inner">
-                        <div className="thumbnail">
-                          <Link
-                            href={`/blogs/${related.slug}`} // Consistent slug path
-                            key={related.id}
-                          >
-                            <Image
-                              width={600}
-                              height={400} // Adjusted height for consistency
-                              src={
-                                related.image.startsWith("/")
-                                  ? related.image
-                                  : `/${related.image}`
-                              }
-                              alt={related.title}
-                            />
-                          </Link>
-                          <div className="blog-category">
-                            <Link style={{ textDecoration: "none" }} href="#">
-                              {related.category}
-                            </Link>
-                          </div>
-                        </div>
-                        <div className="content">
-                          <h5 className="title">
-                            <Link
-                              style={{ textDecoration: "none" }}
-                              href={`/blog/${related.slug}`} // Consistent slug path
-                            >
-                              {related.title}
-                            </Link>
-                          </h5>
-                          <div className="read-more-btn">
-                            <Link
-                              style={{ textDecoration: "none" }}
-                              className="blog-btn"
-                              href={`/blog/${related.slug}`} // Consistent slug path
-                            >
-                              Read More{" "}
-                              <i className="bx bx-right-arrow-alt"></i>
-                            </Link>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-            </div>
-          </div>
-        </div>
-      </div>
-    </>
-  );
+export default function BlogDetails() {
+  return <BlogDetailsPage />;
 }
