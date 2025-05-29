@@ -15,7 +15,7 @@ interface TentCardProps {
   checkIn: string | Date;
   checkOut: string | Date;
   description: string;
-  metaDescription: String;
+  metaDescription: string;
   perHeadPrice: number;
   perHeadMainPrice: number;
   linkBooking: string;
