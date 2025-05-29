@@ -1,5 +1,5 @@
 // import { Metadata, ResolvingMetadata } from "next"; // Import Metadata type
-import { Metadata } from "next";
+
 import BlogDetailsPage from "./BlogDetailsPage";
 
 // --- Blog Data (Assuming this is fetched or imported) ---
@@ -430,13 +430,11 @@ const extractKeywords = (title: string, content: string, category: string) => {
     .map(([word]) => word);
 };
 
-type Props = {
-  params: {
-    slug: string;
-  };
-};
-
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadatagenerateMetadata({
+  params,
+}: {
+  params: { slug: string };
+}) {
   const blog = blogData.find((post) => post.slug === params.slug);
 
   if (!blog) {
