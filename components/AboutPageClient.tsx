@@ -6,10 +6,13 @@ import { useEffect, useRef, useState } from "react";
 import "odometer/themes/odometer-theme-default.css";
 
 // Lazy-load Odometer only on the client
-const Testimonial = dynamic(() => import("../app/testimonial/page"), {
-  ssr: false,
-});
-const Team = dynamic(() => import("../app/team/page"), { ssr: false });
+const TestimonialPage = dynamic(
+  () => import("@/app/testimonial/TestimonialPage"),
+  {
+    ssr: false,
+  }
+);
+const TeamPage = dynamic(() => import("@/app/team/TeamPage"), { ssr: false });
 
 const counters = [
   { icon: "bx bx-home-circle", target: 20, label: "Exclusive Tents" },
@@ -242,8 +245,8 @@ function AboutPageClient() {
           </div>
         </div>
       </section>
-      <Testimonial />
-      <Team />
+      <TestimonialPage />
+      <TeamPage />
     </>
   );
 }

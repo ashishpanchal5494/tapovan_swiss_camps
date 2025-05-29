@@ -236,6 +236,7 @@ const TentsClient: React.FC = () => {
                   checkIn={checkIn}
                   checkOut={checkOut}
                   description={room.description}
+                  metaDescription={room.metaDescription}
                   linkBooking={room.linkBooking}
                   mainPrice={totalMainPrice}
                   price={totalPrice}

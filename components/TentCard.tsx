@@ -15,6 +15,7 @@ interface TentCardProps {
   checkIn: string | Date;
   checkOut: string | Date;
   description: string;
+  metaDescription: String;
   perHeadPrice: number;
   perHeadMainPrice: number;
   linkBooking: string;
@@ -27,7 +28,6 @@ const TentCard: React.FC<TentCardProps> = ({
   mainPrice,
   price,
   image,
-  altText,
   beds,
   baths,
   adults,
@@ -36,6 +36,7 @@ const TentCard: React.FC<TentCardProps> = ({
   perHeadPrice,
   perHeadMainPrice,
   description,
+  metaDescription,
   linkBooking,
 }) => {
   const getBathCount = (
@@ -120,7 +121,6 @@ const TentCard: React.FC<TentCardProps> = ({
             {description.split(" ").slice(0, 20).join(" ")}
             {description.split(" ").length > 20 && "..."}
           </p>
-          <p className="text-body mb-3">{altText}</p>
 
           <div className="d-flex justify-content-between">
             <Link
@@ -148,6 +148,7 @@ const TentCard: React.FC<TentCardProps> = ({
                       : checkOut.toISOString(),
                   perHeadPrice,
                   description,
+                  metaDescription,
                 },
               }}
             >

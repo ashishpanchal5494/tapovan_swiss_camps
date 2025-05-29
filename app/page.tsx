@@ -12,7 +12,7 @@ import Script from "next/script";
 
 // import BlogPage from "./blogs/blogPage";
 
-const Tents = dynamic(() => import("../app/tents/page"), {
+const TentsClient = dynamic(() => import("@/components/TentsClient"), {
   ssr: false,
   loading: () => <Loading />,
 });
@@ -25,7 +25,7 @@ const BlogPage = dynamic(() => import("./blogs/blogPage"), {
   ssr: false,
   loading: () => <Loading />,
 });
-const Testimonial = dynamic(() => import("../app/testimonial/page"), {
+const TestimonialPage = dynamic(() => import("./testimonial/TestimonialPage"), {
   ssr: false,
   loading: () => <Loading />,
 });
@@ -231,9 +231,9 @@ export default function Home() {
 
       <div className="page-wrapper">
         <HeroSection />
-        <Tents />
+        <TentsClient />
         <VideoSection />
-        <Testimonial />
+        <TestimonialPage />
         <FAQPage />
         <BlogPage />
 
