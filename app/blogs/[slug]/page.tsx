@@ -430,7 +430,7 @@ const extractKeywords = (title: string, content: string, category: string) => {
     .map(([word]) => word);
 };
 
-export async function generateMetadatagenerateMetadata({
+export async function generateMetadata({
   params,
 }: {
   params: { slug: string };
