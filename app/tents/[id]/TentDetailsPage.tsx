@@ -37,6 +37,48 @@ const tentRooms = [
       "Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet lorem.",
     linkBooking: "/booking-form",
   },
+  {
+    id: 2,
+    title: "Luxury Cooler Tent",
+    price: 1499,
+    images: [
+      { id: 1, url: "/assets/img/room/actent-3.webp", alt: "tent 1" },
+      { id: 2, url: "/assets/img/room/coolertent-1.webp", alt: "tent 2" },
+      { id: 3, url: "/assets/img/room/actent-2.webp", alt: "tent 3" },
+      { id: 4, url: "/assets/img/room/garden.webp", alt: "garden" },
+      { id: 5, url: "/assets/img/room/garden-2.webp", alt: "garden 2" },
+      { id: 6, url: "/assets/img/room/dining.webp", alt: "dining" },
+      { id: 7, url: "/assets/img/room/pool.webp", alt: "pool" },
+      { id: 8, url: "/assets/img/room/vollyball.webp", alt: "vollyball" },
+      { id: 9, url: "/assets/img/room/group.webp", alt: "group" },
+    ],
+    beds: 5,
+    baths: 1,
+    description:
+      "Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet lorem.",
+    linkBooking: "/booking-form",
+  },
+  {
+    id: 3,
+    title: "Ordinary Tent",
+    price: 999,
+    images: [
+      { id: 1, url: "/assets/img/room/ordinarytent-1.webp", alt: "tent 1" },
+      { id: 2, url: "/assets/img/room/ordinarytent-2.webp", alt: "tent 2" },
+      { id: 3, url: "/assets/img/room/ordinarytent-3.webp", alt: "tent 3" },
+
+      { id: 5, url: "/assets/img/room/garden-2.webp", alt: "garden 2" },
+      { id: 6, url: "/assets/img/room/dining.webp", alt: "dining" },
+      { id: 7, url: "/assets/img/room/pool.webp", alt: "pool" },
+      { id: 8, url: "/assets/img/room/vollyball.webp", alt: "vollyball" },
+      { id: 9, url: "/assets/img/room/group.webp", alt: "group" },
+    ],
+    beds: 3,
+    baths: "Common",
+    description:
+      "Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet lorem.",
+    linkBooking: "/booking-form",
+  },
 ];
 
 const TentDetailsPage: React.FC = () => {
@@ -86,6 +128,7 @@ const TentDetailsPage: React.FC = () => {
   const price = parseInt(searchParams.get("price") || "0");
   const mainPrice = parseInt(searchParams.get("mainPrice") || "0");
   const baths = searchParams.get("baths") || "";
+  console.log(baths);
   const adults = searchParams.get("adults") || "";
 
   const checkIn = searchParams.get("checkIn") || "";

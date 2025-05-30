@@ -1,6 +1,6 @@
 import React from "react";
 import TentDetailsPage from "./TentDetailsPage";
-import { Metadata } from "next";
+import { Metadata, ResolvingMetadata } from "next";
 
 interface Tent {
   id: number;
@@ -69,44 +69,67 @@ const tentRooms: Tent[] = [
   },
 ];
 
-export async function generateMetadata({
-  searchParams,
-}: {
-  searchParams: { [key: string]: string | string[] | undefined };
-}): Promise<Metadata> {
+type Props = {
+  params: Promise<{ id: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+};
+
+export async function generateMetadata(
+  { params, searchParams }: Props,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
   const baseUrl = "https://tapovanswisscampsofficial.com";
-  const id = parseInt((searchParams.id as string) || "0");
+
+  // Await the promises to get the actual values
+  const resolvedParams = await params;
+  const resolvedSearchParams = await searchParams;
+
+  const id = parseInt(
+    resolvedParams.id || (resolvedSearchParams.id as string) || "0"
+  );
   const tent = tentRooms.find((t) => t.id === id) || tentRooms[0];
 
-  // Create URL object with base path
+  // Optionally access and extend parent metadata
+  const previousImages = (await parent).openGraph?.images || [];
+
   const url = new URL(`${baseUrl}/tents/${id}`);
+  const urlParams = new URLSearchParams();
 
-  // Add all relevant search parameters
-  const params = new URLSearchParams();
+  // Use resolvedSearchParams instead of searchParams directly
+  if (resolvedSearchParams.id)
+    urlParams.append("id", resolvedSearchParams.id as string);
+  if (resolvedSearchParams.title)
+    urlParams.append("title", resolvedSearchParams.title as string);
+  if (resolvedSearchParams.mainPrice)
+    urlParams.append("mainPrice", resolvedSearchParams.mainPrice as string);
+  if (resolvedSearchParams.price)
+    urlParams.append("price", resolvedSearchParams.price as string);
+  if (resolvedSearchParams.image)
+    urlParams.append("image", resolvedSearchParams.image as string);
+  if (resolvedSearchParams.beds)
+    urlParams.append("beds", resolvedSearchParams.beds as string);
+  if (resolvedSearchParams.baths)
+    urlParams.append("baths", resolvedSearchParams.baths as string);
+  if (resolvedSearchParams.adults)
+    urlParams.append("adults", resolvedSearchParams.adults as string);
+  if (resolvedSearchParams.checkIn)
+    urlParams.append("checkIn", resolvedSearchParams.checkIn as string);
+  if (resolvedSearchParams.checkOut)
+    urlParams.append("checkOut", resolvedSearchParams.checkOut as string);
+  if (resolvedSearchParams.perHeadPrice)
+    urlParams.append(
+      "perHeadPrice",
+      resolvedSearchParams.perHeadPrice as string
+    );
+  if (resolvedSearchParams.description)
+    urlParams.append("description", resolvedSearchParams.description as string);
+  if (resolvedSearchParams.metaDescription)
+    urlParams.append(
+      "metaDescription",
+      resolvedSearchParams.metaDescription as string
+    );
 
-  if (searchParams.id) params.append("id", searchParams.id as string);
-  if (searchParams.title) params.append("title", searchParams.title as string);
-  if (searchParams.mainPrice)
-    params.append("mainPrice", searchParams.mainPrice as string);
-  if (searchParams.price) params.append("price", searchParams.price as string);
-  if (searchParams.image) params.append("image", searchParams.image as string);
-  if (searchParams.beds) params.append("beds", searchParams.beds as string);
-  if (searchParams.baths) params.append("baths", searchParams.baths as string);
-  if (searchParams.adults)
-    params.append("adults", searchParams.adults as string);
-  if (searchParams.checkIn)
-    params.append("checkIn", searchParams.checkIn as string);
-  if (searchParams.checkOut)
-    params.append("checkOut", searchParams.checkOut as string);
-  if (searchParams.perHeadPrice)
-    params.append("perHeadPrice", searchParams.perHeadPrice as string);
-  if (searchParams.description)
-    params.append("description", searchParams.description as string);
-  if (searchParams.metaDescription)
-    params.append("metaDescription", searchParams.metaDescription as string);
-
-  // Add the query string to the URL
-  url.search = params.toString();
+  url.search = urlParams.toString();
 
   return {
     title: `${tent.seoTitle}`,
@@ -125,17 +148,16 @@ export async function generateMetadata({
           height: 630,
           alt: tent.altText,
         },
+        ...previousImages,
       ],
       siteName: "Tapovan Swiss Camps",
     },
-
     twitter: {
       card: "summary_large_image",
       title: `${tent.seoTitle} | Tapovan Swiss Camps`,
       description: `Luxury ${tent.seoTitle} tent in Rishikesh with premium amenities`,
       images: [`${baseUrl}/${tent.image}`],
     },
-
     robots: {
       index: true,
       follow: true,
@@ -149,7 +171,6 @@ export async function generateMetadata({
         "max-snippet": -1,
       },
     },
-
     other: {
       "geo.region": "IN-UT",
       "geo.placename": "Rishikesh",
