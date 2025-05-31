@@ -10,25 +10,28 @@ import VideoSection from "@/components/VideoSection";
 import Link from "next/link";
 import Script from "next/script";
 
-const Tents = dynamic(() => import("../app/tents/page"), {
+const TentsClient = dynamic(() => import("@/components/TentsClient"), {
   ssr: false,
   loading: () => <Loading />,
 });
-const FAQ = dynamic(() => import("../app/faq/page"), {
-  ssr: false,
-  loading: () => <Loading />,
-});
-
-const Blogs = dynamic(() => import("../app/blogs/page"), {
-  ssr: false,
-  loading: () => <Loading />,
-});
-const Testimonial = dynamic(() => import("../app/testimonial/page"), {
+const FAQPage = dynamic(() => import("../app/faq/FAQPage"), {
   ssr: false,
   loading: () => <Loading />,
 });
 
-export default function HomePageClient() {
+const BlogPage = dynamic(() => import("../app/blogs/blogPage"), {
+  ssr: false,
+  loading: () => <Loading />,
+});
+const TestimonialPage = dynamic(
+  () => import("../app/testimonial/TestimonialPage"),
+  {
+    ssr: false,
+    loading: () => <Loading />,
+  }
+);
+
+export default function Home() {
   const [showPopup, setShowPopup] = useState(false);
   const [countdown, setCountdown] = useState(5);
   const [userLocation, setUserLocation] = useState<{
@@ -229,11 +232,11 @@ export default function HomePageClient() {
 
       <div className="page-wrapper">
         <HeroSection />
-        <Tents />
+        <TentsClient />
         <VideoSection />
-        <Testimonial />
-        <FAQ />
-        <Blogs />
+        <TestimonialPage />
+        <FAQPage />
+        <BlogPage />
 
         {/* Google Maps Popup */}
         {showPopup && (

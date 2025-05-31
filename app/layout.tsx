@@ -26,9 +26,9 @@ export const metadata: Metadata = {
     "Experience the best riverside camping in Rishikesh with Tapovan Swiss Camps. Enjoy luxury tents, swimming pool, best food, best activities, bonfire nights, rafting, bungee jumping, yoga, and more in the serene Himalayas.",
   keywords: [
     "Rishikesh camping",
-    "Luxury AC tents in Rishikesh",
-    "Luxury Cooler tents in Rishikesh",
-    "Swiss camps in Rishikesh",
+    "Luxury AC tents Rishikesh",
+    "Luxury Cooler tents Rishikesh",
+    "Swiss camps Rishikesh",
     "Adventure camp Rishikesh",
     "Rishikesh resort booking",
     "Riverside camp Rishikesh",
@@ -36,6 +36,14 @@ export const metadata: Metadata = {
     "Best camping in Rishikesh",
     "Camp near Ganga river",
     "Yoga retreat Rishikesh",
+    "Family camping Rishikesh",
+    "Couple camping Rishikesh",
+    "Group camping Rishikesh",
+    "Rishikesh adventure sports",
+    "Camping packages Rishikesh",
+    "Best resort Rishikesh",
+    "Ganga view camp Rishikesh",
+    "Swimming pool camp Rishikesh",
   ],
   metadataBase: new URL("https://www.tapovanswisscampsofficial.com"),
   alternates: {
@@ -58,7 +66,7 @@ export const metadata: Metadata = {
     siteName: "Tapovan Swiss Camps",
     images: [
       {
-        url: "https://www.tapovanswisscampsofficial.com/assets/img/room/garden.PNG",
+        url: "https://www.tapovanswisscampsofficial.com/assets/img/room/garden.webp",
         width: 1200,
         height: 630,
         alt: "Tapovan Swiss Camps Rishikesh - Riverside Luxury Camping",
@@ -73,7 +81,7 @@ export const metadata: Metadata = {
     description:
       "Tapovan Swiss Camp offers riverside luxury tents, yoga, adventure sports, and more in the scenic beauty of Rishikesh.",
     images: [
-      "https://www.tapovanswisscampsofficial.com/assets/img/room/garden.PNG",
+      "https://www.tapovanswisscampsofficial.com/assets/img/room/garden.webp",
     ],
   },
   robots: {

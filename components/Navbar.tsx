@@ -28,12 +28,8 @@ const Navbar = () => {
     setIsClient(true); // Set client-side rendering
   }, []);
 
-  useEffect(() => {
-    setIsClient(true); // Set client-side rendering
-  }, []);
-
-  const toggleMenu = () => {
-    setIsOpen(!isOpen); // Toggle mobile menu
+  const toggleMenu = (shouldOpen?: boolean) => {
+    setIsOpen(shouldOpen !== undefined ? shouldOpen : !isOpen);
   };
 
   useEffect(() => {
@@ -44,8 +40,10 @@ const Navbar = () => {
 
           const parentLi = event.target.closest(".nav-item");
           if (parentLi?.querySelector(".dropdown-menu")) {
-            event.preventDefault(); // Prevent navigation
-            parentLi.classList.toggle("open"); // Toggle class to show dropdown
+            event.preventDefault();
+            parentLi.classList.toggle("open");
+          } else {
+            toggleMenu(false);
           }
         });
       });
@@ -269,9 +267,9 @@ const Navbar = () => {
                       </button>
                       <div className="mobile-menu d-lg-none">
                         <Link
+                          href="#"
+                          onClick={() => toggleMenu()}
                           style={{ textDecoration: "none" }}
-                          href="javascript:void(0)"
-                          onClick={toggleMenu}
                         >
                           <i
                             className={
@@ -295,17 +293,29 @@ const Navbar = () => {
                     >
                       <ul className="navbar-nav ms-auto">
                         <li className="nav-item">
-                          <Link href="/" className="nav-link">
+                          <Link
+                            href="/"
+                            className="nav-link"
+                            onClick={() => isMobile && toggleMenu(false)}
+                          >
                             Home
                           </Link>
                         </li>
                         <li className="nav-item">
-                          <Link href="/tents" className="nav-link">
+                          <Link
+                            href="/tents"
+                            className="nav-link"
+                            onClick={() => isMobile && toggleMenu(false)}
+                          >
                             Tents
                           </Link>
                         </li>
                         <li className="nav-item">
-                          <Link href="/about" className="nav-link">
+                          <Link
+                            href="/about"
+                            className="nav-link"
+                            onClick={() => isMobile && toggleMenu(false)}
+                          >
                             About Us
                           </Link>
                         </li>
@@ -315,54 +325,94 @@ const Navbar = () => {
                           </Link>
                           <ul className="dropdown-menu">
                             <li className="nav-item">
-                              <Link href="/team" className="nav-link">
+                              <Link
+                                href="/team"
+                                className="nav-link"
+                                onClick={() => isMobile && toggleMenu(false)}
+                              >
                                 Team
                               </Link>
                             </li>
                             <li className="nav-item">
-                              <Link href="/testimonial" className="nav-link">
+                              <Link
+                                href="/testimonial"
+                                className="nav-link"
+                                onClick={() => isMobile && toggleMenu(false)}
+                              >
                                 Testimonial
                               </Link>
                             </li>
                             <li className="nav-item">
-                              <Link href="/booking-form" className="nav-link">
+                              <Link
+                                href="/booking-form"
+                                className="nav-link"
+                                onClick={() => isMobile && toggleMenu(false)}
+                              >
                                 Booking Form
                               </Link>
                             </li>
                             <li className="nav-item">
-                              <Link href="/account" className="nav-link">
+                              <Link
+                                href="/account"
+                                className="nav-link"
+                                onClick={() => isMobile && toggleMenu(false)}
+                              >
                                 My Account
                               </Link>
                             </li>
                             <li className="nav-item">
-                              <Link href="/faq" className="nav-link">
+                              <Link
+                                href="/faq"
+                                className="nav-link"
+                                onClick={() => isMobile && toggleMenu(false)}
+                              >
                                 FAQ
                               </Link>
                             </li>
                             <li className="nav-item">
-                              <Link href="/sample-page" className="nav-link">
+                              <Link
+                                href="/sample-page"
+                                className="nav-link"
+                                onClick={() => isMobile && toggleMenu(false)}
+                              >
                                 Sample Page
                               </Link>
                             </li>
                             <li className="nav-item">
-                              <Link href="/privacy-policy" className="nav-link">
+                              <Link
+                                href="/privacy-policy"
+                                className="nav-link"
+                                onClick={() => isMobile && toggleMenu(false)}
+                              >
                                 Privacy Policy
                               </Link>
                             </li>
                             <li className="nav-item">
-                              <Link href="/error-404" className="nav-link">
+                              <Link
+                                href="/error-404"
+                                className="nav-link"
+                                onClick={() => isMobile && toggleMenu(false)}
+                              >
                                 404 Error Page
                               </Link>
                             </li>
                           </ul>
                         </li>
                         <li className="nav-item">
-                          <Link href="/blogs" className="nav-link">
+                          <Link
+                            href="/blogs"
+                            className="nav-link"
+                            onClick={() => isMobile && toggleMenu(false)}
+                          >
                             Blogs
                           </Link>
                         </li>
                         <li className="nav-item">
-                          <Link href="/contact" className="nav-link">
+                          <Link
+                            href="/contact"
+                            className="nav-link"
+                            onClick={() => isMobile && toggleMenu(false)}
+                          >
                             Contact
                           </Link>
                         </li>
@@ -370,6 +420,7 @@ const Navbar = () => {
                           <Link
                             href="/booking-form"
                             className="nav-link btn style1"
+                            onClick={() => isMobile && toggleMenu(false)}
                           >
                             Book Now
                           </Link>

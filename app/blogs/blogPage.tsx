@@ -1,63 +1,8 @@
-import BlogCard from "@/components/BlogCard";
-import { Metadata } from "next";
+"use client";
 
-export const metadata: Metadata = {
-  title: "Adventure Blogs – Tapovan Swiss Camps | Rishikesh Travel Guides",
-  description:
-    "Explore expert travel tips and adventure guides for Rishikesh including camping, rafting, bungee jumping and bike rentals from Tapovan Swiss Camps.",
-  keywords: [
-    "Rishikesh blogs",
-    "rafting in rishikesh",
-    "camping in Rishikesh",
-    "rafting guide",
-    "bungee jumping Rishikesh",
-    "bike rental Rishikesh",
-    "adventure travel tips",
-    "Tapovan Swiss Camps blog",
-  ],
-  alternates: {
-    canonical: "https://www.tapovanswisscampsofficial.com/blogs",
-  },
-  openGraph: {
-    title: "Adventure Blogs – Tapovan Swiss Camps | Rishikesh Travel Guides",
-    description:
-      "Explore expert travel tips and adventure guides for Rishikesh including camping, rafting, bungee jumping and bike rentals from Tapovan Swiss Camps.",
-    url: "https://www.tapovanswisscampsofficial.com/blogs",
-    siteName: "Tapovan Swiss Camps",
-    images: [
-      {
-        url: "https://www.tapovanswisscampsofficial.com/assets/img/blog/camping_rishikesh.webp",
-        width: 1200,
-        height: 630,
-        alt: "Adventure activities in Rishikesh",
-      },
-    ],
-    locale: "en_IN",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Adventure Blogs – Tapovan Swiss Camps | Rishikesh Travel Guides",
-    description:
-      "Explore expert travel tips and adventure guides for Rishikesh including camping, rafting, bungee jumping and bike rentals from Tapovan Swiss Camps.",
-    images: [
-      "https://www.tapovanswisscampsofficial.com/assets/img/blog/camping_rishikesh.webp",
-    ],
-  },
-  robots: {
-    index: true,
-    follow: true,
-    nocache: false,
-    googleBot: {
-      index: true,
-      follow: true,
-      noimageindex: false,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
-};
+import BlogCard from "@/components/BlogCard";
+import Loading from "@/components/Loading";
+import { useEffect, useState } from "react";
 
 const blogData = [
   {
@@ -472,6 +417,37 @@ const generateStructuredData = () => {
 };
 
 const BlogPage: React.FC = () => {
+  const [isClient, setIsClient] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Efficient Mobile Resize Listener with debounce
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.matchMedia("(max-width: 768px)").matches);
+    };
+
+    let resizeTimer: ReturnType<typeof setTimeout>;
+
+    const handleResize = () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        checkMobile();
+      }, 150);
+    };
+
+    checkMobile();
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  // AOS Init & Client Check
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  if (!isClient) return <Loading />;
+
   const structuredData = generateStructuredData();
   return (
     <>
@@ -481,7 +457,10 @@ const BlogPage: React.FC = () => {
         dangerouslySetInnerHTML={{ __html: structuredData }}
       />
 
-      <div className="blog-area ptb-60" suppressHydrationWarning>
+      <div
+        className={`blog-area ${isMobile ? "ptb-200" : "ptb-60"}`}
+        suppressHydrationWarning
+      >
         <div className="container">
           <div className="section-title">
             <h2>Adventure Blogs – Tapovan Swiss Camps</h2>
