@@ -505,6 +505,6 @@ export async function generateMetadata({ params }: Props) {
   };
 }
 
-export default function BlogDetails({ params }: Props) {
-  return <BlogDetailsPage params={params} />;
+export default function BlogDetails() {
+  return <BlogDetailsPage />;
 }
