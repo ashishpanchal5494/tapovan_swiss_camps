@@ -374,9 +374,22 @@ const cleanContentForDescription = (content: string, maxLength = 160) => {
   return cleaned;
 };
 
-export default function BlogDetailsPage() {
+type Props = {
+  params: {
+    slug: string;
+    value: string;
+  };
+};
+
+export default function BlogDetailsPage({ params }: Props) {
   const [isMobile, setIsMobile] = useState(false);
-  const { slug } = useParams();
+
+  // Parse the params correctly
+  const parsedParams =
+    typeof params.value === "string" ? JSON.parse(params.value) : params;
+  const slug = parsedParams.slug;
+
+  console.log(slug);
 
   useEffect(() => {
     const handleResize = () => {
