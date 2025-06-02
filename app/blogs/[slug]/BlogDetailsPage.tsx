@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import { notFound } from "next/navigation";
+import { notFound, useParams } from "next/navigation";
 import Link from "next/link";
 
 const blogData = [
@@ -374,22 +374,10 @@ const cleanContentForDescription = (content: string, maxLength = 160) => {
   return cleaned;
 };
 
-type Props = {
-  params: {
-    slug: string;
-    value: string;
-  };
-};
-
-export default function BlogDetailsPage({ params }: Props) {
+export default function BlogDetailsPage() {
   const [isMobile, setIsMobile] = useState(false);
 
-  // Parse the params correctly
-  const parsedParams =
-    typeof params.value === "string" ? JSON.parse(params.value) : params;
-  const slug = parsedParams.slug;
-
-  console.log(slug);
+  const { slug } = useParams();
 
   useEffect(() => {
     const handleResize = () => {
