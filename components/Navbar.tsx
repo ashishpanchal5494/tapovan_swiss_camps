@@ -1,18 +1,17 @@
 "use client";
 
 import { useEffect, useState } from "react";
-
 import Link from "next/link";
 import Image from "next/image";
 import logo from "../public/assets/img/logo.png";
 
 const Navbar = () => {
   const [showPopup, setShowPopup] = useState(false);
-  const [isOpen, setIsOpen] = useState(false); // State for mobile menu
-  const [isSearchOpen, setIsSearchOpen] = useState(false); // State for search bar
-  const [isClient, setIsClient] = useState(false); // State for client-side rendering
-
+  const [isOpen, setIsOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [isClient, setIsClient] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [isAnimating, setIsAnimating] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
@@ -28,8 +27,34 @@ const Navbar = () => {
     setIsClient(true); // Set client-side rendering
   }, []);
 
+  useEffect(() => {
+    if (isOpen && isMobile) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isOpen, isMobile]);
+
   const toggleMenu = (shouldOpen?: boolean) => {
-    setIsOpen(shouldOpen !== undefined ? shouldOpen : !isOpen);
+    const open = shouldOpen !== undefined ? shouldOpen : !isOpen;
+
+    if (open) {
+      setIsOpen(true);
+      setIsAnimating(true);
+      setTimeout(() => {
+        setIsAnimating(false);
+      }, 300);
+    } else {
+      setIsAnimating(true);
+      setTimeout(() => {
+        setIsOpen(false);
+        setIsAnimating(false);
+      }, 300);
+    }
   };
 
   useEffect(() => {
@@ -48,7 +73,7 @@ const Navbar = () => {
         });
       });
     }
-  }, [isMobile, toggleMenu]);
+  }, [isMobile]);
 
   const toggleSearch = () => {
     setIsSearchOpen(!isSearchOpen); // Toggle search bar
@@ -269,12 +294,21 @@ const Navbar = () => {
                         <Link
                           href="#"
                           onClick={() => toggleMenu()}
-                          style={{ textDecoration: "none" }}
+                          style={{
+                            textDecoration: "none",
+                            transition: "transform 0.3s ease",
+                          }}
                         >
                           <i
                             className={
                               isOpen ? "ri-close-line" : "ri-menu-line"
                             }
+                            style={{
+                              transition: "transform 0.3s ease",
+                              transform: isOpen
+                                ? "rotate(90deg)"
+                                : "rotate(0deg)",
+                            }}
                           ></i>
                         </Link>
                       </div>
@@ -284,10 +318,10 @@ const Navbar = () => {
                     <div
                       className={
                         isMobile
-                          ? `mobileCollapse collapse navbar-collapse  ${
+                          ? `mobileCollapse navbar-collapse ${
                               isOpen ? "show" : ""
-                            }`
-                          : ` collapse navbar-collapse  ${isOpen ? "show" : ""}`
+                            } ${isAnimating ? "animating" : ""}`
+                          : `collapse navbar-collapse ${isOpen ? "show" : ""}`
                       }
                       id="navbarSupportedContent"
                     >

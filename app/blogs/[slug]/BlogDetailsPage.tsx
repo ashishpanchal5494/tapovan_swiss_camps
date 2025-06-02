@@ -12,7 +12,7 @@ const blogData = [
     category: "India",
     title:
       "Camping in Rishikesh: The Ultimate Guide to an Unforgettable Experience",
-    slug: "campingInRishikesh",
+    slug: "camping-in-rishikesh",
     content: `Rishikesh, nestled in the foothills of the Himalayas and along the banks of the Ganga, is a paradise for adventure lovers. Among its many offerings, camping in Rishikesh is an experience that blends nature, thrill, and peace. Whether you&lsquo;re a solo traveler, a couple, or a family, camping here brings you close to the serene beauty of Uttarakhand.
 
 Why Choose Rishikesh for Camping?
@@ -74,7 +74,7 @@ Camping in Rishikesh is more than just a stay — it&lsquo;s a refreshing break 
     image: "/assets/img/blog/rafting_rishikesh.webp",
     category: "India",
     title: "Rafting in Rishikesh – The Ultimate Adventure on the Ganga",
-    slug: "raftingInRishikesh",
+    slug: "rafting-in-rishikesh",
     content: `Rishikesh, the gateway to the Himalayas and the yoga capital of the world, is also India’s most sought-after destination for white water rafting. Whether you’re an adrenaline junkie or a first-time adventurer, **rafting in Rishikesh** offers the perfect blend of thrill and nature.
 
 ---
@@ -174,7 +174,7 @@ Would you like a **featured image** for this blog? I can generate one showing a 
     image: "/assets/img/blog/bangee_rishikesh.webp",
     category: "India",
     title: "Bungee Jumping in Rishikesh – Leap into the Ultimate Thrill",
-    slug: "bungeeJumpingInRishikesh",
+    slug: "bungeeJumping-in-rishikesh",
     content: `Rishikesh, the adventure capital of India, offers one of the most thrilling experiences you can imagine – **bungee jumping**. If you crave an adrenaline rush and want to conquer your fears, this is your chance to take a leap (literally) over the stunning river valley of the Ganges.
  
   ---
@@ -260,7 +260,7 @@ Would you like a **featured image** for this blog? I can generate one showing a 
     image: "/assets/img/blog/bike_rent_rishikesh.webp",
     category: "India",
     title: "Bike Rent in Rishikesh – Ultimate Guide for 2025",
-    slug: "bikeRentInRishikesh",
+    slug: "bikeRent-in-rishikesh",
     content: `Want to explore Rishikesh on two wheels? Renting a bike in Rishikesh is the smartest, most adventurous way to soak in the Himalayan vibes and spiritual charm. Whether you&lsquo;re here for a short trip or an extended stay, a rented scooter or Royal Enfield gives you the freedom to ride at your own pace.
 
   🏍️ Why Choose Bike Rental in Rishikesh?
