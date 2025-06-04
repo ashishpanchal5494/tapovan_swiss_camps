@@ -21,15 +21,17 @@ const tentRooms = [
     title: "Luxury AC Tent",
     price: 1799,
     images: [
-      { id: 1, url: "/assets/img/room/actent-3.webp", alt: "tent 1" },
-      { id: 2, url: "/assets/img/room/actent-1.webp", alt: "tent 2" },
+      { id: 1, url: "/assets/img/room/actent-1.webp", alt: "tent 1" },
+      { id: 2, url: "/assets/img/room/actent.webp", alt: "tent 2" },
       { id: 3, url: "/assets/img/room/actent-2.webp", alt: "tent 3" },
-      { id: 4, url: "/assets/img/room/garden.webp", alt: "garden" },
-      { id: 5, url: "/assets/img/room/garden-2.webp", alt: "garden 2" },
-      { id: 6, url: "/assets/img/room/dining.webp", alt: "dining" },
-      { id: 7, url: "/assets/img/room/pool.webp", alt: "pool" },
-      { id: 8, url: "/assets/img/room/vollyball.webp", alt: "vollyball" },
-      { id: 9, url: "/assets/img/room/group.webp", alt: "group" },
+      { id: 4, url: "/assets/img/room/actent-3.webp", alt: "tent 4" },
+      { id: 5, url: "/assets/img/room/garden.webp", alt: "garden" },
+      { id: 6, url: "/assets/img/room/garden-1.webp", alt: "garden 1" },
+      { id: 7, url: "/assets/img/room/garden-2.webp", alt: "garden 2" },
+      { id: 8, url: "/assets/img/room/dining.webp", alt: "dining" },
+      { id: 9, url: "/assets/img/room/pool.webp", alt: "pool" },
+      { id: 10, url: "/assets/img/room/vollyball.webp", alt: "vollyball" },
+      { id: 11, url: "/assets/img/room/group.webp", alt: "group" },
     ],
     beds: 5,
     baths: 1,
@@ -42,15 +44,16 @@ const tentRooms = [
     title: "Luxury Cooler Tent",
     price: 1499,
     images: [
-      { id: 1, url: "/assets/img/room/actent-3.webp", alt: "tent 1" },
-      { id: 2, url: "/assets/img/room/coolertent-1.webp", alt: "tent 2" },
-      { id: 3, url: "/assets/img/room/actent-2.webp", alt: "tent 3" },
+      { id: 1, url: "/assets/img/room/coolertent-1.webp", alt: "tent 2" },
+      { id: 2, url: "/assets/img/room/actent-2.webp", alt: "tent 3" },
+      { id: 3, url: "/assets/img/room/actent-3.webp", alt: "tent 1" },
       { id: 4, url: "/assets/img/room/garden.webp", alt: "garden" },
-      { id: 5, url: "/assets/img/room/garden-2.webp", alt: "garden 2" },
-      { id: 6, url: "/assets/img/room/dining.webp", alt: "dining" },
-      { id: 7, url: "/assets/img/room/pool.webp", alt: "pool" },
-      { id: 8, url: "/assets/img/room/vollyball.webp", alt: "vollyball" },
-      { id: 9, url: "/assets/img/room/group.webp", alt: "group" },
+      { id: 5, url: "/assets/img/room/garden-1.webp", alt: "garden 1" },
+      { id: 6, url: "/assets/img/room/garden-2.webp", alt: "garden 2" },
+      { id: 7, url: "/assets/img/room/dining.webp", alt: "dining" },
+      { id: 8, url: "/assets/img/room/pool.webp", alt: "pool" },
+      { id: 9, url: "/assets/img/room/vollyball.webp", alt: "vollyball" },
+      { id: 10, url: "/assets/img/room/group.webp", alt: "group" },
     ],
     beds: 5,
     baths: 1,
@@ -66,8 +69,8 @@ const tentRooms = [
       { id: 1, url: "/assets/img/room/ordinarytent-1.webp", alt: "tent 1" },
       { id: 2, url: "/assets/img/room/ordinarytent-2.webp", alt: "tent 2" },
       { id: 3, url: "/assets/img/room/ordinarytent-3.webp", alt: "tent 3" },
-
-      { id: 5, url: "/assets/img/room/garden-2.webp", alt: "garden 2" },
+      { id: 4, url: "/assets/img/room/garden-2.webp", alt: "garden 2" },
+      { id: 5, url: "/assets/img/room/garden-1.webp", alt: "garden 1" },
       { id: 6, url: "/assets/img/room/dining.webp", alt: "dining" },
       { id: 7, url: "/assets/img/room/pool.webp", alt: "pool" },
       { id: 8, url: "/assets/img/room/vollyball.webp", alt: "vollyball" },
@@ -510,7 +513,7 @@ const TentDetailsPage: React.FC = () => {
                                 src={item.url}
                                 alt={`${title} at Tapovan Swiss Camps - ${item.alt}`}
                                 width={800}
-                                height={500}
+                                height={450}
                                 loading="lazy"
                                 className="img-responsive m-auto"
                                 quality={85}
