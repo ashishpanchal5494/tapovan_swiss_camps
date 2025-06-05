@@ -229,6 +229,7 @@ const Navbar = () => {
                         >
                           <i className="ri-account-box-line"></i>
                           <a
+                            href="#"
                             style={{
                               textDecoration: "none",
                               fontWeight: "500",
