@@ -122,8 +122,8 @@ export default function Home() {
           description:
             "Rishikesh's premier luxury camping destination with AC tents, adventure sports, and yoga retreats by the Ganges River.",
           image: [
-            "https://www.tapovanswisscampsofficial.com/assets/img/room/garden.webp",
-            "https://www.tapovanswisscampsofficial.com/assets/img/room/actent-2.webp",
+            "https://www.tapovanswisscampsofficial.com/assets/img/room/gardenPhoto.webp",
+            "https://www.tapovanswisscampsofficial.com/assets/img/room/ACTent1.webp",
           ],
           priceRange: "₹999 - ₹1799",
           telephone: "+91-7906924003",

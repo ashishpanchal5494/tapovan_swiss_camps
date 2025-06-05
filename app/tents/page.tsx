@@ -33,7 +33,7 @@ export const generateMetadata = (): Metadata => {
       type: "website",
       images: [
         {
-          url: `${baseUrl}/assets/img/room/actent-1.webp`,
+          url: `${baseUrl}/assets/img/room/ACTent1.webp`,
           width: 1200,
           height: 630,
           alt: "AC tent - Tapovan Swiss Camps",
@@ -47,7 +47,7 @@ export const generateMetadata = (): Metadata => {
       title: "Luxury AC Tent",
       description:
         "Experience unparalleled comfort in our Luxury AC Tents, designed for those who seek a perfect blend of nature and modern amenities. These spacious 5-bed tents feature climate control to ensure your comfort in all seasons, along with attached bathrooms for privacy. Enjoy premium bedding, tasteful decor, and ample space to relax after a day of adventure. <br/> <i>Please note</i>: To maintain a healthy environment for all guests, smoking and consumption of alcohol are strictly prohibited in all tents. We kindly request all guests to help us keep the tents clean and in excellent condition for everyone's enjoyment. <br/> Located amidst lush greenery, our AC tents offer a serene retreat while keeping you connected with essential conveniences. Perfect for families or groups looking for a luxurious camping experience without compromising on comfort",
-      images: [`${baseUrl}/assets/img/room/actent-1.webp`],
+      images: [`${baseUrl}/assets/img/room/ACTent1.webp`],
     },
 
     robots: {
@@ -79,7 +79,7 @@ const Tents: React.FC = () => {
             "Premium glamping experience with luxury tents near Ganga river",
           url: "https://tapovanswisscampsofficial.com/tents",
           image:
-            "https://tapovanswisscampsofficial.com/assets/img/room/actent-1.webp",
+            "https://tapovanswisscampsofficial.com/assets/img/room/ACTent1.webp",
           publisher: {
             "@type": "Organization",
             name: "Tapovan Swiss Camps",

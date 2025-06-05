@@ -35,7 +35,7 @@ export const metadata: Metadata = {
       "Experience serene riverside luxury, adventure activities, and premium amenities at Tapovan Swiss Camps. Your ideal getaway in Rishikesh starts here. Book direct!",
     images: [
       {
-        url: "https://www.tapovanswisscampsofficial.com/assets/img/room/garden.webp", // A strong, captivating hero image
+        url: "https://www.tapovanswisscampsofficial.com/assets/img/room/gardenPhoto.webp", // A strong, captivating hero image
         width: 1920,
         height: 1080,
         alt: "Panoramic view of Tapovan Swiss Camps and Ganga River in Rishikesh",

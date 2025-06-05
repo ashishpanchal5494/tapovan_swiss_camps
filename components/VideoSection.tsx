@@ -15,7 +15,7 @@ const videos = [
 ];
 
 const videoPosters = [
-  "/assets/img/room/garden.webp",
+  "/assets/img/room/gardenPhoto.webp",
   "/assets/img/room/pool.webp",
   "/assets/img/room/vollyball.webp",
 ];

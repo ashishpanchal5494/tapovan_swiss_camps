@@ -28,7 +28,7 @@ const tentRooms: Tent[] = [
     altText: "Luxury AC Glamping Tent in Rishikesh with mountain views",
     mainPrice: 2499,
     price: 1799,
-    image: "assets/img/room/actent-1.webp",
+    image: "assets/img/room/ACTent1.webp",
     beds: 5,
     baths: 1,
     description:
@@ -44,7 +44,7 @@ const tentRooms: Tent[] = [
     altText: "Luxury Cooler Tent with natural ventilation in Rishikesh",
     mainPrice: 1999,
     price: 1499,
-    image: "assets/img/room/coolertent-1.webp",
+    image: "assets/img/room/coolerTent1.webp",
     beds: 5,
     baths: 1,
     description:
@@ -60,7 +60,7 @@ const tentRooms: Tent[] = [
     altText: "Traditional camping tent in Rishikesh for budget travelers",
     mainPrice: 1199,
     price: 999,
-    image: "assets/img/room/ordinarytent-1.webp",
+    image: "assets/img/room/ordinaryTent1.webp",
     beds: 3,
     baths: "Common",
     description:

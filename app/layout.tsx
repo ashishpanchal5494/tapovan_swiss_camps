@@ -66,7 +66,7 @@ export const metadata: Metadata = {
     siteName: "Tapovan Swiss Camps",
     images: [
       {
-        url: "https://www.tapovanswisscampsofficial.com/assets/img/room/garden.webp",
+        url: "https://www.tapovanswisscampsofficial.com/assets/img/room/gardenPhoto.webp",
         width: 1200,
         height: 630,
         alt: "Tapovan Swiss Camps Rishikesh - Riverside Luxury Camping",
@@ -81,7 +81,7 @@ export const metadata: Metadata = {
     description:
       "Tapovan Swiss Camp offers riverside luxury tents, yoga, adventure sports, and more in the scenic beauty of Rishikesh.",
     images: [
-      "https://www.tapovanswisscampsofficial.com/assets/img/room/garden.webp",
+      "https://www.tapovanswisscampsofficial.com/assets/img/room/gardenPhoto.webp",
     ],
   },
   robots: {
@@ -123,7 +123,7 @@ export default function RootLayout({
               "@type": "Campground",
               name: "Tapovan Swiss Camps",
               image:
-                "https://www.tapovanswisscampsofficial.com/assets/img/room/garden.webp",
+                "https://www.tapovanswisscampsofficial.com/assets/img/room/gardenPhoto.webp",
               description:
                 "Luxury riverside camping in Rishikesh with rafting, swimming pool, bonfire nights, and adventure activities.",
               address: {
