@@ -539,9 +539,12 @@ export default function BlogDetailsPage() {
                             <Link
                               style={{ textDecoration: "none" }}
                               className="blog-btn"
-                              href={`/blog/${related.slug}`} // Consistent slug path
+                              href={`/blog/${related.slug}`}
+                              aria-label={`Read more about ${related.title}`} // Consistent slug path
                             >
-                              Read More{" "}
+                              Read More about:{" "}
+                              {related.title.split(" ").slice(0, 4).join(" ")}
+                              {related.title.split(" ").length > 4 && "..."}
                               <i className="bx bx-right-arrow-alt"></i>
                             </Link>
                           </div>

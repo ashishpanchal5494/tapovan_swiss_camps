@@ -45,8 +45,11 @@ const BlogCard: React.FC<BlogCardProps> = ({
                 style={{ textDecoration: "none" }}
                 className="blog-btn"
                 href={`/blogs/${slug}`}
+                aria-label={`Read more about ${slug}`}
               >
-                Read More <i className="bx bx-right-arrow-alt"></i>
+                Read More about: {title.split(" ").slice(0, 4).join(" ")}
+                {title.split(" ").length > 4 && "..."}
+                <i className="bx bx-right-arrow-alt"></i>
               </Link>
             </div>
           </div>
