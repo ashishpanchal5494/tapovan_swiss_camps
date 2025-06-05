@@ -22,7 +22,7 @@ const tentRooms = [
     price: 1799,
     images: [
       { id: 1, url: "/assets/img/room/ACTent1.webp", alt: "tent 1" },
-      { id: 2, url: "/assets/img/room/ACTent2.webp", alt: "tent 2" },
+      { id: 2, url: "/assets/img/room/ACtent2.webp", alt: "tent 2" },
       { id: 3, url: "/assets/img/room/washroom.webp", alt: "washroom" },
       { id: 4, url: "/assets/img/room/tentPhoto.webp", alt: "tent" },
       { id: 5, url: "/assets/img/room/gardenPhoto.webp", alt: "garden" },
