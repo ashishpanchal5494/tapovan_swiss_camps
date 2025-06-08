@@ -134,6 +134,26 @@ export async function generateMetadata(
   return {
     title: `${tent.seoTitle}`,
     description: tent.metaDescription,
+    keywords: [
+      `${tent.title} in Rishikesh`,
+      `${tent.title} booking Rishikesh`,
+      `Book ${tent.title} near Ganga`,
+      `${tent.title} with ${tent.beds} beds`,
+      `${tent.title} with ${
+        tent.baths === "Common" ? "shared bathroom" : "attached bathroom"
+      }`,
+      `${tent.title} camping in Rishikesh`,
+      `${tent.title} for family stay`,
+      ` ${tent.title} in tapovan rishikesh`,
+      `${tent.title} in shivpuri rishikesh`,
+      `best ${tent.title} in rishikesh`,
+      `best ${tent.title} in tapovan rishikesh`,
+      "Camping in Rishikesh",
+      "Rishikesh tent stay",
+      "Glamping in Rishikesh",
+      "Tapovan Swiss Camps ",
+      `Tapovan Swiss Camps ${tent.title} `,
+    ],
     alternates: {
       canonical: url.toString(),
     },

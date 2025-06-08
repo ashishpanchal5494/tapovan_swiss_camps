@@ -401,39 +401,6 @@ const cleanContentForDescription = (content: string, maxLength = 160) => {
   return cleaned;
 };
 
-// // Function to extract keywords from content
-const extractKeywords = (title: string, content: string, category: string) => {
-  const commonWords = new Set([
-    "the",
-    "and",
-    "for",
-    "with",
-    "your",
-    "this",
-    "that",
-  ]);
-  const words = [
-    ...title.toLowerCase().split(/\s+/),
-    ...content.toLowerCase().split(/\s+/),
-    category.toLowerCase(),
-  ];
-
-  // Count word frequency
-  const wordCount: Record<string, number> = {};
-  words.forEach((word) => {
-    const cleanWord = word.replace(/[^a-z0-9']/g, "");
-    if (cleanWord.length > 2 && !commonWords.has(cleanWord)) {
-      wordCount[cleanWord] = (wordCount[cleanWord] || 0) + 1;
-    }
-  });
-
-  // Sort by frequency and take top 15
-  return Object.entries(wordCount)
-    .sort((a, b) => b[1] - a[1])
-    .slice(0, 15)
-    .map(([word]) => word);
-};
-
 export async function generateMetadata({ params }: Props) {
   const { slug } = await params;
   const blog = blogData.find((post) => post.slug === slug);
@@ -449,7 +416,7 @@ export async function generateMetadata({ params }: Props) {
   }
 
   const description = cleanContentForDescription(blog.content);
-  const keywords = extractKeywords(blog.title, blog.content, blog.category);
+
   const publishedTime = "2023-05-02T12:00:00Z"; // Should be dynamic in real app
   const modifiedTime = "2024-05-22T12:00:00Z"; // Should be dynamic in real app
 
@@ -457,7 +424,70 @@ export async function generateMetadata({ params }: Props) {
     metadataBase: new URL(BASE_URL),
     title: `${blog.title} | Tapovan Swiss Camps Blog`,
     description,
-    keywords,
+    keywords: [
+      "Rishikesh camping",
+      "camping in rishikesh",
+      "camping in rishikesh tapovan",
+      "riverside camping",
+      "luxury camping",
+      "jungle camping",
+      "rafting in rishikesh",
+      "ganga rafting",
+      "shivpuri rafting",
+      "shivpuri rafting price",
+      "brahmpuri rafting",
+      "brahmpuri rafting price",
+      "marine drive rafting in rishikesh",
+      "marine drive rafting in rishikesh price",
+      "best time for rafting in rishikesh",
+      "best time for camping in rishikesh",
+      "yoga and meditation session",
+      "book camping",
+      "book rafting",
+      "book bungee jumping",
+      "rafting types",
+      "rishikesh rafting price",
+      "rishikesh rafting charge",
+      "rishikesh rafting timing",
+      "rafting in rishikesh",
+      "rafting in rishikesh per person price",
+      "rafting in rishikesh booking",
+      "about camping in rishikesh",
+      "about camping in rishikesh, tapovan",
+      "about rishikesh",
+      "rishikesh camping and rafting",
+      "riverside camping in rishikesh",
+      "best camping in rishikesh",
+      "best camp in tapovan, rishikesh",
+      "camping in rishikesh near ganga",
+      "camping in rishikesh near river",
+      "best camps in rishikesh near ganga",
+      "cheapest camping in rishikesh",
+      "Swiss camps Rishikesh",
+      "Riverside camp Rishikesh",
+      "Camp near Ganga river",
+      "Ganga view camp Rishikesh",
+      "Swimming pool camp in Rishikesh",
+      "Rishikesh accommodation",
+      "bungee jumping rishikesh",
+      "bungee jumping in rishikesh",
+      "bungee jumping in rishikesh price",
+      "bungee jumping in rishikesh charges",
+      "bungee jumping in rishikesh distance",
+      "bungee jumping in rishikesh shivpuri",
+      "bungee jumping in rishikesh age limit",
+      "bungee jumping price per person",
+      "bungee jumping price",
+      "jumping heights",
+      "best time for bungee jumping",
+      "bike rent in rishikesh",
+      "rishikesh bike rent",
+      "bike rent price in rishikesh",
+      "bikes available for rent",
+      "activa rent price",
+      "bike rent price",
+      "bullet rent price in rishikesh",
+    ],
     alternates: {
       canonical: `${BASE_URL}/blogs/${blog.slug}`,
     },
@@ -471,7 +501,70 @@ export async function generateMetadata({ params }: Props) {
       publishedTime,
       modifiedTime,
       authors: ["Tapovan Swiss Camps"],
-      tags: keywords,
+      tags: [
+        "Rishikesh camping",
+        "camping in rishikesh",
+        "camping in rishikesh tapovan",
+        "riverside camping",
+        "luxury camping",
+        "jungle camping",
+        "rafting in rishikesh",
+        "ganga rafting",
+        "shivpuri rafting",
+        "shivpuri rafting price",
+        "brahmpuri rafting",
+        "brahmpuri rafting price",
+        "marine drive rafting in rishikesh",
+        "marine drive rafting in rishikesh price",
+        "best time for rafting in rishikesh",
+        "best time for camping in rishikesh",
+        "yoga and meditation session",
+        "book camping",
+        "book rafting",
+        "book bungee jumping",
+        "rafting types",
+        "rishikesh rafting price",
+        "rishikesh rafting charge",
+        "rishikesh rafting timing",
+        "rafting in rishikesh",
+        "rafting in rishikesh per person price",
+        "rafting in rishikesh booking",
+        "about camping in rishikesh",
+        "about camping in rishikesh, tapovan",
+        "about rishikesh",
+        "rishikesh camping and rafting",
+        "riverside camping in rishikesh",
+        "best camping in rishikesh",
+        "best camp in tapovan, rishikesh",
+        "camping in rishikesh near ganga",
+        "camping in rishikesh near river",
+        "best camps in rishikesh near ganga",
+        "cheapest camping in rishikesh",
+        "Swiss camps Rishikesh",
+        "Riverside camp Rishikesh",
+        "Camp near Ganga river",
+        "Ganga view camp Rishikesh",
+        "Swimming pool camp in Rishikesh",
+        "Rishikesh accommodation",
+        "bungee jumping rishikesh",
+        "bungee jumping in rishikesh",
+        "bungee jumping in rishikesh price",
+        "bungee jumping in rishikesh charges",
+        "bungee jumping in rishikesh distance",
+        "bungee jumping in rishikesh shivpuri",
+        "bungee jumping in rishikesh age limit",
+        "bungee jumping price per person",
+        "bungee jumping price",
+        "jumping heights",
+        "best time for bungee jumping",
+        "bike rent in rishikesh",
+        "rishikesh bike rent",
+        "bike rent price in rishikesh",
+        "bikes available for rent",
+        "activa rent price",
+        "bike rent price",
+        "bullet rent price in rishikesh",
+      ],
       images: [
         {
           url: `${BASE_URL}${blog.image}`,

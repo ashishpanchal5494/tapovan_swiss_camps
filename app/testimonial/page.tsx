@@ -8,6 +8,11 @@ export const metadata: Metadata = {
     "Read 50+ verified guest reviews of Tapovan Swiss Camps - rated 5/5 for luxury tents, scenic views, and adventure activities in Rishikesh. See why we're the top-rated camping site in Tapovan.",
   keywords: [
     "Tapovan Swiss Camps reviews",
+    "best reviews for camping in rishikesh",
+    "best reviews for camping in tapovan rishikesh",
+    "camping in rishikesh shivpuri reviews",
+    "riverdside camping in rishikesh reviews",
+    "camping sites in rishikesh",
     "best camping Rishikesh",
     "luxury tents reviews",
     "Rishikesh camping testimonials",

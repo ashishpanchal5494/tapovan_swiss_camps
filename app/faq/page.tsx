@@ -10,13 +10,26 @@ export async function generateMetadata(): Promise<Metadata> {
 
   // Generate keywords from FAQ data
   const keywords = [
+    "camping in rishikesh",
+    "rishikesh camping",
+    "frequently asked question of camping rishikesh",
+    "frequently asked question of camping",
+    "frequently asked question of rafting rishikesh",
+    "frequently asked question of rafting",
+    "camping in rishikesh faq",
+    "rafting in rishikesh faq",
+    "camping faq",
+    "rafting faq",
     "rishikesh camping faq",
     "tapovan swiss camps questions",
     "gangs rafting frequently asked",
     "luxury tents rishikesh help",
     "camping in rishikesh information",
-    "swiss tent booking queries",
+    "tapovan swiss camps tent booking queries",
     "adventure sports rishikesh faq",
+    "how to book camp in rishikesh",
+    "how to book rafting in rishikesh",
+    "how to book bungee jumping in rishikesh",
   ];
 
   return {

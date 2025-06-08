@@ -56,15 +56,11 @@ function AboutPageClient() {
     }
   }, []);
 
-  // Structured Data (JSON-LD) for LocalBusiness
-  // This JSON-LD should be placed within a <script type="application/ld+json"> tag in your JSX
-  // For a server component, you could return this as part of the `Head` component or directly in the JSX.
-  // Since this is a "use client" component, you'd typically render this using a <script> tag.
   const localBusinessSchema = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     name: "Tapovan Swiss Camps",
-    image: `${BASE_URL}/assets/img/room/garden.webp`, // Replace with your logo image
+    image: `${BASE_URL}/assets/img/room/pool.webp`, // Replace with your logo image
     url: `${BASE_URL}/about`,
     telephone: "+91-7906924003", // **IMPORTANT: Replace with your actual phone number**
     address: {
@@ -72,13 +68,14 @@ function AboutPageClient() {
       streetAddress: "Tapovan", // Example, be more specific if possible
       addressLocality: "Rishikesh",
       addressRegion: "Uttarakhand",
-      postalCode: "249192", // Example, be more specific if possible
+      postalCode: "249201", // Example, be more specific if possible
       addressCountry: "IN",
     },
     priceRange: "₹999-₹1799", // Example: $, $$, $$$
     description:
       "Tapovan Swiss Camps offers a unique blend of comfort and nature in Rishikesh, providing exclusive tents, modern amenities, and a serene environment for travelers seeking relaxation and adventure.",
-    hasMap: "https://www.google.com/maps/place/Tapovan+Swiss+Camps", // **IMPORTANT: Replace with your actual Google Maps URL**
+    hasMap:
+      "https://www.google.com/maps/place/Tapovan+Swiss+Camp+in+Rishikesh+and+Rafting+in+Rishikesh+and+Bike+rent+in+Rishikesh/@30.1394342,78.3127861,17z/data=!3m1!4b1!4m9!3m8!1s0x390917d95828f9b7:0x5628ba3506250e88!5m2!4m1!1i2!8m2!3d30.1394296!4d78.315361!16s%2Fg%2F11sxvndwwz?entry=ttu&g_ep=EgoyMDI1MDIyNi4xIKXMDSoJLDEwMjExNDUzSAFQAw%3D%3D", // **IMPORTANT: Replace with your actual Google Maps URL**
     openingHours: "Mo-Su 00:00-23:59", // Assuming 24/7 operation
     sameAs: [
       // Add your social media links here

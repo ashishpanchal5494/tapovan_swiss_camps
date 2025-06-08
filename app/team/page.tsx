@@ -8,8 +8,13 @@ export const metadata: Metadata = {
   description:
     "Get to know the dedicated team behind Tapovan Swiss Camps. Our hospitality experts, yoga instructors, and management professionals create unforgettable experiences by the Ganges in Rishikesh.",
   keywords: [
+    "tapovan swiss camps",
+    "rishikesh camping",
+    "camping in rishikesh",
     "Tapovan Swiss Camps team",
-    "Rishikesh camping staff",
+    "Rishikesh camping team",
+    "luxury camps contact number",
+    "swiss camps contact number",
     "luxury tent management",
     "Ganga riverside resort team",
     "yoga retreat professionals",
