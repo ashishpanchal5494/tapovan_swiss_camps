@@ -32,7 +32,7 @@ const ImageData: GalleryImage[] = [
   { id: 15, image: "/assets/img/gallery/gardenPhoto3.webp" },
   { id: 16, image: "/assets/img/gallery/gardenPhoto4.webp" },
   { id: 17, image: "/assets/img/gallery/ACTent1.webp" },
-  { id: 18, image: "/assets/img/gallery/ACTent2.webp" },
+  { id: 18, image: "/assets/img/gallery/ACtent2.webp" },
   { id: 19, image: "/assets/img/gallery/coolerTent1.webp" },
   { id: 20, image: "/assets/img/gallery/washroom.webp" },
   { id: 21, image: "/assets/img/gallery/tentPhoto.webp" },
