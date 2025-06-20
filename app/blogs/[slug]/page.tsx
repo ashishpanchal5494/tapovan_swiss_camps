@@ -1,4 +1,3 @@
-import { Content } from "next/font/google";
 import BlogDetailsPage from "./BlogDetailsPage";
 
 // --- Blog Data (Assuming this is fetched or imported) ---
