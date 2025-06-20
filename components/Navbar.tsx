@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import logo from "../public/assets/img/logo.png";
@@ -39,23 +39,26 @@ const Navbar = () => {
     };
   }, [isOpen, isMobile]);
 
-  const toggleMenu = (shouldOpen?: boolean) => {
-    const open = shouldOpen !== undefined ? shouldOpen : !isOpen;
+  const toggleMenu = useCallback(
+    (shouldOpen?: boolean) => {
+      const open = shouldOpen !== undefined ? shouldOpen : !isOpen;
 
-    if (open) {
-      setIsOpen(true);
-      setIsAnimating(true);
-      setTimeout(() => {
-        setIsAnimating(false);
-      }, 300);
-    } else {
-      setIsAnimating(true);
-      setTimeout(() => {
-        setIsOpen(false);
-        setIsAnimating(false);
-      }, 300);
-    }
-  };
+      if (open) {
+        setIsOpen(true);
+        setIsAnimating(true);
+        setTimeout(() => {
+          setIsAnimating(false);
+        }, 300);
+      } else {
+        setIsAnimating(true);
+        setTimeout(() => {
+          setIsOpen(false);
+          setIsAnimating(false);
+        }, 300);
+      }
+    },
+    [isOpen]
+  );
 
   useEffect(() => {
     if (isMobile) {
