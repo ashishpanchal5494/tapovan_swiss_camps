@@ -31,14 +31,14 @@ function BookingPage() {
 
     if (beds === 5) {
       if (personsPerTent === 2) {
-        perHeadPrice = Math.round(basePrice * 1.4);
-        perHeadMainPrice = Math.round(mainBasePrice * 1.4);
+        perHeadPrice = Math.round(basePrice * 1.6);
+        perHeadMainPrice = Math.round(mainBasePrice * 1.6);
       } else if (personsPerTent === 3) {
         perHeadPrice = Math.round(basePrice * 1.3);
         perHeadMainPrice = Math.round(mainBasePrice * 1.3);
       } else if (personsPerTent === 4) {
-        perHeadPrice = Math.round(basePrice * 1.2);
-        perHeadMainPrice = Math.round(mainBasePrice * 1.2);
+        perHeadPrice = Math.round(basePrice * 1.1);
+        perHeadMainPrice = Math.round(mainBasePrice * 1.1);
       }
     }
 
@@ -62,8 +62,8 @@ function BookingPage() {
     const totalDays = parseInt(formData.days || "1");
 
     const tentData = {
-      "Luxury (AC) Tent": { price: 1799, mainPrice: 2499, beds: 5 },
-      "Luxury (Cooler) Tent": { price: 1499, mainPrice: 1999, beds: 5 },
+      "Luxury (AC) Tent": { price: 1599, mainPrice: 2099, beds: 5 },
+      "Luxury (Cooler) Tent": { price: 1299, mainPrice: 1699, beds: 5 },
       "Ordinary Tent": { price: 999, mainPrice: 1199, beds: 3 },
     }[formData.tentType];
 

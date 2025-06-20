@@ -30,8 +30,8 @@ const tentRooms: Tent[] = [
     metaDescription:
       "Book our luxury AC tents in Rishikesh with 5 beds, private bath & climate control. Perfect for family glamping with modern amenities amidst nature.",
     altText: "Luxury AC Glamping Tent in Rishikesh with mountain views",
-    mainPrice: 2499,
-    price: 1799,
+    mainPrice: 2099,
+    price: 1599,
     image: "assets/img/room/ACTent1.webp",
     beds: 5,
     baths: 1,
@@ -46,8 +46,8 @@ const tentRooms: Tent[] = [
     metaDescription:
       "Experience natural cooling in our premium tents near Ganga. Perfect for couples and families seeking comfortable camping in Rishikesh.",
     altText: "Luxury Cooler Tent with natural ventilation in Rishikesh",
-    mainPrice: 1999,
-    price: 1499,
+    mainPrice: 1699,
+    price: 1299,
     image: "assets/img/room/coolerTent1.webp",
     beds: 5,
     baths: 1,
@@ -113,14 +113,14 @@ const TentsClient: React.FC = () => {
 
     if (beds === 5) {
       if (personsPerTent === 2) {
-        perHeadPrice = Math.round(basePrice * 1.4);
-        perHeadMainPrice = Math.round(mainBasePrice * 1.4);
+        perHeadPrice = Math.round(basePrice * 1.6);
+        perHeadMainPrice = Math.round(mainBasePrice * 1.6);
       } else if (personsPerTent === 3) {
         perHeadPrice = Math.round(basePrice * 1.3);
         perHeadMainPrice = Math.round(mainBasePrice * 1.3);
       } else if (personsPerTent === 4) {
-        perHeadPrice = Math.round(basePrice * 1.2);
-        perHeadMainPrice = Math.round(mainBasePrice * 1.2);
+        perHeadPrice = Math.round(basePrice * 1.1);
+        perHeadMainPrice = Math.round(mainBasePrice * 1.1);
       }
     }
 
@@ -195,25 +195,90 @@ const TentsClient: React.FC = () => {
             </p>
           </header>
           <div className="seo-content-section mt-4">
-            <h2>Premium Camping Experience in Rishikesh</h2>
+            <h2>Best Camping in Rishikesh</h2>
             <p>
-              Our luxury tents in Rishikesh offer the perfect blend of nature
-              and comfort. Located just minutes from the Ganges river, we
-              provide the best glamping experience with modern amenities amidst
-              the Himalayan foothills. Whether you&lsquo;re looking for family
-              camping tents, couple retreats, or group accommodations, our AC
-              and cooler tents ensure a memorable stay.
+              At <strong>Tapovan Swiss Camps</strong>, we offer the ultimate{" "}
+              <strong>luxury camping in Rishikesh</strong> with our premium{" "}
+              <strong>Swiss tents in Tapovan</strong>. Nestled along the banks
+              of the Ganges, our <strong>glamping near Ganga</strong> provides
+              the perfect blend of adventure and comfort. Whether you're seeking{" "}
+              <strong>luxury AC tents in Rishikesh</strong>,{" "}
+              <strong>cooler tents</strong>, or traditional accommodations, we
+              have the perfect <strong>camping in Tapovan, Rishikesh</strong>{" "}
+              experience for couples, families, and groups.
             </p>
-            <h3>Why Choose Our Tents?</h3>
+
+            <h3>Why Choose Our Luxury Tents in Rishikesh?</h3>
             <ul>
-              <li>Spacious tents with 3-5 beds each</li>
-              <li>Private or shared bathroom facilities</li>
-              <li>Eco-friendly camping experience</li>
-              <li>Stunning views of the Himalayan foothills</li>
               <li>
-                Close to popular attractions like Laxman Jhula and Triveni Ghat
+                <strong>Luxury AC tents in Tapovan Rishikesh</strong> with
+                climate control
+              </li>
+              <li>
+                <strong>best camping in Rishikesh</strong> experience with
+                attached bathrooms
+              </li>
+              <li>
+                Spacious <strong>luxury couple tents in Rishikesh</strong> with
+                romantic river views
+              </li>
+              <li>
+                Family-friendly{" "}
+                <strong>luxury camping tents in Rishikesh riverside</strong>
+              </li>
+              <li>
+                Authentic <strong>tent camping in Rishikesh Shivpuri</strong> at
+                competitive prices
+              </li>
+              <li>
+                Best <strong>camping accommodation in Rishikesh</strong> with
+                modern amenities
               </li>
             </ul>
+
+            <h3>Our Tent Categories</h3>
+            <p>
+              <strong>1. Luxury AC Tents:</strong> Experience{" "}
+              <strong>luxury camping in Tapovan, Rishikesh</strong> with our
+              climate-controlled accommodations. These{" "}
+              <strong>best camping tents in Rishikesh</strong> feature premium
+              bedding and private facilities.
+            </p>
+            <p>
+              <strong>2. Luxury Cooler Tents:</strong> Our{" "}
+              <strong>luxury tents in Tapovan, Rishikesh</strong> offer natural
+              cooling perfect for summer{" "}
+              <strong>couple camping Rishikesh</strong> getaways.
+            </p>
+            <p>
+              <strong>3. Ordinary Tents:</strong> Affordable{" "}
+              <strong>tent camping in Rishikesh price</strong> options for
+              backpackers seeking authentic outdoor experiences.
+            </p>
+
+            <h3>Nearby Attractions</h3>
+            <p>
+              Our <strong>luxury camping in Rishikesh riverside</strong>{" "}
+              location puts you minutes from:
+            </p>
+            <ul>
+              <li>Laxman Jhula and Ganga Arti</li>
+              <li>Triveni Ghat for spiritual experiences</li>
+              <li>White water rafting starting points</li>
+              <li>Yoga centers and meditation ashrams</li>
+              <li>Waterfall and Tapovan Market</li>
+            </ul>
+
+            <h3>Book Your Luxury Tent Today</h3>
+            <p>
+              Experience the finest <strong>glamping near Ganga</strong> with
+              Tapovan Swiss Camps. Whether you need{" "}
+              <strong>luxury couple tents in Tapovan Rishikesh</strong> or
+              family-sized accommodations, we offer competitive{" "}
+              <strong>luxury tents price</strong> packages for all budgets. Our{" "}
+              <strong>best camping in Rishikesh</strong> experience combines
+              modern comforts with breathtaking natural beauty.
+            </p>
           </div>
           <div className="row justify-content-center">
             {tentRooms.map((room, index) => {

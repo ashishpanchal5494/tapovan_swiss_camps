@@ -1,3 +1,4 @@
+import { Content } from "next/font/google";
 import BlogDetailsPage from "./BlogDetailsPage";
 
 // --- Blog Data (Assuming this is fetched or imported) ---
@@ -7,63 +8,140 @@ const blogData = [
     image: "/assets/img/blog/camping_rishikesh.webp",
     category: "India",
     title:
-      "Camping in Rishikesh: The Ultimate Guide to an Unforgettable Experience",
+      "Camping in Rishikesh: The Ultimate Guide to an Unforgettable Himalayan Experience",
     slug: "camping-in-rishikesh",
-    content: `Rishikesh, nestled in the foothills of the Himalayas and along the banks of the Ganga, is a paradise for adventure lovers. Among its many offerings, camping in Rishikesh is an experience that blends nature, thrill, and peace. Whether you&lsquo;re a solo traveler, a couple, or a family, camping here brings you close to the serene beauty of Uttarakhand.
+    //     content: `Rishikesh, nestled in the foothills of the Himalayas and along the banks of the Ganga, is a paradise for adventure lovers. Among its many offerings, camping in Rishikesh is an experience that blends nature, thrill, and peace. Whether you&lsquo;re a solo traveler, a couple, or a family, camping here brings you close to the serene beauty of Uttarakhand.
 
-Why Choose Rishikesh for Camping?
-- Breathtaking Views: Enjoy stunning riverside or jungle surroundings.
-- Adventure Activities: Combine camping with rafting, trekking, zip-lining, and bungee jumping.
-- Spiritual Vibes: Meditate or join Ganga Aarti at Triveni Ghat.
-- Affordable Packages: Luxury and budget-friendly options available for every traveler.
+    // Why Choose Rishikesh for Camping?
+    // - Breathtaking Views: Enjoy stunning riverside or jungle surroundings.
+    // - Adventure Activities: Combine camping with rafting, trekking, zip-lining, and bungee jumping.
+    // - Spiritual Vibes: Meditate or join Ganga Aarti at Triveni Ghat.
+    // - Affordable Packages: Luxury and budget-friendly options available for every traveler.
 
-Types of Camping Experiences
-- Riverside Camping – Stay near the Ganga, enjoy cool breezes and bonfires.
-- Luxury Camping – Swiss tents with attached washrooms, meals, and modern amenities.
-- Jungle Camping – For those who seek a rustic and raw nature vibe.
+    // Types of Camping Experiences
+    // - Riverside Camping – Stay near the Ganga, enjoy cool breezes and bonfires.
+    // - Luxury Camping – Swiss tents with attached washrooms, meals, and modern amenities.
+    // - Jungle Camping – For those who seek a rustic and raw nature vibe.
 
-Best Time for Camping in Rishikesh
-- October to June is ideal, with pleasant weather and active adventure sports.
-- Avoid monsoon season (July–September) due to high water levels.
+    // Best Time for Camping in Rishikesh
+    // - October to June is ideal, with pleasant weather and active adventure sports.
+    // - Avoid monsoon season (July–September) due to high water levels.
 
-Top Activities to Enjoy While Camping
-- White Water Rafting
-- Bonfire with Music
-- Nature Walks & Waterfall Hikes
-- Ganga Aarti at Triveni Ghat
-- Yoga & Meditation Sessions
+    // Top Activities to Enjoy While Camping
+    // - White Water Rafting
+    // - Bonfire with Music
+    // - Nature Walks & Waterfall Hikes
+    // - Ganga Aarti at Triveni Ghat
+    // - Yoga & Meditation Sessions
 
-What to Pack for Your Camping Trip
-- Light woolens (even in summer nights)
-- Trekking shoes
-- Flashlight
-- Power bank
+    // What to Pack for Your Camping Trip
+    // - Light woolens (even in summer nights)
+    // - Trekking shoes
+    // - Flashlight
+    // - Power bank
+    // - Reusable water bottle
+    // - Sunglasses & sunscreen
+
+    // Why Book with Tapovan Swiss Camps?
+    // - Riverside location with mountain views
+    // - Clean, hygienic Swiss tents
+    // - Home-cooked meals & bonfire nights
+    // - Group discounts & customizable packages
+    // - Friendly and trained staff
+
+    // \ud83d\udcde Book now via WhatsApp or use our easy online booking!
+
+    // FAQs
+    // Q. Is camping safe in Rishikesh?
+    // A. Yes, especially when booked with licensed camps like Tapovan Swiss Camp.
+
+    // Q. Can I bring kids or elderly people?
+    // A. Absolutely! We have comfortable tents for families and couples.
+
+    // Q. Are meals included in the package?
+    // A. Yes, most packages include breakfast, lunch, and dinner.
+
+    // Conclusion
+    // Camping in Rishikesh is more than just a stay — it&lsquo;s a refreshing break from daily life. Whether it&lsquo;s sitting around a bonfire, rafting through wild rapids, or gazing at starry skies, the memories you make here will stay forever. Book your experience today!
+
+    // \ud83d\udc49 Book Your Rishikesh Camping Experience Now`,
+    content: `Rishikesh, nestled in the foothills of the Himalayas along the sacred Ganga River, has emerged as India's premier destination for riverside camping and adventure tourism. Whether you're seeking luxury camping in Rishikesh or a rustic jungle camping experience, this spiritual town offers diverse options for every traveler.
+
+## Why Choose Rishikesh for Your Camping Adventure?
+
+- **Breathtaking Riverside Camping**: Wake up to stunning views of the Ganga River from your Swiss tent
+- **Adventure Camping Packages**: Combine your stay with white water rafting, trekking, and yoga sessions
+- **Spiritual Camping Experience**: Meditate by the river or attend the famous Ganga Aarti at Triveni Ghat
+- **Affordable Camping Options**: From budget tents to luxury Swiss camps with attached bathrooms
+
+## Types of Camping Experiences in Rishikesh
+
+### 1. Riverside Camping Near Ganga
+Perfect for those who want to fall asleep to the sound of flowing water. Most riverside camps in Rishikesh offer:
+- Comfortable Swiss tents
+- Evening bonfires
+- Riverside dining
+- Easy access to rafting points
+
+### 2. Luxury Camping in Tapovan
+For travelers wanting comfort:
+- Premium Swiss tents with attached washrooms
+- Hot water facilities
+- Multi-cuisine meals
+- Mountain views
+
+### 3. Jungle Camping in Shivpuri
+A more adventurous option:
+- Secluded forest location
+- Basic amenities
+- Closer to nature
+- Perfect for group camping trips
+
+## Best Time for Camping in Rishikesh
+
+The ideal camping season runs from **October to June**, when the weather is pleasant and all adventure activities are operational. Monsoon season (July-September) is less ideal due to higher water levels and restricted rafting.
+
+## Top 5 Activities to Combine with Your Rishikesh Camping Trip
+
+1. **White Water Rafting** - Experience grade II-IV rapids on the Ganga
+2. **Bonfire Nights** - Enjoy music and storytelling under the stars
+3. **Waterfall Trekking** - Visit Neer Garh and other hidden waterfalls
+4. **Yoga & Meditation** - Morning sessions by the river
+5. **Visit Beatles Ashram** - Explore this iconic spiritual site
+
+## What to Pack for Your Rishikesh Camping Trip
+
+- Light woolens (evenings can be cool)
+- Trekking shoes for nature walks
+- Swimwear for rafting
+- Sunscreen and sunglasses
 - Reusable water bottle
-- Sunglasses & sunscreen
+- Power bank (limited charging facilities)
 
-Why Book with Tapovan Swiss Camps?
-- Riverside location with mountain views
-- Clean, hygienic Swiss tents
-- Home-cooked meals & bonfire nights
-- Group discounts & customizable packages
-- Friendly and trained staff
+## Why Choose Tapovan Swiss Camps for Your Rishikesh Stay?
 
-\ud83d\udcde Book now via WhatsApp or use our easy online booking!
+- Prime riverside location with mountain views
+- Hygienic Swiss tents with modern amenities
+- Delicious home-cooked vegetarian meals
+- Customizable camping-rafting packages
+- Expert staff to guide your adventures
 
-FAQs
-Q. Is camping safe in Rishikesh?
-A. Yes, especially when booked with licensed camps like Tapovan Swiss Camp.
+## Frequently Asked Questions About Camping in Rishikesh
 
-Q. Can I bring kids or elderly people?
-A. Absolutely! We have comfortable tents for families and couples.
+**Q: Is camping in Rishikesh safe for solo travelers?**  
+A: Absolutely! Our camps have 24/7 security and are popular with solo adventurers.
 
-Q. Are meals included in the package?
-A. Yes, most packages include breakfast, lunch, and dinner.
+**Q: What's included in a standard camping package?**  
+A: Typically includes tent accommodation, meals, bonfire, and basic activities.
 
-Conclusion
-Camping in Rishikesh is more than just a stay — it&lsquo;s a refreshing break from daily life. Whether it&lsquo;s sitting around a bonfire, rafting through wild rapids, or gazing at starry skies, the memories you make here will stay forever. Book your experience today!
+**Q: Can we book camping and rafting together?**  
+A: Yes, we offer special combo packages that include both.
 
-\ud83d\udc49 Book Your Rishikesh Camping Experience Now`,
+## Book Your Perfect Rishikesh Camping Experience Today
+
+Whether you're looking for peaceful riverside camping or an action-packed adventure holiday, Rishikesh offers the best camping experiences in North India. Our Tapovan Swiss Camps provide the perfect base to explore this Himalayan paradise.
+
+📞 Call/WhatsApp now to book your camping trip or check availability online!`,
   },
   {
     id: 2,
@@ -71,283 +149,266 @@ Camping in Rishikesh is more than just a stay — it&lsquo;s a refreshing break 
     category: "India",
     title: "Rafting in Rishikesh – The Ultimate Adventure on the Ganga",
     slug: "rafting-in-rishikesh",
-    content: `Rishikesh, the gateway to the Himalayas and the yoga capital of the world, is also India’s most sought-after destination for white water rafting. Whether you’re an adrenaline junkie or a first-time adventurer, **rafting in Rishikesh** offers the perfect blend of thrill and nature.
+    content: `Rishikesh has earned its reputation as India's rafting capital, offering some of the most exciting white water rafting experiences in the Himalayas. From gentle grade I rapids to challenging grade IV stretches, the Ganga River provides perfect conditions for both beginners and experienced rafters.
 
----
+## Why Rishikesh is India's Best Rafting Destination
 
-## Why Choose Rishikesh for Rafting?
+- **Variety of Rapids**: Suitable for all skill levels
+- **Scenic Beauty**: Raft through stunning Himalayan landscapes
+- **Safety Standards**: Licensed operators with certified guides
+- **Affordable Packages**: Cheaper than international rafting destinations
+- **Perfect Combo**: Easily combined with camping and other adventures
 
-- **Scenic Beauty:** The Ganga River flows through forested mountains and peaceful valleys.
-- **Diverse Rapids:** Ranging from Grade I to Grade IV, suitable for both beginners and experts.
-- **Safe & Regulated:** Licensed operators with certified guides ensure a safe experience.
-- **Affordable Thrill:** Compared to global rafting destinations, Rishikesh offers budget-friendly adventure.
+## Detailed Guide to Rafting Stretches in Rishikesh
 
----
+### 1. Brahmapuri to Rishikesh (9 KM)
+- **Grade**: I-II (Beginner Friendly)
+- **Duration**: 1.5-2 hours
+- **Highlights**: Perfect for families and first-timers
+- **Best For**: Those wanting a gentle introduction to rafting
 
-## Popular Rafting Routes
+### 2. Shivpuri to Rishikesh (16 KM) - Most Popular!
+- **Grade**: II-III (Moderate)
+- **Duration**: 2-3 hours
+- **Famous Rapids**: Roller Coaster, Golf Course
+- **Best For**: Adventure seekers wanting balanced thrills
 
-1. **Brahmapuri to Rishikesh (9 KM)**
-   - Ideal for families and first-timers
-   - Grade I & II rapids
-   - Duration: 1.5 to 2 hours
+### 3. Marine Drive to Rishikesh (24 KM)
+- **Grade**: III (Intermediate)
+- **Duration**: 3-4 hours
+- **Best For**: Groups looking for extended rafting fun
 
-2. **Shivpuri to Rishikesh (16 KM)**
-   - Most popular stretch
-   - Includes rapids like Roller Coaster & Golf Course
-   - Duration: 2 to 3 hours
-
-3. **Marine Drive to Rishikesh (24 KM)**
-   - Moderate level, perfect for group thrill
-   - Duration: 3 to 4 hours
-
-4. **Kaudiyala to Rishikesh (36 KM)**
-   - Advanced route with Grade IV rapids like “The Wall”
-   - Only for experienced rafters
-
----
+### 4. Kaudiyala to Rishikesh (36 KM) - Expert Level!
+- **Grade**: III-IV (Advanced)
+- **Duration**: Full day
+- **Challenging Rapids**: The Wall, Daniel's Dip
+- **Best For**: Seasoned rafters seeking extreme adventure
 
 ## Best Time for Rafting in Rishikesh
 
-- **October to June** is ideal for rafting.
-- **Avoid July to September** due to monsoon and high water levels.
+The rafting season typically runs from **October to June**, with optimal conditions from November to April. Monsoon season (July-September) is closed for safety reasons.
 
----
+## Essential Rafting Safety Tips
 
-## Safety Tips for Rafters
+1. Always wear provided safety gear (helmet & life jacket)
+2. Listen carefully to your guide's instructions
+3. Secure loose items or leave valuables at camp
+4. Stay hydrated but avoid alcohol before rafting
+5. Know your limits - choose appropriate rapids
 
-- Always wear a life jacket and helmet.
-- Listen carefully to your rafting instructor.
-- Avoid rafting if you have major health conditions.
-- Don&lsquo;t carry valuables or electronics.
-- Never attempt rafting under the influence of alcohol.
+## What to Bring for Your Rafting Adventure
 
----
+- Quick-dry clothing or swimwear
+- Secure footwear (will get wet)
+- Waterproof sunscreen
+- Change of clothes for after
+- Waterproof camera (if desired)
 
-## What to Bring
+## Why Book Your Rafting with Tapovan Swiss Camps?
 
-- Quick-dry clothes or swimwear
-- River sandals or waterproof footwear
-- Sunscreen and sunglasses with straps
-- Change of clothes
-- Towel and water bottle
+- Certified rafting partners with perfect safety record
+- Convenient packages combining rafting and camping
+- Free transport to starting points
+- Expert guides with local knowledge
+- Group discounts available
 
----
+## Frequently Asked Questions
 
-## Why Book Rafting with Tapovan Swiss Camps?
+**Q: Is rafting safe for non-swimmers?**  
+A: Yes! Life jackets keep you afloat and guides are trained to assist everyone.
 
-- Certified rafting partners with licensed guides
-- Packages available with camping + rafting combo
-- Free transport from campsite to rafting point
-- Riverside Swiss tents with meals and bonfire
-- Special discounts for groups and couples
+**Q: What's the minimum age for rafting?**  
+A: Generally 14 years for mild rapids, 16+ for more challenging stretches.
 
----
+**Q: Can we get photos of our rafting trip?**  
+A: Many operators offer professional photography services.
 
-## FAQs
+## Ready for the Ultimate Rafting Adventure?
 
-**Q. Is rafting in Rishikesh safe for beginners?**
-Yes, routes like Brahmapuri and Shivpuri are safe and perfect for beginners with trained guides.
+Rishikesh offers world-class white water rafting at unbeatable prices. Whether you're looking for a gentle float or an adrenaline-pumping challenge, the Ganga has rapids to match every adventurer's dreams.
 
-**Q. What is the age limit for rafting?**
-Generally, 14 to 60 years, but may vary slightly by operator and river conditions.
-
-**Q. Can non-swimmers go rafting?**
-Absolutely. Life jackets are mandatory and guides are trained for all situations.
-
----
-
-## Conclusion
-**Rafting in Rishikesh** is not just an adventure—it&lsquo;s a life-changing experience that combines nature, thrill, and serenity. Whether you come with friends, family, or solo, it&lsquo;s bound to be unforgettable. Book your rafting + camping combo with **Tapovan Swiss Camp** today and make memories that flow with the Ganga!
-
-👉 **Ready to raft? [Contact Us Now on WhatsApp]**
-
----
-
-Would you like a **featured image** for this blog? I can generate one showing a group rafting scene on the Ganga with lush hills in the background.`,
+📞 Book your rafting package today and get ready to ride the river!`,
   },
   {
     id: 3,
     image: "/assets/img/blog/bangee_rishikesh.webp",
     category: "India",
-    title: "Bungee Jumping in Rishikesh – Leap into the Ultimate Thrill",
+    title:
+      "Bungee Jumping in Rishikesh: Conquer India's Highest Jump at 83 Meters!",
     slug: "bungeeJumping-in-rishikesh",
-    content: `Rishikesh, the adventure capital of India, offers one of the most thrilling experiences you can imagine – **bungee jumping**. If you crave an adrenaline rush and want to conquer your fears, this is your chance to take a leap (literally) over the stunning river valley of the Ganges.
+    content: `Experience the ultimate adrenaline rush with bungee jumping in Rishikesh, home to India's highest fixed-platform jump at 83 meters (272 feet) above a stunning river valley. Operated to international safety standards, this is a bucket-list experience you'll never forget.
 
-  ---
+## Why Rishikesh is India's Premier Bungee Destination
 
-  ## Why Try Bungee Jumping in Rishikesh?
+- **Highest Jump in India**: 83-meter platform
+- **Breathtaking Location**: Over a river in the Himalayan foothills
+- **World-Class Safety**: Operated by experts from New Zealand
+- **Combo Adventures**: Pair with giant swing or flying fox
+- **Professional Media**: Optional HD videos of your jump
 
-  - **India&lsquo;s Highest Bungee Site:** With a height of 83 meters (272 feet), Rishikesh is home to the country&lsquo;s tallest fixed-platform jump.
-  - **Scenic Location:** Jump off a cliff surrounded by the Shivalik Hills, over a river stream for a breathtaking view.
-  - **Safety First:** Operated by trained professionals and safety experts from New Zealand.
-  - **Bucket List Worthy:** This is not just a sport—it's a personal achievement you'll never forget.
+## Complete Bungee Jumping Experience Details
 
-  ---
+### The Jump Process:
+1. Registration and safety briefing
+2. Harness fitting and equipment check
+3. Walk to the jump platform
+4. The thrilling countdown and leap!
+5. Rebound and lowering
+6. Certificate presentation
 
-  ## Top Bungee Spot in Rishikesh
+### Technical Specifications:
+- **Height**: 83 meters
+- **Freefall**: Approximately 5 seconds
+- **Location**: Mohan Chatti (20km from Rishikesh)
+- **Operator**: Jumpin Heights (most experienced in India)
 
-  **Jumpin Heights – Mohan Chatti**
-  - Height: 83 meters
-  - Location: 20 km from Tapovan
-  - Certified by international safety standards
-  - Also offers: Flying Fox and Giant Swing
+## Best Time for Bungee Jumping in Rishikesh
 
-  ---
+The ideal season runs from **October to June** when weather conditions are perfect. Avoid monsoon season (July-September) due to safety concerns.
 
-  ## Best Time for Bungee Jumping
+## Essential Safety Information
 
-  - **October to June** is the perfect time with clear skies and pleasant weather.
-  - **Avoid Monsoon Season** (July–September) due to safety concerns from rain and high winds.
+- **Age Limit**: 12-60 years
+- **Weight Limit**: 40-110 kg
+- **Health Restrictions**: No heart conditions, high BP, or pregnancy
+- **Clothing**: Fitted clothes (no loose items)
+- **Footwear**: Secure shoes (provided if needed)
 
-  ---
+## What to Expect During Your Jump
 
-  ## Safety Guidelines
+- Intense adrenaline rush
+- Breathtaking valley views
+- Professional guidance at every step
+- Sense of incredible accomplishment
+- Optional video to relive the experience
 
-  - Age Limit: 12 years and above
-  - Weight Limit: 40 kg to 110 kg
-  - People with heart conditions, high BP, or recent surgeries should avoid the jump
-  - Wear comfortable, tight-fitting clothes
-  - Avoid jumping on a full stomach
+## Why Book Your Bungee Jump with Tapovan Swiss Camps?
 
-  ---
+- Convenient transportation arrangements
+- Special combo deals with camping
+- Expert advice for first-time jumpers
+- Hassle-free booking process
+- Trusted local partners
 
-  ## What to Expect
+## Frequently Asked Questions
 
-  - A short briefing by certified instructors
-  - Harnessing and security checks
-  - A walk to the edge (the most thrilling part!)
-  - The jump and rebound
-  - Certificate of completion and video (optional extra)
+**Q: Is bungee jumping really safe?**  
+A: Yes, when performed at licensed facilities like Jumpin Heights with proper equipment and procedures.
 
-  ---
+**Q: Can I jump if I'm scared of heights?**  
+A: Many jumpers conquer their fear this way! The staff are experts at calming nerves.
 
-  ## Why Book with Tapovan Swiss Camps?
+**Q: How should I prepare mentally?**  
+A: Focus on the achievement rather than the fear - most say the anticipation is worse than the jump itself!
 
-  - Easy cab arrangements to Jumpin Heights
-  - Discounted combos of **camping + bungee jumping**
-  - Clean, safe Swiss tents near Tapovan
-  - Meals, bonfire, and adventure all in one package
-  - Personalized itinerary for groups and couples
+## Take the Leap of a Lifetime!
 
-  ---
+Bungee jumping in Rishikesh isn't just an activity - it's a transformative experience that tests your limits and rewards you with incredible memories. Whether you're an adrenaline junkie or looking to conquer fears, this is your moment.
 
-  ## FAQs
-
-  **Q. Is bungee jumping in Rishikesh safe?**
-  Yes, especially with licensed operators like Jumpin Heights, following strict safety standards.
-
-  **Q. Can I jump if I&lsquo;ve never done it before?**
-  Absolutely. Most jumpers are first-timers, and staff guide you through every step.
-
-  **Q. Can I get a video of my jump?**
-  Yes, professional HD videos and photos are available for purchase at the site.
-
-  ---
-
-  ## Conclusion
-
-  **Bungee jumping in Rishikesh** is more than an adventure—it's a memory of courage, freedom, and joy. Ready to feel alive like never before? Book your **bungee + camping combo** with Tapovan Swiss Camp and jump into one of the wildest experiences of your life.
-
-  👉 **Book Now via WhatsApp or contact us online!**
-  `,
+📞 Book your jump today and get ready to fly!
+  `,
   },
   {
     id: 4,
     image: "/assets/img/blog/bike_rent_rishikesh.webp",
     category: "India",
-    title: "Bike Rent in Rishikesh – Ultimate Guide for 2025",
+    title:
+      "Bike Rental in Rishikesh: Complete 2025 Guide to Exploring on Two Wheels",
     slug: "bikeRent-in-rishikesh",
-    content: `Want to explore Rishikesh on two wheels? Renting a bike in Rishikesh is the smartest, most adventurous way to soak in the Himalayan vibes and spiritual charm. Whether you&lsquo;re here for a short trip or an extended stay, a rented scooter or Royal Enfield gives you the freedom to ride at your own pace.
+    content: `Discover the freedom of Rishikesh with bike rentals that let you explore Himalayan vistas, sacred ghats, and hidden waterfalls at your own pace. From economical scooters to powerful Royal Enfields, find the perfect ride for your Rishikesh adventure.
 
-  🏍️ Why Choose Bike Rental in Rishikesh?
-  Freedom to Explore: No fixed routes—ride to waterfalls, temples, or cafes when you want.
+## Why Rent a Bike in Rishikesh?
 
-  Cost-Effective Travel: Save money on taxis and travel like a local.
+- **Complete Freedom**: Explore beyond tourist buses and taxis
+- **Cost Effective**: Cheaper than multiple cab rides
+- **Scenic Routes**: Ride along the Ganga and through mountain roads
+- **Flexible Stops**: Pause at viewpoints, cafes, and temples
+- **Adventure Ready**: Access offbeat locations easily
 
-  Scenic Routes: Ride along the Ganges, through forests, and up to hilltops.
+## 2025 Bike Rental Options & Pricing
 
-  Adventure Friendly: Great for solo travelers, couples, and even groups.
+| Bike Model          | Best For            | Daily Rate (INR) |
+|---------------------|---------------------|------------------|
+| Honda Activa        | City Exploration    | ₹400-₹600        |
+| Royal Enfield 350   | Long Distance Rides | ₹900-₹1300       |
+| Bajaj Pulsar        | Balanced Performance| ₹700-₹1000       |
+| Himalayan 411       | Off-Road Adventures | ₹1200-₹1600      |
 
-  🔥 Popular Bikes Available for Rent
-  Bike Model  Ideal For Rental (Per Day)
-  Activa / Jupiter  City travel ₹400 – ₹600
-  Royal Enfield 350 Long distances  ₹900 – ₹1300
-  Avenger / Pulsar  Comfort rides ₹700 – ₹1000
-  Himalayan / Xpulse  Off-road travel ₹1200 – ₹1600
+*Prices may vary seasonally. Discounts available for weekly rentals.*
 
-  Prices may vary by season and rental duration.
+## Top 5 Scenic Bike Routes in Rishikesh
 
-  📍 Top Places to Ride Your Bike in Rishikesh
-  Neer Garh Waterfall – Just 6 km away, a serene trek & bike combo.
+1. **Laxman Jhula to Neelkanth Mahadev Road**
+   - Distance: 35km round trip
+   - Highlights: Mountain views, waterfalls
+   - Stop At: Garud Chatti waterfall
 
-  Laxman Jhula to Shivpuri Stretch – Scenic riverside road.
+2. **Rishikesh to Kunjapuri Temple**
+   - Distance: 25km uphill
+   - Reward: Spectacular sunrise views
+   - Tip: Start before dawn
 
-  Beatles Ashram (Chaurasi Kutia) – Spiritual ride with forest views.
+3. **Riverside Ride to Shivpuri**
+   - Distance: 16km along Ganga
+   - Perfect For: Evening rides
+   - Stop At: Beach cafes
 
-  Kunjapuri Temple – Sunrise ride to a mountain-top temple.
+4. **Beatles Ashram Loop**
+   - Distance: 8km from Tapovan
+   - Cultural Highlight: Famous music history
 
-  Vashishta Cave – Peaceful meditation spot outside the city buzz.
+5. **Vashishta Gufa Meditation Ride**
+   - Distance: 20km round trip
+   - Peaceful Destination: Ancient cave
 
-  ✅ Requirements for Bike Rental
-  Valid Driving License
+## Essential Rental Requirements
 
-  Original ID Proof (Aadhar, Passport, etc.)
+- Valid Driving License (International accepted)
+- Original ID Proof (Passport/Aadhar)
+- Security Deposit (₹500-₹2000)
+- Minimum Age: 18 for scooters, 21 for bikes
 
-  Security Deposit (₹500 – ₹2000 depending on the vehicle)
+## What's Included in Your Rental?
 
-  Age: 18+ for gearless, 21+ for geared bikes
+- Helmet (mandatory)
+- Basic insurance
+- 24/7 roadside assistance (with some providers)
+- Unlimited kilometers (confirm with vendor)
 
-  🔧 Inclusions & Add-ons
-  Free helmets (mandatory)
+## Safety Tips for Riding in Rishikesh
 
-  Unlimited kilometers (check with provider)
+✔ Always wear your helmet  
+✔ Check brakes and lights before riding  
+✔ Avoid night riding on mountain roads  
+✔ Go slow on wet roads  
+✔ Don't overload the bike  
+✔ Stay hydrated during rides  
 
-  Pickup/drop at Tapovan Swiss Camp (optional)
+## Why Book Through Tapovan Swiss Camps?
 
-  Add-ons: Raincoat, luggage carrier, mobile holder
+- Trusted local rental partners
+- Best price guarantee
+- Bike delivery at your campsite
+- Combo deals with accommodation
+- 24/7 support during your rental
 
-  🕒 Best Time for Bike Rides in Rishikesh
-  October to April: Cool breeze, clear skies – perfect for outdoor rides.
+## Frequently Asked Questions
 
-  Avoid July–August: Rainy season can be slippery and dangerous.
+**Q: Is an international license accepted?**  
+A: Yes, along with your original passport.
 
-  🔐 Safety Tips Before You Ride
-  Inspect brakes, lights, horn before renting
+**Q: What if the bike breaks down?**  
+A: Reputable providers offer roadside assistance.
 
-  Always wear a helmet and follow local traffic rules
+**Q: Can I rent for just a few hours?**  
+A: Some providers offer hourly rentals at higher rates.
 
-  Avoid riding at night in hilly or forested areas
+## Hit the Road - Book Your Bike Today!
 
-  Don&lsquo;t overspeed—enjoy the journey, not just the destination!
+Exploring Rishikesh by bike lets you discover hidden gems and create your own adventure. Whether you want to cruise along the Ganga or challenge Himalayan roads, two wheels offer the perfect freedom.
 
-  💬 FAQs
-  Q: Is bike rental safe in Rishikesh?
-  Yes, especially if you follow traffic rules and rent from a trusted provider.
-
-  Q: Can I rent a bike without a license?
-  No, a valid license is mandatory.
-
-  Q: Are bikes available for self-drive only?
-  Yes, most rentals are self-drive. Some providers offer guided rides too.
-
-  Q: Do I need to refill fuel?
-  Yes, bikes are usually provided with limited fuel. You refill as needed.
-
-  📞 Why Book Bike Rental with Tapovan Swiss Camp?
-  Trusted local tie-ups for best rates
-
-  Hassle-free bike delivery at campsite
-
-  Combo deals: Bike + Camping + Rafting packages
-
-  24/7 assistance & flexible booking
-
-  Group discounts available
-
-  🚀 Conclusion
-  Riding through Rishikesh on a bike is more than just travel—it&lsquo;s an experience. With bike rental services easily available, there&lsquo;s no reason to miss out on the hidden beauty of this Himalayan town. Whether it&lsquo;s adventure or peace you seek, a two-wheeler gives you the perfect balance.
-
-  👉 Book your bike rental in Rishikesh now and explore like a local!`,
+📞 Call now to reserve your bike or ask about our camping+bike packages!
+    `,
   },
 ];
 

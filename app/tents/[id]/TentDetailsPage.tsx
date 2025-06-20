@@ -19,7 +19,7 @@ const tentRooms = [
   {
     id: 1,
     title: "Luxury AC Tent",
-    price: 1799,
+    price: 1599,
     images: [
       { id: 1, url: "/assets/img/room/ACTent1.webp", alt: "tent 1" },
       { id: 2, url: "/assets/img/room/ACtent2.webp", alt: "tent 2" },
@@ -42,7 +42,7 @@ const tentRooms = [
   {
     id: 2,
     title: "Luxury Cooler Tent",
-    price: 1499,
+    price: 1299,
     images: [
       { id: 1, url: "/assets/img/room/coolerTent1.webp", alt: "cooler tent" },
       { id: 2, url: "/assets/img/room/washroom.webp", alt: "washroom" },
@@ -712,7 +712,7 @@ const TentDetailsPage: React.FC = () => {
               </div>
 
               {/* Room Video */}
-              <hr className="mt-4 mb-4 mb-sm-5 mt-sm-5" />
+              {/* <hr className="mt-4 mb-4 mb-sm-5 mt-sm-5" />
               <div className="room-video">
                 <div className="row">
                   <div className="col-sm-3 mb-3 mb-sm-0">
@@ -731,7 +731,7 @@ const TentDetailsPage: React.FC = () => {
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> */}
 
               {/* What's Nearby */}
               <hr className="mt-4 mb-4 mb-sm-5 mt-sm-5" />

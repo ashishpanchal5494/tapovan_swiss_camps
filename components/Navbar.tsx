@@ -347,13 +347,14 @@ const Navbar = () => {
                         </li>
                         <li className="nav-item">
                           <Link
-                            href="/about"
+                            href="/gallery"
                             className="nav-link"
                             onClick={() => isMobile && toggleMenu(false)}
                           >
-                            About Us
+                            Gallery
                           </Link>
                         </li>
+
                         <li className="nav-item">
                           <Link href="#" className="nav-link">
                             Pages <i className="ri-add-line"></i>
@@ -393,6 +394,15 @@ const Navbar = () => {
                                 onClick={() => isMobile && toggleMenu(false)}
                               >
                                 My Account
+                              </Link>
+                            </li>
+                            <li className="nav-item">
+                              <Link
+                                href="/about"
+                                className="nav-link"
+                                onClick={() => isMobile && toggleMenu(false)}
+                              >
+                                About Us
                               </Link>
                             </li>
                             <li className="nav-item">
