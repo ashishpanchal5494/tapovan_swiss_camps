@@ -29,9 +29,10 @@ const Footer = () => {
                   <Image src={logo} alt="Logo" width={220} height={100} />
                 </Link>
                 <p className="comp-desc">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor
-                  emque dicta molest enim beatae ame consequ atur tempo pretium
-                  auctor nam.
+                  Tapovan Swiss Camps offers premium luxury camping experiences
+                  along the Ganges in Rishikesh. Our hillside location provides
+                  the perfect blend of adventure and comfort with Swiss tents,
+                  delicious food, and unforgettable memories in nature's lap.
                 </p>
                 <div className="newsletter-form contact-form">
                   <form
