@@ -201,8 +201,8 @@ const TentsClient: React.FC = () => {
               <strong>luxury camping in Rishikesh</strong> with our premium{" "}
               <strong>Swiss tents in Tapovan</strong>. Nestled along the banks
               of the Ganges, our <strong>glamping near Ganga</strong> provides
-              the perfect blend of adventure and comfort. Whether you're seeking{" "}
-              <strong>luxury AC tents in Rishikesh</strong>,{" "}
+              the perfect blend of adventure and comfort. Whether you&lsquo;re
+              seeking <strong>luxury AC tents in Rishikesh</strong>,{" "}
               <strong>cooler tents</strong>, or traditional accommodations, we
               have the perfect <strong>camping in Tapovan, Rishikesh</strong>{" "}
               experience for couples, families, and groups.

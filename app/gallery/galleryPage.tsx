@@ -121,7 +121,7 @@ export default function GalleryPage() {
             unique experience at Tapovan Swiss Camps. From our{" "}
             <strong>luxury Swiss tents in Rishikesh</strong> to exciting{" "}
             <strong>riverside activities</strong>, these images capture why
-            we're considered the{" "}
+            we&lsquo;re considered the{" "}
             <strong>best glamping destination near the Ganges</strong>.
           </p>
 
