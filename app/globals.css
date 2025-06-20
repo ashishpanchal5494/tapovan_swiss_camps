@@ -5533,6 +5533,7 @@ Hotel Search Area CSS
   text-align: center;
   transition: all 0.3s ease-in-out; /* Smooth transition */
  padding-bottom: 20px;
+ z-index: auto;
 }
 
 .hotel-search-area .btn.btn-primary:hover {
