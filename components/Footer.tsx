@@ -32,7 +32,8 @@ const Footer = () => {
                   Tapovan Swiss Camps offers premium luxury camping experiences
                   along the Ganges in Rishikesh. Our hillside location provides
                   the perfect blend of adventure and comfort with Swiss tents,
-                  delicious food, and unforgettable memories in nature's lap.
+                  delicious food, and unforgettable memories in nature&lsquo;s
+                  lap.
                 </p>
                 <div className="newsletter-form contact-form">
                   <form
