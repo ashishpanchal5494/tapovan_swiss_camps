@@ -73,7 +73,7 @@ const Navbar = () => {
         });
       });
     }
-  }, [isMobile]);
+  }, [isMobile, toggleMenu]);
 
   const toggleSearch = () => {
     setIsSearchOpen(!isSearchOpen); // Toggle search bar
