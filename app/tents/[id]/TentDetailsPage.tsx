@@ -157,7 +157,7 @@ const TentDetailsPage: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    window.scrollTo({ top: 1200, behavior: "smooth" });
+    window.scrollTo(0, 0);
   }, []);
 
   useEffect(() => {
