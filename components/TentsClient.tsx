@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useState } from "react";
 import TentCard from "../components/TentCard";
 import Loading from "@/components/Loading";
 import { useSearchParams } from "next/navigation";
@@ -26,12 +26,12 @@ const tentRooms: Tent[] = [
     id: 1,
     title: "Luxury AC Tent",
     seoTitle:
-      "Luxury AC Camping Tent in Rishikesh | Premium Glamping Experience",
+      "Luxury AC Tent in Tapovan Rishikesh - Best camping experience at Tapovan swiss camps in @ ₹1499 ",
     metaDescription:
-      "Book our luxury AC tents in Rishikesh with 5 beds, private bath & climate control. Perfect for family glamping with modern amenities amidst nature.",
+      "Stay in a luxury AC tent in Tapovan Rishikesh with 5 beds, attached bath & modern comfort. Best riverside camping experience for families @ ₹1499.",
     altText: "Luxury AC Glamping Tent in Rishikesh with mountain views",
-    mainPrice: 2099,
-    price: 1599,
+    mainPrice: 1999,
+    price: 1499,
     image: "assets/img/room/ACTent1.webp",
     beds: 5,
     baths: 1,
@@ -42,12 +42,13 @@ const tentRooms: Tent[] = [
   {
     id: 2,
     title: "Luxury Cooler Tent",
-    seoTitle: "Luxury Cooler Tent in Rishikesh | Nature Retreat with Comfort",
+    seoTitle:
+      "Luxury Cooler Tent in Tapovan Rishikesh - Best camping experience at Tapovan swiss camps in @ ₹1199 ",
     metaDescription:
-      "Experience natural cooling in our premium tents near Ganga. Perfect for couples and families seeking comfortable camping in Rishikesh.",
+      "Book luxury cooler tents in Tapovan Rishikesh with 5 beds & attached bath. Enjoy natural ventilation & riverside camping comfort near Ganga @ ₹1199.",
     altText: "Luxury Cooler Tent with natural ventilation in Rishikesh",
-    mainPrice: 1699,
-    price: 1299,
+    mainPrice: 1499,
+    price: 1199,
     image: "assets/img/room/coolerTent1.webp",
     beds: 5,
     baths: 1,
@@ -58,9 +59,10 @@ const tentRooms: Tent[] = [
   {
     id: 3,
     title: "Ordinary Tent",
-    seoTitle: "Budget Camping Tent in Rishikesh | Authentic Outdoor Experience",
+    seoTitle:
+      "Budget Camping Ordinary Tent in Tapovan Rishikesh - Best camping experience at Tapovan swiss camps in @ ₹999 ",
     metaDescription:
-      "Affordable camping tents in Rishikesh for backpackers and adventure seekers. Experience real camping with basic amenities near the Ganges.",
+      "Budget tents for camping in Tapovan Rishikesh with 3 beds & common bath. Perfect for backpackers & adventure lovers seeking riverside nature stay @ ₹999.",
     altText: "Traditional camping tent in Rishikesh for budget travelers",
     mainPrice: 1199,
     price: 999,
@@ -144,32 +146,6 @@ const TentsClient: React.FC = () => {
     setIsClient(true);
   }, []);
 
-  const structuredData = useMemo(() => {
-    if (!isClient) return null;
-    return {
-      "@context": "https://schema.org",
-      "@type": "ItemList",
-      itemListElement: tentRooms.map((room, index) => ({
-        "@type": "ListItem",
-        position: index + 1,
-        item: {
-          "@type": "Product",
-          name: room.title,
-          description: room.description
-            .replace(/<[^>]*>/g, "")
-            .substring(0, 160),
-          image: room.image,
-          offers: {
-            "@type": "Offer",
-            price: room.price,
-            priceCurrency: "INR",
-            availability: "https://schema.org/InStock",
-          },
-        },
-      })),
-    };
-  }, [isClient]);
-
   if (!isClient) {
     return <Loading />;
   }
@@ -177,15 +153,29 @@ const TentsClient: React.FC = () => {
   return (
     <>
       <Head>
+        {/* Structured Data */}
         <script type="application/ld+json">
-          {JSON.stringify(structuredData)}
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            name: "Luxury Camping Tents in Rishikesh",
+            description:
+              "Premium glamping experience with luxury tents near Ganga river",
+            url: "https://tapovanswisscampsofficial.com/tents",
+            image:
+              "https://tapovanswisscampsofficial.com/assets/img/room/ACTent1.webp",
+            publisher: {
+              "@type": "Organization",
+              name: "Tapovan Swiss Camps",
+              logo: {
+                "@type": "ImageObject",
+                url: "https://tapovanswisscampsofficial.com/assets/img/logo.png",
+              },
+            },
+          })}
         </script>
       </Head>
       <section className={isMobile ? "room-area ptb-200" : "room-area ptb-60"}>
-        <script type="application/ld+json">
-          {JSON.stringify(structuredData)}
-        </script>
-
         <div className="container">
           <header className="section-title">
             <h1>Explore Our Luxury Camping Tents in Rishikesh</h1>

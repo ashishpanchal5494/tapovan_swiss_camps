@@ -62,8 +62,8 @@ function BookingPage() {
     const totalDays = parseInt(formData.days || "1");
 
     const tentData = {
-      "Luxury (AC) Tent": { price: 1599, mainPrice: 2099, beds: 5 },
-      "Luxury (Cooler) Tent": { price: 1299, mainPrice: 1699, beds: 5 },
+      "Luxury (AC) Tent": { price: 1499, mainPrice: 1999, beds: 5 },
+      "Luxury (Cooler) Tent": { price: 1199, mainPrice: 1499, beds: 5 },
       "Ordinary Tent": { price: 999, mainPrice: 1199, beds: 3 },
     }[formData.tentType];
 

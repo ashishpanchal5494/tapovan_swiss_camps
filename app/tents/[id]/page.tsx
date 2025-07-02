@@ -22,12 +22,12 @@ const tentRooms: Tent[] = [
     id: 1,
     title: "Luxury AC Tent",
     seoTitle:
-      "Luxury AC Camping Tent in Rishikesh | Premium Glamping Experience",
+      "Luxury AC Tent in Tapovan Rishikesh - Best camping experience at Tapovan swiss camps in @ ₹1499 ",
     metaDescription:
-      "Book our luxury AC tents in Rishikesh with 5 beds, private bath & climate control. Perfect for family glamping with modern amenities amidst nature.",
+      "Stay in a luxury AC tent in Tapovan Rishikesh with 5 beds, attached bath & modern comfort. Best riverside camping experience for families @ ₹1499.",
     altText: "Luxury AC Glamping Tent in Rishikesh with mountain views",
-    mainPrice: 2499,
-    price: 1799,
+    mainPrice: 1999,
+    price: 1499,
     image: "assets/img/room/ACTent1.webp",
     beds: 5,
     baths: 1,
@@ -38,12 +38,13 @@ const tentRooms: Tent[] = [
   {
     id: 2,
     title: "Luxury Cooler Tent",
-    seoTitle: "Luxury Cooler Tent in Rishikesh | Nature Retreat with Comfort",
+    seoTitle:
+      "Luxury Cooler Tent in Tapovan Rishikesh - Best camping experience at Tapovan swiss camps in @ ₹1199 ",
     metaDescription:
-      "Experience natural cooling in our premium tents near Ganga. Perfect for couples and families seeking comfortable camping in Rishikesh.",
+      "Book luxury cooler tents in Tapovan Rishikesh with 5 beds & attached bath. Enjoy natural ventilation & riverside camping comfort near Ganga @ ₹1199.",
     altText: "Luxury Cooler Tent with natural ventilation in Rishikesh",
-    mainPrice: 1999,
-    price: 1499,
+    mainPrice: 1499,
+    price: 1199,
     image: "assets/img/room/coolerTent1.webp",
     beds: 5,
     baths: 1,
@@ -54,9 +55,10 @@ const tentRooms: Tent[] = [
   {
     id: 3,
     title: "Ordinary Tent",
-    seoTitle: "Budget Camping Tent in Rishikesh | Authentic Outdoor Experience",
+    seoTitle:
+      "Budget Camping Ordinary Tent in Tapovan Rishikesh - Best camping experience at Tapovan swiss camps in @ ₹999 ",
     metaDescription:
-      "Affordable camping tents in Rishikesh for backpackers and adventure seekers. Experience real camping with basic amenities near the Ganges.",
+      "Budget tents for camping in Tapovan Rishikesh with 3 beds & common bath. Perfect for backpackers & adventure lovers seeking riverside nature stay @ ₹999.",
     altText: "Traditional camping tent in Rishikesh for budget travelers",
     mainPrice: 1199,
     price: 999,

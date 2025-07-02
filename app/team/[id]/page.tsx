@@ -58,11 +58,10 @@ export async function generateMetadata(
   const previousImages = (await parent).openGraph?.images || [];
 
   return {
-    title: `${name} - ${role}`,
-    description: `Meet ${name}, our ${role.toLowerCase()} at Tapovan Swiss Camps. ${description.substring(
-      0,
-      155
-    )}...`,
+    title: `${name} - ${role} | Camping, Rafting & Travel Contact in Rishikesh - Tapovan Swiss Camps`,
+
+    description: `Contact ${name}, our ${role.toLowerCase()} at Tapovan Swiss Camps. Get assistance with Rishikesh camping bookings, rafting adventures, bike rentals, bungee jumping, and more. Your trusted travel contact in Tapovan, Rishikesh.`,
+
     keywords: [
       "tapovan swiss camps",
       "camping contact in tapovan rishikesh",

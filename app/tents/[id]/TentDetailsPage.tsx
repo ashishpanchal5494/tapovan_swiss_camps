@@ -19,7 +19,7 @@ const tentRooms = [
   {
     id: 1,
     title: "Luxury AC Tent",
-    price: 1599,
+    price: 1499,
     images: [
       { id: 1, url: "/assets/img/room/ACTent1.webp", alt: "tent 1" },
       { id: 2, url: "/assets/img/room/ACtent2.webp", alt: "tent 2" },
@@ -42,7 +42,7 @@ const tentRooms = [
   {
     id: 2,
     title: "Luxury Cooler Tent",
-    price: 1299,
+    price: 1199,
     images: [
       { id: 1, url: "/assets/img/room/coolerTent1.webp", alt: "cooler tent" },
       { id: 2, url: "/assets/img/room/washroom.webp", alt: "washroom" },

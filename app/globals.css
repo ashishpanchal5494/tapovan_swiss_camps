@@ -6335,28 +6335,49 @@ Room Details Area CSS
 .mobileCollapse {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.3s ease-in-out;
-  will-change: max-height;
+  transition: max-height 0.3s ease, opacity 0.2s ease;
+
 }
 
 .mobileCollapse.show {
-  max-height: 1000px; /* Adjust based on your content */
+  max-height: 1000px; /* enough height to show menu */
+  
 }
 
-/* Dropdown animations */
-.nav-item.open .dropdown-menu {
-  display: block;
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity 0.3s ease, transform 0.3s ease;
-}
 
 .dropdown-menu {
   display: none;
-  opacity: 0;
-  transform: translateY(-10px);
-  transition: opacity 0.3s ease, transform 0.3s ease;
-  will-change: opacity, transform;
+  transition: all 0.3s ease;
+    background-color: white;
+  padding: 0;
+  border-radius: 6px;
+}
+.nav-item.open .dropdown-menu,
+.dropdown-menu.show {
+  display: block;
+}
+
+
+
+@media (max-width: 768px) {
+  .dropdown-menu {
+    max-height: 300px !important;
+    overflow-y: auto !important;
+    position: static !important; /* prevent absolute positioning */
+  }
+
+  .dropdown-menu::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .dropdown-menu::-webkit-scrollbar-thumb {
+    background-color: #bbb;
+    border-radius: 4px;
+  }
+
+  .dropdown-menu::-webkit-scrollbar-track {
+    background: transparent;
+  }
 }
 
 /* Search area animation */

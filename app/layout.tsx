@@ -18,12 +18,9 @@ const readexPro = Readex_Pro({
 });
 
 export const metadata: Metadata = {
-  title: {
-    default: "Luxury Swiss Camps & Resort in Rishikesh | Tapovan Swiss Camps",
-    template: "%s - Tapovan Swiss Camps | Best Camping in Rishikesh",
-  },
+  title: "Tapovan Swiss Camps : Best Camping in Rishikesh - Book Now @ ₹999 !",
   description:
-    "Experience the best riverside camping in Rishikesh with Tapovan Swiss Camps. Enjoy luxury tents, swimming pool, best food, best activities, bonfire nights, rafting, bungee jumping, yoga, and more in the serene Himalayas.",
+    "Tapovan Swiss Camps offers best luxury camping experience in Rishikesh. Enjoy AC & Cooler tents, river views, swimming, rafting, yoga, and delicious food. Perfect for families, couples, and adventure seekers. Book your unforgettable Rishikesh camp stay today in ₹999!",
   keywords: [
     "camping in rishikesh",
     "camping in rishikesh tapovan",
@@ -85,7 +82,7 @@ export const metadata: Metadata = {
     },
   ],
   openGraph: {
-    title: "Tapovan Swiss Camps | Riverside Luxury Camping in Rishikesh",
+    title: "Tapovan Swiss Camps : Best Luxury Camping in Rishikesh",
     description:
       "Book your stay at Tapovan Swiss Camp and enjoy riverside luxury tents, yoga, rafting, best food, best nature view, best activities & bonfires in Rishikesh. Perfect for families, couples & adventure lovers.",
     url: "https://www.tapovanswisscampsofficial.com",
@@ -103,7 +100,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Tapovan Swiss Camps | Riverside Luxury Camping in Rishikesh",
+    title: "Tapovan Swiss Camps | Best Luxury Camping in Rishikesh",
     description:
       "Tapovan Swiss Camp offers riverside luxury tents, yoga, adventure sports, and more in the scenic beauty of Rishikesh.",
     images: [
@@ -133,9 +130,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={readexPro.variable}>
-      <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-      </head>
       <body>
         <Layout>
           {children}

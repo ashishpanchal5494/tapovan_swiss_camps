@@ -8,9 +8,10 @@ export const generateMetadata = (): Metadata => {
   const baseUrl = "https://tapovanswisscampsofficial.com";
 
   return {
-    title: "Luxury Camping Tents in Rishikesh ",
+    title:
+      "Luxury Camping Tents in Tapovan Rishikesh : Best camping experience starts @ ₹999",
     description:
-      "Experience premium glamping with our luxury tents near the Ganga river. Choose from AC, cooler, or traditional tents for your perfect nature retreat.",
+      "Looking for camping in Tapovan Rishikesh? Tapovan Swiss Camps offers luxury AC tents, cooler tents, and riverside glamping starting at just ₹999. Enjoy a premium nature retreat with Ganga river views, attached washrooms, family-friendly amenities, and a peaceful environment. Ideal for couples, families, and groups seeking the best camping experience in Rishikesh.",
     keywords: [
       "tapovan swiss camps",
       "camping in rishikesh",
@@ -37,22 +38,21 @@ export const generateMetadata = (): Metadata => {
       "luxury couple tents in rishikesh",
       "luxury couple tents in tapovan rishikesh",
       "luxury couple tents in shivpuri rishikesh",
-      "luxury couple tents in rishikesh shivpuri ",
+      "luxury couple tents in rishikesh shivpuri",
       "luxury camping in rishikesh riverside",
       "tent camping in rishikesh price",
       "luxury tents price",
       "tent camping in rishikesh shivpuri",
       "best camping tents in rishikesh",
     ],
-
     alternates: {
       canonical: `${baseUrl}/tents`,
     },
-
     openGraph: {
-      title: "Luxury AC Tent - Tapovan Swiss Camps | Best Camping in Rishikesh",
+      title:
+        "Luxury Camping Tents in Tapovan Rishikesh : Best camping experience starts @ ₹999",
       description:
-        "Experience unparalleled comfort in our Luxury AC Tents, designed for those who seek a perfect blend of nature and modern amenities. These spacious 5-bed tents feature climate control to ensure your comfort in all seasons, along with attached bathrooms for privacy. Enjoy premium bedding, tasteful decor, and ample space to relax after a day of adventure. <br/> <i>Please note</i>: To maintain a healthy environment for all guests, smoking and consumption of alcohol are strictly prohibited in all tents. We kindly request all guests to help us keep the tents clean and in excellent condition for everyone's enjoyment. <br/> Located amidst lush greenery, our AC tents offer a serene retreat while keeping you connected with essential conveniences. Perfect for families or groups looking for a luxurious camping experience without compromising on comfort",
+        "Discover luxury camping in Tapovan Rishikesh with Swiss tents by the Ganga. Stay in AC, cooler, or ordinary tents with premium amenities and serene views. Perfect for couples, families, and adventure seekers. Book now and experience the best riverside glamping starting at ₹999.",
       url: `${baseUrl}/tents`,
       type: "website",
       images: [
@@ -65,15 +65,13 @@ export const generateMetadata = (): Metadata => {
       ],
       siteName: "Tapovan Swiss Camps",
     },
-
     twitter: {
       card: "summary_large_image",
-      title: "Luxury AC Tent",
+      title: "Luxury Camping Tents in Tapovan Rishikesh – Starting @ ₹999",
       description:
-        "Experience unparalleled comfort in our Luxury AC Tents, designed for those who seek a perfect blend of nature and modern amenities. These spacious 5-bed tents feature climate control to ensure your comfort in all seasons, along with attached bathrooms for privacy. Enjoy premium bedding, tasteful decor, and ample space to relax after a day of adventure. <br/> <i>Please note</i>: To maintain a healthy environment for all guests, smoking and consumption of alcohol are strictly prohibited in all tents. We kindly request all guests to help us keep the tents clean and in excellent condition for everyone's enjoyment. <br/> Located amidst lush greenery, our AC tents offer a serene retreat while keeping you connected with essential conveniences. Perfect for families or groups looking for a luxurious camping experience without compromising on comfort",
+        "Book luxury AC tents, cooler tents & riverside camping in Tapovan Rishikesh. Enjoy premium glamping with attached bathrooms, nature views, and peaceful stays. Ideal for couples, families, and groups.",
       images: [`${baseUrl}/assets/img/room/ACTent1.webp`],
     },
-
     robots: {
       index: true,
       follow: true,
@@ -93,27 +91,6 @@ export const generateMetadata = (): Metadata => {
 const Tents: React.FC = () => {
   return (
     <>
-      {/* Structured Data */}
-      <script type="application/ld+json">
-        {JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "WebPage",
-          name: "Luxury Camping Tents in Rishikesh",
-          description:
-            "Premium glamping experience with luxury tents near Ganga river",
-          url: "https://tapovanswisscampsofficial.com/tents",
-          image:
-            "https://tapovanswisscampsofficial.com/assets/img/room/ACTent1.webp",
-          publisher: {
-            "@type": "Organization",
-            name: "Tapovan Swiss Camps",
-            logo: {
-              "@type": "ImageObject",
-              url: "https://tapovanswisscampsofficial.com/assets/img/logo.png",
-            },
-          },
-        })}
-      </script>
       <Suspense fallback={<Loading />}>
         <TentsClient />
       </Suspense>

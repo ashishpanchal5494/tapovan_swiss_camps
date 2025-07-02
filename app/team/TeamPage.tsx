@@ -126,12 +126,12 @@ const TeamPage: React.FC = () => {
       <section style={{ marginTop: "50px" }} className="team-area pb-60">
         <div className="container">
           <div className="section-title">
-            <h1>Meet Our Tapovan Swiss Camps Team</h1>
+            <h1>Tapovan Swiss Camps Team</h1>
             <p className="lead">
               The heart and soul behind your unforgettable Rishikesh camping
               experience. Our dedicated team combines{" "}
               <strong>local expertise</strong> with{" "}
-              <strong>international hospitality standards</strong> to create
+              <strong>camping and rafting professionals</strong> to create
               magical moments by the Ganges.
             </p>
           </div>

@@ -2,14 +2,11 @@ import React from "react";
 import HomePageClient from "../components/HomePageClient";
 import { Metadata } from "next";
 
-// Define specific metadata for the homepage
 export const metadata: Metadata = {
-  // Overrides default title from layout.tsx for the homepage
-  title:
-    "Tapovan Swiss Camps | Luxury Riverside Camping in Rishikesh - Book Now!",
-  // Overrides default description from layout.tsx for the homepage
+  title: "Tapovan Swiss Camps : Best Camping in Rishikesh - Book Now @ ₹999 !",
+
   description:
-    "Discover the ultimate luxury camping experience at Tapovan Swiss Camps, Rishikesh. Enjoy AC & Cooler tents, river views, swimming, rafting, yoga, and delicious food. Perfect for families, couples, and adventure seekers. Book your unforgettable Rishikesh camp stay today!",
+    "Tapovan Swiss Camps offers best luxury camping experience in Rishikesh. Enjoy AC & Cooler tents, river views, swimming, rafting, yoga, and delicious food. Perfect for families, couples, and adventure seekers. Book your unforgettable Rishikesh camp stay today in ₹999!",
   keywords: [
     "camping in rishikesh",
     "camping in rishikesh tapovan",
@@ -60,14 +57,14 @@ export const metadata: Metadata = {
   // Consider adding specific Open Graph and Twitter overrides if they differ significantly from layout.tsx
   // For example, a homepage-specific image or more direct call to action in the title/description
   openGraph: {
-    title: "Tapovan Swiss Camps: Premier Luxury Camping & Resort in Rishikesh",
+    title: "Tapovan Swiss Camps: Best Luxury Camping & Resort in Rishikesh",
     description:
-      "Experience serene riverside luxury, adventure activities, and premium amenities at Tapovan Swiss Camps. Your ideal getaway in Rishikesh starts here. Book direct!",
+      "Book your stay at Tapovan Swiss Camp and enjoy riverside luxury tents, yoga, rafting, best food, best nature view, best activities & bonfires in Rishikesh. Perfect for families, couples & adventure lovers. Book direct!",
     images: [
       {
         url: "https://www.tapovanswisscampsofficial.com/assets/img/room/gardenPhoto.webp", // A strong, captivating hero image
-        width: 1920,
-        height: 1080,
+        width: 1200,
+        height: 630,
         alt: "Panoramic view of Tapovan Swiss Camps and Ganga River in Rishikesh",
       },
     ],

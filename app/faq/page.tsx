@@ -4,7 +4,8 @@ import FAQPage from "./FAQPage";
 const BASE_URL = "https://tapovanswisscampsofficial.com";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const title = "FAQs About ";
+  const title =
+    "FAQs Tapovan Swiss Camps - Camping & Rafting in Rishikesh from ₹999";
   const description =
     "Find answers to all your questions about luxury camping and rafting in Rishikesh. Booking, cancellations, facilities, and more about Tapovan Swiss Camps.";
 

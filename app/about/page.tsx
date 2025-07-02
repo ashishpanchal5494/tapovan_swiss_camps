@@ -7,9 +7,9 @@ const BASE_URL = "https://www.tapovanswisscampsofficial.com"; // **IMPORTANT: Re
 // Metadata for the About page
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL), // Sets the base URL for all relative URLs in metadata
-  title: "About ",
+  title: "About Tapovan Swiss Camps - Best camping in rishikesh",
   description:
-    "Discover Tapovan Swiss Camps - the best camping experience in Rishikesh near the Ganga river. Our Swiss-style riverside camp in Tapovan offers luxury tents with modern amenities amidst nature. Learn about our unique blend of adventure and comfort, perfect for family vacations, group retreats, and weekend getaways. As one of Rishikesh's premier camps, we provide affordable yet high-quality accommodation with stunning river views, swimming pool access, and easy access to rafting and other Himalayan adventures.",
+    "Discover Tapovan Swiss Camps - the best camping experience in Rishikesh near the Ganga river. Our Swiss-style best camp in Tapovan offers luxury tents with modern amenities amidst nature. Learn about our unique blend of adventure and comfort, perfect for family vacations, group retreats, and weekend getaways. As one of Rishikesh's premier camps, we provide affordable yet high-quality accommodation with stunning river views, swimming pool access, and easy access to rafting and other Himalayan adventures.",
   keywords: [
     "Tapovan Swiss Camps",
     "Rishikesh camping",
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     canonical: `${BASE_URL}/about`, // Canonical URL to prevent duplicate content issues
   },
   openGraph: {
-    title: "About Tapovan Swiss Camps - Rishikesh",
+    title: "About Tapovan Swiss Camps - Best camping in rishikesh",
     description:
       "Discover Tapovan Swiss Camps - the best camping experience in Rishikesh near the Ganga river. Our Swiss-style riverside camp in Tapovan offers luxury tents with modern amenities amidst nature. Learn about our unique blend of adventure and comfort, perfect for family vacations, group retreats, and weekend getaways. As one of Rishikesh's premier camps, we provide affordable yet high-quality accommodation with stunning river views, swimming pool access, and easy access to rafting and other Himalayan adventures.",
     url: `${BASE_URL}/about`,
@@ -56,7 +56,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "About Tapovan Swiss Camps - Rishikesh",
+    title: "About Tapovan Swiss Camps - Best camping in rishikesh",
     description:
       "Discover Tapovan Swiss Camps, a serene getaway nestled amidst lush greenery in Rishikesh. Experience a perfect blend of modern comfort and natural charm.",
     images: [`${BASE_URL}/assets/img/room/pool.webp`],

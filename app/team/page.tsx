@@ -4,9 +4,10 @@ import { Metadata } from "next";
 const baseUrl = "https://tapovanswisscampsofficial.com";
 
 export const metadata: Metadata = {
-  title: "Meet Our Expert Team ",
+  title:
+    "Tapovan Swiss Camps Team | Meet Rishikesh’s Top Camping & Rafting Experts",
   description:
-    "Get to know the dedicated team behind Tapovan Swiss Camps. Our hospitality experts, yoga instructors, and management professionals create unforgettable experiences by the Ganges in Rishikesh.",
+    "Meet the expert team behind Tapovan Swiss Camps in Rishikesh. From camping and rafting professionals to yoga retreat instructors, our dedicated staff ensures the best riverside camping experience with luxury tents, warm service, and serene Ganga views.",
   keywords: [
     "tapovan swiss camps",
     "rishikesh camping",
@@ -24,9 +25,10 @@ export const metadata: Metadata = {
     canonical: `${baseUrl}/team`,
   },
   openGraph: {
-    title: "Meet Our Hospitality Team | Tapovan Swiss Camps Rishikesh",
+    title:
+      "Tapovan Swiss Camps Team | Meet Rishikesh’s Top Camping & Rafting Experts",
     description:
-      "Discover the passionate professionals who create magical camping experiences by the Ganges in Rishikesh.",
+      "Meet the expert team behind Tapovan Swiss Camps in Rishikesh. From camping and rafting professionals to yoga retreat instructors, our dedicated staff ensures the best riverside camping experience with luxury tents, warm service, and serene Ganga views.",
     url: `${baseUrl}/team`,
     type: "website",
     images: [

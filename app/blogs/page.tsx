@@ -2,9 +2,10 @@ import BlogPage from "./blogPage";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Adventure Blogs – Tapovan Swiss Camps | Rishikesh Travel Guides",
+  title:
+    "Rishikesh adventure Blogs - Tapovan Swiss Camps | Best camping in Rishikesh",
   description:
-    "Explore expert travel tips and adventure guides for Rishikesh including camping, rafting, bungee jumping and bike rentals from Tapovan Swiss Camps.",
+    "Explore perfect travel tips and adventure guides for Rishikesh including camping, rafting, bungee jumping and bike rentals from Tapovan Swiss Camps.",
   keywords: [
     "Rishikesh blogs",
     "camping in rishikesh blogs",
@@ -67,9 +68,10 @@ export const metadata: Metadata = {
     canonical: "https://www.tapovanswisscampsofficial.com/blogs",
   },
   openGraph: {
-    title: "Adventure Blogs – Tapovan Swiss Camps | Rishikesh Travel Guides",
+    title:
+      "Rishikesh adventure Blogs - Tapovan Swiss Camps | Best camping in Rishikesh",
     description:
-      "Explore expert travel tips and adventure guides for Rishikesh including camping, rafting, bungee jumping and bike rentals from Tapovan Swiss Camps.",
+      "Explore perfect travel tips and adventure guides for Rishikesh including camping, rafting, bungee jumping and bike rentals from Tapovan Swiss Camps.",
     url: "https://www.tapovanswisscampsofficial.com/blogs",
     siteName: "Tapovan Swiss Camps",
     images: [
@@ -85,9 +87,10 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Adventure Blogs – Tapovan Swiss Camps | Rishikesh Travel Guides",
+    title:
+      "Rishikesh adventure Blogs - Tapovan Swiss Camps | Best camping in Rishieksh",
     description:
-      "Explore expert travel tips and adventure guides for Rishikesh including camping, rafting, bungee jumping and bike rentals from Tapovan Swiss Camps.",
+      "Explore perfect travel tips and adventure guides for Rishikesh including camping, rafting, bungee jumping and bike rentals from Tapovan Swiss Camps.",
     images: [
       "https://www.tapovanswisscampsofficial.com/assets/img/blog/camping_rishikesh.webp",
     ],

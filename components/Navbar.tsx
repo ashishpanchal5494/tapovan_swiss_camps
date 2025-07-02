@@ -12,6 +12,7 @@ const Navbar = () => {
   const [isClient, setIsClient] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
+  const [openSubmenu, setOpenSubmenu] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
@@ -48,13 +49,13 @@ const Navbar = () => {
         setIsAnimating(true);
         setTimeout(() => {
           setIsAnimating(false);
-        }, 300);
+        }, 200);
       } else {
         setIsAnimating(true);
         setTimeout(() => {
           setIsOpen(false);
           setIsAnimating(false);
-        }, 300);
+        }, 100);
       }
     },
     [isOpen]
@@ -87,6 +88,10 @@ const Navbar = () => {
     setTimeout(() => {
       setShowPopup(false);
     }, 1000); // Hide after 1 seconds
+  };
+
+  const toggleSubmenu = () => {
+    setOpenSubmenu((prev) => !prev);
   };
 
   return (
@@ -324,7 +329,7 @@ const Navbar = () => {
                         isMobile
                           ? `mobileCollapse navbar-collapse ${
                               isOpen ? "show" : ""
-                            } ${isAnimating ? "animating" : ""}`
+                            } `
                           : `collapse navbar-collapse ${isOpen ? "show" : ""}`
                       }
                       id="navbarSupportedContent"
@@ -358,11 +363,25 @@ const Navbar = () => {
                           </Link>
                         </li>
 
-                        <li className="nav-item">
-                          <Link href="#" className="nav-link">
+                        <li className={`nav-item ${openSubmenu ? "open" : ""}`}>
+                          <Link
+                            href="#"
+                            className="nav-link"
+                            onClick={(e) => {
+                              if (isMobile) {
+                                e.preventDefault(); // prevent navigation
+                                toggleSubmenu(); // toggle submenu
+                              }
+                            }}
+                          >
                             Pages <i className="ri-add-line"></i>
                           </Link>
-                          <ul className="dropdown-menu">
+                          <ul
+                            className={`dropdown-menu ${
+                              openSubmenu ? "show" : ""
+                            }`}
+                          >
+                            {/* Your submenu items here */}
                             <li className="nav-item">
                               <Link
                                 href="/team"
@@ -433,15 +452,6 @@ const Navbar = () => {
                                 onClick={() => isMobile && toggleMenu(false)}
                               >
                                 Privacy Policy
-                              </Link>
-                            </li>
-                            <li className="nav-item">
-                              <Link
-                                href="/error-404"
-                                className="nav-link"
-                                onClick={() => isMobile && toggleMenu(false)}
-                              >
-                                404 Error Page
                               </Link>
                             </li>
                           </ul>

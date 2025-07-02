@@ -6,9 +6,12 @@ export const generateMetadata = (): Metadata => {
   const baseUrl = "https://tapovanswisscampsofficial.com";
 
   return {
-    title: "Photos | Tapovan Swiss Camps - Luxury Camping in Rishikesh",
+    title:
+      "Camping Photos in Rishikesh | Luxury Tents & Best Camp Gallery - Tapovan Swiss Camps",
+
     description:
-      "Explore our stunning gallery showcasing luxury tents, riverside views, and adventure activities at Tapovan Swiss Camps - the best glamping experience in Rishikesh.",
+      "Explore real camping photos in Rishikesh at Tapovan Swiss Camps. View images of luxury tents, riverside camps, bonfire nights, rafting adventures, and the best glamping experience in Uttarakhand.",
+
     keywords: [
       "Rishikesh camping photos",
       "Tapovan Swiss Camps photos",
@@ -25,7 +28,8 @@ export const generateMetadata = (): Metadata => {
       canonical: `${baseUrl}/gallery`,
     },
     openGraph: {
-      title: "Photos | Tapovan Swiss Camps - Premium Camping in Rishikesh",
+      title:
+        "Camping Photos in Rishikesh | Luxury Tents & Best Camp Gallery - Tapovan Swiss Camps",
       description:
         "View our collection of luxury tent accommodations, adventure activities, and scenic views at Rishikesh's premier glamping destination.",
       url: `${baseUrl}/gallery`,
@@ -41,7 +45,8 @@ export const generateMetadata = (): Metadata => {
     },
     twitter: {
       card: "summary_large_image",
-      title: "Tapovan Swiss Camps Photos",
+      title:
+        "Camping Photos in Rishikesh | Luxury Tents & Best Camp Gallery - Tapovan Swiss Camps",
       description:
         "See why we're rated the best luxury camping experience in Rishikesh through our stunning photo collection.",
       images: [`${baseUrl}/assets/img/gallery/group.webp`],

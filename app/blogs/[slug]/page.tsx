@@ -4,149 +4,81 @@ import BlogDetailsPage from "./BlogDetailsPage";
 const blogData = [
   {
     id: 1,
-    image: "/assets/img/blog/camping_rishikesh.webp",
+    image: "/assets/img/blog/gardenPhoto.webp",
+    additionalImages: [
+      "/assets/img/gallery/dining.webp",
+      "/assets/img/gallery/vollyball.webp",
+      "/assets/img/gallery/party.webp",
+    ],
     category: "India",
     title:
-      "Camping in Rishikesh: The Ultimate Guide to an Unforgettable Himalayan Experience",
+      "Camping in Rishikesh - Tapovan Swiss Camps starts @ ₹999 | Best camp in rishikesh",
     slug: "camping-in-rishikesh",
-    //     content: `Rishikesh, nestled in the foothills of the Himalayas and along the banks of the Ganga, is a paradise for adventure lovers. Among its many offerings, camping in Rishikesh is an experience that blends nature, thrill, and peace. Whether you&lsquo;re a solo traveler, a couple, or a family, camping here brings you close to the serene beauty of Uttarakhand.
+    content: `
 
-    // Why Choose Rishikesh for Camping?
-    // - Breathtaking Views: Enjoy stunning riverside or jungle surroundings.
-    // - Adventure Activities: Combine camping with rafting, trekking, zip-lining, and bungee jumping.
-    // - Spiritual Vibes: Meditate or join Ganga Aarti at Triveni Ghat.
-    // - Affordable Packages: Luxury and budget-friendly options available for every traveler.
+     <p style="font-weight: bold; font-size: 20px; margin-bottom: 20px;">Rishikesh, nestled in the foothills of the majestic Himalayas and along the sacred Ganga River, has emerged as India’s premier destination for riverside camping and adventure tourism. Whether you're seeking a luxury camping experience or prefer a rustic jungle escape, this spiritual town offers something for every kind of traveler. </p>
 
-    // Types of Camping Experiences
-    // - Riverside Camping – Stay near the Ganga, enjoy cool breezes and bonfires.
-    // - Luxury Camping – Swiss tents with attached washrooms, meals, and modern amenities.
-    // - Jungle Camping – For those who seek a rustic and raw nature vibe.
 
-    // Best Time for Camping in Rishikesh
-    // - October to June is ideal, with pleasant weather and active adventure sports.
-    // - Avoid monsoon season (July–September) due to high water levels.
+      <p style="margin-bottom: 10px;" >Tapovan Swiss Camps offers one of the finest luxury camping experiences in Rishikesh. Starting at just ₹999, our camp is perfect for families, couples, solo travelers, and adventure seekers. We provide comfortable AC and Cooler tents, stunning river views, serene nature surroundings, and top-notch services. Guests typically arrive at our camp around 12PM for check-in, where they are welcomed and guided to their pre-booked accommodations — be it <a style="color: #507650; font-weight: 600;" href="/tents/1?id=1&title=Luxury+AC+Tent&mainPrice=10495&price=7995&image=assets%2Fimg%2Froom%2FACTent1.webp&beds=5&baths=1&adults=5&checkIn=&checkOut=&perHeadPrice=1599&description=Experience+unparalleled+comfort+in+our+Luxury+AC+Tents%2C+designed+for+those+who+seek+a+perfect+blend+of+nature+and+modern+amenities.+These+spacious+5-bed+tents+feature+climate+control+to+ensure+your+comfort+in+all+seasons%2C+along+with+attached+bathrooms+for+privacy.+Enjoy+premium+bedding%2C+tasteful+decor%2C+and+ample+space+to+relax+after+a+day+of+adventure.+<br%2F>+<i>Please+note<%2Fi>%3A+To+maintain+a+healthy+environment+for+all+guests%2C+smoking+and+consumption+of+alcohol+are+strictly+prohibited+in+all+tents.+We+kindly+request+all+guests+to+help+us+keep+the+tents+clean+and+in+excellent+condition+for+everyone%27s+enjoyment.+<br%2F>+Located+amidst+lush+greenery%2C+our+AC+tents+offer+a+serene+retreat+while+keeping+you+connected+with+essential+conveniences.+Perfect+for+families+or+groups+looking+for+a+luxurious+camping+experience+without+compromising+on+comfort.&metaDescription=Book+our+luxury+AC+tents+in+Rishikesh+with+5+beds%2C+private+bath+%26+climate+control.+Perfect+for+family+glamping+with+modern+amenities+amidst+nature.">Luxury AC Tents</a>, <a style="color: #507650; font-weight: 600;" href="/tents/2?id=2&title=Luxury+Cooler+Tent&mainPrice=8495&price=6495&image=assets%2Fimg%2Froom%2FcoolerTent1.webp&beds=5&baths=1&adults=5&checkIn=&checkOut=&perHeadPrice=1299&description=Stay+cool+and+comfortable+in+our+Luxury+Cooler+Tents%2C+designed+to+provide+natural+ventilation+and+temperature+regulation.+These+well-appointed+tents+feature+5+comfortable+beds+and+attached+bathrooms%2C+offering+a+perfect+balance+between+outdoor+living+and+essential+comforts.+<br%2F>+<i>Important+rules<%2Fi>%3A+For+the+safety+and+comfort+of+all+guests%2C+smoking+and+drinking+alcohol+inside+the+tents+is+not+permitted.+We+appreciate+your+cooperation+in+maintaining+cleanliness+and+taking+care+of+the+tent+facilities+during+your+stay.+<br%2F>+The+evaporative+cooling+system+ensures+a+pleasant+environment+even+during+warmer+days.+Enjoy+the+sounds+of+nature+from+your+private+tent%2C+surrounded+by+our+beautifully+landscaped+property.+Ideal+for+those+who+want+a+comfortable+camping+experience+with+a+touch+of+traditional+cooling+methods.&metaDescription=Experience+natural+cooling+in+our+premium+tents+near+Ganga.+Perfect+for+couples+and+families+seeking+comfortable+camping+in+Rishikesh."> Luxury Cooler Tents </a>, or <a style="color: #507650; font-weight: 600;" href="/tents/3?id=3&title=Ordinary+Tent&mainPrice=5995&price=4995&image=assets%2Fimg%2Froom%2FordinaryTent1.webp&beds=3&baths=&adults=5&checkIn=&checkOut=&perHeadPrice=999&description=For+the+authentic+camping+enthusiasts%2C+our+Ordinary+Tents+offer+a+genuine+outdoor+experience+with+basic+comforts.+These+3-bed+tents+provide+shared+bathroom+facilities+and+simple%2C+clean+accommodations.+<br%2F>+<i>Guest+policies+<%2Fi>%3A+We+maintain+a+strict+no-smoking+and+no-alcohol+policy+in+all+tents+to+ensure+a+pleasant+environment+for+all+visitors.+Guests+are+expected+to+keep+their+tents+tidy+and+report+any+issues+to+our+staff+immediately.+<br%2F>+Perfect+for+budget-conscious+travelers+and+backpackers+who+want+to+immerse+themselves+in+nature+without+distractions.+Located+in+our+scenic+property%2C+these+tents+allow+you+to+enjoy+starry+nights+and+fresh+mountain+air+while+still+having+access+to+our+common+amenities+like+dining+areas+and+recreational+spaces.&metaDescription=Affordable+camping+tents+in+Rishikesh+for+backpackers+and+adventure+seekers.+Experience+real+camping+with+basic+amenities+near+the+Ganges."> Ordinary Tents </a>. Our well-maintained property boasts large open spaces ideal for group adventures and relaxation.</p>
 
-    // Top Activities to Enjoy While Camping
-    // - White Water Rafting
-    // - Bonfire with Music
-    // - Nature Walks & Waterfall Hikes
-    // - Ganga Aarti at Triveni Ghat
-    // - Yoga & Meditation Sessions
+     
 
-    // What to Pack for Your Camping Trip
-    // - Light woolens (even in summer nights)
-    // - Trekking shoes
-    // - Flashlight
-    // - Power bank
-    // - Reusable water bottle
-    // - Sunglasses & sunscreen
+      <div class="flex flex-col md:flex-row items-start gap-4">
+        <div class="flex-1">
+         <p>Our staff prepares a delicious buffet lunch featuring homely dishes like dal, roti, rice, aalu zeera, raita, and salad, served in a clean and organized dining area. Guests can also choose to order from our à la carte menu for a customized meal experience. Tapovan Swiss Camps is well-known for its exceptional food and service, consistently praised as the best camping in Rishikesh.</p>
+        </div>
+        <Image src="/assets/img/gallery/dining.webp" alt="Dining Area" width={500} height={400} className="rounded-xl shadow" style="width: 650px; margin: 10px 0;" />
+      </div>
 
-    // Why Book with Tapovan Swiss Camps?
-    // - Riverside location with mountain views
-    // - Clean, hygienic Swiss tents
-    // - Home-cooked meals & bonfire nights
-    // - Group discounts & customizable packages
-    // - Friendly and trained staff
+      <p>Our beautifully landscaped garden filled with vibrant flowers offers a peaceful escape for nature lovers. In the evening, we serve freshly made snacks including tea and aalu-pyaaz pakoras, which can be enjoyed in our poolside seating area — a favorite hangout for guests to relax and unwind.</p>
 
-    // \ud83d\udcde Book now via WhatsApp or use our easy online booking!
+      <div class="flex flex-col md:flex-row items-start gap-4">
+        <div class="flex-1">
+          <p>We provide a dedicated playground where guests can enjoy outdoor games like volleyball, badminton, and cricket. For indoor fun, we offer activities such as chess, carrom, and magic cards — ensuring entertainment for all age groups.</p>
+        </div>
+        <Image src="/assets/img/gallery/vollyball.webp" alt="Volleyball Ground" width={400} height={300} className="rounded-xl shadow" style="width: 650px; margin: 10px 0;" />
+      </div>
+      <p> Surrounded by majestic mountains and waterfalls, Tapovan Swiss Camps is located in main Tapovan, making it easily accessible to nearby attractions such as:
+<p>- Tapovan (1 km)</p>
+<p>- Ganga Aarti Point (1.5 km)</p>
+<p>- Tapovan Market (1 km)</p>
+<p>- Street Food Lane (1.2 km)</p>
+<p>- Triveni Ghat (4.5 km)</p>
+<p>- Neelkanth Mahadev Temple (22 km)</p>
+<p>- Secret Waterfall (0.5 km)</p>
+<p>- River Rafting Point (1 km)</p>
 
-    // FAQs
-    // Q. Is camping safe in Rishikesh?
-    // A. Yes, especially when booked with licensed camps like Tapovan Swiss Camp.
+<p>We also arrange bike rentals directly from the camp so that our guests can conveniently explore Rishikesh and its surroundings.</p>
 
-    // Q. Can I bring kids or elderly people?
-    // A. Absolutely! We have comfortable tents for families and couples.
+      <p>Our team arranges river rafting experiences from the camp itself. After a thrilling adventure on the river, guests can return to their tents to relax and enjoy freshly prepared meals.
 
-    // Q. Are meals included in the package?
-    // A. Yes, most packages include breakfast, lunch, and dinner.
+At Tapovan Swiss Camps, we take pride in offering the best facilities, services, and an unforgettable camping experience. It’s not just a stay — it’s a memory in the making.</p>
 
-    // Conclusion
-    // Camping in Rishikesh is more than just a stay — it&lsquo;s a refreshing break from daily life. Whether it&lsquo;s sitting around a bonfire, rafting through wild rapids, or gazing at starry skies, the memories you make here will stay forever. Book your experience today!
+      <div class="flex flex-col md:flex-row items-start gap-4">
+        <div class="flex-1">
+          <p>We hold a valid liquor license, so guests can responsibly enjoy drinks and food by the camp’s scenic seating area. Evenings come alive with our DJ party sessions, where music, lights, and bonfires create a vibrant ambiance. As the owner, I often find it hard to describe the joy these moments bring — it's something you have to experience to truly understand.
 
-    // \ud83d\udc49 Book Your Rishikesh Camping Experience Now`,
-    content: `Rishikesh, nestled in the foothills of the Himalayas along the sacred Ganga River, has emerged as India's premier destination for riverside camping and adventure tourism. Whether you're seeking luxury camping in Rishikesh or a rustic jungle camping experience, this spiritual town offers diverse options for every traveler.
+We provide a decorated buffet dinner setup, complete with a cozy bonfire to elevate the luxury camping feel. At night, the entire camp glows with shimmering lights as music fills the air — an atmosphere our guests absolutely love.
+</p>
+        </div>
+        <Image src="/assets/img/gallery/party.webp" alt="DJ Night and Lights" width={400} height={300} className="rounded-xl shadow" style="width: 650px; margin: 10px 0;"/>
+      </div>
 
-## Why Choose Rishikesh for Your Camping Adventure?
+      <p>When guests rise the next morning and step outside their tents, they are greeted by golden sunlight, fresh mountain air, blooming flowers, and peaceful greenery. We serve morning tea, followed by a hearty breakfast of aalu ke parathe and poha — freshly prepared and full of flavor.</p>
 
-- **Breathtaking Riverside Camping**: Wake up to stunning views of the Ganga River from your Swiss tent
-- **Adventure Camping Packages**: Combine your stay with white water rafting, trekking, and yoga sessions
-- **Spiritual Camping Experience**: Meditate by the river or attend the famous Ganga Aarti at Triveni Ghat
-- **Affordable Camping Options**: From budget tents to luxury Swiss camps with attached bathrooms
+      <p>Checkout time is always a bittersweet moment — filled with laughter, heartfelt goodbyes, and plenty of photo sessions. Guests often capture memories with selfies and group shots surrounded by the beautiful camp landscape.</p>
 
-## Types of Camping Experiences in Rishikesh
+      <h3 style="margin-top: 20px;"><a style="color: #507650;  font-weight: 600;" href="/booking-form">Book </a> Your Best Rishikesh Camping Experience Today</h3>
+      <p>Whether you're searching for a peaceful camping in rishikesh or an action-packed adventure, Rishikesh offers it all. Tapovan Swiss Camps is the perfect base for your camping experience.</p>
 
-### 1. Riverside Camping Near Ganga
-Perfect for those who want to fall asleep to the sound of flowing water. Most riverside camps in Rishikesh offer:
-- Comfortable Swiss tents
-- Evening bonfires
-- Riverside dining
-- Easy access to rafting points
-
-### 2. Luxury Camping in Tapovan
-For travelers wanting comfort:
-- Premium Swiss tents with attached washrooms
-- Hot water facilities
-- Multi-cuisine meals
-- Mountain views
-
-### 3. Jungle Camping in Shivpuri
-A more adventurous option:
-- Secluded forest location
-- Basic amenities
-- Closer to nature
-- Perfect for group camping trips
-
-## Best Time for Camping in Rishikesh
-
-The ideal camping season runs from **October to June**, when the weather is pleasant and all adventure activities are operational. Monsoon season (July-September) is less ideal due to higher water levels and restricted rafting.
-
-## Top 5 Activities to Combine with Your Rishikesh Camping Trip
-
-1. **White Water Rafting** - Experience grade II-IV rapids on the Ganga
-2. **Bonfire Nights** - Enjoy music and storytelling under the stars
-3. **Waterfall Trekking** - Visit Neer Garh and other hidden waterfalls
-4. **Yoga & Meditation** - Morning sessions by the river
-5. **Visit Beatles Ashram** - Explore this iconic spiritual site
-
-## What to Pack for Your Rishikesh Camping Trip
-
-- Light woolens (evenings can be cool)
-- Trekking shoes for nature walks
-- Swimwear for rafting
-- Sunscreen and sunglasses
-- Reusable water bottle
-- Power bank (limited charging facilities)
-
-## Why Choose Tapovan Swiss Camps for Your Rishikesh Stay?
-
-- Prime riverside location with mountain views
-- Hygienic Swiss tents with modern amenities
-- Delicious home-cooked vegetarian meals
-- Customizable camping-rafting packages
-- Expert staff to guide your adventures
-
-## Frequently Asked Questions About Camping in Rishikesh
-
-**Q: Is camping in Rishikesh safe for solo travelers?**  
-A: Absolutely! Our camps have 24/7 security and are popular with solo adventurers.
-
-**Q: What's included in a standard camping package?**  
-A: Typically includes tent accommodation, meals, bonfire, and basic activities.
-
-**Q: Can we book camping and rafting together?**  
-A: Yes, we offer special combo packages that include both.
-
-## Book Your Perfect Rishikesh Camping Experience Today
-
-Whether you're looking for peaceful riverside camping or an action-packed adventure holiday, Rishikesh offers the best camping experiences in North India. Our Tapovan Swiss Camps provide the perfect base to explore this Himalayan paradise.
-
-📞 Call/WhatsApp now to book your camping trip or check availability online!`,
+    `,
   },
   {
     id: 2,
     image: "/assets/img/blog/rafting_rishikesh.webp",
     category: "India",
-    title: "Rafting in Rishikesh – The Ultimate Adventure on the Ganga",
+    title:
+      "Rafting in Rishikesh - Tapovan Swiss Camps | Best rafting in rishikesh",
     slug: "rafting-in-rishikesh",
     content: `Rishikesh has earned its reputation as India's rafting capital, offering some of the most exciting white water rafting experiences in the Himalayas. From gentle grade I rapids to challenging grade IV stretches, the Ganga River provides perfect conditions for both beginners and experienced rafters.
 
@@ -226,14 +158,14 @@ A: Many operators offer professional photography services.
 
 Rishikesh offers world-class white water rafting at unbeatable prices. Whether you're looking for a gentle float or an adrenaline-pumping challenge, the Ganga has rapids to match every adventurer's dreams.
 
-📞 Book your rafting package today and get ready to ride the river!`,
+`,
   },
   {
     id: 3,
     image: "/assets/img/blog/bangee_rishikesh.webp",
     category: "India",
     title:
-      "Bungee Jumping in Rishikesh: Conquer India's Highest Jump at 83 Meters!",
+      "Bungee Jumping in Rishikesh - Tapovan Swiss Camps | Conquer India's Highest Jump at 83 Meters!",
     slug: "bungeeJumping-in-rishikesh",
     content: `Experience the ultimate adrenaline rush with bungee jumping in Rishikesh, home to India's highest fixed-platform jump at 83 meters (272 feet) above a stunning river valley. Operated to international safety standards, this is a bucket-list experience you'll never forget.
 
@@ -304,7 +236,7 @@ A: Focus on the achievement rather than the fear - most say the anticipation is 
 
 Bungee jumping in Rishikesh isn't just an activity - it's a transformative experience that tests your limits and rewards you with incredible memories. Whether you're an adrenaline junkie or looking to conquer fears, this is your moment.
 
-📞 Book your jump today and get ready to fly!
+
   `,
   },
   {
@@ -312,7 +244,7 @@ Bungee jumping in Rishikesh isn't just an activity - it's a transformative exper
     image: "/assets/img/blog/bike_rent_rishikesh.webp",
     category: "India",
     title:
-      "Bike Rental in Rishikesh: Complete 2025 Guide to Exploring on Two Wheels",
+      "Bike Rental in Rishikesh - Tapovan Swiss Camps | Complete 2025 Guide to Exploring on Two Wheels",
     slug: "bikeRent-in-rishikesh",
     content: `Discover the freedom of Rishikesh with bike rentals that let you explore Himalayan vistas, sacred ghats, and hidden waterfalls at your own pace. From economical scooters to powerful Royal Enfields, find the perfect ride for your Rishikesh adventure.
 
@@ -406,7 +338,7 @@ A: Some providers offer hourly rentals at higher rates.
 
 Exploring Rishikesh by bike lets you discover hidden gems and create your own adventure. Whether you want to cruise along the Ganga or challenge Himalayan roads, two wheels offer the perfect freedom.
 
-📞 Call now to reserve your bike or ask about our camping+bike packages!
+
     `,
   },
 ];
@@ -475,14 +407,17 @@ export async function generateMetadata({ params }: Props) {
     };
   }
 
-  const description = cleanContentForDescription(blog.content);
+  const description =
+    blog.slug === "camping-in-rishikesh"
+      ? "Tapovan Swiss Camps offers one of the finest luxury camping experiences in Rishikesh. Starting at just ₹999, our camp is perfect for families, couples, solo travelers, and adventure seekers. We provide comfortable AC and Cooler tents, stunning river views, serene nature surroundings, and top-notch services. Book your stay today for best camping experience"
+      : cleanContentForDescription(blog.content);
 
   const publishedTime = "2023-05-02T12:00:00Z"; // Should be dynamic in real app
   const modifiedTime = "2024-05-22T12:00:00Z"; // Should be dynamic in real app
 
   return {
     metadataBase: new URL(BASE_URL),
-    title: `${blog.title} | Tapovan Swiss Camps Blog`,
+    title: `${blog.title}  `,
     description,
     keywords: [
       "Rishikesh camping",
@@ -552,7 +487,7 @@ export async function generateMetadata({ params }: Props) {
       canonical: `${BASE_URL}/blogs/${blog.slug}`,
     },
     openGraph: {
-      title: `${blog.title} | Tapovan Swiss Camps`,
+      title: `${blog.title}`,
       description,
       url: `${BASE_URL}/blogs/${blog.slug}`,
       siteName: "Tapovan Swiss Camps",
@@ -625,6 +560,7 @@ export async function generateMetadata({ params }: Props) {
         "bike rent price",
         "bullet rent price in rishikesh",
       ],
+
       images: [
         {
           url: `${BASE_URL}${blog.image}`,
@@ -637,7 +573,7 @@ export async function generateMetadata({ params }: Props) {
     },
     twitter: {
       card: "summary_large_image",
-      title: `${blog.title} | Tapovan Swiss Camps`,
+      title: `${blog.title}`,
       description,
       creator: "@tapovancamps", // Add your Twitter handle
       images: [`${BASE_URL}${blog.image}`],

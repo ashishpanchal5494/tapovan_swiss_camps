@@ -2,9 +2,12 @@ import PrivacyPolicyPage from "./PrivacyPolicyPage";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy",
+  title:
+    "Privacy Policy | Tapovan Swiss Camps - Rishikesh Camping & Rafting Booking Security",
+
   description:
-    "Learn how Tapovan Swiss Camps protects your personal information. Our privacy policy covers data collection, usage, security measures, and your rights.",
+    "Read the privacy policy of Tapovan Swiss Camps, Rishikesh's trusted riverside camping and rafting provider. Learn how we protect your personal data, booking details, and ensure secure experiences at our luxury camps.",
+
   keywords: [
     "camping in rishikesh tapovan",
     "Rishikesh camping",
@@ -30,7 +33,9 @@ export const metadata: Metadata = {
     canonical: "https://www.tapovanswisscampsofficial.com/privacy-policy",
   },
   openGraph: {
-    title: "Privacy Policy | Tapovan Swiss Camps - Rishikesh",
+    title:
+      "Privacy Policy | Tapovan Swiss Camps - Rishikesh Camping & Rafting Booking Security",
+
     description:
       "Your privacy matters. Learn how we protect your personal data when you book with Tapovan Swiss Camps in Rishikesh.",
     url: "https://www.tapovanswisscampsofficial.com/privacy-policy",
@@ -48,7 +53,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Privacy Policy | Tapovan Swiss Camps - Rishikesh",
+    title:
+      "Privacy Policy | Tapovan Swiss Camps - Rishikesh Camping & Rafting Booking Security",
+
     description:
       "How we protect your data when you book your Rishikesh adventure with us",
     images: ["https://www.tapovanswisscampsofficial.com/assets/img/about.webp"],

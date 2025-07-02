@@ -190,7 +190,7 @@ const HeroSection: React.FC = () => {
                     value={searchData.children}
                     onChange={handleChange}
                   >
-                    <option value="">Children</option>
+                    <option value="">Children(below 5 yrs)</option>
                     {[...Array(4)].map((_, i) => (
                       <option key={i} value={i + 1}>
                         {i}
