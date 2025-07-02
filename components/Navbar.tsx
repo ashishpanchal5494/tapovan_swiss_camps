@@ -329,7 +329,7 @@ const Navbar = () => {
                         isMobile
                           ? `mobileCollapse navbar-collapse ${
                               isOpen ? "show" : ""
-                            } `
+                            } ${isAnimating ? "animating" : ""}`
                           : `collapse navbar-collapse ${isOpen ? "show" : ""}`
                       }
                       id="navbarSupportedContent"
