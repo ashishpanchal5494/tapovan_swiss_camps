@@ -7,7 +7,7 @@ export const generateMetadata = (): Metadata => {
 
   return {
     title:
-      "Camping Photos in Rishikesh | Luxury Tents & Best Camp Gallery - Tapovan Swiss Camps",
+      "Camping Photos in Rishikesh - Tapovan Swiss Camps  | Luxury Tents & Best Camp Gallery",
 
     description:
       "Explore real camping photos in Rishikesh at Tapovan Swiss Camps. View images of luxury tents, riverside camps, bonfire nights, rafting adventures, and the best glamping experience in Uttarakhand.",

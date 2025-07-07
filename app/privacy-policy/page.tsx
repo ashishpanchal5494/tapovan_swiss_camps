@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title:
-    "Privacy Policy | Tapovan Swiss Camps - Rishikesh Camping & Rafting Booking Security",
+    "Privacy Policy - Tapovan Swiss Camps, Camping & Rafting Booking Security",
 
   description:
     "Read the privacy policy of Tapovan Swiss Camps, Rishikesh's trusted riverside camping and rafting provider. Learn how we protect your personal data, booking details, and ensure secure experiences at our luxury camps.",

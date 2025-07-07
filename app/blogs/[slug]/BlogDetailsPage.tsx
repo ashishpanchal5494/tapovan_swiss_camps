@@ -15,8 +15,7 @@ const blogData = [
       "/assets/img/gallery/party.webp",
     ],
     category: "India",
-    title:
-      "Camping in Rishikesh - Tapovan Swiss Camps starts @ ₹999 | Best camp in rishikesh",
+    title: "Camping in Rishikesh - Tapovan Swiss Camps Ultimate Guide",
     slug: "camping-in-rishikesh",
     content: `
 
@@ -77,8 +76,7 @@ const blogData = [
     id: 2,
     image: "/assets/img/blog/rafting_rishikesh.webp",
     category: "India",
-    title:
-      "Rafting in Rishikesh - Tapovan Swiss Camps starts ₹499 | Best rafting in rishikesh",
+    title: "Rafting in Rishikesh - Tapovan Swiss Camps starts ₹499",
     slug: "rafting-in-rishikesh",
     content: `Rishikesh has earned its reputation as India's rafting capital, offering some of the most exciting white water rafting experiences in the Himalayas. From gentle grade I rapids to challenging grade IV stretches, the Ganga River provides perfect conditions for both beginners and experienced rafters.
 
@@ -164,8 +162,7 @@ Rishikesh offers world-class white water rafting at unbeatable prices. Whether y
     id: 3,
     image: "/assets/img/blog/bangee_rishikesh.webp",
     category: "India",
-    title:
-      "Bungee Jumping in Rishikesh - Tapovan Swiss Camps | Conquer India's Highest Jump at 83 Meters!",
+    title: "Bungee Jumping in Rishikesh - Tapovan Swiss Camps",
     slug: "bungeeJumping-in-rishikesh",
     content: `Experience the ultimate adrenaline rush with bungee jumping in Rishikesh, home to India's highest fixed-platform jump at 83 meters (272 feet) above a stunning river valley. Operated to international safety standards, this is a bucket-list experience you'll never forget.
 
@@ -244,7 +241,7 @@ Bungee jumping in Rishikesh isn't just an activity - it's a transformative exper
     image: "/assets/img/blog/bike_rent_rishikesh.webp",
     category: "India",
     title:
-      "Bike Rental in Rishikesh - Tapovan Swiss Camps | Complete 2025 Guide to Exploring on Two Wheels",
+      "Bike Rental in Rishikesh - Complete 2025 Guide to Exploring on Two Wheels",
     slug: "bikeRent-in-rishikesh",
     content: `Discover the freedom of Rishikesh with bike rentals that let you explore Himalayan vistas, sacred ghats, and hidden waterfalls at your own pace. From economical scooters to powerful Royal Enfields, find the perfect ride for your Rishikesh adventure.
 

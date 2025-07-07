@@ -5,7 +5,7 @@ const BASE_URL = "https://tapovanswisscampsofficial.com";
 
 export async function generateMetadata(): Promise<Metadata> {
   const title =
-    "Book Your Camping & Rafting in Rishikesh | Tapovan Swiss Camps starts @ ₹999 ";
+    "Book Your Camping & Rafting in Rishikesh - Tapovan Swiss Camps starts @ ₹999 ";
   const description =
     "Book your camping and river rafting adventure in Rishikesh with Tapovan Swiss Camps. Enjoy 25% off on luxury Swiss tents, AC and cooler tents, and thrilling Ganga rafting experiences. Instant online booking starts at just ₹999!";
 

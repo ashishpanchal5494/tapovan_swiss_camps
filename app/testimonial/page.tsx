@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   },
 
   openGraph: {
-    title: "Camping reviews  | Tapovan Swiss Camps - Best Camping in Rishikesh",
+    title: "Camping reviews | Tapovan Swiss Camps - Best Camping in Rishikesh",
     description:
       "50+ verified guest reviews with 5/5 ratings for our luxury camping experience in Rishikesh. See why guests love our scenic location and hospitality.",
     url: "https://tapovanswisscampsofficial.com/testimonial",

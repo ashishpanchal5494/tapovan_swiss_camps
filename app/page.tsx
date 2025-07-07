@@ -3,7 +3,7 @@ import HomePageClient from "../components/HomePageClient";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Tapovan Swiss Camps : Best Camping in Rishikesh - Book Now @ ₹999 !",
+  title: "Tapovan Swiss Camps - Best Camping in Rishikesh, Book Now @ ₹999 ",
 
   description:
     "Tapovan Swiss Camps offers best luxury camping experience in Rishikesh. Enjoy AC & Cooler tents, river views, swimming, rafting, yoga, and delicious food. Perfect for families, couples, and adventure seekers. Book your unforgettable Rishikesh camp stay today in ₹999!",
@@ -54,10 +54,10 @@ export const metadata: Metadata = {
     "Ganga view camp Rishikesh",
     "Swimming pool camp Rishikesh",
   ],
-  // Consider adding specific Open Graph and Twitter overrides if they differ significantly from layout.tsx
-  // For example, a homepage-specific image or more direct call to action in the title/description
+
   openGraph: {
-    title: "Tapovan Swiss Camps: Best Luxury Camping & Resort in Rishikesh",
+    title:
+      "Tapovan Swiss Camps - Best Luxury Camping & Resort in Rishikesh, Book Now @ ₹999",
     description:
       "Book your stay at Tapovan Swiss Camp and enjoy riverside luxury tents, yoga, rafting, best food, best nature view, best activities & bonfires in Rishikesh. Perfect for families, couples & adventure lovers. Book direct!",
     images: [

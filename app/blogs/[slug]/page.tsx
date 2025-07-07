@@ -11,8 +11,7 @@ const blogData = [
       "/assets/img/gallery/party.webp",
     ],
     category: "India",
-    title:
-      "Camping in Rishikesh - Tapovan Swiss Camps starts @ ₹999 | Best camp in rishikesh",
+    title: "Camping in Rishikesh - Tapovan Swiss Camps Ultimate Guide",
     slug: "camping-in-rishikesh",
     content: `
 
@@ -50,15 +49,11 @@ const blogData = [
 
 <p>We also arrange bike rentals directly from the camp so that our guests can conveniently explore Rishikesh and its surroundings.</p>
 
-      <p>Our team arranges river rafting experiences from the camp itself. After a thrilling adventure on the river, guests can return to their tents to relax and enjoy freshly prepared meals.
-
-At Tapovan Swiss Camps, we take pride in offering the best facilities, services, and an unforgettable camping experience. It’s not just a stay — it’s a memory in the making.</p>
+      <p>Our team arranges river rafting experiences from the camp itself. After a thrilling adventure on the river, guests can return to their tents to relax and enjoy freshly prepared meals. At Tapovan Swiss Camps, we take pride in offering the best facilities, services, and an unforgettable camping experience. It’s not just a stay — it’s a memory in the making.</p>
 
       <div class="flex flex-col md:flex-row items-start gap-4">
         <div class="flex-1">
-          <p>We hold a valid liquor license, so guests can responsibly enjoy drinks and food by the camp’s scenic seating area. Evenings come alive with our DJ party sessions, where music, lights, and bonfires create a vibrant ambiance. As the owner, I often find it hard to describe the joy these moments bring — it's something you have to experience to truly understand.
-
-We provide a decorated buffet dinner setup, complete with a cozy bonfire to elevate the luxury camping feel. At night, the entire camp glows with shimmering lights as music fills the air — an atmosphere our guests absolutely love.
+          <p>We hold a valid liquor license, so guests can responsibly enjoy drinks and food by the camp’s scenic seating area. Evenings come alive with our DJ party sessions, where music, lights, and bonfires create a vibrant ambiance. As the owner, I often find it hard to describe the joy these moments bring — it's something you have to experience to truly understand. We provide a decorated buffet dinner setup, complete with a cozy bonfire to elevate the luxury camping feel. At night, the entire camp glows with shimmering lights as music fills the air — an atmosphere our guests absolutely love.
 </p>
         </div>
         <Image src="/assets/img/gallery/party.webp" alt="DJ Night and Lights" width={400} height={300} className="rounded-xl shadow" style="width: 650px; margin: 10px 0;"/>
@@ -70,15 +65,14 @@ We provide a decorated buffet dinner setup, complete with a cozy bonfire to elev
 
       <h3 style="margin-top: 20px;"><a style="color: #507650;  font-weight: 600;" href="/booking-form">Book </a> Your Best Rishikesh Camping Experience Today</h3>
       <p>Whether you're searching for a peaceful camping in rishikesh or an action-packed adventure, Rishikesh offers it all. Tapovan Swiss Camps is the perfect base for your camping experience.</p>
-
+      
     `,
   },
   {
     id: 2,
     image: "/assets/img/blog/rafting_rishikesh.webp",
     category: "India",
-    title:
-      "Rafting in Rishikesh - Tapovan Swiss Camps | Best rafting in rishikesh",
+    title: "Rafting in Rishikesh - Tapovan Swiss Camps starts ₹499",
     slug: "rafting-in-rishikesh",
     content: `Rishikesh has earned its reputation as India's rafting capital, offering some of the most exciting white water rafting experiences in the Himalayas. From gentle grade I rapids to challenging grade IV stretches, the Ganga River provides perfect conditions for both beginners and experienced rafters.
 
@@ -164,8 +158,7 @@ Rishikesh offers world-class white water rafting at unbeatable prices. Whether y
     id: 3,
     image: "/assets/img/blog/bangee_rishikesh.webp",
     category: "India",
-    title:
-      "Bungee Jumping in Rishikesh - Tapovan Swiss Camps | Conquer India's Highest Jump at 83 Meters!",
+    title: "Bungee Jumping in Rishikesh - Tapovan Swiss Camps",
     slug: "bungeeJumping-in-rishikesh",
     content: `Experience the ultimate adrenaline rush with bungee jumping in Rishikesh, home to India's highest fixed-platform jump at 83 meters (272 feet) above a stunning river valley. Operated to international safety standards, this is a bucket-list experience you'll never forget.
 
@@ -244,7 +237,7 @@ Bungee jumping in Rishikesh isn't just an activity - it's a transformative exper
     image: "/assets/img/blog/bike_rent_rishikesh.webp",
     category: "India",
     title:
-      "Bike Rental in Rishikesh - Tapovan Swiss Camps | Complete 2025 Guide to Exploring on Two Wheels",
+      "Bike Rental in Rishikesh - Complete 2025 Guide to Exploring on Two Wheels",
     slug: "bikeRent-in-rishikesh",
     content: `Discover the freedom of Rishikesh with bike rentals that let you explore Himalayan vistas, sacred ghats, and hidden waterfalls at your own pace. From economical scooters to powerful Royal Enfields, find the perfect ride for your Rishikesh adventure.
 
@@ -337,7 +330,6 @@ A: Some providers offer hourly rentals at higher rates.
 ## Hit the Road - Book Your Bike Today!
 
 Exploring Rishikesh by bike lets you discover hidden gems and create your own adventure. Whether you want to cruise along the Ganga or challenge Himalayan roads, two wheels offer the perfect freedom.
-
 
     `,
   },

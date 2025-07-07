@@ -42,7 +42,7 @@ export async function generateMetadata(): Promise<Metadata> {
       canonical: `${BASE_URL}/faq`,
     },
     openGraph: {
-      title: "FAQs | Tapovan Swiss Camps - Rishikesh Adventure Experts",
+      title: "FAQs Tapovan Swiss Camps - Rishikesh Adventure Experts",
       description:
         "Get all your questions answered about luxury camping and rafting experiences in Rishikesh with Tapovan Swiss Camps.",
       url: `${BASE_URL}/faq`,

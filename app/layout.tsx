@@ -18,7 +18,7 @@ const readexPro = Readex_Pro({
 });
 
 export const metadata: Metadata = {
-  title: "Tapovan Swiss Camps : Best Camping in Rishikesh - Book Now @ ₹999 !",
+  title: "Tapovan Swiss Camps - Best Camping in Rishikesh, Book Now @ ₹999",
   description:
     "Tapovan Swiss Camps offers best luxury camping experience in Rishikesh. Enjoy AC & Cooler tents, river views, swimming, rafting, yoga, and delicious food. Perfect for families, couples, and adventure seekers. Book your unforgettable Rishikesh camp stay today in ₹999!",
   keywords: [
@@ -82,7 +82,8 @@ export const metadata: Metadata = {
     },
   ],
   openGraph: {
-    title: "Tapovan Swiss Camps : Best Luxury Camping in Rishikesh",
+    title:
+      "Tapovan Swiss Camps - Best Luxury Camping in Rishikesh, Book Now @ ₹999",
     description:
       "Book your stay at Tapovan Swiss Camp and enjoy riverside luxury tents, yoga, rafting, best food, best nature view, best activities & bonfires in Rishikesh. Perfect for families, couples & adventure lovers.",
     url: "https://www.tapovanswisscampsofficial.com",
@@ -92,7 +93,7 @@ export const metadata: Metadata = {
         url: "https://www.tapovanswisscampsofficial.com/assets/img/room/gardenPhoto.webp",
         width: 1200,
         height: 630,
-        alt: "Tapovan Swiss Camps Rishikesh - Riverside Luxury Camping",
+        alt: "Tapovan Swiss Camps Rishikesh - Riverside Luxury Camping, Book Now @ ₹999",
       },
     ],
     locale: "en_IN",
@@ -100,7 +101,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Tapovan Swiss Camps | Best Luxury Camping in Rishikesh",
+    title:
+      "Tapovan Swiss Camps - Best Luxury Camping in Rishikesh, Book Now @ ₹999",
     description:
       "Tapovan Swiss Camp offers riverside luxury tents, yoga, adventure sports, and more in the scenic beauty of Rishikesh.",
     images: [

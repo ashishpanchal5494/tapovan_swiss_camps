@@ -5,7 +5,7 @@ const baseUrl = "https://tapovanswisscampsofficial.com";
 
 export const metadata: Metadata = {
   title:
-    "Tapovan Swiss Camps Team | Meet Rishikesh’s Top Camping & Rafting Experts",
+    "Tapovan Swiss Camps Team - Meet Rishikesh’s Top Camping & Rafting Experts",
   description:
     "Meet the expert team behind Tapovan Swiss Camps in Rishikesh. From camping and rafting professionals to yoga retreat instructors, our dedicated staff ensures the best riverside camping experience with luxury tents, warm service, and serene Ganga views.",
   keywords: [
