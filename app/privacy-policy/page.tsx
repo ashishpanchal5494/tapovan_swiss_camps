@@ -29,9 +29,6 @@ export const metadata: Metadata = {
     "cookie policy",
     "GDPR compliance India",
   ],
-  alternates: {
-    canonical: "https://www.tapovanswisscampsofficial.com/privacy-policy",
-  },
   openGraph: {
     title:
       "Privacy Policy | Tapovan Swiss Camps - Rishikesh Camping & Rafting Booking Security",
@@ -50,28 +47,6 @@ export const metadata: Metadata = {
         alt: "Tapovan Swiss Camps Privacy Policy",
       },
     ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title:
-      "Privacy Policy | Tapovan Swiss Camps - Rishikesh Camping & Rafting Booking Security",
-
-    description:
-      "How we protect your data when you book your Rishikesh adventure with us",
-    images: ["https://www.tapovanswisscampsofficial.com/assets/img/about.webp"],
-  },
-  robots: {
-    index: true,
-    follow: true,
-    nocache: false,
-    googleBot: {
-      index: true,
-      follow: true,
-      noimageindex: false,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
   },
 };
 

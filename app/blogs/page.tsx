@@ -64,9 +64,6 @@ export const metadata: Metadata = {
     "Ganga view camp Rishikesh",
     "Swimming pool camp Rishikesh",
   ],
-  alternates: {
-    canonical: "https://www.tapovanswisscampsofficial.com/blogs",
-  },
   openGraph: {
     title:
       "Rishikesh adventure Blogs - Tapovan Swiss Camps | Best camping in Rishikesh",
@@ -82,31 +79,6 @@ export const metadata: Metadata = {
         alt: "Adventure activities in Rishikesh",
       },
     ],
-    locale: "en_IN",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title:
-      "Rishikesh adventure Blogs - Tapovan Swiss Camps | Best camping in Rishieksh",
-    description:
-      "Explore perfect travel tips and adventure guides for Rishikesh including camping, rafting, bungee jumping and bike rentals from Tapovan Swiss Camps.",
-    images: [
-      "https://www.tapovanswisscampsofficial.com/assets/img/blog/camping_rishikesh.webp",
-    ],
-  },
-  robots: {
-    index: true,
-    follow: true,
-    nocache: false,
-    googleBot: {
-      index: true,
-      follow: true,
-      noimageindex: false,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
   },
 };
 const Blogs: React.FC = () => {

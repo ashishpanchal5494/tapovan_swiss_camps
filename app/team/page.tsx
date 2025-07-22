@@ -21,9 +21,6 @@ export const metadata: Metadata = {
     "yoga retreat professionals",
     "hospitality experts Rishikesh",
   ],
-  alternates: {
-    canonical: `${baseUrl}/team`,
-  },
   openGraph: {
     title:
       "Tapovan Swiss Camps Team | Meet Rishikesh’s Top Camping & Rafting Experts",
@@ -40,13 +37,6 @@ export const metadata: Metadata = {
       },
     ],
     siteName: "Tapovan Swiss Camps",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Our Expert Team | Tapovan Swiss Camps Rishikesh",
-    description:
-      "The dedicated professionals behind your perfect Rishikesh camping experience",
-    images: [`${baseUrl}/assets/img/about.webp`],
   },
 };
 

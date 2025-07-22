@@ -24,12 +24,9 @@ export const generateMetadata = (): Metadata => {
       "best campsite in Rishikesh pictures",
       "family camping Rishikesh images",
     ],
-    alternates: {
-      canonical: `${baseUrl}/gallery`,
-    },
     openGraph: {
       title:
-        "Camping Photos in Rishikesh | Luxury Tents & Best Camp Gallery - Tapovan Swiss Camps",
+        "Camping Photos in Rishikesh - Tapovan Swiss Camps  | Luxury Tents & Best Camp Gallery",
       description:
         "View our collection of luxury tent accommodations, adventure activities, and scenic views at Rishikesh's premier glamping destination.",
       url: `${baseUrl}/gallery`,
@@ -42,27 +39,6 @@ export const generateMetadata = (): Metadata => {
           alt: "Happy campers at Tapovan Swiss Camps",
         },
       ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title:
-        "Camping Photos in Rishikesh | Luxury Tents & Best Camp Gallery - Tapovan Swiss Camps",
-      description:
-        "See why we're rated the best luxury camping experience in Rishikesh through our stunning photo collection.",
-      images: [`${baseUrl}/assets/img/gallery/group.webp`],
-    },
-    robots: {
-      index: true,
-      follow: true,
-      nocache: false,
-      googleBot: {
-        index: true,
-        follow: true,
-        noimageindex: false,
-        "max-video-preview": -1,
-        "max-image-preview": "large",
-        "max-snippet": -1,
-      },
     },
   };
 };

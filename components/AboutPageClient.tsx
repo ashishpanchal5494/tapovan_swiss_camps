@@ -60,7 +60,7 @@ function AboutPageClient() {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     name: "Tapovan Swiss Camps",
-    image: `${BASE_URL}/assets/img/room/pool.webp`, // Replace with your logo image
+    image: `${BASE_URL}/assets/img/room/logo.png`, // Replace with your logo image
     url: `${BASE_URL}/about`,
     telephone: "+91-7906924003", // **IMPORTANT: Replace with your actual phone number**
     address: {

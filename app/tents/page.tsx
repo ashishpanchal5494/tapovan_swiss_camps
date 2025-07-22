@@ -45,9 +45,6 @@ export const generateMetadata = (): Metadata => {
       "tent camping in rishikesh shivpuri",
       "best camping tents in rishikesh",
     ],
-    alternates: {
-      canonical: `${baseUrl}/tents`,
-    },
     openGraph: {
       title:
         "Luxury Camping Tents in Tapovan Rishikesh : Best camping experience starts @ ₹999",
@@ -63,27 +60,6 @@ export const generateMetadata = (): Metadata => {
           alt: "AC tent - Tapovan Swiss Camps",
         },
       ],
-      siteName: "Tapovan Swiss Camps",
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: "Luxury Camping Tents in Tapovan Rishikesh – Starting @ ₹999",
-      description:
-        "Book luxury AC tents, cooler tents & riverside camping in Tapovan Rishikesh. Enjoy premium glamping with attached bathrooms, nature views, and peaceful stays. Ideal for couples, families, and groups.",
-      images: [`${baseUrl}/assets/img/room/ACTent1.webp`],
-    },
-    robots: {
-      index: true,
-      follow: true,
-      nocache: false,
-      googleBot: {
-        index: true,
-        follow: true,
-        noimageindex: false,
-        "max-video-preview": -1,
-        "max-image-preview": "large",
-        "max-snippet": -1,
-      },
     },
   };
 };

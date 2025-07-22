@@ -58,26 +58,6 @@ export async function generateMetadata(): Promise<Metadata> {
         },
       ],
     },
-    twitter: {
-      card: "summary_large_image",
-      title: "FAQs About Tapovan Swiss Camps | Rishikesh",
-      description:
-        "Everything you need to know before booking your luxury camping or rafting adventure in Rishikesh.",
-      images: [`${BASE_URL}/assets/img/room/group.webp`],
-    },
-    robots: {
-      index: true,
-      follow: true,
-      nocache: false,
-      googleBot: {
-        index: true,
-        follow: true,
-        noimageindex: false,
-        "max-video-preview": -1,
-        "max-image-preview": "large",
-        "max-snippet": -1,
-      },
-    },
   };
 }
 

@@ -42,25 +42,6 @@ export async function generateMetadata(): Promise<Metadata> {
         },
       ],
     },
-    twitter: {
-      card: "summary_large_image",
-      title,
-      description,
-      images: [`${BASE_URL}/assets/img/room/pool.webp`],
-    },
-    robots: {
-      index: true,
-      follow: true,
-      nocache: false,
-      googleBot: {
-        index: true,
-        follow: true,
-        noimageindex: false,
-        "max-video-preview": -1,
-        "max-image-preview": "large",
-        "max-snippet": -1,
-      },
-    },
   };
 }
 

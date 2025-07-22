@@ -82,9 +82,6 @@ export async function generateMetadata(
       `${name} contact`,
       "Tapovan Swiss staff",
     ],
-    alternates: {
-      canonical: url.toString(),
-    },
     openGraph: {
       title: `${name} - ${role} | Tapovan Swiss Camps`,
       description: `Learn about ${name}, our ${role.toLowerCase()} at Tapovan Swiss Camps in Rishikesh`,
@@ -106,26 +103,6 @@ export async function generateMetadata(
         profile: {
           username: resolvedSearchParams.facebook,
         },
-      }),
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: `${name} - ${role} | Tapovan Swiss Camps`,
-      description: `Meet ${name}, our ${role.toLowerCase()} at Tapovan Swiss Camps in Rishikesh`,
-      images: [imageUrl],
-      ...(resolvedSearchParams.twitter && {
-        creator: `@${resolvedSearchParams.twitter.replace(
-          "https://twitter.com/",
-          ""
-        )}`,
-      }),
-    },
-    other: {
-      ...(resolvedSearchParams.instagram && {
-        "instagram:creator": resolvedSearchParams.instagram,
-      }),
-      ...(resolvedSearchParams.whatsApp && {
-        "whatsapp:contact": resolvedSearchParams.whatsApp,
       }),
     },
   };

@@ -20,10 +20,6 @@ export const metadata: Metadata = {
     "Tapovan camping ratings",
   ],
 
-  alternates: {
-    canonical: "https://tapovanswisscampsofficial.com/testimonial",
-  },
-
   openGraph: {
     title: "Camping reviews | Tapovan Swiss Camps - Best Camping in Rishikesh",
     description:
@@ -38,39 +34,9 @@ export const metadata: Metadata = {
         alt: "Happy guests at Tapovan Swiss Camps",
       },
     ],
-    siteName: "Tapovan Swiss Camps",
-  },
-
-  twitter: {
-    card: "summary_large_image",
-    title: "Camping reviews  | Tapovan Swiss Camps",
-    description:
-      "See why we're rated 5/5 by guests for our luxury camping experience in Rishikesh. 50+ verified testimonials.",
-    images: [
-      "https://tapovanswisscampsofficial.com/assets/img/room/group.webp",
-    ],
-  },
-
-  robots: {
-    index: true,
-    follow: true,
-    nocache: false,
-    googleBot: {
-      index: true,
-      follow: true,
-      noimageindex: false,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
-
-  other: {
-    "review-count": "50+",
-    "rating-value": "5.0",
-    "rating-scale": "5",
   },
 };
+
 function TestimonialSection() {
   return <TestimonialPage />;
 }
