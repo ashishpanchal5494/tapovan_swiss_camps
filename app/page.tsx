@@ -54,7 +54,13 @@ export const metadata: Metadata = {
     "Ganga view camp Rishikesh",
     "Swimming pool camp Rishikesh",
   ],
-
+  metadataBase: new URL("https://www.tapovanswisscampsofficial.com"),
+  alternates: {
+    canonical: "https://www.tapovanswisscampsofficial.com",
+    languages: {
+      "en-IN": "https://www.tapovanswisscampsofficial.com",
+    },
+  },
   openGraph: {
     title:
       "Tapovan Swiss Camps - Best Luxury Camping & Resort in Rishikesh, Book Now @ ₹999",

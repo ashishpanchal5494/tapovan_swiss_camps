@@ -159,6 +159,32 @@ export default function RootLayout({
               telephone: "+91-7906924003",
             })}
           </Script>
+          <Script
+            type="application/ld+json"
+            id="structured-data"
+            strategy="afterInteractive"
+          >
+            {JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Review",
+              author: {
+                "@type": "Person",
+                name: "Babita Rautela",
+              },
+              datePublished: "2024-04-05",
+              reviewBody:
+                "I absolutely loved my camp stay! The staff were incredibly friendly, and the food was delicious – it was an all-around fantastic experience.",
+              reviewRating: {
+                "@type": "Rating",
+                ratingValue: "5",
+                bestRating: "5",
+              },
+              itemReviewed: {
+                "@type": "LodgingBusiness",
+                name: "Tapovan Swiss Camps",
+              },
+            })}
+          </Script>
           <WhatsAppButton />
         </Layout>
       </body>
