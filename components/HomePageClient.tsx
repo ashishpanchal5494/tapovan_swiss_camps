@@ -40,24 +40,27 @@ const TestimonialPage = dynamic(
 function Defer({ children }: { children: ReactNode }) {
   const [ready, setReady] = useState(false);
   const called = useRef(false);
+
   useEffect(() => {
     if (called.current) return;
     called.current = true;
-    const ric = (window as any).requestIdleCallback as
-      | ((cb: () => void, opts?: { timeout?: number }) => number)
-      | undefined;
+
+    const ric = window.requestIdleCallback;
     let id: number | undefined;
+
     if (typeof ric === "function") {
       id = ric(() => setReady(true), { timeout: 1500 });
       return () => {
-        if (id && (window as any).cancelIdleCallback) {
-          (window as any).cancelIdleCallback(id);
+        if (id && window.cancelIdleCallback) {
+          window.cancelIdleCallback(id);
         }
       };
     }
+
     const t = window.setTimeout(() => setReady(true), 800);
     return () => window.clearTimeout(t);
   }, []);
+
   return ready ? <>{children}</> : null;
 }
 
