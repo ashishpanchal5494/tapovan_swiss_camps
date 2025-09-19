@@ -25,8 +25,14 @@ const Footer = () => {
           <div className="row ptb-60">
             <div className="col-xl-4 col-lg-4 col-md-6 col-sm-6 pe-xl-5">
               <div className="footer-widget">
-                <Link href="/">
-                  <Image src={logo} alt="Logo" width={220} height={100} />
+                <Link href="/" prefetch={false}>
+                  <Image
+                    src={logo}
+                    alt="Tapovan Swiss Camps logo"
+                    width={220}
+                    height={100}
+                    sizes="(max-width: 768px) 160px, 220px"
+                  />
                 </Link>
                 <p className="comp-desc">
                   Tapovan Swiss Camps offers premium luxury camping experiences

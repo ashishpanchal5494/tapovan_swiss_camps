@@ -1,11 +1,18 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef, type ReactNode } from "react";
+
 import dynamic from "next/dynamic";
-import HeroSection from "@/components/HeroSection";
+const HeroSection = dynamic(() => import("@/components/HeroSection"), {
+  ssr: false,
+  loading: () => <Loading />,
+});
 import Loading from "@/components/Loading";
 
-import VideoSection from "@/components/VideoSection";
+const VideoSection = dynamic(() => import("@/components/VideoSection"), {
+  ssr: false,
+  loading: () => <Loading />,
+});
 
 import Script from "next/script";
 
@@ -29,6 +36,30 @@ const TestimonialPage = dynamic(
     loading: () => <Loading />,
   }
 );
+
+function Defer({ children }: { children: ReactNode }) {
+  const [ready, setReady] = useState(false);
+  const called = useRef(false);
+  useEffect(() => {
+    if (called.current) return;
+    called.current = true;
+    const ric = (window as any).requestIdleCallback as
+      | ((cb: () => void, opts?: { timeout?: number }) => number)
+      | undefined;
+    let id: number | undefined;
+    if (typeof ric === "function") {
+      id = ric(() => setReady(true), { timeout: 1500 });
+      return () => {
+        if (id && (window as any).cancelIdleCallback) {
+          (window as any).cancelIdleCallback(id);
+        }
+      };
+    }
+    const t = window.setTimeout(() => setReady(true), 800);
+    return () => window.clearTimeout(t);
+  }, []);
+  return ready ? <>{children}</> : null;
+}
 
 export default function Home() {
   const [isClient, setIsClient] = useState(false);
@@ -166,9 +197,16 @@ export default function Home() {
         <HeroSection />
         <TentsClient />
         <VideoSection />
-        <TestimonialPage />
-        <FAQPage />
-        <BlogPage />
+        {/** Defer below-the-fold content until idle for better LCP */}
+        <div suppressHydrationWarning>
+          {/* Use requestIdleCallback when available to defer heavier sections */}
+          {/* This pattern avoids blocking main thread on initial view */}
+        </div>
+        <Defer>
+          <TestimonialPage />
+          <FAQPage />
+          <BlogPage />
+        </Defer>
       </div>
     </>
   );

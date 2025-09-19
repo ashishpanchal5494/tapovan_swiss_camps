@@ -62,21 +62,24 @@ const Navbar = () => {
   );
 
   useEffect(() => {
-    if (isMobile) {
-      document.querySelectorAll(".nav-item a").forEach((item) => {
-        item.addEventListener("click", (event) => {
-          if (!(event.target instanceof Element)) return;
+    if (!isMobile) return;
+    const handleClick = (event: Event) => {
+      if (!(event.target instanceof Element)) return;
+      const parentLi = event.target.closest(".nav-item");
+      if (!parentLi) return;
+      const hasDropdown = parentLi.querySelector(".dropdown-menu");
+      if (hasDropdown) {
+        event.preventDefault();
+        parentLi.classList.toggle("open");
+      } else {
+        toggleMenu(false);
+      }
+    };
 
-          const parentLi = event.target.closest(".nav-item");
-          if (parentLi?.querySelector(".dropdown-menu")) {
-            event.preventDefault();
-            parentLi.classList.toggle("open");
-          } else {
-            toggleMenu(false);
-          }
-        });
-      });
-    }
+    const anchors = Array.from(document.querySelectorAll(".nav-item a"));
+    anchors.forEach((item) => item.addEventListener("click", handleClick));
+    return () =>
+      anchors.forEach((item) => item.removeEventListener("click", handleClick));
   }, [isMobile, toggleMenu]);
 
   const toggleSearch = () => {
@@ -287,8 +290,15 @@ const Navbar = () => {
                         : ` navbar navbar-expand-md navbar-light`
                     }
                   >
-                    <Link className="navbar-brand" href="/">
-                      <Image width={220} height={200} src={logo} alt="logo" />
+                    <Link className="navbar-brand" href="/" prefetch={false}>
+                      <Image
+                        width={220}
+                        height={100}
+                        src={logo}
+                        alt="Tapovan Swiss Camps logo"
+                        priority
+                        sizes="(max-width: 768px) 160px, 220px"
+                      />
                     </Link>
 
                     {/* Mobile Menu Toggle */}
@@ -340,6 +350,7 @@ const Navbar = () => {
                             href="/"
                             className="nav-link"
                             onClick={() => isMobile && toggleMenu(false)}
+                            prefetch={false}
                           >
                             Home
                           </Link>
@@ -349,6 +360,7 @@ const Navbar = () => {
                             href="/tents"
                             className="nav-link"
                             onClick={() => isMobile && toggleMenu(false)}
+                            prefetch={false}
                           >
                             Tents
                           </Link>
@@ -358,6 +370,7 @@ const Navbar = () => {
                             href="/gallery"
                             className="nav-link"
                             onClick={() => isMobile && toggleMenu(false)}
+                            prefetch={false}
                           >
                             Gallery
                           </Link>
@@ -373,6 +386,7 @@ const Navbar = () => {
                                 toggleSubmenu(); // toggle submenu
                               }
                             }}
+                            prefetch={false}
                           >
                             Pages <i className="ri-add-line"></i>
                           </Link>
@@ -387,6 +401,7 @@ const Navbar = () => {
                                 href="/team"
                                 className="nav-link"
                                 onClick={() => isMobile && toggleMenu(false)}
+                                prefetch={false}
                               >
                                 Team
                               </Link>
@@ -396,6 +411,7 @@ const Navbar = () => {
                                 href="/testimonial"
                                 className="nav-link"
                                 onClick={() => isMobile && toggleMenu(false)}
+                                prefetch={false}
                               >
                                 Testimonial
                               </Link>
@@ -405,6 +421,7 @@ const Navbar = () => {
                                 href="/booking-form"
                                 className="nav-link"
                                 onClick={() => isMobile && toggleMenu(false)}
+                                prefetch={false}
                               >
                                 Booking Form
                               </Link>
@@ -414,6 +431,7 @@ const Navbar = () => {
                                 href="/account"
                                 className="nav-link"
                                 onClick={() => isMobile && toggleMenu(false)}
+                                prefetch={false}
                               >
                                 My Account
                               </Link>
@@ -423,6 +441,7 @@ const Navbar = () => {
                                 href="/about"
                                 className="nav-link"
                                 onClick={() => isMobile && toggleMenu(false)}
+                                prefetch={false}
                               >
                                 About Us
                               </Link>
@@ -432,6 +451,7 @@ const Navbar = () => {
                                 href="/faq"
                                 className="nav-link"
                                 onClick={() => isMobile && toggleMenu(false)}
+                                prefetch={false}
                               >
                                 FAQ
                               </Link>
@@ -441,6 +461,7 @@ const Navbar = () => {
                                 href="/sample-page"
                                 className="nav-link"
                                 onClick={() => isMobile && toggleMenu(false)}
+                                prefetch={false}
                               >
                                 Sample Page
                               </Link>
@@ -450,6 +471,7 @@ const Navbar = () => {
                                 href="/privacy-policy"
                                 className="nav-link"
                                 onClick={() => isMobile && toggleMenu(false)}
+                                prefetch={false}
                               >
                                 Privacy Policy
                               </Link>
@@ -461,6 +483,7 @@ const Navbar = () => {
                             href="/blogs"
                             className="nav-link"
                             onClick={() => isMobile && toggleMenu(false)}
+                            prefetch={false}
                           >
                             Blogs
                           </Link>
@@ -470,6 +493,7 @@ const Navbar = () => {
                             href="/contact"
                             className="nav-link"
                             onClick={() => isMobile && toggleMenu(false)}
+                            prefetch={false}
                           >
                             Contact
                           </Link>
@@ -479,6 +503,7 @@ const Navbar = () => {
                             href="/booking-form"
                             className="nav-link btn style1"
                             onClick={() => isMobile && toggleMenu(false)}
+                            prefetch={false}
                           >
                             Book Now
                           </Link>

@@ -1055,10 +1055,38 @@ p:empty {
 .btn.style1 {
   background-color: var(--mainColor);
   border-radius: 15px 0 15px 0;
+  color: #fff !important;
+  padding: 12px 30px;
+  min-width: 180px;
+  font-weight: 600;
 }
 
 .btn.style1:after, .btn.style1:before {
   background: var(--blackColor);
+}
+
+.btn.style1:hover {
+  color: #fff !important;
+  background-color: var(--mainColor);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(80, 118, 80, 0.3);
+}
+
+/* Responsive button styles */
+@media (max-width: 768px) {
+  .btn.style1 {
+    padding: 10px 20px;
+    min-width: 150px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .btn.style1 {
+    padding: 8px 16px;
+    min-width: 120px;
+    font-size: 13px;
+  }
 }
 
 .btn.style2 {
@@ -6524,4 +6552,11 @@ Room Details Area CSS
   font-size: 1.4rem;
   margin: 1.5rem 0 1rem;
   color: #34495e;
+}
+
+.cta-section{
+  border: #969696 solid 1px;
+  border-radius: 20px;
+  margin-inline: 10px;
+  background-color: white;
 }
