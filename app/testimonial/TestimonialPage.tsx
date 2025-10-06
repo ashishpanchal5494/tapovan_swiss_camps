@@ -326,9 +326,13 @@ const TestimonialPage: React.FC = memo(() => {
           slides: { perView: 1, spacing: 10 },
         },
       },
-      created(slider: any) {
-        const id = setInterval(() => slider.next(), 6000);
-        slider.on("destroyed", () => clearInterval(id));
+      created(slider: unknown) {
+        const s = slider as {
+          next: () => void;
+          on: (event: string, cb: () => void) => void;
+        };
+        const id = setInterval(() => s.next(), 6000);
+        s.on("destroyed", () => clearInterval(id));
       },
     }),
     [isMobile]
