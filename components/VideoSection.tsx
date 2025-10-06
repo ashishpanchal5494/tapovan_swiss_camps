@@ -16,7 +16,7 @@ const VideoSection: React.FC = () => {
   const [loadedVideos, setLoadedVideos] = useState<boolean[]>(
     new Array(videos.length).fill(false)
   );
-  const [videoProgress, setVideoProgress] = useState(0);
+  // removed unused video progress state
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
@@ -39,21 +39,13 @@ const VideoSection: React.FC = () => {
 
   // Handle video end - auto advance to next video
   const handleVideoEnd = useCallback(() => {
-    setVideoProgress(0);
     // Auto advance to next video after a short delay
     setTimeout(() => {
       nextVideo();
     }, 500);
   }, [nextVideo]);
 
-  // Handle video time update for progress
-  const handleTimeUpdate = useCallback(() => {
-    const currentVideo = videoRefs.current[activeVideo];
-    if (currentVideo) {
-      const progress = (currentVideo.currentTime / currentVideo.duration) * 100;
-      setVideoProgress(progress);
-    }
-  }, [activeVideo]);
+  // removed unused time update handler
 
   // Touch handlers for swipe navigation
   const handleTouchStart = useCallback((e: React.TouchEvent) => {
@@ -100,7 +92,7 @@ const VideoSection: React.FC = () => {
         video.currentTime = 0; // Reset to beginning
       }
     });
-    setVideoProgress(0); // Reset progress when switching videos
+    // Reset logic removed as progress tracking is unused
   }, [activeVideo]);
 
   // Keyboard navigation
@@ -174,7 +166,6 @@ const VideoSection: React.FC = () => {
               preload="metadata"
               onCanPlayThrough={() => handleVideoLoad(activeVideo)}
               onEnded={handleVideoEnd}
-              onTimeUpdate={handleTimeUpdate}
               autoPlay
             />
 

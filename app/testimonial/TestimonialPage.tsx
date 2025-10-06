@@ -186,7 +186,7 @@ const testimonials = [
 
 // Memoized testimonial card component
 type Testimonial = {
-  id: number;
+  id: string | number;
   image: string;
   name: string;
   location?: string;
@@ -339,18 +339,27 @@ const TestimonialPage: React.FC = memo(() => {
   // Combine static testimonials with Google Reviews
   const allTestimonials = useMemo(() => {
     if (showGoogleReviews && googleReviews.length > 0) {
-      const normalized = googleReviews.map((gr: any) => ({
-        id: gr.id || `${gr.authorName}-${gr.time || ""}`,
-        image: "/assets/img/testimonial/default-avatar.svg",
-        name: gr.authorName || "Guest",
-        location: (gr as any).authorLocation || "India",
-        rating: Number(gr.rating) || 5,
-        date: gr.time ? new Date(gr.time).toISOString() : undefined,
-        text: gr.text || "",
-        verified: true,
-        platform: "Google Reviews",
-        source: "google-maps",
-      }));
+      const normalized = googleReviews.map(
+        (gr: {
+          id?: string;
+          authorName?: string;
+          authorLocation?: string;
+          rating?: number | string;
+          time?: string | number | Date;
+          text?: string;
+        }) => ({
+          id: gr.id || `${gr.authorName}-${gr.time || ""}`,
+          image: "/assets/img/testimonial/default-avatar.svg",
+          name: gr.authorName || "Guest",
+          location: gr.authorLocation || "India",
+          rating: Number(gr.rating ?? 5) || 5,
+          date: gr.time ? new Date(gr.time as any).toISOString() : undefined,
+          text: gr.text || "",
+          verified: true,
+          platform: "Google Reviews",
+          source: "google-maps",
+        })
+      );
       const mixedTestimonials = [...normalized, ...testimonials];
       return mixedTestimonials.slice(0, 20);
     }

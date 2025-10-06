@@ -7,7 +7,7 @@ const CACHE_DURATION = 60 * 60 * 1000;
 let cachedReviews: unknown[] | null = null;
 let lastFetchTime = 0;
 
-export async function GET(_request: NextRequest) {
+export async function GET() {
   try {
     const reviewsPath = path.join(process.cwd(), 'public', 'data', 'google-reviews.json');
     
@@ -61,7 +61,7 @@ export async function GET(_request: NextRequest) {
 }
 
 // Endpoint to trigger scraping (for manual updates)
-export async function POST(_request: NextRequest) {
+export async function POST() {
   try {
     // This would trigger the scraping process
     // For now, we'll just clear the cache to force a refresh

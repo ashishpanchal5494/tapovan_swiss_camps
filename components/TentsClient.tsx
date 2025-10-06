@@ -241,12 +241,11 @@ const TentsClient: React.FC = () => {
 
           <div className="row g-4">
             {tentRooms.map((room, index) => {
-              const {
-                perHeadPrice,
-                perHeadMainPrice,
-                totalPrice,
-                totalMainPrice,
-              } = calculatePrice(room.price, room.beds, room.mainPrice);
+              const { perHeadPrice, perHeadMainPrice } = calculatePrice(
+                room.price,
+                room.beds,
+                room.mainPrice
+              );
               return (
                 <TentCard
                   key={room.id}
