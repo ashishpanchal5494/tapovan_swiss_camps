@@ -353,7 +353,15 @@ const TestimonialPage: React.FC = memo(() => {
           name: gr.authorName || "Guest",
           location: gr.authorLocation || "India",
           rating: Number(gr.rating ?? 5) || 5,
-          date: gr.time ? new Date(gr.time as any).toISOString() : undefined,
+          date: (() => {
+            if (gr.time === undefined) return undefined;
+            if (gr.time instanceof Date) return gr.time.toISOString();
+            if (typeof gr.time === "number" || typeof gr.time === "string") {
+              const d = new Date(gr.time);
+              return isNaN(d.getTime()) ? undefined : d.toISOString();
+            }
+            return undefined;
+          })(),
           text: gr.text || "",
           verified: true,
           platform: "Google Reviews",
