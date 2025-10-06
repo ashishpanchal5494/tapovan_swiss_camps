@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
-import { useSearchParams } from "next/navigation";
+import React, { useEffect, useState, useMemo, memo } from "react";
+import { useParams } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import Loading from "@/components/Loading";
@@ -14,79 +14,16 @@ import { FaChevronRight } from "react-icons/fa6";
 import { FaChevronLeft } from "react-icons/fa6";
 import { FaLocationDot } from "react-icons/fa6";
 import { FaImage } from "react-icons/fa6";
+import { getTentBySlug, Tent } from "../tentData";
 
-const tentRooms = [
-  {
-    id: 1,
-    title: "Luxury AC Tent",
-    price: 1499,
-    images: [
-      { id: 1, url: "/assets/img/room/ACTent1.webp", alt: "tent 1" },
-      { id: 2, url: "/assets/img/room/ACtent2.webp", alt: "tent 2" },
-      { id: 3, url: "/assets/img/room/washroom.webp", alt: "washroom" },
-      { id: 4, url: "/assets/img/room/tentPhoto.webp", alt: "tent" },
-      { id: 5, url: "/assets/img/room/gardenPhoto.webp", alt: "garden" },
-      { id: 6, url: "/assets/img/room/gardenPhoto1.webp", alt: "garden 1" },
-      { id: 7, url: "/assets/img/room/gardenPhoto2.webp", alt: "garden 2" },
-      { id: 8, url: "/assets/img/room/dining.webp", alt: "dining" },
-      { id: 9, url: "/assets/img/room/pool.webp", alt: "pool" },
-      { id: 10, url: "/assets/img/room/vollyball.webp", alt: "vollyball" },
-      { id: 11, url: "/assets/img/room/group.webp", alt: "group" },
-    ],
-    beds: 5,
-    baths: 1,
-    description:
-      "Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet lorem.",
-    linkBooking: "/booking-form",
-  },
-  {
-    id: 2,
-    title: "Luxury Cooler Tent",
-    price: 1199,
-    images: [
-      { id: 1, url: "/assets/img/room/coolerTent1.webp", alt: "cooler tent" },
-      { id: 2, url: "/assets/img/room/washroom.webp", alt: "washroom" },
-      { id: 3, url: "/assets/img/room/tentPhoto.webp", alt: "tent" },
-      { id: 4, url: "/assets/img/room/gardenPhoto.webp", alt: "garden" },
-      { id: 5, url: "/assets/img/room/gardenPhoto1.webp", alt: "garden 1" },
-      { id: 6, url: "/assets/img/room/gardenPhoto2.webp", alt: "garden 2" },
-      { id: 7, url: "/assets/img/room/dining.webp", alt: "dining" },
-      { id: 8, url: "/assets/img/room/pool.webp", alt: "pool" },
-      { id: 9, url: "/assets/img/room/vollyball.webp", alt: "vollyball" },
-      { id: 10, url: "/assets/img/room/group.webp", alt: "group" },
-    ],
-    beds: 5,
-    baths: 1,
-    description:
-      "Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet lorem.",
-    linkBooking: "/booking-form",
-  },
-  {
-    id: 3,
-    title: "Ordinary Tent",
-    price: 999,
-    images: [
-      { id: 1, url: "/assets/img/room/ordinaryTent1.webp", alt: "tent 1" },
-      { id: 2, url: "/assets/img/room/ordinaryTent2.webp", alt: "tent 2" },
-      { id: 3, url: "/assets/img/room/ordinaryTent3.webp", alt: "tent 3" },
-      { id: 4, url: "/assets/img/room/gardenPhoto2.webp", alt: "garden 2" },
-      { id: 5, url: "/assets/img/room/gardenPhoto1.webp", alt: "garden 1" },
-      { id: 6, url: "/assets/img/room/dining.webp", alt: "dining" },
-      { id: 7, url: "/assets/img/room/pool.webp", alt: "pool" },
-      { id: 8, url: "/assets/img/room/vollyball.webp", alt: "vollyball" },
-      { id: 9, url: "/assets/img/room/group.webp", alt: "group" },
-    ],
-    beds: 3,
-    baths: "Common",
-    description:
-      "Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet lorem.",
-    linkBooking: "/booking-form",
-  },
-];
+// Using centralized tent data from tentData.ts
 
 const TentDetailsPage: React.FC = () => {
+  const params = useParams();
   const [activeTab, setActiveTab] = useState("photo");
   const [isClient, setIsClient] = useState(false);
+  const [tent, setTent] = useState<Tent | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     address: "",
@@ -123,113 +60,248 @@ const TentDetailsPage: React.FC = () => {
     });
   };
 
-  const searchParams = useSearchParams();
-
-  // Get all parameters from the URL
-  const id = parseInt(searchParams.get("id") || "0");
-  const title = searchParams.get("title") || "";
-  const price = parseInt(searchParams.get("price") || "0");
-  const mainPrice = parseInt(searchParams.get("mainPrice") || "0");
-  const baths = searchParams.get("baths") || "";
-  console.log(baths);
-  const adults = searchParams.get("adults") || "";
-
-  const checkIn = searchParams.get("checkIn") || "";
-  const checkOut = searchParams.get("checkOut") || "";
-  const perHeadPrice = searchParams.get("perHeadPrice") || "";
-  const description = searchParams.get("description") || "";
-
-  const linkBooking = searchParams.get("linkBooking") || "/booking-form";
-
-  // Find the tent from the static data based on ID
-  const tent = tentRooms.find((tent) => tent.id === id);
-
-  const [isMobile, setIsMobile] = useState(false);
-
+  // Get tent data using slug from params
   useEffect(() => {
+    const slug = params.slug as string;
+    if (!slug) return;
+
+    const tentData = getTentBySlug(slug);
+    setTent(tentData || null);
+  }, [params]);
+
+  // Handle client-side hydration
+  useEffect(() => {
+    setIsClient(true);
+
+    // Set mobile state after hydration
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 768);
     };
 
     handleResize();
     window.addEventListener("resize", handleResize);
+
+    // Scroll to top after hydration
+    window.scrollTo(0, 0);
+
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  // Enhanced structured data for tent details (memoized for performance)
+  const structuredData = useMemo(() => {
+    if (!tent) return null;
+    return {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      name: tent.title,
+      description: tent.metaDescription,
+      brand: {
+        "@type": "Brand",
+        name: "Tapovan Swiss Camps",
+      },
+      offers: {
+        "@type": "Offer",
+        url: `https://tapovanswisscampsofficial.com/tents/${tent.slug}`,
+        priceCurrency: "INR",
+        price: tent.price,
+        priceValidUntil: "2024-12-31",
+        itemCondition: "https://schema.org/NewCondition",
+        availability: "https://schema.org/InStock",
+      },
+      image: tent.images[0].url,
+      aggregateRating: {
+        "@type": "AggregateRating",
+        ratingValue: "5",
+        reviewCount: "50",
+      },
+      additionalProperty: [
+        {
+          "@type": "PropertyValue",
+          name: "Tent Type",
+          value: tent.title,
+        },
+        {
+          "@type": "PropertyValue",
+          name: "Capacity",
+          value: `${tent.capacity.min}-${tent.capacity.max} persons`,
+        },
+        {
+          "@type": "PropertyValue",
+          name: "Beds",
+          value: tent.beds.toString(),
+        },
+        {
+          "@type": "PropertyValue",
+          name: "Bathrooms",
+          value: tent.baths.toString(),
+        },
+      ],
+      location: {
+        "@type": "Place",
+        name: "Tapovan Swiss Camps",
+        geo: {
+          "@type": "GeoCoordinates",
+          latitude: "30.1394342",
+          longitude: "78.3127861",
+        },
+        address: {
+          "@type": "PostalAddress",
+          streetAddress: "Deecon Valley Road, Vill. Dholshoot Tapovan",
+          addressLocality: "Rishikesh",
+          addressRegion: "Uttarakhand",
+          postalCode: "249192",
+          addressCountry: "IN",
+        },
+      },
+    };
+  }, [tent]);
 
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
+  // FAQ Schema for better SEO (memoized)
+  const faqSchema = useMemo(() => {
+    if (!tent) return null;
+    return {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: [
+        {
+          "@type": "Question",
+          name: `What amenities are included in the ${tent.title}?`,
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: `The ${tent.title} includes ${tent.amenities
+              .slice(0, 5)
+              .join(
+                ", "
+              )}, and many more premium amenities for a comfortable stay.`,
+          },
+        },
+        {
+          "@type": "Question",
+          name: `What is the capacity of the ${tent.title}?`,
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: `The ${tent.title} can accommodate ${tent.capacity.min} to ${tent.capacity.max} persons comfortably.`,
+          },
+        },
+        {
+          "@type": "Question",
+          name: `What is the price of the ${tent.title}?`,
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: `The ${tent.title} is available starting from ₹${tent.price} per tent, with special offers available.`,
+          },
+        },
+      ],
+    };
+  }, [tent]);
 
-  if (!isClient) {
+  // Breadcrumb Schema (memoized)
+  const breadcrumbSchema = useMemo(() => {
+    if (!tent) return null;
+    return {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: "https://tapovanswisscampsofficial.com",
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Tents",
+          item: "https://tapovanswisscampsofficial.com/tents",
+        },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: tent.title,
+          item: `https://tapovanswisscampsofficial.com/tents/${tent.slug}`,
+        },
+      ],
+    };
+  }, [tent]);
+
+  // Show loading during hydration
+  if (!isClient || !tent) {
     return <Loading />;
   }
 
-  if (!tent) {
-    return <p className="text-center text-danger">Tent not found.</p>;
-  }
-
-  const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "Product",
-    name: title,
-    description: description.replace(/<[^>]*>/g, "").substring(0, 160),
-    brand: {
-      "@type": "Brand",
-      name: "Tapovan Swiss Camps",
-    },
-    offers: {
-      "@type": "Offer",
-      url: `https://tapovanswisscampsofficial.com/tents?id=${id}`,
-      priceCurrency: "INR",
-      price: price,
-      priceValidUntil: "2024-12-31",
-      itemCondition: "https://schema.org/NewCondition",
-      availability: "https://schema.org/InStock",
-    },
-    image: tent.images[0].url,
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: "5",
-      reviewCount: "50",
-    },
-    additionalProperty: {
-      "@type": "PropertyValue",
-      name: "Tent Type",
-      value: title,
-    },
-    location: {
-      "@type": "Place",
-      name: "Tapovan Swiss Camps",
-      geo: {
-        "@type": "GeoCoordinates",
-        latitude: "30.1394342",
-        longitude: "78.3127861",
-      },
-      address: {
-        "@type": "PostalAddress",
-        streetAddress: "Deecon Valley Road, Vill. Dholshoot Tapovan",
-        addressLocality: "Rishikesh",
-        addressRegion: "Uttarakhand",
-        postalCode: "249192",
-        addressCountry: "IN",
-      },
-    },
-  };
-
   return (
     <>
-      <script type="application/ld+json">
-        {JSON.stringify(structuredData)}
-      </script>
-      <section
-        className={
-          isMobile ? "room-details-area ptb-200" : "room-details-area ptb-60"
+      {/* High Quality Image Styles */}
+      <style jsx>{`
+        .img-responsive {
+          image-rendering: -webkit-optimize-contrast;
+          image-rendering: crisp-edges;
+          image-rendering: high-quality;
+          -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+          -webkit-transform: translateZ(0);
+          transform: translateZ(0);
         }
-      >
+
+        .swiper-slide img {
+          object-fit: cover;
+          object-position: center;
+          transition: transform 0.3s ease;
+        }
+
+        .swiper-slide img:hover {
+          transform: scale(1.02);
+        }
+
+        .zoom-thumbs .swiper-slide img {
+          cursor: pointer;
+          border: 2px solid transparent;
+          transition: all 0.3s ease;
+        }
+
+        .zoom-thumbs .swiper-slide.swiper-slide-thumb-active img {
+          border-color: #007bff;
+          transform: scale(1.05);
+        }
+      `}</style>
+
+      {isClient && structuredData && (
+        <>
+          <script type="application/ld+json">
+            {JSON.stringify(structuredData)}
+          </script>
+          <script type="application/ld+json">
+            {JSON.stringify(faqSchema)}
+          </script>
+          <script type="application/ld+json">
+            {JSON.stringify(breadcrumbSchema)}
+          </script>
+        </>
+      )}
+      {/* Breadcrumb Navigation */}
+      <section className="breadcrumb-section py-3 bg-light">
+        <div className="container">
+          <nav aria-label="breadcrumb">
+            <ol className="breadcrumb mb-0">
+              <li className="breadcrumb-item">
+                <Link href="/" className="text-decoration-none">
+                  Home
+                </Link>
+              </li>
+              <li className="breadcrumb-item">
+                <Link href="/tents" className="text-decoration-none">
+                  Tents
+                </Link>
+              </li>
+              <li className="breadcrumb-item active" aria-current="page">
+                {tent.title}
+              </li>
+            </ol>
+          </nav>
+        </div>
+      </section>
+
+      <section className="room-details-area ptb-60">
         <div className="container">
           <div className="row">
             {/* Sidebar Section */}
@@ -237,7 +309,7 @@ const TentDetailsPage: React.FC = () => {
               <div style={{ position: "unset" }} className="sticky-top">
                 {/* Room Details */}
                 <div className="mb-4">
-                  <h3 className="title">{title}</h3>
+                  <h3 className="title">{tent.title}</h3>
                   <span className="price d-block">
                     {" "}
                     <span
@@ -247,33 +319,30 @@ const TentDetailsPage: React.FC = () => {
                         marginRight: 5,
                       }}
                     >
-                      ₹{mainPrice}
+                      ₹{tent.mainPrice}
                     </span>{" "}
-                    ₹{price}.00
+                    ₹{tent.price}.00
                   </span>
                   <small className="d-block mb-2">
-                    ₹{perHeadPrice} per person (based on {adults} adults)
+                    Starting from ₹{tent.price} per tent
                   </small>
-                  {!checkIn ? (
-                    <div className="mb-4">
-                      <h4>
-                        The displayed price is based on an occupancy of up to
-                        five guests.
-                        <p className="mt-2">
-                          Please check the pricing based on your occupancy{" "}
-                          <Link href="/">Home</Link>
-                        </p>
-                      </h4>
-                    </div>
-                  ) : (
-                    <div className="mb-2">
-                      <p>
-                        Enjoy a clean and spacious tent equipped with
-                        comfortable beds and warm blankets. We pride ourselves
-                        on excellent service and delicious meals.
+                  <div className="mb-4">
+                    <h4>
+                      The displayed price is based on an occupancy of up to five
+                      guests.
+                      <p className="mt-2">
+                        Please check the pricing based on your occupancy{" "}
+                        <Link href="/">Home</Link>
                       </p>
-                    </div>
-                  )}
+                    </h4>
+                  </div>
+                  <div className="mb-2">
+                    <p>
+                      Enjoy a clean and spacious tent equipped with comfortable
+                      beds and warm blankets. We pride ourselves on excellent
+                      service and delicious meals.
+                    </p>
+                  </div>
 
                   <Link
                     href={
@@ -359,8 +428,13 @@ const TentDetailsPage: React.FC = () => {
                         className="img-fluid rounded-circle avatar avatar-lg"
                         src="/assets/img/team/rohit.jpeg"
                         alt="Agent"
-                        width={64}
-                        height={64}
+                        width={80}
+                        height={80}
+                        quality={100}
+                        loading="lazy"
+                        placeholder="blur"
+                        blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
+                        sizes="80px"
                       />
                     </div>
                     <div className="agent-contact-name">
@@ -452,7 +526,7 @@ const TentDetailsPage: React.FC = () => {
                 <Link
                   style={{ borderRadius: "0px", paddingBlock: "15px" }}
                   className="btn style5 mt-5 w-100"
-                  href={linkBooking}
+                  href={tent.linkBooking}
                 >
                   Book Now
                 </Link>
@@ -472,20 +546,22 @@ const TentDetailsPage: React.FC = () => {
                     <button
                       className={`nav-link shadow ${
                         activeTab === "photo" ? "active" : ""
-                      } ${isMobile && "p-2"}`}
+                      }`}
                       onClick={() => setActiveTab("photo")}
                     >
-                      {isMobile ? <FaImage /> : "Photos"}
+                      <span className="d-none d-md-inline">Photos</span>
+                      <FaImage className="d-md-none" />
                     </button>
                   </li>
                   <li className="nav-item">
                     <button
                       className={`nav-link shadow ${
                         activeTab === "map" ? "active" : ""
-                      } ${isMobile && "p-2"}`} // Adjust padding based on isMobile
+                      }`}
                       onClick={() => setActiveTab("map")}
                     >
-                      {isMobile ? <FaLocationDot /> : "Map"}
+                      <span className="d-none d-md-inline">Map</span>
+                      <FaLocationDot className="d-md-none" />
                     </button>
                   </li>
                 </ul>
@@ -511,12 +587,16 @@ const TentDetailsPage: React.FC = () => {
                             <SwiperSlide key={item.id}>
                               <Image
                                 src={item.url}
-                                alt={`${title} at Tapovan Swiss Camps - ${item.alt}`}
-                                width={800}
-                                height={450}
+                                alt={`${tent.title} at Tapovan Swiss Camps - ${item.alt}`}
+                                width={1200}
+                                height={675}
                                 loading="lazy"
                                 className="img-responsive m-auto"
-                                quality={85}
+                                quality={100}
+                                priority={false}
+                                placeholder="blur"
+                                blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
+                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 60vw"
                               />
                             </SwiperSlide>
                           ))}
@@ -542,8 +622,13 @@ const TentDetailsPage: React.FC = () => {
                                 className="img-responsive m-auto"
                                 src={item.url}
                                 alt={item.alt}
-                                width={200}
-                                height={150}
+                                width={300}
+                                height={200}
+                                quality={100}
+                                loading="lazy"
+                                placeholder="blur"
+                                blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
+                                sizes="(max-width: 768px) 25vw, 20vw"
                               />
                             </SwiperSlide>
                           ))}
@@ -580,33 +665,36 @@ const TentDetailsPage: React.FC = () => {
                       <div className="col-sm-6">
                         <ul className="room-list list-unstyled">
                           <li>
-                            <b>Adults:</b> {adults}
+                            <b>Capacity:</b> {tent.capacity.min}-
+                            {tent.capacity.max} persons
                           </li>
                           <li>
-                            <b>Price:</b> ₹{price}.00
+                            <b>Price:</b> ₹{tent.price}.00
                           </li>
                           <li>
-                            <b>Per Head Price:</b> ₹{perHeadPrice}
-                          </li>
-
-                          <li>
-                            <b>Bathrooms:</b> {baths}
+                            <b>Beds:</b> {tent.beds}
                           </li>
                           <li>
-                            <b>Check-in: {checkIn}</b> 12:00 PM
+                            <b>Bathrooms:</b> {tent.baths}
                           </li>
                           <li>
-                            <b>Check-out: {checkOut}</b> 11:00 AM
+                            <b>Check-in:</b> 12:00 PM
+                          </li>
+                          <li>
+                            <b>Check-out:</b> 11:00 AM
                           </li>
                         </ul>
                       </div>
                       <div className="col-sm-6">
                         <ul className="room-list list-unstyled">
                           <li>
-                            <b>Tent Type:</b> {title}
+                            <b>Tent Type:</b> {tent.title}
                           </li>
                           <li>
-                            <b>Facilities:</b> Wifi, Dining, Food, Pool, Games,
+                            <b>Category:</b> {tent.category}
+                          </li>
+                          <li>
+                            <b>Facilities:</b> WiFi, Dining, Food, Pool, Games,
                             Meals (Lunch, Dinner, Breakfast)
                           </li>
                           <li>
@@ -628,7 +716,9 @@ const TentDetailsPage: React.FC = () => {
                     <h5>Description</h5>
                   </div>
                   <div className="col-sm-9">
-                    <p dangerouslySetInnerHTML={{ __html: description }}></p>
+                    <p
+                      dangerouslySetInnerHTML={{ __html: tent.description }}
+                    ></p>
                   </div>
                 </div>
               </div>
@@ -643,29 +733,65 @@ const TentDetailsPage: React.FC = () => {
                   <div className="col-sm-9">
                     <div className="row">
                       <div className="col-sm-6">
-                        <ul className="room-list-style-2 list-unstyled mb-0">
-                          <li>Comfortable Beds</li>
-                          <li>Clean Washrooms</li>
-                          <li>24/7 Water Supply</li>
-                          <li>Power Backup</li>
-                          <li>Swimming Pool</li>
-                          <li>Greenery With Flowers</li>
-                          <li>Dining Area</li>
-                          <li>Meals(Lunch, Dinner, Breakfast)</li>
+                        <h6 className="mb-3">Tent Features:</h6>
+                        <ul className="room-list-style-2 list-unstyled mb-4">
+                          {tent.features.map((feature, index) => (
+                            <li key={index}>{feature}</li>
+                          ))}
                         </ul>
                       </div>
                       <div className="col-sm-6">
+                        <h6 className="mb-3">Amenities:</h6>
                         <ul className="room-list-style-2 list-unstyled mb-0">
-                          <li>Bonfire Area</li>
-                          <li>Outdoor Seating</li>
-                          <li>Volleyball Court, Cricket, badminton</li>
-                          <li>Free Parking</li>
-                          <li>WiFi</li>
-                          <li>Security (CCTV)</li>
-                          <li>First Aid</li>
-                          <li>Menu (Order to Have)</li>
+                          {tent.amenities.slice(0, 8).map((amenity, index) => (
+                            <li key={index}>{amenity}</li>
+                          ))}
                         </ul>
                       </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Tent Highlights */}
+              <hr className="mt-4 mb-4 mb-sm-5 mt-sm-5" />
+              <div className="tent-highlights">
+                <div className="row">
+                  <div className="col-sm-3 mb-3 mb-sm-0">
+                    <h5>Highlights</h5>
+                  </div>
+                  <div className="col-sm-9">
+                    <div className="row">
+                      {tent.highlights.map((highlight, index) => (
+                        <div key={index} className="col-sm-6 mb-3">
+                          <div className="highlight-item d-flex align-items-center">
+                            <i className="bx bx-check-circle text-success me-2"></i>
+                            <span>{highlight}</span>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Tent Policies */}
+              <hr className="mt-4 mb-4 mb-sm-5 mt-sm-5" />
+              <div className="tent-policies">
+                <div className="row">
+                  <div className="col-sm-3 mb-3 mb-sm-0">
+                    <h5>Policies</h5>
+                  </div>
+                  <div className="col-sm-9">
+                    <div className="row">
+                      {tent.policies.map((policy, index) => (
+                        <div key={index} className="col-sm-6 mb-2">
+                          <div className="policy-item d-flex align-items-center">
+                            <i className="bx bx-info-circle text-info me-2"></i>
+                            <span>{policy}</span>
+                          </div>
+                        </div>
+                      ))}
                     </div>
                   </div>
                 </div>
@@ -732,6 +858,108 @@ const TentDetailsPage: React.FC = () => {
                   </div>
                 </div>
               </div> */}
+
+              {/* FAQ Section */}
+              <hr className="mt-4 mb-4 mb-sm-5 mt-sm-5" />
+              <div className="tent-faq">
+                <div className="row">
+                  <div className="col-sm-3 mb-3 mb-sm-0">
+                    <h5>Frequently Asked Questions</h5>
+                  </div>
+                  <div className="col-sm-9">
+                    <div className="accordion" id="tentFAQ">
+                      <div className="accordion-item">
+                        <h2 className="accordion-header">
+                          <button
+                            className="accordion-button"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#faq1"
+                            aria-expanded="true"
+                            aria-controls="faq1"
+                          >
+                            What amenities are included in the {tent.title}?
+                          </button>
+                        </h2>
+                        <div
+                          id="faq1"
+                          className="accordion-collapse collapse show"
+                          data-bs-parent="#tentFAQ"
+                        >
+                          <div className="accordion-body">
+                            The {tent.title} includes{" "}
+                            {tent.amenities.slice(0, 5).join(", ")}, and many
+                            more premium amenities for a comfortable stay. All
+                            tents come with clean bedding, modern facilities,
+                            and access to our common areas including dining,
+                            swimming pool, and recreational activities.
+                          </div>
+                        </div>
+                      </div>
+                      <div className="accordion-item">
+                        <h2 className="accordion-header">
+                          <button
+                            className="accordion-button collapsed"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#faq2"
+                            aria-expanded="false"
+                            aria-controls="faq2"
+                          >
+                            What is the capacity of the {tent.title}?
+                          </button>
+                        </h2>
+                        <div
+                          id="faq2"
+                          className="accordion-collapse collapse"
+                          data-bs-parent="#tentFAQ"
+                        >
+                          <div className="accordion-body">
+                            The {tent.title} can comfortably accommodate{" "}
+                            {tent.capacity.min} to {tent.capacity.max} persons.
+                            The tent features {tent.beds} beds and {tent.baths}{" "}
+                            bathroom(s), making it perfect for{" "}
+                            {tent.capacity.min === 1
+                              ? "solo travelers"
+                              : tent.capacity.max <= 3
+                              ? "couples and small families"
+                              : "families and groups"}
+                            .
+                          </div>
+                        </div>
+                      </div>
+                      <div className="accordion-item">
+                        <h2 className="accordion-header">
+                          <button
+                            className="accordion-button collapsed"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#faq3"
+                            aria-expanded="false"
+                            aria-controls="faq3"
+                          >
+                            What is the price of the {tent.title}?
+                          </button>
+                        </h2>
+                        <div
+                          id="faq3"
+                          className="accordion-collapse collapse"
+                          data-bs-parent="#tentFAQ"
+                        >
+                          <div className="accordion-body">
+                            The {tent.title} is available starting from ₹
+                            {tent.price} per tent. This includes accommodation,
+                            access to all facilities, and basic amenities. Meals
+                            and additional services can be arranged separately.
+                            Special group discounts and seasonal offers are
+                            available.
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
               {/* What's Nearby */}
               <hr className="mt-4 mb-4 mb-sm-5 mt-sm-5" />

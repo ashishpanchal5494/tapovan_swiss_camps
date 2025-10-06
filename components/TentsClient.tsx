@@ -1,84 +1,21 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
-import TentCard from "../components/TentCard";
+import React, { useEffect, useState, useMemo, memo } from "react";
+import TentCard from "@/components/TentCard";
 import Loading from "@/components/Loading";
-import { useSearchParams } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 import Head from "next/head";
-
-interface Tent {
-  id: number;
-  title: string;
-  seoTitle: string;
-  metaDescription: string;
-  mainPrice: number;
-  price: number;
-  image: string;
-  altText: string;
-  beds: number;
-  baths: number | string;
-  description: string;
-  linkBooking: string;
-}
-
-const tentRooms: Tent[] = [
-  {
-    id: 1,
-    title: "Luxury AC Tent",
-    seoTitle:
-      "Luxury AC Tent in Tapovan Rishikesh - Best camping experience at Tapovan swiss camps in @ ₹1499 ",
-    metaDescription:
-      "Stay in a luxury AC tent in Tapovan Rishikesh with 5 beds, attached bath & modern comfort. Best riverside camping experience for families @ ₹1499.",
-    altText: "Luxury AC Glamping Tent in Rishikesh with mountain views",
-    mainPrice: 1999,
-    price: 1499,
-    image: "assets/img/room/ACTent1.webp",
-    beds: 5,
-    baths: 1,
-    description:
-      "Experience unparalleled comfort in our Luxury AC Tents, designed for those who seek a perfect blend of nature and modern amenities. These spacious 5-bed tents feature climate control to ensure your comfort in all seasons, along with attached bathrooms for privacy. Enjoy premium bedding, tasteful decor, and ample space to relax after a day of adventure. <br/> <i>Please note</i>: To maintain a healthy environment for all guests, smoking and consumption of alcohol are strictly prohibited in all tents. We kindly request all guests to help us keep the tents clean and in excellent condition for everyone's enjoyment. <br/> Located amidst lush greenery, our AC tents offer a serene retreat while keeping you connected with essential conveniences. Perfect for families or groups looking for a luxurious camping experience without compromising on comfort.",
-    linkBooking: "/booking-form",
-  },
-  {
-    id: 2,
-    title: "Luxury Cooler Tent",
-    seoTitle:
-      "Luxury Cooler Tent in Tapovan Rishikesh - Best camping experience at Tapovan swiss camps in @ ₹1199 ",
-    metaDescription:
-      "Book luxury cooler tents in Tapovan Rishikesh with 5 beds & attached bath. Enjoy natural ventilation & riverside camping comfort near Ganga @ ₹1199.",
-    altText: "Luxury Cooler Tent with natural ventilation in Rishikesh",
-    mainPrice: 1499,
-    price: 1199,
-    image: "assets/img/room/coolerTent1.webp",
-    beds: 5,
-    baths: 1,
-    description:
-      "Stay cool and comfortable in our Luxury Cooler Tents, designed to provide natural ventilation and temperature regulation. These well-appointed tents feature 5 comfortable beds and attached bathrooms, offering a perfect balance between outdoor living and essential comforts. <br/> <i>Important rules</i>: For the safety and comfort of all guests, smoking and drinking alcohol inside the tents is not permitted. We appreciate your cooperation in maintaining cleanliness and taking care of the tent facilities during your stay. <br/> The evaporative cooling system ensures a pleasant environment even during warmer days. Enjoy the sounds of nature from your private tent, surrounded by our beautifully landscaped property. Ideal for those who want a comfortable camping experience with a touch of traditional cooling methods.",
-    linkBooking: "/booking-form",
-  },
-  {
-    id: 3,
-    title: "Ordinary Tent",
-    seoTitle:
-      "Budget Camping Ordinary Tent in Tapovan Rishikesh - Best camping experience at Tapovan swiss camps in @ ₹999 ",
-    metaDescription:
-      "Budget tents for camping in Tapovan Rishikesh with 3 beds & common bath. Perfect for backpackers & adventure lovers seeking riverside nature stay @ ₹999.",
-    altText: "Traditional camping tent in Rishikesh for budget travelers",
-    mainPrice: 1199,
-    price: 999,
-    image: "assets/img/room/ordinaryTent1.webp",
-    beds: 3,
-    baths: "Common",
-    description:
-      "For the authentic camping enthusiasts, our Ordinary Tents offer a genuine outdoor experience with basic comforts. These 3-bed tents provide shared bathroom facilities and simple, clean accommodations. <br/> <i>Guest policies </i>: We maintain a strict no-smoking and no-alcohol policy in all tents to ensure a pleasant environment for all visitors. Guests are expected to keep their tents tidy and report any issues to our staff immediately. <br/> Perfect for budget-conscious travelers and backpackers who want to immerse themselves in nature without distractions. Located in our scenic property, these tents allow you to enjoy starry nights and fresh mountain air while still having access to our common amenities like dining areas and recreational spaces.",
-    linkBooking: "/booking-form",
-  },
-];
+import Link from "next/link";
+import Image from "next/image";
+import { tentRooms } from "../app/tents/tentData";
 
 const TentsClient: React.FC = () => {
   const [isClient, setIsClient] = useState<boolean>(false);
-  const [isMobile, setIsMobile] = useState<boolean>(false);
+
   const [totalDays, setTotalDays] = useState<number>(1);
+
+  const pathname = usePathname();
+  const showBreadcrumb = pathname === "/tents";
 
   const searchParams = useSearchParams();
   const checkIn = searchParams.get("checkIn") || "";
@@ -133,16 +70,6 @@ const TentsClient: React.FC = () => {
   };
 
   useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
-
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  useEffect(() => {
     setIsClient(true);
   }, []);
 
@@ -150,127 +77,169 @@ const TentsClient: React.FC = () => {
     return <Loading />;
   }
 
+  // Enhanced structured data for tents page
+  const tentsStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: "Luxury Camping Tents in Tapovan Rishikesh",
+    description:
+      "Premium glamping experience with luxury tents near Ganga river. Choose from AC tents, cooler tents, and budget options.",
+    url: "https://tapovanswisscampsofficial.com/tents",
+    image: "https://tapovanswisscampsofficial.com/assets/img/room/ACTent1.webp",
+    mainEntity: {
+      "@type": "ItemList",
+      numberOfItems: tentRooms.length,
+      itemListElement: tentRooms.map((tent, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        item: {
+          "@type": "Product",
+          name: tent.title,
+          description: tent.metaDescription,
+          image: `https://tapovanswisscampsofficial.com/${tent.image}`,
+          offers: {
+            "@type": "Offer",
+            price: tent.price,
+            priceCurrency: "INR",
+            availability: "https://schema.org/InStock",
+          },
+        },
+      })),
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "Tapovan Swiss Camps",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://tapovanswisscampsofficial.com/assets/img/logo.png",
+      },
+    },
+  };
+
   return (
     <>
-      <Head>
-        {/* Structured Data */}
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "WebPage",
-            name: "Luxury Camping Tents in Rishikesh",
-            description:
-              "Premium glamping experience with luxury tents near Ganga river",
-            url: "https://tapovanswisscampsofficial.com/tents",
-            image:
-              "https://tapovanswisscampsofficial.com/assets/img/room/ACTent1.webp",
-            publisher: {
-              "@type": "Organization",
-              name: "Tapovan Swiss Camps",
-              logo: {
-                "@type": "ImageObject",
-                url: "https://tapovanswisscampsofficial.com/assets/img/logo.png",
-              },
-            },
-          })}
-        </script>
-      </Head>
-      <section className={isMobile ? "room-area ptb-200" : "room-area ptb-60"}>
-        <div className="container">
-          <header className="section-title">
-            <h1>Explore Our Luxury Camping Tents in Rishikesh</h1>
-            <p className="lead">
-              Find the perfect glamping accommodation for your nature retreat in
-              the Himalayan foothills.
-            </p>
-          </header>
-          <div className="seo-content-section mt-4">
-            <h2>Best Camping in Rishikesh</h2>
-            <p>
-              At <strong>Tapovan Swiss Camps</strong>, we offer the ultimate{" "}
-              <strong>luxury camping in Rishikesh</strong> with our premium{" "}
-              <strong>Swiss tents in Tapovan</strong>. Nestled along the banks
-              of the Ganges, our <strong>glamping near Ganga</strong> provides
-              the perfect blend of adventure and comfort. Whether you&lsquo;re
-              seeking <strong>luxury AC tents in Rishikesh</strong>,{" "}
-              <strong>cooler tents</strong>, or traditional accommodations, we
-              have the perfect <strong>camping in Tapovan, Rishikesh</strong>{" "}
-              experience for couples, families, and groups.
-            </p>
+      {isClient && (
+        <Head>
+          <script type="application/ld+json">
+            {JSON.stringify(tentsStructuredData)}
+          </script>
+        </Head>
+      )}
 
-            <h3>Why Choose Our Luxury Tents in Rishikesh?</h3>
-            <ul>
-              <li>
-                <strong>Luxury AC tents in Tapovan Rishikesh</strong> with
-                climate control
-              </li>
-              <li>
-                <strong>best camping in Rishikesh</strong> experience with
-                attached bathrooms
-              </li>
-              <li>
-                Spacious <strong>luxury couple tents in Rishikesh</strong> with
-                romantic river views
-              </li>
-              <li>
-                Family-friendly{" "}
-                <strong>luxury camping tents in Rishikesh riverside</strong>
-              </li>
-              <li>
-                Authentic <strong>tent camping in Rishikesh Shivpuri</strong> at
-                competitive prices
-              </li>
-              <li>
-                Best <strong>camping accommodation in Rishikesh</strong> with
-                modern amenities
-              </li>
-            </ul>
+      {/* Hero Section */}
+      <section className=" pt-40 tents-hero bg-gradient-to-br from-green-50 via-blue-50 to-indigo-50 py-16 py-md-20 py-lg-24 relative overflow-hidden">
+        <div className="hero-pattern absolute inset-0 opacity-10"></div>
+        <div className="container relative z-10">
+          <div className="row align-items-center">
+            <div className="col-12 col-lg-8">
+              <div className="hero-content">
+                {showBreadcrumb && (
+                  <nav aria-label="breadcrumb" className="mb-4">
+                    <ol className="breadcrumb">
+                      <li className="breadcrumb-item">
+                        <Link href="/" className="text-decoration-none">
+                          Home
+                        </Link>
+                      </li>
+                      <li
+                        className="breadcrumb-item active"
+                        aria-current="page"
+                      >
+                        Our Tents
+                      </li>
+                    </ol>
+                  </nav>
+                )}
+                <div className="hero-icon mb-4">
+                  <i className="bx bx-tent display-1 text-primary-custom"></i>
+                </div>
+                <h1 className="display-4 display-md-3 display-lg-2 fw-bold text-dark mb-4">
+                  Luxury{" "}
+                  <span className="text-primary-custom">Camping Tent</span>
+                  <br />
+                  in Tapovan Rishikesh
+                </h1>
+                <p className="lead text-muted mb-5 mb-md-6">
+                  Experience the perfect blend of nature and comfort in our
+                  premium camping tents. From luxury AC tents to budget-friendly
+                  options, find your ideal riverside retreat by the sacred Ganga
+                  river.
+                </p>
 
-            <h3>Our Tent Categories</h3>
-            <p>
-              <strong>1. Luxury AC Tents:</strong> Experience{" "}
-              <strong>luxury camping in Tapovan, Rishikesh</strong> with our
-              climate-controlled accommodations. These{" "}
-              <strong>best camping tents in Rishikesh</strong> feature premium
-              bedding and private facilities.
-            </p>
-            <p>
-              <strong>2. Luxury Cooler Tents:</strong> Our{" "}
-              <strong>luxury tents in Tapovan, Rishikesh</strong> offer natural
-              cooling perfect for summer{" "}
-              <strong>couple camping Rishikesh</strong> getaways.
-            </p>
-            <p>
-              <strong>3. Ordinary Tents:</strong> Affordable{" "}
-              <strong>tent camping in Rishikesh price</strong> options for
-              backpackers seeking authentic outdoor experiences.
-            </p>
-
-            <h3>Nearby Attractions</h3>
-            <p>
-              Our <strong>luxury camping in Rishikesh riverside</strong>{" "}
-              location puts you minutes from:
-            </p>
-            <ul>
-              <li>Laxman Jhula and Ganga Arti</li>
-              <li>Triveni Ghat for spiritual experiences</li>
-              <li>White water rafting starting points</li>
-              <li>Yoga centers and meditation ashrams</li>
-              <li>Waterfall and Tapovan Market</li>
-            </ul>
-
-            <h3>Book Your Luxury Tent Today</h3>
-            <p>
-              Experience the finest <strong>glamping near Ganga</strong> with
-              Tapovan Swiss Camps. Whether you need{" "}
-              <strong>luxury couple tents in Tapovan Rishikesh</strong> or
-              family-sized accommodations, we offer competitive{" "}
-              <strong>luxury tents price</strong> packages for all budgets. Our{" "}
-              <strong>best camping in Rishikesh</strong> experience combines
-              modern comforts with breathtaking natural beauty.
-            </p>
+                <div className="hero-stats d-flex flex-row flex-lg-row gap-4 mb-5">
+                  <div className="stat-item text-center">
+                    <div className="h3 text-primary-custom mb-1">3</div>
+                    <small className="text-muted">Tent Types</small>
+                  </div>
+                  <div className="stat-item text-center">
+                    <div className="h3 text-primary-custom mb-1">₹999</div>
+                    <small className="text-muted">Starting Price</small>
+                  </div>
+                  <div className="stat-item text-center">
+                    <div className="h3 text-primary-custom mb-1">5★</div>
+                    <small className="text-muted">Guest Rating</small>
+                  </div>
+                  <div className="stat-item text-center">
+                    <div className="h3 text-primary-custom mb-1">24/7</div>
+                    <small className="text-muted">Support</small>
+                  </div>
+                </div>
+                <div className="hero-cta">
+                  <Link
+                    href="#tents-section"
+                    className="btn btn-primary-custom btn-lg text-white px-5 py-3 rounded-pill me-3 mb-3"
+                  >
+                    View All Tents
+                  </Link>
+                  <Link
+                    href="/booking-form"
+                    className="btn btn-outline-primary-custom btn-lg border border-2 border-gray px-5 py-3 rounded-pill mb-3"
+                  >
+                    <i className="bx bx-calendar me-2"></i>
+                    Book Now
+                  </Link>
+                </div>
+              </div>
+            </div>
+            <div className="col-12 col-lg-4">
+              <div className="hero-image text-center">
+                <Image
+                  src="/assets/img/room/coolerTent1.webp"
+                  alt="Luxury Camping Tents at Tapovan Swiss Camps"
+                  width={500}
+                  height={600}
+                  className="img-fluid rounded-4 shadow-lg"
+                  style={{ objectFit: "cover" }}
+                  priority
+                />
+              </div>
+            </div>
           </div>
-          <div className="row justify-content-center">
+        </div>
+      </section>
+
+      {/* Tents Section */}
+      <section
+        id="tents-section"
+        className="tents-section py-5 py-md-6 py-lg-7"
+      >
+        <div className="container">
+          <div className="row">
+            <div className="col-12">
+              <div className="section-header text-center mb-5">
+                <h2 className="display-5 display-md-4 display-lg-3 fw-bold text-dark mb-4">
+                  Choose Your Perfect{" "}
+                  <span className="text-primary-custom">Tent</span>
+                </h2>
+                <p className="lead text-muted mb-0">
+                  From luxury AC tents to budget-friendly options, we have the
+                  perfect accommodation for every traveler
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="row g-4">
             {tentRooms.map((room, index) => {
               const {
                 perHeadPrice,
@@ -282,6 +251,7 @@ const TentsClient: React.FC = () => {
                 <TentCard
                   key={room.id}
                   id={room.id}
+                  slug={room.slug}
                   title={room.title}
                   image={room.image}
                   altText={room.altText}
@@ -304,6 +274,112 @@ const TentsClient: React.FC = () => {
           </div>
         </div>
       </section>
+
+      {/* Features Section */}
+      {/* <section className="features-section py-5 py-md-6 py-lg-7 bg-light">
+        <div className="container">
+          <div className="row">
+            <div className="col-12">
+              <h2 className="display-6 display-md-5 display-lg-4 fw-bold text-dark mb-5 text-center">
+                Why Choose{" "}
+                <span className="text-primary-custom">
+                  Tapovan Swiss Camps?
+                </span>
+              </h2>
+            </div>
+          </div>
+          <div className="row g-4">
+            <div className="col-12 col-md-6 col-lg-3">
+              <div className="feature-card bg-white p-4 rounded-4 shadow-sm h-100 text-center">
+                <div className="feature-icon mb-3">
+                  <i className="bx bx-shield-check display-4 text-primary-custom"></i>
+                </div>
+                <h3 className="h5 mb-3">Premium Quality</h3>
+                <p className="text-muted mb-0">
+                  High-quality tents with modern amenities and comfortable
+                  bedding for a perfect stay.
+                </p>
+              </div>
+            </div>
+            <div className="col-12 col-md-6 col-lg-3">
+              <div className="feature-card bg-white p-4 rounded-4 shadow-sm h-100 text-center">
+                <div className="feature-icon mb-3">
+                  <i className="bx bx-map-pin display-4 text-primary-custom"></i>
+                </div>
+                <h3 className="h5 mb-3">Riverside Location</h3>
+                <p className="text-muted mb-0">
+                  Located by the sacred Ganga river with stunning views and
+                  peaceful surroundings.
+                </p>
+              </div>
+            </div>
+            <div className="col-12 col-md-6 col-lg-3">
+              <div className="feature-card bg-white p-4 rounded-4 shadow-sm h-100 text-center">
+                <div className="feature-icon mb-3">
+                  <i className="bx bx-heart display-4 text-primary-custom"></i>
+                </div>
+                <h3 className="h5 mb-3">Family Friendly</h3>
+                <p className="text-muted mb-0">
+                  Perfect for families, couples, and groups with activities and
+                  amenities for all ages.
+                </p>
+              </div>
+            </div>
+            <div className="col-12 col-md-6 col-lg-3">
+              <div className="feature-card bg-white p-4 rounded-4 shadow-sm h-100 text-center">
+                <div className="feature-icon mb-3">
+                  <i className="bx bx-star display-4 text-primary-custom"></i>
+                </div>
+                <h3 className="h5 mb-3">5-Star Service</h3>
+                <p className="text-muted mb-0">
+                  Exceptional hospitality with 24/7 support and personalized
+                  service for every guest.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section> */}
+
+      {/* CTA Section */}
+      {/* <section className="cta-section py-5 py-md-6 py-lg-7 bg-primary-custom text-white">
+        <div className="container">
+          <div className="row justify-content-center text-center">
+            <div className="col-12 col-md-10 col-lg-8">
+              <div className="cta-content">
+                <div className="cta-icon mb-4">
+                  <i className="bx bx-tent display-1 text-white"></i>
+                </div>
+                <h2 className="display-5 display-md-4 display-lg-3 fw-bold mb-4">
+                  Ready for Your{" "}
+                  <span className="text-warning">Adventure?</span>
+                </h2>
+                <p className="lead mb-5 mb-md-6">
+                  Book your perfect tent today and experience the magic of
+                  riverside camping in Rishikesh. From luxury AC tents to
+                  budget-friendly options, we have something for everyone.
+                </p>
+                <div className="cta-buttons">
+                  <Link
+                    href="/booking-form"
+                    className="btn btn-light btn-lg px-5 py-3 rounded-pill me-3 mb-3"
+                  >
+                    <i className="bx bx-calendar me-2"></i>
+                    Book Your Tent
+                  </Link>
+                  <Link
+                    href="/contact"
+                    className="btn btn-outline-light btn-lg px-5 py-3 rounded-pill mb-3"
+                  >
+                    <i className="bx bx-phone me-2"></i>
+                    Contact Us
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section> */}
     </>
   );
 };

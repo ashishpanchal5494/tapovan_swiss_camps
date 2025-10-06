@@ -1,45 +1,88 @@
 import { Metadata } from "next";
 import BookingPage from "./BookingPage";
 
-const BASE_URL = "https://tapovanswisscampsofficial.com";
+const BASE_URL = "https://www.tapovanswisscampsofficial.com";
 
 export async function generateMetadata(): Promise<Metadata> {
   const title =
-    "Book Camping & Rafting in Rishikesh - Tapovan Swiss Camps starts @ ₹999 ";
+    "Book Camping & Rafting in Rishikesh - Tapovan Swiss Camps | Instant Booking @ ₹999";
   const description =
-    "Book your camping and river rafting adventure in Rishikesh with Tapovan Swiss Camps. Enjoy 25% off on luxury Swiss tents, AC and cooler tents, and thrilling Ganga rafting experiences. Instant online booking starts at just ₹999!";
+    "Book your luxury camping and river rafting adventure in Rishikesh with Tapovan Swiss Camps. Swiss tents, AC & cooler options, Ganga rafting starting ₹999. Instant confirmation, group discounts, 24/7 support!";
 
   const keywords = [
-    "camping in rishikesh",
-    "camps in rishikesh",
-    "tapovan swiss camps",
-    "rishikesh camping booking",
     "book camping in rishikesh",
-    "book camping in tapovan rishikesh",
-    "book camp in shivpuri rishikesh",
-    "book luxury camps in rishikesh",
-    "book luxury camp in rishikesh",
-    "book tapovan swiss camps",
-    "book luxury cooler tent in rishikesh",
-    "book luxury AC tent in rishikesh",
-    "book ordinary tent in rishikesh",
-    "book rafting",
     "book rafting in rishikesh",
-    "book bungee jumping in rishikesh",
-    "rafting in rishikesh online",
-    "luxury tents rishikesh",
-    "gangs river rafting booking",
-    "swiss camp rishikesh",
+    "rishikesh camping booking",
+    "rishikesh rafting booking",
+    "tapovan swiss camps booking",
+    "book luxury camping rishikesh",
+    "book swiss tents rishikesh",
+    "book AC tents rishikesh",
+    "book cooler tents rishikesh",
+    "book ordinary tents rishikesh",
+    "book ganga rafting",
+    "book white water rafting rishikesh",
+    "book shivpuri rafting",
+    "book brahmpuri rafting",
+    "book marine drive rafting",
+    "camping booking rishikesh",
+    "rafting booking rishikesh",
     "adventure booking rishikesh",
+    "luxury camping booking",
+    "family camping booking",
+    "group camping booking",
+    "couple camping booking",
+    "book camping near ganga",
+    "book riverside camping",
+    "book camping tapovan",
+    "book camping shivpuri",
+    "online camping booking",
+    "online rafting booking",
+    "instant camping booking",
+    "instant rafting booking",
+    "camping package booking",
+    "rafting package booking",
+    "adventure package booking",
+    "himalayan camping booking",
+    "uttarakhand camping booking",
+    "rishikesh adventure booking",
+    "book camping with meals",
+    "book rafting with guide",
+    "book camping with activities",
+    "book adventure sports",
+    "book bungee jumping",
+    "book bike rental",
+    "book adventure activities",
   ];
 
   return {
+    metadataBase: new URL(BASE_URL),
     title,
     description,
     keywords,
-    metadataBase: new URL(BASE_URL),
+    authors: [{ name: "Tapovan Swiss Camps" }],
+    creator: "Tapovan Swiss Camps",
+    publisher: "Tapovan Swiss Camps",
+    formatDetection: {
+      email: false,
+      address: false,
+      telephone: false,
+    },
     alternates: {
       canonical: `${BASE_URL}/booking-form`,
+    },
+    robots: {
+      index: true,
+      follow: true,
+      nocache: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        noimageindex: false,
+        "max-video-preview": -1,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+      },
     },
     openGraph: {
       title,
@@ -53,9 +96,16 @@ export async function generateMetadata(): Promise<Metadata> {
           url: `${BASE_URL}/assets/img/about.webp`,
           width: 1200,
           height: 630,
-          alt: "Booking for Rishikesh Camping and Rafting",
+          alt: "Book Camping & Rafting in Rishikesh - Tapovan Swiss Camps",
+          type: "image/webp",
         },
       ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [`${BASE_URL}/assets/img/about.webp`],
     },
   };
 }

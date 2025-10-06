@@ -1,25 +1,27 @@
 "use client";
 
-import { useEffect, useState, useRef, type ReactNode } from "react";
-
+import { useEffect, useState, useRef, type ReactNode, Suspense } from "react";
 import dynamic from "next/dynamic";
+import Script from "next/script";
+import Loading from "@/components/Loading";
+
+// Optimize dynamic imports with better loading strategies
 const HeroSection = dynamic(() => import("@/components/HeroSection"), {
+  ssr: true, // Hero should be SSR for better LCP
+  loading: () => <Loading />,
+});
+
+const TentsClient = dynamic(() => import("@/components/TentsClient"), {
   ssr: false,
   loading: () => <Loading />,
 });
-import Loading from "@/components/Loading";
 
 const VideoSection = dynamic(() => import("@/components/VideoSection"), {
   ssr: false,
   loading: () => <Loading />,
 });
 
-import Script from "next/script";
-
-const TentsClient = dynamic(() => import("@/components/TentsClient"), {
-  ssr: false,
-  loading: () => <Loading />,
-});
+// Defer these heavy components
 const FAQPage = dynamic(() => import("../app/faq/FAQPage"), {
   ssr: false,
   loading: () => <Loading />,
@@ -29,6 +31,7 @@ const BlogPage = dynamic(() => import("../app/blogs/blogPage"), {
   ssr: false,
   loading: () => <Loading />,
 });
+
 const TestimonialPage = dynamic(
   () => import("../app/testimonial/TestimonialPage"),
   {
@@ -197,18 +200,23 @@ export default function Home() {
       </Script>
 
       <div className="page-wrapper">
-        <HeroSection />
-        <TentsClient />
-        <VideoSection />
+        <Suspense fallback={<Loading />}>
+          <HeroSection />
+        </Suspense>
+
+        <Suspense fallback={<Loading />}>
+          <TentsClient />
+        </Suspense>
+
+        <Suspense fallback={<Loading />}>
+          <VideoSection />
+        </Suspense>
+
         {/** Defer below-the-fold content until idle for better LCP */}
-        <div suppressHydrationWarning>
-          {/* Use requestIdleCallback when available to defer heavier sections */}
-          {/* This pattern avoids blocking main thread on initial view */}
-        </div>
         <Defer>
-          <TestimonialPage />
-          <FAQPage />
-          <BlogPage />
+          <Suspense fallback={<Loading />}>
+            <BlogPage />
+          </Suspense>
         </Defer>
       </div>
     </>

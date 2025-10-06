@@ -2,10 +2,11 @@ import BlogPage from "./blogPage";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.tapovanswisscampsofficial.com"),
   title:
-    "Rishikesh adventure Blogs - Tapovan Swiss Camps | Best camping in Rishikesh",
+    "Rishikesh Adventure Blogs - Tapovan Swiss Camps | Best Camping & Adventure Guides 2025",
   description:
-    "Explore perfect travel tips and adventure guides for Rishikesh including camping, rafting, bungee jumping and bike rentals from Tapovan Swiss Camps.",
+    "Discover expert travel guides for Rishikesh camping, rafting, bungee jumping, and bike rentals. Get insider tips, safety guides, and booking information from Tapovan Swiss Camps - Rishikesh's #1 adventure destination.",
   keywords: [
     "Rishikesh blogs",
     "camping in rishikesh blogs",
@@ -63,21 +64,68 @@ export const metadata: Metadata = {
     "Best resort Rishikesh",
     "Ganga view camp Rishikesh",
     "Swimming pool camp Rishikesh",
+    "Rishikesh travel guide",
+    "Himalayan adventure blog",
+    "Ganga river activities",
+    "Uttarakhand tourism blog",
+    "Adventure sports India",
+    "White water rafting guide",
+    "Bungee jumping safety tips",
+    "Motorcycle rental Rishikesh",
+    "Himalayan camping guide",
+    "Spiritual tourism Rishikesh",
   ],
+  authors: [{ name: "Tapovan Swiss Camps" }],
+  creator: "Tapovan Swiss Camps",
+  publisher: "Tapovan Swiss Camps",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  alternates: {
+    canonical: "https://www.tapovanswisscampsofficial.com/blogs",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    nocache: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      noimageindex: false,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   openGraph: {
     title:
-      "Rishikesh adventure Blogs - Tapovan Swiss Camps | Best camping in Rishikesh",
+      "Rishikesh Adventure Blogs - Tapovan Swiss Camps | Best Camping & Adventure Guides 2025",
     description:
-      "Explore perfect travel tips and adventure guides for Rishikesh including camping, rafting, bungee jumping and bike rentals from Tapovan Swiss Camps.",
+      "Discover expert travel guides for Rishikesh camping, rafting, bungee jumping, and bike rentals. Get insider tips, safety guides, and booking information from Tapovan Swiss Camps.",
     url: "https://www.tapovanswisscampsofficial.com/blogs",
     siteName: "Tapovan Swiss Camps",
+    locale: "en_IN",
+    type: "website",
     images: [
       {
         url: "https://www.tapovanswisscampsofficial.com/assets/img/blog/camping_rishikesh.webp",
         width: 1200,
         height: 630,
-        alt: "Adventure activities in Rishikesh",
+        alt: "Adventure activities and camping in Rishikesh - Tapovan Swiss Camps",
+        type: "image/webp",
       },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title:
+      "Rishikesh Adventure Blogs - Tapovan Swiss Camps | Best Camping & Adventure Guides 2025",
+    description:
+      "Discover expert travel guides for Rishikesh camping, rafting, bungee jumping, and bike rentals. Get insider tips and booking information.",
+    images: [
+      "https://www.tapovanswisscampsofficial.com/assets/img/blog/camping_rishikesh.webp",
     ],
   },
 };

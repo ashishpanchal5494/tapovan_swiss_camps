@@ -6,9 +6,22 @@ const BASE_URL = "https://www.tapovanswisscampsofficial.com";
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title:
-    "About Tapovan Swiss Camps - Best Luxury Camping in Rishikesh Near Ganga River | 2024",
+    "About Tapovan Swiss Camps - Best Luxury Camping in Rishikesh Near Ganga River | 2025",
   description:
     "Discover Tapovan Swiss Camps - Rishikesh's #1 luxury camping destination near Ganga River. Experience premium Swiss tents, swimming pool, adventure sports, and 5-star hospitality in Tapovan. Perfect for families, couples, and groups. Book now for the best camping experience in Rishikesh with river views, rafting, yoga, and bonfire nights. Starting ₹999 per person.",
+  authors: [
+    {
+      name: "Tapovan Swiss Camps",
+      url: "https://www.tapovanswisscampsofficial.com",
+    },
+  ],
+  creator: "Tapovan Swiss Camps",
+  publisher: "Tapovan Swiss Camps",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
   keywords: [
     "Tapovan Swiss Camps",
     "Rishikesh camping",

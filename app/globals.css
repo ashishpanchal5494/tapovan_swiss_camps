@@ -1090,14 +1090,14 @@ p:empty {
 }
 
 .btn.style2 {
-  background-color: var(--secondaryColor);
+  background-color: var(--blackColor);
   border-radius: 15px 0 15px 0;
   color: #fff;
   border-radius: 10px 0 10px 0;
 }
 
 .btn.style2:after, .btn.style2:before {
-  background: var(--blackColor);
+  background: var(--mainColor);
 }
 
 .btn.style2:hover {

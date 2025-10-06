@@ -5,32 +5,37 @@ const BASE_URL = "https://tapovanswisscampsofficial.com";
 
 export async function generateMetadata(): Promise<Metadata> {
   const title =
-    "FAQs Tapovan Swiss Camps - Camping & Rafting in Rishikesh from ₹999";
+    "FAQs Tapovan Swiss Camps - Complete Guide to Camping & Rafting in Rishikesh | 24/7 Support";
   const description =
-    "Find answers to all your questions about luxury camping and rafting in Rishikesh. Booking, cancellations, facilities, and more about Tapovan Swiss Camps.";
+    "Get instant answers to all your questions about luxury camping, rafting, and adventure activities in Rishikesh. Comprehensive FAQ covering booking, facilities, safety, and policies at Tapovan Swiss Camps.";
 
-  // Generate keywords from FAQ data
+  // Enhanced keywords for better SEO
   const keywords = [
-    "camping in rishikesh",
-    "rishikesh camping",
-    "frequently asked question of camping rishikesh",
-    "frequently asked question of camping",
-    "frequently asked question of rafting rishikesh",
-    "frequently asked question of rafting",
     "camping in rishikesh faq",
-    "rafting in rishikesh faq",
-    "camping faq",
-    "rafting faq",
-    "rishikesh camping faq",
-    "tapovan swiss camps questions",
-    "gangs rafting frequently asked",
-    "luxury tents rishikesh help",
+    "rishikesh camping questions",
+    "frequently asked questions camping rishikesh",
+    "frequently asked questions rafting rishikesh",
+    "tapovan swiss camps faq",
     "camping in rishikesh information",
-    "tapovan swiss camps tent booking queries",
+    "rafting in rishikesh help",
+    "swiss tent booking questions",
     "adventure sports rishikesh faq",
-    "how to book camp in rishikesh",
-    "how to book rafting in rishikesh",
-    "how to book bungee jumping in rishikesh",
+    "luxury camping rishikesh guide",
+    "how to book camping rishikesh",
+    "how to book rafting rishikesh",
+    "bungee jumping rishikesh faq",
+    "camping facilities rishikesh",
+    "rafting safety rishikesh",
+    "pet friendly camping rishikesh",
+    "camping cancellation policy",
+    "rishikesh adventure activities",
+    "tapovan camps location",
+    "camping payment methods",
+    "swiss tent amenities",
+    "rafting equipment provided",
+    "camping check in checkout",
+    "emergency contact camping",
+    "what to pack camping rishikesh",
   ];
 
   return {
@@ -41,10 +46,21 @@ export async function generateMetadata(): Promise<Metadata> {
     alternates: {
       canonical: `${BASE_URL}/faq`,
     },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-video-preview": -1,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+      },
+    },
     openGraph: {
-      title: "FAQs Tapovan Swiss Camps - Rishikesh Adventure Experts",
+      title: "FAQs Tapovan Swiss Camps - Complete Guide to Rishikesh Adventure",
       description:
-        "Get all your questions answered about luxury camping and rafting experiences in Rishikesh with Tapovan Swiss Camps.",
+        "Get instant answers to all your questions about luxury camping, rafting, and adventure activities in Rishikesh. 24/7 support available.",
       url: `${BASE_URL}/faq`,
       siteName: "Tapovan Swiss Camps",
       locale: "en_IN",
@@ -54,9 +70,22 @@ export async function generateMetadata(): Promise<Metadata> {
           url: `${BASE_URL}/assets/img/room/group.webp`,
           width: 1200,
           height: 630,
-          alt: "FAQs About Tapovan Swiss Camps",
+          alt: "Frequently Asked Questions - Tapovan Swiss Camps Rishikesh",
         },
       ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: "FAQs Tapovan Swiss Camps - Rishikesh Adventure Guide",
+      description:
+        "Complete FAQ guide for camping and rafting in Rishikesh. Get all your questions answered instantly.",
+      images: [`${BASE_URL}/assets/img/room/group.webp`],
+    },
+    other: {
+      "geo.region": "IN-UT",
+      "geo.placename": "Rishikesh",
+      "geo.position": "30.129;78.3153",
+      ICBM: "30.129, 78.3153",
     },
   };
 }

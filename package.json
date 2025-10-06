@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "scrape-reviews": "node scripts/scrape-reviews.js",
+    "scrape-reviews:direct": "node utils/scrapeGoogleReviews.js"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",

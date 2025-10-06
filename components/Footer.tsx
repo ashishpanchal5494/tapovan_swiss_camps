@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import logo from "../public/assets/img/logo.png";
 import { useEffect, useState } from "react";
+import { tentRooms } from "@/app/tents/tentData";
 
 const Footer = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -22,7 +23,7 @@ const Footer = () => {
     <footer className="footer-wrap">
       <div className="footer-top">
         <div className="container">
-          <div className="row ptb-60">
+          <div className="row pt-30">
             <div className="col-xl-4 col-lg-4 col-md-6 col-sm-6 pe-xl-5">
               <div className="footer-widget">
                 <Link href="/" prefetch={false}>
@@ -70,33 +71,6 @@ const Footer = () => {
                   justifyContent: "flex-start",
                 }}
               >
-                <div className="col-xl-3 col-lg-3 col-md-6 col-sm-6 ps-xl-5 ps-lg-4 ps-md-5">
-                  <div
-                    style={{
-                      flex: "0 0 33.33%",
-                      minWidth: "130px",
-                    }}
-                    className="footer-widget"
-                  >
-                    <h3 className="footer-widget-title">Our Services</h3>
-                    <ul className="footer-menu list-style">
-                      {[
-                        "Rooms & Apartments",
-                        "Food & Restaurant",
-                        "Spa & Fitness",
-                        "Sports & Gaming",
-                        "Event & Party",
-                        "Gym & Yoga",
-                      ].map((service, index) => (
-                        <li style={{ width: "80px" }} key={index}>
-                          <Link style={{ textDecoration: "none" }} href="#">
-                            {service}
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
                 <div className="col-xl-2 col-lg-2 col-md-6 col-sm-6">
                   <div
                     style={{
@@ -105,20 +79,15 @@ const Footer = () => {
                     }}
                     className="footer-widget"
                   >
-                    <h3 className="footer-widget-title">Our Teams</h3>
+                    <h3 className="footer-widget-title">Our Tents</h3>
                     <ul className="footer-menu list-style">
-                      {[
-                        "Anuj Panchal",
-                        "Rohit Panchal",
-                        "Ramesh Panchal",
-                        "Ashish Panchal",
-                      ].map((member, index) => (
-                        <li style={{ width: "80px" }} key={index}>
+                      {tentRooms.map((tent) => (
+                        <li key={tent.id}>
                           <Link
                             style={{ textDecoration: "none" }}
-                            href="/team/2"
+                            href={`/tents/${tent.slug}`}
                           >
-                            {member}
+                            {tent.name}
                           </Link>
                         </li>
                       ))}
@@ -189,41 +158,15 @@ const Footer = () => {
                 {" "}
                 <div className="col-xl-3 col-lg-3 col-md-6 col-sm-6 ps-xl-5 ps-lg-4 ps-md-5">
                   <div className="footer-widget">
-                    <h3 className="footer-widget-title">Our Services</h3>
+                    <h3 className="footer-widget-title">Our Tents</h3>
                     <ul className="footer-menu list-style">
-                      {[
-                        "Rooms & Apartments",
-                        "Food & Restaurant",
-                        "Spa & Fitness",
-                        "Sports & Gaming",
-                        "Event & Party",
-                        "Gym & Yoga",
-                      ].map((service, index) => (
-                        <li key={index}>
-                          <Link style={{ textDecoration: "none" }} href="#">
-                            {service}
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-                <div className="col-xl-2 col-lg-2 col-md-6 col-sm-6">
-                  <div className="footer-widget">
-                    <h3 className="footer-widget-title">Our Teams</h3>
-                    <ul className="footer-menu list-style">
-                      {[
-                        "Anuj Panchal",
-                        "Rohit Panchal",
-                        "Ramesh Panchal",
-                        "Ashish Panchal",
-                      ].map((member, index) => (
-                        <li key={index}>
+                      {tentRooms.map((tent) => (
+                        <li key={tent.id}>
                           <Link
                             style={{ textDecoration: "none" }}
-                            href={`team/${index}`}
+                            href={`/tents/${tent.slug}`}
                           >
-                            {member}
+                            {tent.name}
                           </Link>
                         </li>
                       ))}
@@ -289,8 +232,8 @@ const Footer = () => {
           <div className="row align-items-center">
             <div className="col-lg-8 col-md-6 col-sm-7">
               <p className="copyright-text">
-                © 2024 Hotelo - Hotel, Resort, Motel Next.js Website. All Rights
-                Reserved.
+                © {new Date().getFullYear()} Tapovan Swiss Camps - Camping,
+                Resort All rights reserved.
               </p>
             </div>
             <div className="col-lg-4 col-md-6 col-sm-5">
