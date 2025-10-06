@@ -15,8 +15,7 @@ const nextConfig: NextConfig = {
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
     // Enable modern image formats
     unoptimized: false,
-    // Add quality optimization
-    quality: 85,
+    // Note: image quality is controlled per <Image> or loader, not here
   },
 
   // Enhanced caching headers
