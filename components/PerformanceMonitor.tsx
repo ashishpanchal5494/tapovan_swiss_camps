@@ -38,17 +38,25 @@ const PerformanceMonitor = () => {
         console.log(`${metricLabel}: ${metricValue}`);
 
         // Send to analytics (replace with your analytics service)
-        if (typeof window !== "undefined" && (window as any).gtag) {
-          const sendValue =
-            metricLabel === "CLS"
-              ? Math.round(metricValue * 1000) // scale CLS
-              : Math.round(metricValue);
-          (window as any).gtag("event", metricLabel, {
-            value: sendValue,
-            event_category: "Web Vitals",
-            event_label: metricLabel,
-            non_interaction: true,
-          });
+        if (typeof window !== "undefined") {
+          type Gtag = (
+            command: "event",
+            eventName: string,
+            params: Record<string, unknown>
+          ) => void;
+          const w = window as unknown as { gtag?: Gtag };
+          if (w.gtag) {
+            const sendValue =
+              metricLabel === "CLS"
+                ? Math.round(metricValue * 1000) // scale CLS
+                : Math.round(metricValue);
+            w.gtag("event", metricLabel, {
+              value: sendValue,
+              event_category: "Web Vitals",
+              event_label: metricLabel,
+              non_interaction: true,
+            });
+          }
         }
       }
     });
