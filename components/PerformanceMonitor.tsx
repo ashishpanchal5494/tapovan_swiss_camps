@@ -10,15 +10,44 @@ const PerformanceMonitor = () => {
     // Monitor Core Web Vitals
     const observer = new PerformanceObserver((list) => {
       for (const entry of list.getEntries()) {
+        let metricLabel = entry.name;
+        let metricValue = 0;
+
+        if (entry.entryType === "largest-contentful-paint") {
+          // LCP: use renderTime/loadTime/startTime (ms)
+          const lcp = entry as LargestContentfulPaint;
+          metricLabel = "LCP";
+          metricValue = (lcp.renderTime || lcp.loadTime || lcp.startTime) ?? 0;
+        } else if (entry.entryType === "first-input") {
+          // FID: processingStart - startTime (ms)
+          const fid = entry as PerformanceEventTiming;
+          metricLabel = "FID";
+          metricValue = (fid.processingStart || 0) - (fid.startTime || 0);
+        } else if (entry.entryType === "layout-shift") {
+          // CLS: value (unitless). Send scaled value for integer analytics
+          const cls = entry as unknown as {
+            value: number;
+            hadRecentInput?: boolean;
+          };
+          metricLabel = "CLS";
+          // Ignore shifts triggered by recent input per spec guidance
+          metricValue = cls.hadRecentInput ? 0 : cls.value;
+        }
+
         // Log performance metrics
-        console.log(`${entry.name}: ${entry.value}`);
+        console.log(`${metricLabel}: ${metricValue}`);
 
         // Send to analytics (replace with your analytics service)
-        if (typeof window !== "undefined" && window.gtag) {
-          window.gtag("event", entry.name, {
-            value: Math.round(entry.value),
+        if (typeof window !== "undefined" && (window as any).gtag) {
+          const sendValue =
+            metricLabel === "CLS"
+              ? Math.round(metricValue * 1000) // scale CLS
+              : Math.round(metricValue);
+          (window as any).gtag("event", metricLabel, {
+            value: sendValue,
             event_category: "Web Vitals",
-            event_label: entry.name,
+            event_label: metricLabel,
+            non_interaction: true,
           });
         }
       }
