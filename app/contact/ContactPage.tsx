@@ -1,6 +1,7 @@
 "use client";
 
 import Loading from "@/components/Loading";
+import Link from "next/link";
 import Image from "next/image";
 import React, { useCallback, useEffect, useState } from "react";
 
@@ -350,7 +351,7 @@ function ContactPage() {
               }}
             >
               <li style={{ marginRight: "8px" }}>
-                <a
+                <Link
                   href="/"
                   style={{
                     textDecoration: "none",
@@ -359,7 +360,7 @@ function ContactPage() {
                   }}
                 >
                   Home
-                </a>
+                </Link>
               </li>
               <li style={{ margin: "0 8px", color: "#999" }}>›</li>
               <li style={{ color: "#333", fontWeight: "500" }}>Contact Us</li>

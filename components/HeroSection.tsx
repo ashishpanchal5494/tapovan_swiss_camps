@@ -1,20 +1,17 @@
 "use client";
 
-import React, { useState, useMemo, useCallback } from "react";
+import React, { useState, useCallback } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { useRouter } from "next/navigation";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import Image from "next/image";
 import {
   FaCalendarAlt,
   FaUsers,
   FaChild,
   FaBed,
   FaSearch,
-  FaChevronLeft,
-  FaChevronRight,
 } from "react-icons/fa";
 
 const HeroSection: React.FC = () => {

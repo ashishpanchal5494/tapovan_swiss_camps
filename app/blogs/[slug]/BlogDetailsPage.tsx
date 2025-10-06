@@ -4,13 +4,9 @@ import React, { useEffect, useState, memo, Suspense, useMemo } from "react";
 import Image from "next/image";
 import { notFound, useParams } from "next/navigation";
 import Link from "next/link";
-import dynamic from "next/dynamic";
-import { blogData, getBlogBySlug, type BlogPost } from "@/data/blogData";
+import { blogData, getBlogBySlug } from "@/data/blogData";
 
-// Lazy load components
-const Loading = dynamic(() => import("@/components/Loading"), {
-  ssr: false,
-});
+// (No lazy components required here)
 
 // Define your website's base URL for canonical and Open Graph URLs
 const BASE_URL = "https://www.tapovanswisscampsofficial.com"; // **IMPORTANT: Replace with your actual domain**
@@ -59,11 +55,10 @@ const BlogDetailsPage: React.FC = memo(() => {
   // Use optimized blog lookup
   const blog = useMemo(() => getBlogBySlug(slug as string), [slug]);
 
-  if (!blog) return notFound();
-
   // Memoized structured data
-  const articleSchema = useMemo(
-    () => ({
+  const articleSchema = useMemo(() => {
+    if (!blog) return null;
+    return {
       "@context": "https://schema.org",
       "@type": "Article",
       "@id": `${BASE_URL}/blogs/${blog.slug}`,
@@ -176,14 +171,12 @@ const BlogDetailsPage: React.FC = memo(() => {
           url: BASE_URL,
         },
       ],
-    }),
-    [blog]
-  );
+    };
+  }, [blog]);
 
   // FAQ Schema for better featured snippets
   const faqSchema = useMemo(() => {
-    if (!blog.faq || blog.faq.length === 0) return null;
-
+    if (!blog || !blog.faq || blog.faq.length === 0) return null;
     return {
       "@context": "https://schema.org",
       "@type": "FAQPage",
@@ -196,7 +189,9 @@ const BlogDetailsPage: React.FC = memo(() => {
         },
       })),
     };
-  }, [blog.faq]);
+  }, [blog]);
+
+  if (!blog) return notFound();
 
   return (
     <>

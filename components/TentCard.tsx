@@ -3,20 +3,14 @@ import Link from "next/link";
 import React, { memo } from "react";
 
 interface TentCardProps {
-  id: number;
   slug: string;
   title: string;
-  mainPrice: number;
-  price: number;
   image: string;
   altText: string;
   beds: number;
   baths: string | number;
   adults: string | number;
-  checkIn: string | Date;
-  checkOut: string | Date;
   description: string;
-  metaDescription: string;
   perHeadPrice: number;
   perHeadMainPrice: number;
   linkBooking: string;
@@ -25,21 +19,15 @@ interface TentCardProps {
 
 const TentCard: React.FC<TentCardProps> = memo(
   ({
-    id,
     slug,
     title,
-    mainPrice,
-    price,
     image,
     beds,
     baths,
     adults,
-    checkIn,
-    checkOut,
     perHeadPrice,
     perHeadMainPrice,
     description,
-    metaDescription,
     linkBooking,
   }) => {
     const getBathCount = (

@@ -1,6 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
+import Link from "next/link";
 import { teamMembers } from "./teamData";
 
 const Loading = dynamic(() => import("@/components/Loading"), { ssr: false });
@@ -122,9 +123,9 @@ const TeamPage: React.FC = () => {
           <nav aria-label="breadcrumb">
             <ol className="breadcrumb mb-0">
               <li className="breadcrumb-item">
-                <a href="/" className="text-decoration-none">
+                <Link href="/" className="text-decoration-none">
                   Home
-                </a>
+                </Link>
               </li>
               <li className="breadcrumb-item active" aria-current="page">
                 Our Team
@@ -184,7 +185,7 @@ const TeamPage: React.FC = () => {
                 </div>
                 <h4 className="h5 mb-3">Passion</h4>
                 <p className="text-muted mb-0">
-                  We're passionate about creating unforgettable camping
+                  We&apos;re passionate about creating unforgettable camping
                   experiences in the heart of nature.
                 </p>
               </div>
@@ -208,8 +209,8 @@ const TeamPage: React.FC = () => {
                 </div>
                 <h4 className="h5 mb-3">Sustainability</h4>
                 <p className="text-muted mb-0">
-                  We're committed to eco-friendly practices and preserving the
-                  natural beauty of Rishikesh.
+                  We&apos;re committed to eco-friendly practices and preserving
+                  the natural beauty of Rishikesh.
                 </p>
               </div>
             </div>

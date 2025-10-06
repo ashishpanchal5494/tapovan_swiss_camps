@@ -1,5 +1,5 @@
 import BlogDetailsPage from "./BlogDetailsPage";
-import { blogData, getBlogBySlug, getAllBlogSlugs } from "@/data/blogData";
+import { getBlogBySlug, getAllBlogSlugs } from "@/data/blogData";
 
 // Generate static params for all blog posts
 export async function generateStaticParams() {

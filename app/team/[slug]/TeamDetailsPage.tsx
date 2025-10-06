@@ -9,7 +9,7 @@ import { getTeamMemberBySlug, TeamMember } from "../teamData";
 const TeamDetailsPage: React.FC = () => {
   const params = useParams();
   const [data, setData] = useState<TeamMember | null>(null);
-  const [isMobile, setIsMobile] = useState(false);
+  // removed unused isMobile state
 
   useEffect(() => {
     const slug = params.slug as string;
@@ -18,13 +18,6 @@ const TeamDetailsPage: React.FC = () => {
     const teamMember = getTeamMemberBySlug(slug);
     setData(teamMember || null);
   }, [params]);
-
-  useEffect(() => {
-    const onResize = () => setIsMobile(window.innerWidth <= 768);
-    onResize();
-    window.addEventListener("resize", onResize);
-    return () => window.removeEventListener("resize", onResize);
-  }, []);
 
   if (!data) return <p style={{ textAlign: "center" }}>Loading…</p>;
 
@@ -425,10 +418,11 @@ const TeamDetailsPage: React.FC = () => {
                   <i className="bx bxs-quote-alt-left display-4 text-primary-custom"></i>
                 </div>
                 <blockquote className="h5 mb-4">
-                  "The team at Tapovan Swiss Camps made our stay exceptional.{" "}
-                  {data.name.split(" ")[0]} went above and beyond to ensure we
-                  had everything we needed for our adventure. The level of
-                  service and attention to detail was outstanding!"
+                  &quot;The team at Tapovan Swiss Camps made our stay
+                  exceptional. {data.name.split(" ")[0]} went above and beyond
+                  to ensure we had everything we needed for our adventure. The
+                  level of service and attention to detail was
+                  outstanding!&quot;
                 </blockquote>
                 <div className="testimonial-author">
                   <div className="author-info">

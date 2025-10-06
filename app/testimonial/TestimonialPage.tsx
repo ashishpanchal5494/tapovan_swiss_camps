@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import React, { useEffect, useState, useMemo, memo, useCallback } from "react";
 import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
@@ -10,12 +9,11 @@ import {
   FaQuoteLeft,
   FaQuoteRight,
   FaMapMarkerAlt,
-  FaHeart,
   FaThumbsUp,
   FaSync,
   FaGoogle,
 } from "react-icons/fa";
-import { useGoogleReviews, GoogleReview } from "@/hooks/useGoogleReviews";
+import { useGoogleReviews } from "@/hooks/useGoogleReviews";
 
 // Memoized testimonial data for better performance
 const testimonials = [
@@ -187,8 +185,21 @@ const testimonials = [
 ];
 
 // Memoized testimonial card component
+type Testimonial = {
+  id: number;
+  image: string;
+  name: string;
+  location?: string;
+  rating: number;
+  date?: string;
+  text: string;
+  verified?: boolean;
+  platform: string;
+  source?: string;
+};
+
 const TestimonialCard = memo(
-  ({ testimonial, index }: { testimonial: any; index: number }) => {
+  ({ testimonial, index }: { testimonial: Testimonial; index: number }) => {
     // Debug logging for first few testimonials
     if (index < 3) {
       console.log(`Testimonial ${index}:`, testimonial);
@@ -204,7 +215,7 @@ const TestimonialCard = memo(
             </div>
 
             <div className="rating-stars mb-3">
-              {[...Array(testimonial.rating)].map((_, i) => (
+              {[...Array<number>(testimonial.rating)].map((_, i) => (
                 <FaStar key={i} className="star-filled" />
               ))}
               <span className="rating-text">({testimonial.rating}.0)</span>
@@ -328,9 +339,20 @@ const TestimonialPage: React.FC = memo(() => {
   // Combine static testimonials with Google Reviews
   const allTestimonials = useMemo(() => {
     if (showGoogleReviews && googleReviews.length > 0) {
-      // Show Google reviews first, then static testimonials
-      const mixedTestimonials = [...googleReviews, ...testimonials];
-      return mixedTestimonials.slice(0, 20); // Limit to 20 total
+      const normalized = googleReviews.map((gr: any) => ({
+        id: gr.id || `${gr.authorName}-${gr.time || ""}`,
+        image: "/assets/img/testimonial/default-avatar.svg",
+        name: gr.authorName || "Guest",
+        location: (gr as any).authorLocation || "India",
+        rating: Number(gr.rating) || 5,
+        date: gr.time ? new Date(gr.time).toISOString() : undefined,
+        text: gr.text || "",
+        verified: true,
+        platform: "Google Reviews",
+        source: "google-maps",
+      }));
+      const mixedTestimonials = [...normalized, ...testimonials];
+      return mixedTestimonials.slice(0, 20);
     }
     return testimonials;
   }, [googleReviews, showGoogleReviews]);
@@ -404,7 +426,7 @@ const TestimonialPage: React.FC = memo(() => {
         },
       })),
     }),
-    []
+    [allTestimonials]
   );
 
   // Memoized FAQ structured data
@@ -787,9 +809,9 @@ const TestimonialPage: React.FC = memo(() => {
               Discover real experiences from travelers who have stayed at our
               premium campsite in the serene hills of Tapovan, Rishikesh. Our
               guests consistently praise our hospitality, scenic mountain views,
-              delicious food, and peaceful atmosphere. Whether you're looking
-              for an adventure-packed weekend or a quiet getaway, see why our
-              guests recommend us as the{" "}
+              delicious food, and peaceful atmosphere. Whether you&apos;re
+              looking for an adventure-packed weekend or a quiet getaway, see
+              why our guests recommend us as the{" "}
               <strong>best budget camping site near Tapovan, Rishikesh</strong>.
             </p>
           </div>

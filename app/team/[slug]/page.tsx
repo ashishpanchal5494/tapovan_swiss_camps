@@ -35,7 +35,7 @@ export async function generateMetadata(
     };
   }
 
-  const { name, role, description, image } = teamMember;
+  const { name, role, image } = teamMember;
   const imageUrl = image.startsWith("/") ? `${baseUrl}${image}` : image;
 
   // Build clean canonical URL

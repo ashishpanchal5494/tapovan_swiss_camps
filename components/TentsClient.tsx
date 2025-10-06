@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState, useMemo, memo } from "react";
+import React, { useEffect, useState } from "react";
 import TentCard from "@/components/TentCard";
 import Loading from "@/components/Loading";
 import { usePathname, useSearchParams } from "next/navigation";
@@ -250,7 +250,6 @@ const TentsClient: React.FC = () => {
               return (
                 <TentCard
                   key={room.id}
-                  id={room.id}
                   slug={room.slug}
                   title={room.title}
                   image={room.image}
@@ -258,13 +257,8 @@ const TentsClient: React.FC = () => {
                   beds={room.beds}
                   adults={adults}
                   baths={room.baths}
-                  checkIn={checkIn}
-                  checkOut={checkOut}
                   description={room.description}
-                  metaDescription={room.metaDescription}
                   linkBooking={room.linkBooking}
-                  mainPrice={totalMainPrice}
-                  price={totalPrice}
                   perHeadMainPrice={perHeadMainPrice}
                   perHeadPrice={perHeadPrice}
                   dataAosDuration={1200 + index * 200}

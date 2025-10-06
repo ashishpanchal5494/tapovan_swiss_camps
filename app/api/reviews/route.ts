@@ -4,10 +4,10 @@ import path from 'path';
 
 // Cache duration in milliseconds (1 hour)
 const CACHE_DURATION = 60 * 60 * 1000;
-let cachedReviews: any = null;
+let cachedReviews: unknown[] | null = null;
 let lastFetchTime = 0;
 
-export async function GET(request: NextRequest) {
+export async function GET(_request: NextRequest) {
   try {
     const reviewsPath = path.join(process.cwd(), 'public', 'data', 'google-reviews.json');
     
@@ -25,7 +25,7 @@ export async function GET(request: NextRequest) {
     // Try to read from file
     if (fs.existsSync(reviewsPath)) {
       const fileContent = fs.readFileSync(reviewsPath, 'utf8');
-      const reviews = JSON.parse(fileContent);
+      const reviews = JSON.parse(fileContent) as unknown[];
       
       // Cache the data
       cachedReviews = reviews;
@@ -61,7 +61,7 @@ export async function GET(request: NextRequest) {
 }
 
 // Endpoint to trigger scraping (for manual updates)
-export async function POST(request: NextRequest) {
+export async function POST(_request: NextRequest) {
   try {
     // This would trigger the scraping process
     // For now, we'll just clear the cache to force a refresh

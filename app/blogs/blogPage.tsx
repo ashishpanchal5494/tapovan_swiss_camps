@@ -202,7 +202,7 @@ const BlogPage: React.FC = memo(() => {
                   color: "#507650",
                 }}
               >
-                📚 What You'll Find in Our Blogs:
+                📚 What You&apos;ll Find in Our Blogs:
               </h2>
               <ul style={{ margin: "0", paddingLeft: "20px" }}>
                 <li>

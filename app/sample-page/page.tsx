@@ -333,9 +333,9 @@ function SamplePage() {
                 </div>
                 <blockquote className="testimonial-text mb-0">
                   <i className="bx bxs-quote-alt-left text-primary-custom me-2"></i>
-                  "A peaceful escape from the city — the tents were clean, food
-                  was great, and the team was super welcoming! The bonfire
-                  evening was magical."
+                  &quot;A peaceful escape from the city — the tents were clean,
+                  food was great, and the team was super welcoming! The bonfire
+                  evening was magical.&quot;
                   <i className="bx bxs-quote-alt-right text-primary-custom ms-2"></i>
                 </blockquote>
               </div>
@@ -361,8 +361,9 @@ function SamplePage() {
                 </div>
                 <blockquote className="testimonial-text mb-0">
                   <i className="bx bxs-quote-alt-left text-primary-custom me-2"></i>
-                  "Loved the bonfire evenings and yoga mornings. The location is
-                  perfect for adventure activities. Would definitely come back!"
+                  &quot;Loved the bonfire evenings and yoga mornings. The
+                  location is perfect for adventure activities. Would definitely
+                  come back!&quot;
                   <i className="bx bxs-quote-alt-right text-primary-custom ms-2"></i>
                 </blockquote>
               </div>
@@ -388,9 +389,9 @@ function SamplePage() {
                 </div>
                 <blockquote className="testimonial-text mb-0">
                   <i className="bx bxs-quote-alt-left text-primary-custom me-2"></i>
-                  "The Swiss tents are incredibly comfortable and the views are
-                  breathtaking. Perfect for a romantic getaway or family
-                  vacation."
+                  &quot;The Swiss tents are incredibly comfortable and the views
+                  are breathtaking. Perfect for a romantic getaway or family
+                  vacation.&quot;
                   <i className="bx bxs-quote-alt-right text-primary-custom ms-2"></i>
                 </blockquote>
               </div>
@@ -416,9 +417,9 @@ function SamplePage() {
                 </div>
                 <blockquote className="testimonial-text mb-0">
                   <i className="bx bxs-quote-alt-left text-primary-custom me-2"></i>
-                  "Amazing experience! The rafting was thrilling and the staff
-                  was very professional. Great value for money and unforgettable
-                  memories."
+                  &quot;Amazing experience! The rafting was thrilling and the
+                  staff was very professional. Great value for money and
+                  unforgettable memories.&quot;
                   <i className="bx bxs-quote-alt-right text-primary-custom ms-2"></i>
                 </blockquote>
               </div>
@@ -493,8 +494,8 @@ function SamplePage() {
                     <span className="text-warning">Adventure?</span>
                   </h2>
                   <p className="lead mb-5 mb-md-6">
-                    Don't wait! Book your stay at Tapovan Swiss Camps and create
-                    unforgettable memories in the lap of nature. Limited
+                    Don&apos;t wait! Book your stay at Tapovan Swiss Camps and
+                    create unforgettable memories in the lap of nature. Limited
                     availability during peak season.
                   </p>
                   <div className="cta-buttons">

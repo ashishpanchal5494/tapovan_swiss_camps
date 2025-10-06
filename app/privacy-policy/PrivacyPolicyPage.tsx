@@ -1,21 +1,12 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import Link from "next/link";
 
 import Loading from "@/components/Loading";
 
 function PrivacyPolicyPage() {
   const [isClient, setIsClient] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
 
   useEffect(() => {
     setIsClient(true);
@@ -198,9 +189,9 @@ function PrivacyPolicyPage() {
           <nav aria-label="breadcrumb">
             <ol className="breadcrumb mb-0">
               <li className="breadcrumb-item">
-                <a href="/" className="text-decoration-none">
+                <Link href="/" className="text-decoration-none">
                   Home
-                </a>
+                </Link>
               </li>
               <li className="breadcrumb-item active" aria-current="page">
                 Privacy Policy
@@ -278,7 +269,7 @@ function PrivacyPolicyPage() {
                           className="text-decoration-none"
                         >
                           <i className="bx bx-chevron-right me-2"></i>
-                          Children's Privacy
+                          Children&apos;s Privacy
                         </a>
                       </li>
                       <li className="mb-2">
@@ -798,7 +789,7 @@ function PrivacyPolicyPage() {
                       <i className="bx bx-child text-primary-custom"></i>
                     </div>
                     <h2 itemProp="name" className="h3 mb-0">
-                      7. Children's Privacy
+                      7. Children&apos;s Privacy
                     </h2>
                   </div>
                   <div className="section-content">

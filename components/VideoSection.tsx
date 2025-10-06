@@ -2,7 +2,7 @@
 
 import { useState, useCallback, useRef, useEffect } from "react";
 import Loading from "./Loading";
-import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+// Removed unused chevrons
 
 const videos = [
   "/assets/video/garden.mp4",
@@ -10,11 +10,7 @@ const videos = [
   "/assets/video/vollyball.mp4",
 ];
 
-const videoPosters = [
-  "/assets/img/room/gardenPhoto.webp",
-  "/assets/img/room/pool.webp",
-  "/assets/img/room/vollyball.webp",
-];
+// removed unused videoPosters
 const VideoSection: React.FC = () => {
   const [activeVideo, setActiveVideo] = useState(0);
   const [loadedVideos, setLoadedVideos] = useState<boolean[]>(
@@ -35,11 +31,11 @@ const VideoSection: React.FC = () => {
 
   const nextVideo = useCallback(() => {
     setActiveVideo((prev) => (prev + 1) % videos.length);
-  }, [videos.length]);
+  }, []);
 
   const prevVideo = useCallback(() => {
     setActiveVideo((prev) => (prev - 1 + videos.length) % videos.length);
-  }, [videos.length]);
+  }, []);
 
   // Handle video end - auto advance to next video
   const handleVideoEnd = useCallback(() => {

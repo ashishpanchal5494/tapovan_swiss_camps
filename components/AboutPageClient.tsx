@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import dynamic from "next/dynamic";
 import { useEffect, useRef, useState } from "react";
 import "odometer/themes/odometer-theme-default.css";
@@ -255,27 +256,27 @@ function AboutPageClient() {
                 </h1>
                 <p>
                   <strong>
-                    Discover Rishikesh's #1 Rated Luxury Camping Experience
+                    Discover Rishikesh&apos;s #1 Rated Luxury Camping Experience
                   </strong>{" "}
                   - Nestled amidst the pristine foothills of the Himalayas and
                   the sacred Ganga River, Tapovan Swiss Camps has been
-                  Rishikesh's most trusted luxury camping destination since
+                  Rishikesh&apos;s most trusted luxury camping destination since
                   2018. With over 3,500+ happy customers and 4.8/5 star ratings,
-                  we've perfected the art of combining adventure with comfort in
-                  India's spiritual capital.
+                  we&apos;ve perfected the art of combining adventure with
+                  comfort in India&apos;s spiritual capital.
                 </p>
 
                 <p>
                   <strong>
-                    Why 99% of our guests rate us as the "Best Camping in
-                    Rishikesh"?
+                    Why 99% of our guests rate us as the &quot;Best Camping in
+                    Rishikesh&quot;?
                   </strong>{" "}
                   Our award-winning resort offers the perfect blend of
                   Swiss-style luxury tents, world-class amenities, and authentic
                   Uttarakhand hospitality. From families with children to
-                  adventure-seeking couples, we've hosted over 990 successful
-                  camping experiences, each one creating memories that last a
-                  lifetime.
+                  adventure-seeking couples, we&apos;ve hosted over 990
+                  successful camping experiences, each one creating memories
+                  that last a lifetime.
                 </p>
 
                 <p>
@@ -283,10 +284,10 @@ function AboutPageClient() {
                   1km from Tapovan market and 1.5km from the famous Ganga Aarti,
                   our camp provides easy access to all major Rishikesh
                   attractions while maintaining the peaceful ambiance of
-                  riverside camping. Whether you're planning a family vacation,
-                  romantic getaway, or group adventure, our luxury camping
-                  resort delivers an experience that's simply unmatched in
-                  Rishikesh.
+                  riverside camping. Whether you&apos;re planning a family
+                  vacation, romantic getaway, or group adventure, our luxury
+                  camping resort delivers an experience that&apos;s simply
+                  unmatched in Rishikesh.
                 </p>
 
                 <h2>
@@ -392,8 +393,8 @@ function AboutPageClient() {
                 </ul>
 
                 <h2>
-                  🏆 Why Tapovan Swiss Camps is Rishikesh's #1 Choice for Luxury
-                  Camping
+                  🏆 Why Tapovan Swiss Camps is Rishikesh&apos;s #1 Choice for
+                  Luxury Camping
                 </h2>
 
                 <h3>📊 Proven Track Record & Customer Satisfaction</h3>
@@ -490,8 +491,8 @@ function AboutPageClient() {
                 </h2>
                 <p>
                   <strong>Prime Location Benefits:</strong> Our strategic
-                  location in Tapovan puts you at the heart of Rishikesh's most
-                  popular attractions:
+                  location in Tapovan puts you at the heart of Rishikesh&apos;s
+                  most popular attractions:
                 </p>
                 <ul>
                   <li>
@@ -663,12 +664,14 @@ function AboutPageClient() {
                     <i className="bx bx-play" aria-hidden="true"></i>
                   </a>
                 </div>
-                <img
+                <Image
                   src="/assets/img/about.webp"
                   alt="Tapovan Swiss Camps - Luxury Camping in Rishikesh with Ganga River View"
                   loading="lazy"
-                  width="600"
-                  height="400"
+                  width={600}
+                  height={400}
+                  quality={90}
+                  sizes="(max-width: 768px) 100vw, 600px"
                 />
               </div>
             </div>

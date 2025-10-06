@@ -30,16 +30,7 @@ export async function generateMetadata(
     };
   }
 
-  const {
-    title,
-    metaDescription,
-    image,
-    altText,
-    price,
-    mainPrice,
-    beds,
-    baths,
-  } = tent;
+  const { title, metaDescription, image, altText, price, beds, baths } = tent;
   const imageUrl = image.startsWith("/")
     ? `${baseUrl}${image}`
     : `${baseUrl}/${image}`;
@@ -50,7 +41,9 @@ export async function generateMetadata(
   return {
     title: `${title} in Tapovan Rishikesh | Premium Camping Experience @ ₹${price} | Tapovan Swiss Camps`,
     description: `${metaDescription} Book now for the best ${title.toLowerCase()} experience in Rishikesh with modern amenities, riverside location, and exceptional hospitality.`,
-    canonical: url,
+    alternates: {
+      canonical: url,
+    },
     keywords: [
       `${title.toLowerCase()} rishikesh`,
       `${title.toLowerCase()} tapovan rishikesh`,

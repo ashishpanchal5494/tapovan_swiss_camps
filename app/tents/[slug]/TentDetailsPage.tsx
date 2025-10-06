@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState, useMemo, memo } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import { useParams } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
@@ -23,7 +23,7 @@ const TentDetailsPage: React.FC = () => {
   const [activeTab, setActiveTab] = useState("photo");
   const [isClient, setIsClient] = useState(false);
   const [tent, setTent] = useState<Tent | null>(null);
-  const [isMobile, setIsMobile] = useState(false);
+  // removed unused isMobile state
   const [formData, setFormData] = useState({
     name: "",
     address: "",
@@ -73,18 +73,8 @@ const TentDetailsPage: React.FC = () => {
   useEffect(() => {
     setIsClient(true);
 
-    // Set mobile state after hydration
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
-
-    handleResize();
-    window.addEventListener("resize", handleResize);
-
     // Scroll to top after hydration
     window.scrollTo(0, 0);
-
-    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   // Enhanced structured data for tent details (memoized for performance)

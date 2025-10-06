@@ -22,23 +22,14 @@ const VideoSection = dynamic(() => import("@/components/VideoSection"), {
 });
 
 // Defer these heavy components
-const FAQPage = dynamic(() => import("../app/faq/FAQPage"), {
-  ssr: false,
-  loading: () => <Loading />,
-});
+// (Removed unused FAQPage import)
 
 const BlogPage = dynamic(() => import("../app/blogs/blogPage"), {
   ssr: false,
   loading: () => <Loading />,
 });
 
-const TestimonialPage = dynamic(
-  () => import("../app/testimonial/TestimonialPage"),
-  {
-    ssr: false,
-    loading: () => <Loading />,
-  }
-);
+// (Removed unused TestimonialPage import)
 
 function Defer({ children }: { children: ReactNode }) {
   const [ready, setReady] = useState(false);

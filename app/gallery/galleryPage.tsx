@@ -591,7 +591,7 @@ export default function GalleryPage() {
                   unique experience at Tapovan Swiss Camps. From our{" "}
                   <strong>luxury Swiss tents in Rishikesh</strong> to exciting{" "}
                   <strong>riverside activities</strong>, these images capture
-                  why we're considered the{" "}
+                  why we&apos;re considered the{" "}
                   <strong>best glamping destination near the Ganges</strong>.
                 </p>
 
@@ -622,7 +622,7 @@ export default function GalleryPage() {
                     </ul>
                   </div>
                   <div className="col-md-6">
-                    <h3 className="h5 mb-3">What You'll See</h3>
+                    <h3 className="h5 mb-3">What You&apos;ll See</h3>
                     <ul className="list-unstyled">
                       <li className="mb-2">
                         <i className="bx bx-check-circle text-primary-custom me-2"></i>

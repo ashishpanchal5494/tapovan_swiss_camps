@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Link from "next/link";
 
 function BookingPage() {
   const [activeTab, setActiveTab] = useState<"camping" | "rafting">("camping");
@@ -287,7 +288,7 @@ function BookingPage() {
               }}
             >
               <li style={{ marginRight: "8px" }}>
-                <a
+                <Link
                   href="/"
                   style={{
                     textDecoration: "none",
@@ -296,7 +297,7 @@ function BookingPage() {
                   }}
                 >
                   Home
-                </a>
+                </Link>
               </li>
               <li style={{ margin: "0 8px", color: "#999" }}>›</li>
               <li style={{ color: "#333", fontWeight: "500" }}>Book Now</li>

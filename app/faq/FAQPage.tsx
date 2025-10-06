@@ -544,7 +544,8 @@ const FAQPage = () => {
               <div className="col-12 text-center">
                 <p className="text-muted">
                   Found {filteredFAQs.length} result
-                  {filteredFAQs.length !== 1 ? "s" : ""} for "{searchTerm}"
+                  {filteredFAQs.length !== 1 ? "s" : ""} for &quot;{searchTerm}
+                  &quot;
                 </p>
               </div>
             </div>
@@ -585,7 +586,7 @@ const FAQPage = () => {
                   <div key={colIndex} className="col-12 col-lg-6">
                     <div className="faq-accordion">
                       <ul className="accordion">
-                        {colFAQs.map((item, index) => {
+                        {colFAQs.map((item) => {
                           const actualIndex = filteredFAQs.findIndex(
                             (faq) => faq === item
                           );
