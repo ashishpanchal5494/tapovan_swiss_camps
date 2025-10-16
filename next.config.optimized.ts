@@ -6,7 +6,14 @@ const nextConfig: NextConfig = {
   
   // Enhanced image optimization
   images: {
-    domains: ['tapovanswisscampsofficial.com'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'tapovanswisscampsofficial.com',
+        port: '',
+        pathname: '/**',
+      },
+    ],
     formats: ['image/webp', 'image/avif'],
     minimumCacheTTL: 60,
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
@@ -76,6 +83,16 @@ const nextConfig: NextConfig = {
     ];
   },
 
+  // Rewrite missing bootstrap sourcemap to a local placeholder to avoid 404s
+  rewrites: async () => {
+    return [
+      {
+        source: "/_next/static/css/app/bootstrap.min.css.map",
+        destination: "/assets/css/bootstrap.min.css.map",
+      },
+    ];
+  },
+
   // Enhanced compiler optimizations
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
@@ -83,16 +100,30 @@ const nextConfig: NextConfig = {
     styledComponents: false,
   },
 
-  // Bundle analyzer (uncomment for analysis)
-  // webpack: (config, { isServer }) => {
-  //   if (!isServer) {
-  //     config.resolve.fallback = {
-  //       ...config.resolve.fallback,
-  //       fs: false,
-  //     };
-  //   }
-  //   return config;
-  // },
+  // Webpack configuration to handle source maps
+  webpack: (config, { dev, isServer }) => {
+    // In production, disable source maps to prevent 404 errors for .map files
+    if (!dev) {
+      config.devtool = false;
+    }
+    
+    // Handle CSS source maps properly
+    config.module.rules.forEach((rule: any) => {
+      if (rule.test && rule.test.toString().includes('css')) {
+        rule.use?.forEach((use: any) => {
+          if (use.loader && use.loader.includes('css-loader')) {
+            use.options = {
+              ...use.options,
+              sourceMap: dev, // Only enable source maps in development
+            };
+          }
+        });
+      }
+    });
+
+    return config;
+  },
+
 
   // Experimental features for better performance
   experimental: {

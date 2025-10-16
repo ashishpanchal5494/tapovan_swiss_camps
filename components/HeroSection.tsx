@@ -593,13 +593,13 @@ const heroStyles = `
   /* Tablet & Mobile: shrink hero height */
   @media (max-width: 992px) {
     .hero-section {
-      min-height: 40vh; /* hero height */
+      min-height: 60vh; /* hero height */
     }
     .hero-background {
-      height: 40vh !important; /* background image */
+      height: 60vh !important; /* background image */
     }
     .hero-content {
-      min-height: 40vh; /* match background */
+      min-height: 60vh; /* match background */
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -639,13 +639,13 @@ const heroStyles = `
   /* Small phones */
   @media (max-width: 576px) {
     .hero-section {
-      min-height: 50vh; /* a bit taller for phones */
+      min-height: 60vh; /* a bit taller for phones */
     }
     .hero-background {
-      height: 50vh !important;
+      height: 60vh !important;
     }
     .hero-content {
-      min-height: 50vh;
+      min-height: 60vh;
     }
     .hero-content h1 {
       font-size: 1.6rem;
