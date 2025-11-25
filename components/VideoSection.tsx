@@ -8,7 +8,27 @@ const videos = [
   "/assets/video/vollyball.mp4",
 ];
 
+const useViewportHeightVar = () => {
+  useEffect(() => {
+    if (typeof window === "undefined" || typeof document === "undefined") {
+      return;
+    }
+    const updateVh = () => {
+      const vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty("--app-vh", `${vh}px`);
+    };
+    updateVh();
+    window.addEventListener("resize", updateVh);
+    window.addEventListener("orientationchange", updateVh);
+    return () => {
+      window.removeEventListener("resize", updateVh);
+      window.removeEventListener("orientationchange", updateVh);
+    };
+  }, []);
+};
+
 const VideoSection: React.FC = () => {
+  useViewportHeightVar();
   const [activeVideo, setActiveVideo] = useState(0);
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
 
@@ -121,6 +141,7 @@ const VideoSection: React.FC = () => {
           width: 100%;
           height: 90vh;
           height: 90svh;
+          height: calc(var(--app-vh, 1vh) * 90);
           position: relative;
           overflow: hidden;
         }
@@ -135,6 +156,7 @@ const VideoSection: React.FC = () => {
           width: 100%;
           height: 90vh;
           height: 90svh;
+          height: calc(var(--app-vh, 1vh) * 90);
           object-fit: cover;
           flex-shrink: 0;
         }
@@ -170,10 +192,12 @@ const VideoSection: React.FC = () => {
           .video-slider-wrapper {
             height: 50vh;
             height: 50svh;
+            height: calc(var(--app-vh, 1vh) * 50);
           }
           .video-slide {
             height: 50vh;
             height: 50svh;
+            height: calc(var(--app-vh, 1vh) * 50);
           }
         }
 
@@ -181,10 +205,12 @@ const VideoSection: React.FC = () => {
           .video-slider-wrapper {
             height: 40vh;
             height: 40svh;
+            height: calc(var(--app-vh, 1vh) * 40);
           }
           .video-slide {
             height: 40vh;
             height: 40svh;
+            height: calc(var(--app-vh, 1vh) * 40);
           }
         }
       `}</style>

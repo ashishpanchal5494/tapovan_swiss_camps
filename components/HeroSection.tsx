@@ -37,7 +37,26 @@ import {
   FaSearch,
 } from "react-icons/fa";
 
+const useViewportHeightVar = () => {
+  React.useEffect(() => {
+    if (typeof window === "undefined" || typeof document === "undefined")
+      return;
+    const updateVh = () => {
+      const vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty("--app-vh", `${vh}px`);
+    };
+    updateVh();
+    window.addEventListener("resize", updateVh);
+    window.addEventListener("orientationchange", updateVh);
+    return () => {
+      window.removeEventListener("resize", updateVh);
+      window.removeEventListener("orientationchange", updateVh);
+    };
+  }, []);
+};
+
 const HeroSection: React.FC = () => {
+  useViewportHeightVar();
   const [activeSlide, setActiveSlide] = useState(0);
   const router = useRouter();
   const [searchData, setSearchData] = useState({
@@ -464,6 +483,7 @@ const heroStyles = `
   .hero-section {
     min-height: 100vh;
     min-height: 100svh;
+    min-height: calc(var(--app-vh, 1vh) * 100);
     position: relative;
     display: flex;
     align-items: center;
@@ -627,14 +647,17 @@ const heroStyles = `
     .hero-section {
       min-height: 60vh; /* hero height */
       min-height: 60svh;
+      min-height: calc(var(--app-vh, 1vh) * 60);
     }
     .hero-background {
       height: 60vh !important; /* background image */
       height: 60svh !important;
+      height: calc(var(--app-vh, 1vh) * 60) !important;
     }
     .hero-content {
       min-height: 60vh; /* match background */
       min-height: 60svh;
+      min-height: calc(var(--app-vh, 1vh) * 60);
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -676,14 +699,17 @@ const heroStyles = `
     .hero-section {
       min-height: 60vh; /* a bit taller for phones */
       min-height: 60svh;
+      min-height: calc(var(--app-vh, 1vh) * 60);
     }
     .hero-background {
       height: 60vh !important;
       height: 60svh !important;
+      height: calc(var(--app-vh, 1vh) * 60) !important;
     }
     .hero-content {
       min-height: 60vh;
       min-height: 60svh;
+      min-height: calc(var(--app-vh, 1vh) * 60);
     }
     .hero-content h1 {
       font-size: 1.6rem;
