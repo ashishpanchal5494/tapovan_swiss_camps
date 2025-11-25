@@ -120,6 +120,7 @@ const VideoSection: React.FC = () => {
         .video-slider-wrapper {
           width: 100%;
           height: 90vh;
+          height: 90svh;
           position: relative;
           overflow: hidden;
         }
@@ -133,6 +134,7 @@ const VideoSection: React.FC = () => {
         .video-slide {
           width: 100%;
           height: 90vh;
+          height: 90svh;
           object-fit: cover;
           flex-shrink: 0;
         }
@@ -167,18 +169,22 @@ const VideoSection: React.FC = () => {
         @media (max-width: 768px) {
           .video-slider-wrapper {
             height: 50vh;
+            height: 50svh;
           }
           .video-slide {
             height: 50vh;
+            height: 50svh;
           }
         }
 
         @media (max-width: 480px) {
           .video-slider-wrapper {
             height: 40vh;
+            height: 40svh;
           }
           .video-slide {
             height: 40vh;
+            height: 40svh;
           }
         }
       `}</style>

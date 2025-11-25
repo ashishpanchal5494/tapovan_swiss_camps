@@ -463,6 +463,7 @@ export default HeroSection;
 const heroStyles = `
   .hero-section {
     min-height: 100vh;
+    min-height: 100svh;
     position: relative;
     display: flex;
     align-items: center;
@@ -625,12 +626,15 @@ const heroStyles = `
   @media (max-width: 992px) {
     .hero-section {
       min-height: 60vh; /* hero height */
+      min-height: 60svh;
     }
     .hero-background {
       height: 60vh !important; /* background image */
+      height: 60svh !important;
     }
     .hero-content {
       min-height: 60vh; /* match background */
+      min-height: 60svh;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -671,12 +675,15 @@ const heroStyles = `
   @media (max-width: 576px) {
     .hero-section {
       min-height: 60vh; /* a bit taller for phones */
+      min-height: 60svh;
     }
     .hero-background {
       height: 60vh !important;
+      height: 60svh !important;
     }
     .hero-content {
       min-height: 60vh;
+      min-height: 60svh;
     }
     .hero-content h1 {
       font-size: 1.6rem;
