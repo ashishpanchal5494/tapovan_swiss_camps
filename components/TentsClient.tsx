@@ -2,7 +2,6 @@
 
 import React, { useEffect, useState } from "react";
 import TentCard from "@/components/TentCard";
-import Loading from "@/components/Loading";
 import { usePathname, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
