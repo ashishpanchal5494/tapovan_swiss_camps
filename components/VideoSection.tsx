@@ -96,7 +96,6 @@ const VideoSection: React.FC = () => {
               muted
               playsInline
               preload={index === 0 ? "metadata" : "none"}
-              loading="lazy"
               onEnded={nextVideo}
               onLoadedMetadata={(e) => {
                 if (index === activeVideo) {
