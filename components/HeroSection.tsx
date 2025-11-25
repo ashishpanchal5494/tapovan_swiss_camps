@@ -4,8 +4,28 @@ import React, { useState, useCallback } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { useRouter } from "next/navigation";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+import dynamic from "next/dynamic";
+
+// Lazy load DatePicker to reduce initial bundle size
+const DatePicker = dynamic(
+  () => import("react-datepicker").then((mod) => mod.default),
+  {
+    ssr: false,
+    loading: () => (
+      <input
+        type="text"
+        className="form-control form-control-lg"
+        placeholder="Select date"
+        readOnly
+      />
+    ),
+  }
+);
+
+// Lazy load CSS
+if (typeof window !== "undefined") {
+  import("react-datepicker/dist/react-datepicker.css");
+}
 import {
   FaCalendarAlt,
   FaUsers,
@@ -563,7 +583,7 @@ const heroStyles = `
     border: none;
     font-weight: 600;
     transition: all 0.3s ease;
-    z-index:auto
+    z-index: auto;
   }
 
   .btn-primary-custom:hover {
@@ -618,7 +638,7 @@ const heroStyles = `
     }
     .hero-buttons {
       display: flex;
-      flex-direction: row ! important;
+      flex-direction: row !important;
       justify-content: center;
       align-items: center;
       gap: 0.75rem;
@@ -660,9 +680,13 @@ const heroStyles = `
   }
 `;
 
-// Inject styles
+// Inject styles only once
 if (typeof document !== "undefined") {
-  const styleSheet = document.createElement("style");
-  styleSheet.textContent = heroStyles;
-  document.head.appendChild(styleSheet);
+  // Check if styles already injected to prevent duplicates
+  if (!document.getElementById("hero-section-styles")) {
+    const styleSheet = document.createElement("style");
+    styleSheet.id = "hero-section-styles";
+    styleSheet.textContent = heroStyles;
+    document.head.appendChild(styleSheet);
+  }
 }

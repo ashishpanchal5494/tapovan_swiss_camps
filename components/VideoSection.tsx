@@ -20,14 +20,12 @@ const VideoSection: React.FC = () => {
     setActiveVideo((prev) => (prev - 1 + videos.length) % videos.length);
   }, []);
 
-  // Preload all videos once (do NOT assign into videoRefs)
+  // Only preload the first video for better performance
   useEffect(() => {
-    videos.forEach((src) => {
-      const v = document.createElement("video");
-      v.src = src;
-      v.preload = "auto";
-      v.load();
-    });
+    const firstVideo = document.createElement("video");
+    firstVideo.src = videos[0];
+    firstVideo.preload = "metadata"; // Only metadata, not full video
+    firstVideo.load();
   }, []);
 
   // Autoplay active video when ref becomes available
@@ -97,7 +95,8 @@ const VideoSection: React.FC = () => {
               className="video-slide"
               muted
               playsInline
-              preload="auto"
+              preload={index === 0 ? "metadata" : "none"}
+              loading="lazy"
               onEnded={nextVideo}
               onLoadedMetadata={(e) => {
                 if (index === activeVideo) {

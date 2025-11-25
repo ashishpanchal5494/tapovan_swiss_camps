@@ -59,14 +59,6 @@ function Defer({ children }: { children: ReactNode }) {
 }
 
 export default function Home() {
-  const [isClient, setIsClient] = useState(false);
-
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
-
-  if (!isClient) return <Loading />;
-
   return (
     <>
       {/* ✅ Enhanced Structured Data */}

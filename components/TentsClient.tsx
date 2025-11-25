@@ -4,14 +4,12 @@ import React, { useEffect, useState } from "react";
 import TentCard from "@/components/TentCard";
 import Loading from "@/components/Loading";
 import { usePathname, useSearchParams } from "next/navigation";
-import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
+import Script from "next/script";
 import { tentRooms } from "../app/tents/tentData";
 
 const TentsClient: React.FC = () => {
-  const [isClient, setIsClient] = useState<boolean>(false);
-
   const [totalDays, setTotalDays] = useState<number>(1);
 
   const pathname = usePathname();
@@ -69,14 +67,6 @@ const TentsClient: React.FC = () => {
     return { perHeadPrice, perHeadMainPrice, totalPrice, totalMainPrice };
   };
 
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
-
-  if (!isClient) {
-    return <Loading />;
-  }
-
   // Enhanced structured data for tents page
   const tentsStructuredData = {
     "@context": "https://schema.org",
@@ -118,13 +108,13 @@ const TentsClient: React.FC = () => {
 
   return (
     <>
-      {isClient && (
-        <Head>
-          <script type="application/ld+json">
-            {JSON.stringify(tentsStructuredData)}
-          </script>
-        </Head>
-      )}
+      <Script
+        id="tents-structured-data"
+        type="application/ld+json"
+        strategy="afterInteractive"
+      >
+        {JSON.stringify(tentsStructuredData)}
+      </Script>
 
       {/* Hero Section */}
       <section className=" pt-40 tents-hero bg-gradient-to-br from-green-50 via-blue-50 to-indigo-50 py-16 py-md-20 py-lg-24 relative overflow-hidden">

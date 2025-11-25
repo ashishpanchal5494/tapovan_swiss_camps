@@ -378,23 +378,24 @@ const TestimonialPage: React.FC = memo(() => {
     return testimonials;
   }, [googleReviews, showGoogleReviews]);
 
-  // Debug logging
-  useEffect(() => {
-    if (isClient) {
-      console.log("Google Reviews:", googleReviews.length);
-      console.log("Show Google Reviews:", showGoogleReviews);
-      console.log("All Testimonials:", allTestimonials.length);
-      console.log("Reviews Loading:", reviewsLoading);
-      console.log("Reviews Error:", reviewsError);
-    }
-  }, [
-    googleReviews,
-    showGoogleReviews,
-    allTestimonials,
-    reviewsLoading,
-    reviewsError,
-    isClient,
-  ]);
+  // Debug logging (removed for production)
+  // Uncomment below for debugging if needed:
+  // useEffect(() => {
+  //   if (isClient && process.env.NODE_ENV === 'development') {
+  //     console.log("Google Reviews:", googleReviews.length);
+  //     console.log("Show Google Reviews:", showGoogleReviews);
+  //     console.log("All Testimonials:", allTestimonials.length);
+  //     console.log("Reviews Loading:", reviewsLoading);
+  //     console.log("Reviews Error:", reviewsError);
+  //   }
+  // }, [
+  //   googleReviews,
+  //   showGoogleReviews,
+  //   allTestimonials,
+  //   reviewsLoading,
+  //   reviewsError,
+  //   isClient,
+  // ]);
 
   // Memoized structured data
   const reviewStructuredData = useMemo(
