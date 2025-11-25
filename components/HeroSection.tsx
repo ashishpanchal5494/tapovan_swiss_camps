@@ -20,11 +20,11 @@ const DatePicker = dynamic(
       />
     ),
   }
-) as React.ComponentType<any>;
+) as React.ComponentType<Record<string, unknown>>;
 
 // Lazy load CSS
 if (typeof window !== "undefined") {
-  // @ts-ignore - CSS module import
+  // @ts-expect-error - CSS module import
   import("react-datepicker/dist/react-datepicker.css").catch(() => {
     // CSS import failed, but this is non-critical
   });
