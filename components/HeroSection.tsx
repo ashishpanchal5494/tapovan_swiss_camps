@@ -8,7 +8,7 @@ import dynamic from "next/dynamic";
 
 // Lazy load DatePicker to reduce initial bundle size
 const DatePicker = dynamic(
-  () => import("react-datepicker").then((mod) => mod.default),
+  () => import("react-datepicker").then((mod) => mod.default || mod),
   {
     ssr: false,
     loading: () => (
@@ -20,11 +20,14 @@ const DatePicker = dynamic(
       />
     ),
   }
-);
+) as React.ComponentType<any>;
 
 // Lazy load CSS
 if (typeof window !== "undefined") {
-  import("react-datepicker/dist/react-datepicker.css");
+  // @ts-ignore - CSS module import
+  import("react-datepicker/dist/react-datepicker.css").catch(() => {
+    // CSS import failed, but this is non-critical
+  });
 }
 import {
   FaCalendarAlt,
@@ -232,7 +235,9 @@ const HeroSection: React.FC = () => {
                     </label>
                     <DatePicker
                       selected={searchData.checkIn}
-                      onChange={(date) => handleDateChange("checkIn", date)}
+                      onChange={(date: Date | null) =>
+                        handleDateChange("checkIn", date)
+                      }
                       className="form-control form-control-lg"
                       placeholderText="Select date"
                       dateFormat="dd/MM/yyyy"
@@ -247,7 +252,9 @@ const HeroSection: React.FC = () => {
                     </label>
                     <DatePicker
                       selected={searchData.checkOut}
-                      onChange={(date) => handleDateChange("checkOut", date)}
+                      onChange={(date: Date | null) =>
+                        handleDateChange("checkOut", date)
+                      }
                       className="form-control form-control-lg"
                       placeholderText="Select date"
                       dateFormat="dd/MM/yyyy"
@@ -344,7 +351,9 @@ const HeroSection: React.FC = () => {
                     </label>
                     <DatePicker
                       selected={searchData.checkIn}
-                      onChange={(date) => handleDateChange("checkIn", date)}
+                      onChange={(date: Date | null) =>
+                        handleDateChange("checkIn", date)
+                      }
                       className="form-control form-control-lg"
                       placeholderText="Select date"
                       dateFormat="dd/MM/yyyy"
@@ -359,7 +368,9 @@ const HeroSection: React.FC = () => {
                     </label>
                     <DatePicker
                       selected={searchData.checkOut}
-                      onChange={(date) => handleDateChange("checkOut", date)}
+                      onChange={(date: Date | null) =>
+                        handleDateChange("checkOut", date)
+                      }
                       className="form-control form-control-lg"
                       placeholderText="Select date"
                       dateFormat="dd/MM/yyyy"
