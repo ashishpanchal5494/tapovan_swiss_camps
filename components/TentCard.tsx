@@ -85,11 +85,26 @@ const TentCard: React.FC<TentCardProps> = memo(
             <div className="d-flex justify-content-between mb-3">
               <h5 className="mb-0">{title}</h5>
               <div className="ps-2">
-                <small className="bx bxs-star text-[#507650]"></small>
-                <small className="bx bxs-star text-[#507650]"></small>
-                <small className="bx bxs-star text-[#507650]"></small>
-                <small className="bx bxs-star text-[#507650]"></small>
-                <small className="bx bxs-star text-[#507650]"></small>
+                <small
+                  style={{ color: "#F7C901" }}
+                  className="bx bxs-star"
+                ></small>
+                <small
+                  style={{ color: "#F7C901" }}
+                  className="bx bxs-star"
+                ></small>
+                <small
+                  style={{ color: "#F7C901" }}
+                  className="bx bxs-star"
+                ></small>
+                <small
+                  style={{ color: "#F7C901" }}
+                  className="bx bxs-star"
+                ></small>
+                <small
+                  style={{ color: "#F7C901" }}
+                  className="bx bxs-star"
+                ></small>
               </div>
             </div>
             <div className="features d-flex mb-3">

@@ -59,8 +59,23 @@ function Defer({ children }: { children: ReactNode }) {
 }
 
 export default function Home() {
+  const [showInitialLoader, setShowInitialLoader] = useState(true);
+
+  // Show one global full-page loader when the app first opens
+  useEffect(() => {
+    const timeout = window.setTimeout(() => {
+      setShowInitialLoader(false);
+    }, 1500);
+
+    return () => window.clearTimeout(timeout);
+  }, []);
+
   return (
     <>
+      {showInitialLoader && (
+        <Loading fullscreen size="large" text="Loading..." duration={3000} />
+      )}
+
       {/* ✅ Enhanced Structured Data */}
       <Script
         type="application/ld+json"
