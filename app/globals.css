@@ -2128,8 +2128,6 @@ p:empty {
   }
 }
 
-
-
 /*---------------------------------
   Footer CSS 
 -----------------------------------*/
@@ -5873,6 +5871,17 @@ Room Details Area CSS
     position: relative;
     z-index: 1000;
   } 
+  
+  .mobileCollapse.show::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: -1;
+  }
 }
 
 
@@ -6009,74 +6018,41 @@ Video Section CSS
 
 .video-slider-wrapper {
   width: 100%;
-  height: 90vh;
   height: calc(var(--vh, 1vh) * 90);
-  min-height: 500px;
-  max-height: 90vh;
   position: relative;
   overflow: hidden;
-  /* Prevent resize on scroll - use fixed positioning context */
-  contain: layout style paint;
-  /* Hardware acceleration */
-  will-change: transform;
-  backface-visibility: hidden;
-  transform: translateZ(0);
-  /* Prevent height recalculation */
-  box-sizing: border-box;
 }
 
 .video-slider {
   display: flex;
   width: 100%;
-  height: 100%;
   transition: transform 0.8s ease-in-out;
-  will-change: transform;
-  /* Ensure slider maintains height */
-  min-height: 100%;
 }
 
 .video-slide {
   width: 100%;
-  height: 100%;
-  min-width: 100%;
-  max-width: 100%;
-  min-height: 100%;
-  max-height: 100%;
+  height: calc(var(--vh, 1vh) * 90);
   object-fit: cover;
   flex-shrink: 0;
-  /* Prevent video resize */
-  will-change: transform;
-  backface-visibility: hidden;
-  transform: translateZ(0);
-  /* Ensure video maintains aspect ratio */
-  display: block;
 }
 
 @media (max-width: 768px) {
   .video-slider-wrapper {
-    height: 50vh;
     height: calc(var(--vh, 1vh) * 50);
-    min-height: 300px;
-    max-height: 50vh;
   }
 
   .video-slide {
-    height: 100%;
-    max-height: 100%;
+    height: calc(var(--vh, 1vh) * 50);
   }
 }
 
 @media (max-width: 480px) {
   .video-slider-wrapper {
-    height: 40vh;
     height: calc(var(--vh, 1vh) * 40);
-    min-height: 250px;
-    max-height: 40vh;
   }
 
   .video-slide {
-    height: 100%;
-    max-height: 100%;
+    height: calc(var(--vh, 1vh) * 40);
   }
 }
 
