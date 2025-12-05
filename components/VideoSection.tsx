@@ -1,6 +1,12 @@
 "use client";
 
-import { useState, useCallback, useRef, useEffect } from "react";
+import {
+  useState,
+  useCallback,
+  useRef,
+  useEffect,
+  useLayoutEffect,
+} from "react";
 
 const videos = [
   "/assets/video/garden.mp4",
@@ -11,6 +17,7 @@ const videos = [
 const VideoSection: React.FC = () => {
   const [activeVideo, setActiveVideo] = useState(0);
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
+  const wrapperRef = useRef<HTMLDivElement | null>(null);
 
   const nextVideo = useCallback(() => {
     setActiveVideo((prev) => (prev + 1) % videos.length);
@@ -18,6 +25,43 @@ const VideoSection: React.FC = () => {
 
   const prevVideo = useCallback(() => {
     setActiveVideo((prev) => (prev - 1 + videos.length) % videos.length);
+  }, []);
+
+  // Set fixed viewport height to prevent resize on scroll
+  useLayoutEffect(() => {
+    const setViewportHeight = () => {
+      if (typeof window !== "undefined") {
+        // Calculate 1vh in pixels to handle mobile browser address bar
+        const vh = window.innerHeight * 0.01;
+        document.documentElement.style.setProperty("--vh", `${vh}px`);
+
+        // Set fixed height for video wrapper to prevent resize on scroll
+        if (wrapperRef.current) {
+          const isMobile = window.innerWidth <= 768;
+          const isSmallMobile = window.innerWidth <= 480;
+          const heightMultiplier = isSmallMobile ? 0.4 : isMobile ? 0.5 : 0.9;
+          const height = window.innerHeight * heightMultiplier;
+          wrapperRef.current.style.height = `${height}px`;
+          wrapperRef.current.style.minHeight = `${height}px`;
+        }
+      }
+    };
+
+    // Set immediately on mount
+    setViewportHeight();
+
+    // Update on resize and orientation change
+    window.addEventListener("resize", setViewportHeight);
+    window.addEventListener("orientationchange", setViewportHeight);
+
+    // Also update after a short delay to catch any late viewport changes
+    const timeoutId = setTimeout(setViewportHeight, 100);
+
+    return () => {
+      window.removeEventListener("resize", setViewportHeight);
+      window.removeEventListener("orientationchange", setViewportHeight);
+      clearTimeout(timeoutId);
+    };
   }, []);
 
   // Only preload the first video for better performance
@@ -79,7 +123,7 @@ const VideoSection: React.FC = () => {
         </p>
       </div>
 
-      <div className="video-slider-wrapper">
+      <div className="video-slider-wrapper" ref={wrapperRef}>
         <div
           className="video-slider"
           style={{
@@ -105,6 +149,11 @@ const VideoSection: React.FC = () => {
                 }
               }}
               src={src}
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+              }}
             />
           ))}
         </div>
