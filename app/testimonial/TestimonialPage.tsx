@@ -12,8 +12,15 @@ import {
   FaThumbsUp,
   FaSync,
   FaGoogle,
+  FaArrowRight,
+  FaCalendarCheck,
+  FaWhatsapp,
+  FaPhone,
+  FaCheckCircle,
 } from "react-icons/fa";
 import { useGoogleReviews } from "@/hooks/useGoogleReviews";
+import { usePathname } from "next/navigation";
+import Link from "next/link";
 
 // Memoized testimonial data for better performance
 const testimonials = [
@@ -490,6 +497,9 @@ const TestimonialPage: React.FC = memo(() => {
     return <Loading />;
   }
 
+  const pathname = usePathname();
+  const showBreadcrumb = pathname === "/testimonial";
+
   return (
     <>
       {/* High-Quality CSS Styles */}
@@ -789,6 +799,121 @@ const TestimonialPage: React.FC = memo(() => {
           margin-top: 0.5rem;
         }
 
+        .cta-section {
+         background: linear-gradient(135deg, rgb(80, 118, 80) 0%, rgb(107, 155, 107) 50%, rgb(139, 176, 139) 100%);
+          );
+          border-radius: 0;
+          padding: 3rem 2rem;
+          position: relative;
+          overflow: hidden;
+        }
+
+        .cta-content {
+          position: relative;
+          z-index: 1;
+        }
+
+        .cta-icon {
+          margin-bottom: 1.5rem;
+        }
+
+        .cta-icon i,
+        .cta-icon svg {
+          font-size: 4rem;
+          color: white;
+          opacity: 0.9;
+        }
+
+        .cta-section h2,
+        .cta-section h3 {
+          color: white;
+          font-size: 2.5rem;
+          font-weight: 700;
+          margin-bottom: 1.5rem;
+          position: relative;
+          z-index: 1;
+        }
+
+        .cta-section h2 .text-warning,
+        .cta-section h3 .text-warning {
+          color: #ffc107 !important;
+        }
+
+        .cta-section p {
+          color: rgba(255, 255, 255, 0.95);
+          font-size: 1.25rem;
+          line-height: 1.6;
+          margin-bottom: 2.5rem;
+          position: relative;
+          z-index: 1;
+        }
+
+        .cta-buttons {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 1rem;
+          margin-bottom: 2rem;
+        }
+
+        .cta-button {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.5rem;
+          background: white;
+          color: #007bff;
+          padding: 0.875rem 2rem;
+          border-radius: 50px;
+          font-size: 1.1rem;
+          font-weight: 600;
+          text-decoration: none;
+          transition: all 0.3s ease;
+          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+          border: 2px solid transparent;
+        }
+
+        .cta-button:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+          background: #f8f9fa;
+          color: #0056b3;
+        }
+
+        .cta-button-outline {
+          background: transparent;
+          color: white;
+          border: 2px solid white;
+        }
+
+        .cta-button-outline:hover {
+          background: rgba(255, 255, 255, 0.1);
+          color: white;
+          border-color: white;
+        }
+
+        .cta-button-icon {
+          font-size: 1.1rem;
+        }
+
+        .cta-features {
+          margin-top: 2.5rem;
+        }
+
+        .feature-item {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: rgba(255, 255, 255, 0.95);
+          font-size: 0.9rem;
+        }
+
+        .feature-item i,
+        .feature-item svg {
+          color: #ffc107;
+          font-size: 1.1rem;
+          margin-right: 0.5rem;
+        }
+
         @media (max-width: 768px) {
           .section-title h2 {
             font-size: 2rem;
@@ -804,6 +929,61 @@ const TestimonialPage: React.FC = memo(() => {
 
           .rating {
             font-size: 2.5rem;
+          }
+
+          .stats-grid {
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.5rem;
+            margin: 2rem 0;
+          }
+
+          .stat-card {
+            padding: 1rem 0.5rem;
+          }
+
+          .stat-number {
+            font-size: 1.2rem;
+          }
+
+          .stat-label {
+            font-size: 0.7rem;
+            margin-top: 0.25rem;
+          }
+
+          .cta-section {
+            padding: 2.5rem 1.5rem;
+          }
+
+          .cta-icon i,
+          .cta-icon svg {
+            font-size: 3rem;
+          }
+
+          .cta-section h2,
+          .cta-section h3 {
+            font-size: 1.75rem;
+            margin-bottom: 1rem;
+          }
+
+          .cta-section p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+          }
+
+          .cta-buttons {
+            flex-direction: column;
+            align-items: stretch;
+          }
+
+          .cta-button {
+            padding: 0.875rem 1.5rem;
+            font-size: 1rem;
+            width: 100%;
+            justify-content: center;
+          }
+
+          .feature-item {
+            font-size: 0.85rem;
           }
         }
       `}</style>
@@ -822,6 +1002,20 @@ const TestimonialPage: React.FC = memo(() => {
 
       <div className={`testimonial-area ${isMobile ? "ptb-200" : "ptb-60"}`}>
         <div className="container">
+          {showBreadcrumb && (
+            <nav aria-label="breadcrumb" className=" mb-2 mb-md-4">
+              <ol className="breadcrumb">
+                <li className="breadcrumb-item">
+                  <Link href="/" className="text-decoration-none">
+                    Home
+                  </Link>
+                </li>
+                <li className="breadcrumb-item active" aria-current="page">
+                  Testimonials
+                </li>
+              </ol>
+            </nav>
+          )}
           {/* Hero Section */}
           <div className="section-title text-center">
             <h2>
@@ -954,24 +1148,80 @@ const TestimonialPage: React.FC = memo(() => {
               </small>
             </div>
           )}
+        </div>
+      </div>
 
-          {/* Call to Action */}
-          <div className="text-center mt-5">
-            <div className="cta-section">
-              <h3 className="mb-3">
-                Ready to Experience the Best Camping in Rishikesh?
-              </h3>
-              <p className="mb-4">
-                Join hundreds of satisfied guests who have made unforgettable
-                memories at Tapovan Swiss Camps.
-              </p>
-              <a href="/booking-form" className="btn btn-primary btn-lg">
-                Book Your Stay Now
-              </a>
+      {/* Call to Action */}
+      <section className="cta-section py-5 py-md-6 py-lg-7 text-white">
+        <div className="container">
+          <div className="row justify-content-center text-center">
+            <div className="col-12 col-md-10 col-lg-8">
+              <div className="cta-content">
+                <div className="cta-icon mb-4">
+                  <FaCalendarCheck className="display-1 text-white" />
+                </div>
+                <h2 className="display-5 display-md-4 display-lg-3 fw-bold mb-4">
+                  Ready to <span className="text-warning">Book Your Stay?</span>
+                </h2>
+                <p className="lead mb-5 mb-md-6">
+                  Join hundreds of satisfied guests who have made unforgettable
+                  memories at Tapovan Swiss Camps. Contact us today to book your
+                  perfect camping experience in the serene hills of Rishikesh.
+                </p>
+                <div className="cta-buttons">
+                  <a
+                    href="/booking-form"
+                    className="cta-button cta-button-outline"
+                    aria-label="Book your stay at Tapovan Swiss Camps"
+                  >
+                    <FaCalendarCheck className="cta-button-icon" />
+                    Book Your Stay Now
+                  </a>
+
+                  <a
+                    href="https://api.whatsapp.com/send?phone=+917906924003&text=Hello, I'm interested in booking a stay at Tapovan Swiss Camps!"
+                    className="cta-button cta-button-outline"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Contact us on WhatsApp"
+                  >
+                    <FaWhatsapp className="cta-button-icon" />
+                    WhatsApp Us
+                  </a>
+                </div>
+                <div className="cta-features mt-5">
+                  <div className="row g-3">
+                    <div className="col-6 col-md-3">
+                      <div className="feature-item">
+                        <FaCheckCircle />
+                        <small>Instant Booking</small>
+                      </div>
+                    </div>
+                    <div className="col-6 col-md-3">
+                      <div className="feature-item">
+                        <FaCheckCircle />
+                        <small>Best Rates</small>
+                      </div>
+                    </div>
+                    <div className="col-6 col-md-3">
+                      <div className="feature-item">
+                        <FaCheckCircle />
+                        <small>24/7 Support</small>
+                      </div>
+                    </div>
+                    <div className="col-6 col-md-3">
+                      <div className="feature-item">
+                        <FaCheckCircle />
+                        <small>Flexible Cancellation</small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
     </>
   );
 });

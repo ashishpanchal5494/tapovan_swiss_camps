@@ -4,10 +4,15 @@ import React, { useEffect, useState } from "react";
 
 import Loading from "@/components/Loading";
 import Link from "next/link";
+import { FaCalendarCheck, FaWhatsapp } from "react-icons/fa";
+import { usePathname } from "next/navigation";
 
 function SamplePage() {
   const [isClient, setIsClient] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+
+  const pathname = usePathname();
+  const showBreadcrumb = pathname === "/sample-page";
 
   useEffect(() => {
     const handleResize = () => {
@@ -29,6 +34,20 @@ function SamplePage() {
 
   return (
     <div className={isMobile ? "page-content ptb-200" : "page-content ptb-60"}>
+      {showBreadcrumb && (
+        <nav aria-label="breadcrumb" className="container mb-2 mb-md-4">
+          <ol className="breadcrumb">
+            <li className="breadcrumb-item">
+              <Link href="/" className="text-decoration-none">
+                Home
+              </Link>
+            </li>
+            <li className="breadcrumb-item active" aria-current="page">
+              Sample Page
+            </li>
+          </ol>
+        </nav>
+      )}
       {/* Hero Section */}
       <section className="sample-hero bg-gradient-to-br from-green-50 via-blue-50 to-indigo-50 py-16 py-md-20 py-lg-24 relative overflow-hidden">
         <div className="hero-pattern absolute inset-0 opacity-10"></div>
@@ -74,22 +93,6 @@ function SamplePage() {
                     <div className="h4 h3-md text-primary-custom mb-1">5★</div>
                     <small className="text-muted">Rating</small>
                   </div>
-                </div>
-                <div className="hero-cta">
-                  <Link
-                    className="btn btn-primary-custom btn-lg px-5 py-3 rounded-pill me-3 mb-3"
-                    href="/booking-form"
-                  >
-                    <i className="bx bx-calendar-check me-2"></i>
-                    Book Your Stay
-                  </Link>
-                  <Link
-                    className="btn btn-outline-primary-custom btn-lg px-5 py-3 rounded-pill mb-3"
-                    href="/gallery"
-                  >
-                    <i className="bx bx-images me-2"></i>
-                    View Gallery
-                  </Link>
                 </div>
               </div>
             </div>
@@ -479,66 +482,79 @@ function SamplePage() {
             </div>
           </div>
         </section>
+      </div>
+      {/* Final CTA Section */}
+      <section className="final-cta-section py-4 py-md-5 py-lg-6 bg-primary-custom text-white position-relative overflow-hidden">
+        <div className="cta-pattern absolute inset-0 opacity-5"></div>
+        <div className="container mx-auto px-4 position-relative z-10">
+          <div className="row justify-content-center text-center">
+            <div className="col-12 col-md-10 col-lg-8">
+              <div className="cta-content">
+                <div className="cta-icon mb-3 mb-md-4">
+                  <i className="bx bx-calendar-check cta-icon-size text-white"></i>
+                </div>
+                <h2 className="cta-title text-white fw-bold mb-3 mb-md-4">
+                  Ready for Your{" "}
+                  <span className="text-warning">Adventure?</span>
+                </h2>
+                <p className="cta-description text-white mb-4 mb-md-5">
+                  Don&apos;t wait! Book your stay at Tapovan Swiss Camps and
+                  create unforgettable memories in the lap of nature. Limited
+                  availability during peak season.
+                </p>
+                <div className="cta-buttons d-flex flex-column flex-md-row gap-3 justify-content-center align-items-center mb-4 mb-md-5">
+                  <Link
+                    href="/booking-form"
+                    className="btn btn-light btn-lg cta-btn-primary px-4 px-md-5 py-3 rounded-pill fw-semibold d-flex align-items-center justify-content-center gap-2"
+                    aria-label="Book your stay at Tapovan Swiss Camps"
+                  >
+                    <FaCalendarCheck className="cta-btn-icon" />
+                    <span>Book Your Stay Now</span>
+                  </Link>
 
-        {/* Final CTA Section */}
-        <section className="final-cta-section py-5 py-md-6 py-lg-7 bg-primary-custom text-white">
-          <div className="container mx-auto px-4">
-            <div className="row justify-content-center text-center">
-              <div className="col-12 col-md-10 col-lg-8">
-                <div className="cta-content">
-                  <div className="cta-icon mb-4">
-                    <i className="bx bx-calendar-check display-1 text-white"></i>
-                  </div>
-                  <h2 className="display-5 display-md-4 display-lg-3 fw-bold mb-4">
-                    Ready for Your{" "}
-                    <span className="text-warning">Adventure?</span>
-                  </h2>
-                  <p className="lead mb-5 mb-md-6">
-                    Don&apos;t wait! Book your stay at Tapovan Swiss Camps and
-                    create unforgettable memories in the lap of nature. Limited
-                    availability during peak season.
-                  </p>
-                  <div className="cta-buttons">
-                    <Link
-                      className="btn btn-light btn-lg px-5 py-3 rounded-pill me-3 mb-3"
-                      href="/booking-form"
-                    >
-                      <i className="bx bx-calendar-check me-2"></i>
-                      Book Your Stay Now
-                    </Link>
-                    <Link
-                      className="btn btn-outline-light btn-lg px-5 py-3 rounded-pill mb-3"
-                      href="/contact"
-                    >
-                      <i className="bx bx-phone me-2"></i>
-                      Call Us Now
-                    </Link>
-                  </div>
-                  <div className="cta-features mt-5">
-                    <div className="row g-3">
-                      <div className="col-6 col-md-3">
-                        <div className="feature-item">
-                          <i className="bx bx-check-circle text-warning me-2"></i>
-                          <small>Free Cancellation</small>
-                        </div>
+                  <a
+                    href="https://api.whatsapp.com/send?phone=+917906924003&text=Hello, I'm interested in booking a stay at Tapovan Swiss Camps!"
+                    className="btn btn-outline-light btn-lg cta-btn-secondary px-4 px-md-5 py-3 rounded-pill fw-semibold d-flex align-items-center justify-content-center gap-2"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Contact us on WhatsApp"
+                  >
+                    <FaWhatsapp className="cta-btn-icon" />
+                    <span>WhatsApp Us</span>
+                  </a>
+                </div>
+                <div className="cta-features">
+                  <div className="row g-3 g-md-4">
+                    <div className="col-6 col-md-3">
+                      <div className="feature-item d-flex flex-column align-items-center text-center">
+                        <i className="bx bx-check-circle text-warning cta-feature-icon mb-2"></i>
+                        <small className="text-white cta-feature-text">
+                          Free Cancellation
+                        </small>
                       </div>
-                      <div className="col-6 col-md-3">
-                        <div className="feature-item">
-                          <i className="bx bx-check-circle text-warning me-2"></i>
-                          <small>Best Price Guarantee</small>
-                        </div>
+                    </div>
+                    <div className="col-6 col-md-3">
+                      <div className="feature-item d-flex flex-column align-items-center text-center">
+                        <i className="bx bx-check-circle text-warning cta-feature-icon mb-2"></i>
+                        <small className="text-white cta-feature-text">
+                          Best Price Guarantee
+                        </small>
                       </div>
-                      <div className="col-6 col-md-3">
-                        <div className="feature-item">
-                          <i className="bx bx-check-circle text-warning me-2"></i>
-                          <small>24/7 Support</small>
-                        </div>
+                    </div>
+                    <div className="col-6 col-md-3">
+                      <div className="feature-item d-flex flex-column align-items-center text-center">
+                        <i className="bx bx-check-circle text-warning cta-feature-icon mb-2"></i>
+                        <small className="text-white cta-feature-text">
+                          24/7 Support
+                        </small>
                       </div>
-                      <div className="col-6 col-md-3">
-                        <div className="feature-item">
-                          <i className="bx bx-check-circle text-warning me-2"></i>
-                          <small>Instant Confirmation</small>
-                        </div>
+                    </div>
+                    <div className="col-6 col-md-3">
+                      <div className="feature-item d-flex flex-column align-items-center text-center">
+                        <i className="bx bx-check-circle text-warning cta-feature-icon mb-2"></i>
+                        <small className="text-white cta-feature-text">
+                          Instant Confirmation
+                        </small>
                       </div>
                     </div>
                   </div>
@@ -546,8 +562,8 @@ function SamplePage() {
               </div>
             </div>
           </div>
-        </section>
-      </div>
+        </div>
+      </section>
     </div>
   );
 }

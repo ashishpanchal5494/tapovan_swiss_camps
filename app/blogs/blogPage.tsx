@@ -3,6 +3,8 @@
 import { useEffect, useState, memo, Suspense, useMemo } from "react";
 import dynamic from "next/dynamic";
 import { blogData } from "@/data/blogData";
+import { usePathname } from "next/navigation";
+import Link from "next/link";
 
 // Lazy load BlogCard component
 const BlogCard = dynamic(() => import("@/components/BlogCard"), {
@@ -126,6 +128,9 @@ const BlogPage: React.FC = memo(() => {
   const [isClient, setIsClient] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
+  const pathname = usePathname();
+  const showBreadcrumb = pathname === "/blogs";
+
   // Optimized mobile detection with single useEffect
   useEffect(() => {
     const checkMobile = () => {
@@ -174,10 +179,24 @@ const BlogPage: React.FC = memo(() => {
       />
 
       <div
-        className={`blog-area ${isMobile ? "ptb-200" : "ptb-60"}`}
+        className={`blog-area ${isMobile ? "pt-200" : "ptb-60"}`}
         suppressHydrationWarning
       >
         <div className="container">
+          {showBreadcrumb && (
+            <nav aria-label="breadcrumb" className="mb-2 mb-md-4">
+              <ol className="breadcrumb">
+                <li className="breadcrumb-item">
+                  <Link href="/" className="text-decoration-none">
+                    Home
+                  </Link>
+                </li>
+                <li className="breadcrumb-item active" aria-current="page">
+                  Our Blogs
+                </li>
+              </ol>
+            </nav>
+          )}
           <div className="section-title">
             <h1>Rishikesh Adventure Blogs – Tapovan Swiss Camps</h1>
             <p>
@@ -186,25 +205,11 @@ const BlogPage: React.FC = memo(() => {
               rental experiences in Rishikesh. From safety tips to booking
               guides, our blogs help you plan the perfect Himalayan adventure.
             </p>
-            <div
-              style={{
-                marginTop: "20px",
-                padding: "15px",
-                backgroundColor: "#f8f9fa",
-                borderRadius: "8px",
-                border: "1px solid #e9ecef",
-              }}
-            >
-              <h2
-                style={{
-                  fontSize: "18px",
-                  marginBottom: "10px",
-                  color: "#507650",
-                }}
-              >
+            <div className="blog-info-box">
+              <h2 className="blog-info-title">
                 📚 What You&apos;ll Find in Our Blogs:
               </h2>
-              <ul style={{ margin: "0", paddingLeft: "20px" }}>
+              <ul className="blog-info-list">
                 <li>
                   <strong>Complete Activity Guides:</strong> Step-by-step
                   instructions for camping, rafting, bungee jumping, and bike

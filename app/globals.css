@@ -2822,11 +2822,41 @@ Section Area CSS
 @media only screen and (max-width: 767px) {
   .section-title {
     max-width: 100%;
-    margin: 0px auto 40px;
+    margin: 0px auto 30px;
+    padding: 0 10px;
+  }
+  .section-title::after {
+    width: 30%;
+    height: 3px;
+    bottom: -20px;
+    right: 35%;
+  }
+  .section-title h1 {
+    font-size: 1.4rem !important;
+    line-height: 1.4 !important;
+    margin-bottom: 12px !important;
   }
   .section-title h2 {
-    font-size: 20px;
-    line-height: 30px;
+    font-size: 1.2rem !important;
+    line-height: 1.4 !important;
+    margin-bottom: 10px !important;
+  }
+  .section-title p {
+    font-size: 0.875rem !important;
+    line-height: 1.5 !important;
+    margin-bottom: 15px !important;
+  }
+  .section-title ul {
+    font-size: 0.8rem !important;
+    line-height: 1.5 !important;
+  }
+  .section-title ul li {
+    font-size: 0.8rem !important;
+    margin-bottom: 8px !important;
+    padding-left: 18px !important;
+  }
+  .section-title ul li strong {
+    font-size: 0.85rem !important;
   }
 }
 
@@ -2834,9 +2864,26 @@ Section Area CSS
   .section-title {
     max-width: 100%;
     margin: 0px auto 30px;
+    padding: 0 15px;
+  }
+  .section-title h1 {
+    font-size: 2rem !important;
+    line-height: 1.3 !important;
+    margin-bottom: 15px !important;
   }
   .section-title h2 {
-    font-size: 28px;
+    font-size: 1.5rem !important;
+    line-height: 1.4 !important;
+  }
+  .section-title p {
+    font-size: 1rem !important;
+    line-height: 1.6 !important;
+  }
+  .section-title ul {
+    font-size: 0.9rem !important;
+  }
+  .section-title ul li {
+    font-size: 0.9rem !important;
   }
 }
 
@@ -3598,6 +3645,53 @@ About Area CSS
   padding: 20px;
 }
 
+@media only screen and (max-width: 767px) {
+  .counter-area .counter-col {
+    padding: 8px;
+  }
+  .single-counter {
+    padding: 15px 10px;
+  }
+  .single-counter i {
+    font-size: 20px;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    margin: 0 auto 10px;
+  }
+  .single-counter h2 {
+    font-size: 1.5rem;
+    margin-top: -5px;
+    margin-bottom: 5px;
+  }
+  .single-counter p {
+    font-size: 0.7rem;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .counter-area .counter-col {
+    padding: 5px;
+  }
+  .single-counter {
+    padding: 12px 8px;
+  }
+  .single-counter i {
+    font-size: 18px;
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+    margin: 0 auto 8px;
+  }
+  .single-counter h2 {
+    font-size: 1.2rem;
+    margin-bottom: 4px;
+  }
+  .single-counter p {
+    font-size: 0.65rem;
+  }
+}
+
 /* Video Button Style */
 .video-btn {
   display: inline-block;
@@ -3708,22 +3802,78 @@ About Area CSS
   .about-content-two {
     margin-top: -4px;
   }
+  .about-content-two h1 {
+    font-size: 1.5rem;
+    line-height: 1.3;
+    margin-bottom: 1rem;
+  }
   .about-content-two h2 {
-    font-size: 25px;
-    margin-bottom: 15px;
+    font-size: 1.25rem;
+    line-height: 1.3;
+    margin-bottom: 0.875rem;
+  }
+  .about-content-two h3 {
+    font-size: 1.1rem;
+    line-height: 1.3;
+    margin-bottom: 0.75rem;
   }
   .about-content-two p {
-    margin-bottom: 25px;
+    font-size: 0.875rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
   }
   .about-content-two ul {
-    margin-bottom: 30px;
+    margin-bottom: 1.25rem;
   }
   .about-content-two ul li {
+    font-size: 0.8rem;
+    line-height: 1.5;
+    margin-bottom: 0.75rem;
+    padding-left: 28px;
+  }
+  .about-content-two ul li i {
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
     font-size: 14px;
+  }
+  .about-content-two .top-title {
+    font-size: 12px;
+    margin-bottom: 8px;
   }
   .about-img-two {
     height: 300px;
     margin-top: 30px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .about-content-two h1 {
+    font-size: 1.3rem;
+    margin-bottom: 0.875rem;
+  }
+  .about-content-two h2 {
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+  }
+  .about-content-two h3 {
+    font-size: 1rem;
+    margin-bottom: 0.625rem;
+  }
+  .about-content-two p {
+    font-size: 0.8rem;
+    margin-bottom: 0.875rem;
+  }
+  .about-content-two ul li {
+    font-size: 0.75rem;
+    margin-bottom: 0.625rem;
+    padding-left: 24px;
+  }
+  .about-content-two ul li i {
+    width: 18px;
+    height: 18px;
+    line-height: 18px;
+    font-size: 12px;
   }
 }
 
@@ -3810,6 +3960,22 @@ Features Area CSS
 /*==========================
 Blog Area CSS
 ============================*/
+.blog-area {
+  position: relative;
+}
+
+.blog-area .section-title h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  line-height: 1.3;
+}
+
+.blog-area .section-title p {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
 .content-blog {
   border: 1px solid #f1f1f1;
   border-radius: 6px;
@@ -3948,29 +4114,149 @@ Blog Area CSS
   margin-bottom: 20px;
 }
 
+/* Blog Info Box Styles */
+.blog-info-box {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  border: 1px solid #e9ecef;
+}
+
+.blog-info-title {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #507650;
+  font-weight: 600;
+}
+
+.blog-info-list {
+  margin: 0;
+  padding-left: 20px;
+  list-style-type: disc;
+}
+
+.blog-info-list li {
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+.blog-info-list li strong {
+  font-weight: 600;
+}
+
 @media only screen and (max-width: 767px) {
-  .content-blog {
-    padding: 15px;
-    margin-top: 20px;
-    min-height: 300px;
+  .blog-info-box {
+    margin-top: 15px;
+    padding: 12px;
+    border-radius: 6px;
   }
-  .content-blog .thumbnail {
+  
+  .blog-info-title {
+    font-size: 1rem !important;
+    margin-bottom: 8px !important;
+    line-height: 1.4 !important;
+  }
+  
+  .blog-info-list {
+    padding-left: 18px;
+    font-size: 0.8rem !important;
+  }
+  
+  .blog-info-list li {
+    font-size: 0.8rem !important;
+    line-height: 1.5 !important;
+    margin-bottom: 6px !important;
+  }
+  
+  .blog-info-list li strong {
+    font-size: 0.85rem !important;
+  }
+  
+  .content-blog {
+    padding: 12px;
+    margin-top: 20px;
+    min-height: auto;
     margin-bottom: 20px;
   }
-  .content-blog .content .title {
-    font-size: 16px;
+  .content-blog .thumbnail {
     margin-bottom: 15px;
+  }
+  .content-blog .thumbnail .blog-category {
+    bottom: 10px;
+    right: 10px;
+  }
+  .content-blog .thumbnail .blog-category a {
+    font-size: 11px;
+    padding: 2px 8px;
+  }
+  .content-blog .content .title {
+    font-size: 0.95rem !important;
+    line-height: 1.4 !important;
+    margin-bottom: 12px !important;
+  }
+  .content-blog .content .title a {
+    font-size: 0.95rem !important;
+  }
+  .content-blog .content .blog-btn {
+    font-size: 0.8rem !important;
+    line-height: 1.4 !important;
+  }
+  .content-blog .content .blog-btn i {
+    font-size: 16px !important;
+  }
+  
+  /* Blog grid spacing on mobile */
+  .blog-area .row {
+    margin-left: -10px;
+    margin-right: -10px;
+  }
+  
+  .blog-area .row > * {
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-bottom: 15px;
+  }
+  
+  /* Ensure full width on mobile for blog cards */
+  .blog-area .col-lg-4,
+  .blog-area .col-md-6 {
+    width: 100%;
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  
+  /* Reduce blog area padding on mobile */
+  .blog-area.ptb-200 {
+    padding-top: 30px !important;
+    padding-bottom: 30px !important;
   }
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
+  .blog-info-box {
+    padding: 15px;
+  }
+  
+  .blog-info-title {
+    font-size: 1.1rem !important;
+  }
+  
+  .blog-info-list {
+    font-size: 0.9rem !important;
+  }
+  
+  .blog-info-list li {
+    font-size: 0.9rem !important;
+  }
+  
   .content-blog {
     padding: 15px;
     margin-top: 30px;
     min-height: 347px;
   }
   .content-blog .content .title {
-    font-size: 16px;
+    font-size: 1rem !important;
   }
 }
 
@@ -5989,10 +6275,133 @@ Room Details Area CSS
   color: #34495e;
 }
 
+/* Mobile Responsive Styles for Gallery */
+@media only screen and (max-width: 768px) {
+  
+  .gallery-hero h1 {
+    font-size: 1.5rem !important;
+    line-height: 1.3;
+  }
+  
+  .gallery-hero .lead {
+    font-size: 0.9rem !important;
+    line-height: 1.5;
+  }
+  
+  .category-filters {
+    padding: 1rem 0 !important;
+  }
+  
+  .category-tabs {
+    gap: 0.5rem !important;
+  }
+  
+  .category-tabs button {
+    font-size: 0.75rem !important;
+    padding: 0.4rem 0.8rem !important;
+  }
+  
+  .category-tabs .badge {
+    font-size: 0.65rem !important;
+    padding: 0.15rem 0.4rem !important;
+  }
+  
+  .seo-content-section {
+    padding: 1.5rem 0 !important;
+  }
+  
+  .seo-content-section h2 {
+    font-size: 1.1rem !important;
+    margin-bottom: 0.75rem !important;
+  }
+  
+  .seo-content-section .lead {
+    font-size: 0.85rem !important;
+    margin-bottom: 1.5rem !important;
+  }
+  
+  .seo-content-section h3 {
+    font-size: 0.95rem !important;
+    margin-bottom: 0.75rem !important;
+  }
+  
+  .seo-content-section ul {
+    font-size: 0.8rem !important;
+    line-height: 1.6;
+  }
+  
+  .seo-content-section li {
+    margin-bottom: 0.5rem !important;
+  }
+  
+  .gallery-section {
+    padding: 1.5rem 0 !important;
+  }
+  
+  .gallery-section .row {
+    margin-left: -0.5rem !important;
+    margin-right: -0.5rem !important;
+  }
+  
+  .gallery-section .col-6 {
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
+  }
+  
+  .gallery-item {
+    margin-bottom: 1rem !important;
+  }
+  
+  .modal-img {
+    max-width: 95vw !important;
+    max-height: 85vh !important;
+  }
+  
+  .modal-caption h5 {
+    font-size: 0.9rem !important;
+  }
+  
+  .modal-caption p {
+    font-size: 0.75rem !important;
+  }
+  
+  .gallery-overlay h6 {
+    font-size: 0.85rem !important;
+  }
+  
+  .gallery-overlay small {
+    font-size: 0.7rem !important;
+  }
+  
+  .featured-badge .badge {
+    font-size: 0.65rem !important;
+    padding: 0.25rem 0.5rem !important;
+  }
+  
+  .hero-stats {
+    flex-wrap: nowrap !important;
+    gap: 0.5rem !important;
+  }
+  
+  .hero-stats .stat-item {
+    padding: 0.25rem 0.4rem !important;
+    flex: 1 1 0 !important;
+    min-width: 0 !important;
+  }
+  
+  .hero-stats .h5 {
+    font-size: 1rem !important;
+  }
+  
+  .hero-stats small {
+    font-size: 0.7rem !important;
+  }
+}
+
 .cta-section{
   border: #969696 solid 1px;
   border-radius: 20px;
-  margin-inline: 10px;
+  
   background-color: white;
 }
 
@@ -6003,6 +6412,13 @@ Video Section CSS
   position: relative;
   width: 100%;
   overflow: hidden;
+  padding: 0;
+  margin: 0;
+}
+
+.video-section .container {
+  padding-left: 0;
+  padding-right: 0;
 }
 
 .video-slider-wrapper {
@@ -6010,38 +6426,86 @@ Video Section CSS
   height: calc(var(--vh, 1vh) * 90);
   position: relative;
   overflow: hidden;
+  min-height: 300px;
 }
 
 .video-slider {
   display: flex;
-  width: 100%;
+  height: 100%;
   transition: transform 0.8s ease-in-out;
+  will-change: transform;
 }
 
 .video-slide {
-  width: 100%;
-  height: calc(var(--vh, 1vh) * 90);
+  height: 100%;
   object-fit: cover;
   flex-shrink: 0;
+  display: block;
 }
 
 @media (max-width: 768px) {
   .video-slider-wrapper {
     height: calc(var(--vh, 1vh) * 50);
+    min-height: 250px;
   }
 
   .video-slide {
-    height: calc(var(--vh, 1vh) * 50);
+    height: 100%;
   }
 }
 
 @media (max-width: 480px) {
   .video-slider-wrapper {
     height: calc(var(--vh, 1vh) * 40);
+    min-height: 200px;
   }
 
   .video-slide {
-    height: calc(var(--vh, 1vh) * 40);
+    height: 100%;
+  }
+}
+
+/* Video Section Header Mobile Responsive */
+@media (max-width: 767px) {
+  .video-section-header {
+    margin-bottom: 16px !important;
+    padding: 0 10px;
+  }
+
+  .video-section-title {
+    font-size: 1.3rem !important;
+    line-height: 1.3 !important;
+    margin-bottom: 8px !important;
+  }
+
+  .video-section-description {
+    font-size: 0.8rem !important;
+    line-height: 1.4 !important;
+    margin-bottom: 12px !important;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .video-section-title {
+    font-size: 2rem !important;
+    line-height: 1.3 !important;
+  }
+
+  .video-section-description {
+    font-size: 1rem !important;
+    line-height: 1.5 !important;
+  }
+}
+
+@media (min-width: 992px) {
+  .video-section-title {
+    font-size: 2.5rem !important;
+    line-height: 1.3 !important;
+  }
+
+  .video-section-description {
+    font-size: 1.125rem !important;
+    line-height: 1.6 !important;
   }
 }
 
@@ -6207,5 +6671,627 @@ Loading Component CSS
   100% {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+/*================================================
+Tents Page Mobile Responsive CSS
+=================================================*/
+
+/* Hero Section Mobile Styles */
+@media (max-width: 767px) {
+  .tents-hero {
+    padding-top: 20px !important;
+    padding-bottom: 20px !important;
+  }
+
+  .tents-hero-icon {
+    font-size: 2rem !important;
+    line-height: 1;
+  }
+
+  .tents-hero-title {
+    font-size: 1.5rem !important;
+    line-height: 1.3 !important;
+    margin-bottom: 12px !important;
+  }
+
+  .tents-hero-description {
+    font-size: 0.875rem !important;
+    line-height: 1.5 !important;
+    margin-bottom: 16px !important;
+  }
+
+  .tents-stat-number {
+    font-size: 1rem !important;
+    line-height: 1.2 !important;
+  }
+
+  .tents-stat-label {
+    font-size: 0.7rem !important;
+    line-height: 1.2 !important;
+  }
+
+  .tents-cta-btn {
+    font-size: 0.8rem !important;
+    padding: 8px 16px !important;
+    min-width: auto !important;
+    flex: 1 1 auto !important;
+    max-width: 48% !important;
+  }
+
+  .hero-cta {
+    gap: 8px !important;
+    width: 100% !important;
+  }
+
+  .hero-stats {
+    gap: 8px !important;
+    margin-bottom: 16px !important;
+  }
+
+  .stat-item {
+    flex: 0 0 calc(50% - 4px) !important;
+    max-width: calc(50% - 4px) !important;
+  }
+}
+
+/* Tents Section Mobile Styles */
+@media (max-width: 767px) {
+  .tents-section {
+    padding-top: 20px !important;
+    padding-bottom: 20px !important;
+  }
+
+  .tents-section-title {
+    font-size: 1.4rem !important;
+    line-height: 1.3 !important;
+    margin-bottom: 12px !important;
+  }
+
+  .tents-section-description {
+    font-size: 0.875rem !important;
+    line-height: 1.5 !important;
+    padding: 0 10px !important;
+  }
+
+  .tents-section .row.g-4 {
+    gap: 12px !important;
+  }
+}
+
+/* Tablet Styles */
+@media (min-width: 768px) and (max-width: 991px) {
+  .tents-hero-title {
+    font-size: 2rem !important;
+    line-height: 1.3 !important;
+  }
+
+  .tents-hero-description {
+    font-size: 1rem !important;
+  }
+
+  .tents-cta-btn {
+    font-size: 0.9rem !important;
+    padding: 10px 20px !important;
+  }
+
+  .tents-section-title {
+    font-size: 2rem !important;
+  }
+
+  .tents-section-description {
+    font-size: 1rem !important;
+  }
+}
+
+/* Desktop Styles */
+@media (min-width: 992px) {
+  .tents-hero-icon {
+    font-size: 4rem !important;
+  }
+
+  .tents-hero-title {
+    font-size: 2.5rem !important;
+  }
+
+  .tents-hero-description {
+    font-size: 1.125rem !important;
+  }
+
+  .tents-stat-number {
+    font-size: 1.75rem !important;
+  }
+
+  .tents-stat-label {
+    font-size: 0.875rem !important;
+  }
+
+  .tents-cta-btn {
+    font-size: 1rem !important;
+    padding: 12px 24px !important;
+  }
+
+  .tents-section-title {
+    font-size: 2.5rem !important;
+  }
+
+  .tents-section-description {
+    font-size: 1.125rem !important;
+  }
+}
+
+/* Offer Banner Styles */
+.offer-slider {
+  margin-bottom: 10px;
+  margin-top: 20px;
+}
+
+.offer-carousel {
+  overflow: visible;
+  position: relative;
+}
+
+.offer-carousel-inner {
+  position: relative;
+  width: 100%;
+  overflow: visible;
+}
+
+.offer-image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.offer-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform 0.5s ease-in-out;
+}
+
+/* Offer Content Overlay */
+.offer-content-overlay {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.05) 0%,
+    rgba(0, 0, 0, 0.1) 100%
+  );
+  margin-top: -4px;
+}
+
+.offer-content {
+  text-align: center;
+  color: #333;
+  max-width: 800px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.offer-headline {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: #333;
+  line-height: 1.3;
+}
+
+.offer-description {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 0;
+  color: #666;
+}
+
+.offer-cta-btn {
+  font-weight: 600;
+  padding: 10px 24px;
+  font-size: 0.95rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  color: #333;
+}
+
+.offer-cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+  background-color: #ffffff;
+  color: #000;
+}
+
+/* Smooth carousel transitions */
+.offer-carousel .carousel-item {
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.offer-carousel .carousel-item.active {
+  opacity: 1;
+  position: relative;
+  z-index: 1;
+}
+
+/* Carousel Indicators */
+.offer-carousel-indicators {
+  margin-bottom: 15px;
+  z-index: 10;
+}
+
+.offer-carousel-indicators button {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  margin: 0 5px;
+  transition: all 0.3s ease;
+  opacity: 0.7;
+}
+
+.offer-carousel-indicators button.active {
+  background-color: rgba(255, 255, 255, 1);
+  border-color: rgba(255, 255, 255, 1);
+  opacity: 1;
+  transform: scale(1.2);
+}
+
+.offer-carousel-indicators button:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.offer-carousel-control {
+  width: 50px;
+  height: 50px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  opacity: 0.8;
+  transition: all 0.3s ease;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.offer-carousel-control:hover {
+  opacity: 1;
+  background-color: rgba(255, 255, 255, 1);
+}
+
+.offer-carousel-control-prev {
+  left: 15px;
+}
+
+.offer-carousel-control-next {
+  right: 15px;
+}
+
+.offer-carousel-control .carousel-control-prev-icon,
+.offer-carousel-control .carousel-control-next-icon {
+  width: 20px;
+  height: 20px;
+  background-size: 100% 100%;
+  filter: brightness(0) saturate(100%) invert(0);
+}
+
+/* Mobile Styles for Offer Banner */
+@media (max-width: 767px) { 
+
+  .offer-image-wrapper {
+    aspect-ratio: 16 / 9;
+    min-height: 180px;
+  }
+
+  .offer-carousel-control {
+    width: 40px;
+    height: 40px;
+  }
+
+  .offer-content-overlay {
+    padding: 12px 8px;
+    margin-top: -4px;
+  }
+
+  .offer-content {
+    padding: 12px 15px;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  .offer-headline {
+    font-size: 1rem;
+    margin-bottom: 6px;
+    line-height: 1.3;
+  }
+
+  .offer-description {
+    font-size: 0.8rem;
+    line-height: 1.5;
+    margin-bottom: 8px;
+  }
+
+  .offer-cta-btn {
+    padding: 8px 18px;
+    font-size: 0.8rem;
+  }
+
+}
+
+/* Tablet Styles for Offer Banner */
+@media (min-width: 768px) and (max-width: 991px) {
+  .offer-image-wrapper {
+    aspect-ratio: 16 / 9;
+    min-height: 250px;
+  }
+
+  .offer-headline {
+    font-size: 1.5rem;
+  }
+
+  .offer-description {
+    font-size: 0.95rem;
+  }
+
+}
+
+/* Desktop Styles for Offer Banner */
+@media (min-width: 992px) {
+  .offer-image-wrapper {
+    aspect-ratio: 16 / 9;
+    min-height: 300px;
+    /* max-height: 400px; */
+  }
+
+  .offer-headline {
+    font-size: 2rem;
+    margin-bottom: 16px;
+  }
+
+  .offer-description {
+    font-size: 1.1rem;
+    line-height: 1.7;
+  }
+
+  .offer-content {
+    padding: 30px;
+  }
+
+  .offer-cta-btn {
+    padding: 12px 30px;
+    font-size: 1rem;
+  }
+
+ 
+}
+
+/*================================================
+Final CTA Section CSS
+=================================================*/
+.final-cta-section {
+  background: linear-gradient(135deg, var(--mainColor) 0%, #5a8a5a 100%);
+  position: relative;
+}
+
+.cta-pattern {
+  background-image: 
+    radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.cta-content {
+  position: relative;
+  z-index: 2;
+}
+
+.cta-icon-size {
+  font-size: 3.5rem;
+  line-height: 1;
+}
+
+.cta-title {
+  font-size: 2rem;
+  line-height: 1.2;
+}
+
+.cta-description {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  opacity: 0.95;
+}
+
+.cta-buttons {
+  flex-wrap: wrap;
+}
+
+.cta-btn-primary {
+  background: #fff;
+  color: var(--mainColor);
+  border: 2px solid #fff;
+  transition: all 0.3s ease;
+  min-width: 200px;
+}
+
+.cta-btn-primary:hover {
+  background: #f8f9fa;
+  color: var(--mainColor);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.cta-btn-secondary {
+  border: 2px solid rgba(255, 255, 255, 0.9);
+  color: #fff;
+  background: transparent;
+  transition: all 0.3s ease;
+  min-width: 200px;
+}
+
+.cta-btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: #fff;
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(255, 255, 255, 0.2);
+}
+
+.cta-btn-icon {
+  font-size: 1.1rem;
+}
+
+.cta-feature-icon {
+  font-size: 1.75rem;
+  line-height: 1;
+}
+
+.cta-feature-text {
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+
+/* Mobile Styles - Smaller Content */
+@media (max-width: 767px) {
+  .final-cta-section {
+    padding: 2.5rem 0 !important;
+  }
+
+  .cta-icon-size {
+    font-size: 2.5rem;
+  }
+
+  .cta-title {
+    font-size: 1.5rem;
+    line-height: 1.3;
+    margin-bottom: 1rem !important;
+  }
+
+  .cta-description {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 1.5rem !important;
+  }
+
+  .cta-buttons {
+    gap: 0.75rem !important;
+    margin-bottom: 1.5rem !important;
+  }
+
+  .cta-btn-primary,
+  .cta-btn-secondary {
+    width: 100%;
+    max-width: 280px;
+    min-width: auto;
+    padding: 0.75rem 1.5rem !important;
+    font-size: 0.9rem;
+  }
+
+  .cta-btn-icon {
+    font-size: 1rem;
+  }
+
+  .cta-feature-icon {
+    font-size: 1.5rem;
+  }
+
+  .cta-feature-text {
+    font-size: 0.75rem;
+  }
+
+  .cta-features {
+    margin-top: 1.5rem !important;
+  }
+
+  .cta-features .row {
+    margin-left: -0.5rem;
+    margin-right: -0.5rem;
+  }
+
+  .cta-features .row > [class*="col-"] {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .cta-features .feature-item {
+    padding: 0.75rem 0.5rem;
+    min-height: 75px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+/* Tablet Styles */
+@media (min-width: 768px) and (max-width: 991px) {
+  .final-cta-section {
+    padding: 3rem 0 !important;
+  }
+
+  .cta-icon-size {
+    font-size: 3rem;
+  }
+
+  .cta-title {
+    font-size: 1.75rem;
+  }
+
+  .cta-description {
+    font-size: 1rem;
+  }
+
+  .cta-btn-primary,
+  .cta-btn-secondary {
+    min-width: 180px;
+    padding: 0.875rem 2rem !important;
+    font-size: 0.95rem;
+  }
+}
+
+/* Desktop Styles */
+@media (min-width: 992px) {
+  .final-cta-section {
+    padding: 4rem 0 !important;
+  }
+
+  .cta-icon-size {
+    font-size: 4rem;
+  }
+
+  .cta-title {
+    font-size: 2.5rem;
+  }
+
+  .cta-description {
+    font-size: 1.15rem;
+  }
+
+  .cta-btn-primary,
+  .cta-btn-secondary {
+    min-width: 220px;
+    padding: 1rem 2.5rem !important;
   }
 }

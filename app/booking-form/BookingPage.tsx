@@ -319,6 +319,7 @@ function BookingPage() {
 
             {/* Quick Booking Info */}
             <div
+              className="quick-booking-info"
               style={{
                 marginTop: "20px",
                 padding: "20px",
@@ -376,44 +377,155 @@ function BookingPage() {
             </div>
           </div>
 
+          <style
+            dangerouslySetInnerHTML={{
+              __html: `
+              .booking-tabs-container {
+                display: flex;
+                justify-content: center;
+                flex-wrap: nowrap;
+                gap: 8px;
+                width: 100%;
+              }
+              .booking-tab-button {
+                flex: 1;
+                min-width: 0;
+                white-space: nowrap;
+                padding: 15px 30px;
+                font-size: 18px;
+                font-weight: 600;
+                border-radius: 25px;
+                border: 2px solid #507650;
+                transition: all 0.3s ease;
+              }
+              .book-now-button {
+                border-radius: 25px;
+                padding: 15px 40px;
+                font-size: 18px;
+                font-weight: 600;
+                background-color: #507650;
+                border: none;
+                color: white;
+                box-shadow: 0 5px 15px rgba(80, 118, 80, 0.3);
+                transition: all 0.3s ease;
+                width: auto;
+              }
+              @media only screen and (max-width: 767px) {
+                .booking-tabs-container {
+                  gap: 6px;
+                  padding: 0 5px;
+                }
+                .booking-tab-button {
+                  padding: 10px 12px;
+                  font-size: 13px;
+                  border-radius: 20px;
+                  margin: 0;
+                }
+                .seo-content-section h1 {
+                  font-size: 20px !important;
+                  line-height: 1.3 !important;
+                  padding: 0 10px;
+                }
+                .seo-content-section p {
+                  font-size: 14px !important;
+                  padding: 0 10px;
+                }
+                .booking-form-container {
+                  padding: 20px 15px !important;
+                }
+                .booking-form-container h2 {
+                  font-size: 22px !important;
+                }
+                .pricing-info-box {
+                  padding: 15px 10px !important;
+                }
+                .pricing-info-box h4 {
+                  font-size: 16px !important;
+                }
+                .pricing-card {
+                  padding: 8px 10px !important;
+                  font-size: 12px !important;
+                }
+                .pricing-card strong {
+                  font-size: 12px !important;
+                }
+                .quick-booking-info {
+                  padding: 15px 10px !important;
+                }
+                .quick-booking-info h3 {
+                  font-size: 18px !important;
+                }
+                .quick-booking-info > div {
+                  flex-direction: column !important;
+                  gap: 15px !important;
+                }
+                .quick-booking-info > div > div {
+                  padding: 10px !important;
+                }
+                .book-now-button {
+                  padding: 12px 25px !important;
+                  font-size: 14px !important;
+                  border-radius: 20px !important;
+                  width: 100%;
+                  max-width: 100%;
+                }
+              }
+              @media only screen and (max-width: 480px) {
+                .booking-tab-button {
+                  padding: 8px 10px;
+                  font-size: 12px;
+                  border-radius: 18px;
+                }
+                .seo-content-section h1 {
+                  font-size: 18px !important;
+                }
+                .seo-content-section p {
+                  font-size: 13px !important;
+                }
+                .booking-form-container {
+                  padding: 15px 10px !important;
+                }
+                .booking-form-container h2 {
+                  font-size: 20px !important;
+                }
+                .pricing-card {
+                  padding: 6px 8px !important;
+                  font-size: 11px !important;
+                }
+                .book-now-button {
+                  padding: 10px 20px !important;
+                  font-size: 13px !important;
+                  border-radius: 18px !important;
+                  width: 100%;
+                }
+              }
+            `,
+            }}
+          />
           <nav className="booking-tabs-button ptb-40">
-            <div className="nav nav-tabs" style={{ justifyContent: "center" }}>
+            <div className="booking-tabs-container">
               <button
-                className={`nav-link ${
+                className={`booking-tab-button nav-link ${
                   activeTab === "camping" ? "active" : ""
                 }`}
                 onClick={() => setActiveTab("camping")}
                 style={{
-                  padding: "15px 30px",
-                  fontSize: "18px",
-                  fontWeight: "600",
-                  borderRadius: "25px",
-                  margin: "0 10px",
-                  border: "2px solid #507650",
                   backgroundColor:
                     activeTab === "camping" ? "#507650" : "transparent",
                   color: activeTab === "camping" ? "white" : "#507650",
-                  transition: "all 0.3s ease",
                 }}
               >
                 🏕️ Book Camping
               </button>
               <button
-                className={`nav-link ${
+                className={`booking-tab-button nav-link ${
                   activeTab === "rafting" ? "active" : ""
                 }`}
                 onClick={() => setActiveTab("rafting")}
                 style={{
-                  padding: "15px 30px",
-                  fontSize: "18px",
-                  fontWeight: "600",
-                  borderRadius: "25px",
-                  margin: "0 10px",
-                  border: "2px solid #507650",
                   backgroundColor:
                     activeTab === "rafting" ? "#507650" : "transparent",
                   color: activeTab === "rafting" ? "white" : "#507650",
-                  transition: "all 0.3s ease",
                 }}
               >
                 🚣 Book Rafting
@@ -424,7 +536,7 @@ function BookingPage() {
           <div className="product-tabs-content">
             <div className="tab-content">
               <div
-                className="col-12 contact-form book-form"
+                className="col-12 contact-form book-form booking-form-container"
                 style={{
                   backgroundColor: "white",
                   padding: "30px",
@@ -448,6 +560,7 @@ function BookingPage() {
 
                 {/* Pricing Information */}
                 <div
+                  className="pricing-info-box"
                   style={{
                     marginBottom: "25px",
                     padding: "20px",
@@ -479,6 +592,7 @@ function BookingPage() {
                     {activeTab === "camping" ? (
                       <>
                         <div
+                          className="pricing-card"
                           style={{
                             padding: "10px 15px",
                             backgroundColor: "white",
@@ -494,6 +608,7 @@ function BookingPage() {
                           </span>
                         </div>
                         <div
+                          className="pricing-card"
                           style={{
                             padding: "10px 15px",
                             backgroundColor: "white",
@@ -509,6 +624,7 @@ function BookingPage() {
                           </span>
                         </div>
                         <div
+                          className="pricing-card"
                           style={{
                             padding: "10px 15px",
                             backgroundColor: "white",
@@ -527,6 +643,7 @@ function BookingPage() {
                     ) : (
                       <>
                         <div
+                          className="pricing-card"
                           style={{
                             padding: "10px 15px",
                             backgroundColor: "white",
@@ -542,6 +659,7 @@ function BookingPage() {
                           </span>
                         </div>
                         <div
+                          className="pricing-card"
                           style={{
                             padding: "10px 15px",
                             backgroundColor: "white",
@@ -557,6 +675,7 @@ function BookingPage() {
                           </span>
                         </div>
                         <div
+                          className="pricing-card"
                           style={{
                             padding: "10px 15px",
                             backgroundColor: "white",
@@ -685,18 +804,7 @@ function BookingPage() {
                     />
                     <div className="col-12" style={{ textAlign: "center" }}>
                       <button
-                        style={{
-                          borderRadius: "25px",
-                          padding: "15px 40px",
-                          fontSize: "18px",
-                          fontWeight: "600",
-                          backgroundColor: "#507650",
-                          border: "none",
-                          color: "white",
-                          boxShadow: "0 5px 15px rgba(80, 118, 80, 0.3)",
-                          transition: "all 0.3s ease",
-                        }}
-                        className="btn mt-4 style3 icon"
+                        className="btn mt-4 style3 icon book-now-button"
                         type="submit"
                         onMouseOver={(e) => {
                           e.currentTarget.style.backgroundColor = "#3d5a3d";
@@ -900,7 +1008,7 @@ function BookingPage() {
               🎯 Ready to Book Your Rishikesh Adventure?
             </h3>
             <p
-              style={{ color: "white", marginBottom: "20px", fontSize: "18px" }}
+              style={{ color: "black", marginBottom: "20px", fontSize: "18px" }}
             >
               Join 3,500+ satisfied customers who chose Tapovan Swiss Camps for
               their <strong>camping and rafting in Rishikesh</strong>{" "}

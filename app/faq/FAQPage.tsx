@@ -4,6 +4,7 @@ import Loading from "@/components/Loading";
 import { useEffect, useState } from "react";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const faqData = [
   // Booking & Payment Category
@@ -287,6 +288,9 @@ const FAQPage = () => {
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [filteredFAQs, setFilteredFAQs] = useState(faqData);
 
+  const pathname = usePathname();
+  const showBreadcrumb = pathname === "/faq";
+
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 768);
@@ -407,13 +411,25 @@ const FAQPage = () => {
 
       {/* Hero Section */}
       <section
-        className={
-          isMobile
-            ? "hero-section bg-gradient-to-br from-green-50 to-blue-50 pt-200"
-            : "hero-section bg-gradient-to-br from-green-50 to-blue-50 pt-60"
-        }
+        className={`hero-section bg-gradient-to-br from-green-50 to-blue-50 ${
+          isMobile ? "pt-200" : "pt-60"
+        }`}
       >
         <div className="container">
+          {showBreadcrumb && (
+            <nav aria-label="breadcrumb" className="container mb-2 mb-md-4">
+              <ol className="breadcrumb">
+                <li className="breadcrumb-item">
+                  <Link href="/" className="text-decoration-none">
+                    Home
+                  </Link>
+                </li>
+                <li className="breadcrumb-item active" aria-current="page">
+                  Gallery
+                </li>
+              </ol>
+            </nav>
+          )}
           <div className="row justify-content-center text-center">
             <div className="col-12 col-md-10 col-lg-8">
               <div className="hero-content">

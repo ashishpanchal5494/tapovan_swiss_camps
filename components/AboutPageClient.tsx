@@ -686,7 +686,7 @@ function AboutPageClient() {
         <div className="container">
           <div className="row">
             {counters.map((counter, index) => (
-              <div key={index} className="counter-col col-lg-3 col-sm-6">
+              <div key={index} className="counter-col col-3 col-lg-3">
                 <div className="single-counter">
                   <i className={counter.icon} aria-hidden="true"></i>
                   <h2>

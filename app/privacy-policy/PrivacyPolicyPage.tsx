@@ -4,9 +4,13 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 
 import Loading from "@/components/Loading";
+import { usePathname } from "next/navigation";
 
 function PrivacyPolicyPage() {
   const [isClient, setIsClient] = useState(false);
+
+  const pathname = usePathname();
+  const showBreadcrumb = pathname === "/privacy-policy";
 
   useEffect(() => {
     setIsClient(true);
@@ -142,7 +146,21 @@ function PrivacyPolicyPage() {
       />
 
       {/* Hero Section */}
-      <section className="privacy-hero bg-gradient-to-br from-blue-50 to-green-50 py-12 py-md-16 py-lg-20">
+      <section className="privacy-hero bg-gradient-to-br from-blue-50 to-green-50 py-12 py-md-16 py-lg-20 mt-40">
+        {showBreadcrumb && (
+          <nav aria-label="breadcrumb" className="container mb-2 mb-md-4">
+            <ol className="breadcrumb">
+              <li className="breadcrumb-item">
+                <Link href="/" className="text-decoration-none">
+                  Home
+                </Link>
+              </li>
+              <li className="breadcrumb-item active" aria-current="page">
+                Privacy Policy
+              </li>
+            </ol>
+          </nav>
+        )}
         <div className="container">
           <div className="row justify-content-center text-center">
             <div className="col-12 col-md-10 col-lg-8">
@@ -180,24 +198,6 @@ function PrivacyPolicyPage() {
               </div>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* Breadcrumb Navigation */}
-      <section className="breadcrumb-section py-3 bg-light">
-        <div className="container">
-          <nav aria-label="breadcrumb">
-            <ol className="breadcrumb mb-0">
-              <li className="breadcrumb-item">
-                <Link href="/" className="text-decoration-none">
-                  Home
-                </Link>
-              </li>
-              <li className="breadcrumb-item active" aria-current="page">
-                Privacy Policy
-              </li>
-            </ol>
-          </nav>
         </div>
       </section>
 

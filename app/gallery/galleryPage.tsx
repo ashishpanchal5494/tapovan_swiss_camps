@@ -3,6 +3,8 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import dynamic from "next/dynamic";
+import { usePathname } from "next/navigation";
+import Link from "next/link";
 
 // Dynamically import Loading component to reduce initial bundle
 const Loading = dynamic(() => import("@/components/Loading"), { ssr: false });
@@ -391,6 +393,9 @@ export default function GalleryPage() {
   const [isClient, setIsClient] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
+  const pathname = usePathname();
+  const showBreadcrumb = pathname === "/gallery";
+
   // Category definitions
   const categories = [
     { id: "all", name: "All Photos", count: ImageData.length },
@@ -507,14 +512,34 @@ export default function GalleryPage() {
           isMobile ? "pt-200" : "pt-60"
         }`}
       >
+        {showBreadcrumb && (
+          <nav aria-label="breadcrumb" className="container mb-2 mb-md-4">
+            <ol className="breadcrumb">
+              <li className="breadcrumb-item">
+                <Link href="/" className="text-decoration-none">
+                  Home
+                </Link>
+              </li>
+              <li className="breadcrumb-item active" aria-current="page">
+                Gallery
+              </li>
+            </ol>
+          </nav>
+        )}
         <div className="container">
           <div className="row justify-content-center text-center">
             <div className="col-12 col-md-10 col-lg-8">
               <div className="hero-content">
-                <h1 className="display-6 display-md-5 display-lg-4 fw-bold text-dark mb-3 mb-md-4">
+                <h1
+                  className="display-6 display-md-5 display-lg-4 fw-bold text-dark mb-3 mb-md-4"
+                  style={{ fontSize: isMobile ? "1.5rem" : undefined }}
+                >
                   Photo Gallery
                 </h1>
-                <p className="lead text-muted mb-4 mb-md-5 px-2 px-md-0">
+                <p
+                  className="lead text-muted mb-4 mb-md-5 px-2 px-md-0"
+                  style={{ fontSize: isMobile ? "0.9rem" : undefined }}
+                >
                   Discover the beauty of{" "}
                   <span className="text-primary-custom fw-semibold">
                     luxury camping
@@ -525,22 +550,72 @@ export default function GalleryPage() {
                   </span>{" "}
                   at Tapovan Swiss Camps
                 </p>
-                <div className="hero-stats d-flex justify-content-center gap-2 gap-md-3 gap-lg-4 mb-4 flex-wrap">
-                  <div className="stat-item text-center px-2">
-                    <div className="h5 h4-md text-primary-custom mb-1">
+                <div
+                  className="hero-stats d-flex justify-content-center gap-2 gap-md-3 gap-lg-4 mb-4"
+                  style={{
+                    flexWrap: isMobile ? "nowrap" : "wrap",
+                    gap: isMobile ? "0.5rem" : undefined,
+                  }}
+                >
+                  <div
+                    className="stat-item text-center px-2"
+                    style={{
+                      flex: isMobile ? "1 1 0" : undefined,
+                      minWidth: isMobile ? "0" : undefined,
+                    }}
+                  >
+                    <div
+                      className="h5 h4-md text-primary-custom mb-1"
+                      style={{ fontSize: isMobile ? "1rem" : undefined }}
+                    >
                       {ImageData.length}+
                     </div>
-                    <small className="text-muted">Photos</small>
+                    <small
+                      className="text-muted"
+                      style={{ fontSize: isMobile ? "0.7rem" : undefined }}
+                    >
+                      Photos
+                    </small>
                   </div>
-                  <div className="stat-item text-center px-2">
-                    <div className="h5 h4-md text-primary-custom mb-1">
+                  <div
+                    className="stat-item text-center px-2"
+                    style={{
+                      flex: isMobile ? "1 1 0" : undefined,
+                      minWidth: isMobile ? "0" : undefined,
+                    }}
+                  >
+                    <div
+                      className="h5 h4-md text-primary-custom mb-1"
+                      style={{ fontSize: isMobile ? "1rem" : undefined }}
+                    >
                       {categories.length - 1}
                     </div>
-                    <small className="text-muted">Categories</small>
+                    <small
+                      className="text-muted"
+                      style={{ fontSize: isMobile ? "0.7rem" : undefined }}
+                    >
+                      Categories
+                    </small>
                   </div>
-                  <div className="stat-item text-center px-2">
-                    <div className="h5 h4-md text-primary-custom mb-1">HD</div>
-                    <small className="text-muted">Quality</small>
+                  <div
+                    className="stat-item text-center px-2"
+                    style={{
+                      flex: isMobile ? "1 1 0" : undefined,
+                      minWidth: isMobile ? "0" : undefined,
+                    }}
+                  >
+                    <div
+                      className="h5 h4-md text-primary-custom mb-1"
+                      style={{ fontSize: isMobile ? "1rem" : undefined }}
+                    >
+                      HD
+                    </div>
+                    <small
+                      className="text-muted"
+                      style={{ fontSize: isMobile ? "0.7rem" : undefined }}
+                    >
+                      Quality
+                    </small>
                   </div>
                 </div>
               </div>
@@ -564,9 +639,16 @@ export default function GalleryPage() {
                         : "btn"
                     }`}
                     onClick={() => handleCategoryChange(category.id)}
+                    style={{
+                      fontSize: isMobile ? "0.75rem" : undefined,
+                      padding: isMobile ? "0.4rem 0.8rem" : undefined,
+                    }}
                   >
                     {category.name}
-                    <span className="badge bg-light text-dark ms-2">
+                    <span
+                      className="badge bg-light text-dark ms-2"
+                      style={{ fontSize: isMobile ? "0.65rem" : undefined }}
+                    >
                       {category.count}
                     </span>
                   </button>
@@ -583,10 +665,16 @@ export default function GalleryPage() {
           <div className="row justify-content-center">
             <div className="col-12 col-lg-10">
               <div className="seo-content-section text-center">
-                <h2 className="h3 h2-md mb-3">
+                <h2
+                  className="h3 h2-md mb-3"
+                  style={{ fontSize: isMobile ? "1.1rem" : undefined }}
+                >
                   Experience Luxury Camping Through Our gallery
                 </h2>
-                <p className="lead mb-4">
+                <p
+                  className="lead mb-4"
+                  style={{ fontSize: isMobile ? "0.85rem" : undefined }}
+                >
                   Browse our collection of premium camping photos showcasing the
                   unique experience at Tapovan Swiss Camps. From our{" "}
                   <strong>luxury Swiss tents in Rishikesh</strong> to exciting{" "}
@@ -597,50 +685,90 @@ export default function GalleryPage() {
 
                 <div className="row text-start">
                   <div className="col-md-6">
-                    <h3 className="h5 mb-3">Gallery Highlights</h3>
-                    <ul className="list-unstyled">
+                    <h3
+                      className="h5 mb-3"
+                      style={{ fontSize: isMobile ? "0.95rem" : undefined }}
+                    >
+                      Gallery Highlights
+                    </h3>
+                    <ul
+                      className="list-unstyled"
+                      style={{ fontSize: isMobile ? "0.8rem" : undefined }}
+                    >
                       <li className="mb-2">
-                        <i className="bx bx-check-circle text-primary-custom me-2"></i>
+                        <i
+                          className="bx bx-check-circle text-primary-custom me-2"
+                          style={{ fontSize: isMobile ? "0.9rem" : undefined }}
+                        ></i>
                         <strong>Luxury Tent Accommodations</strong> - Premium AC
                         and cooler tents
                       </li>
                       <li className="mb-2">
-                        <i className="bx bx-check-circle text-primary-custom me-2"></i>
+                        <i
+                          className="bx bx-check-circle text-primary-custom me-2"
+                          style={{ fontSize: isMobile ? "0.9rem" : undefined }}
+                        ></i>
                         <strong>Scenic Riverside Views</strong> - Beautiful
                         Ganga river panoramas
                       </li>
                       <li className="mb-2">
-                        <i className="bx bx-check-circle text-primary-custom me-2"></i>
+                        <i
+                          className="bx bx-check-circle text-primary-custom me-2"
+                          style={{ fontSize: isMobile ? "0.9rem" : undefined }}
+                        ></i>
                         <strong>Adventure Activities</strong> - Volleyball,
                         rafting and pool moments
                       </li>
                       <li className="mb-2">
-                        <i className="bx bx-check-circle text-primary-custom me-2"></i>
+                        <i
+                          className="bx bx-check-circle text-primary-custom me-2"
+                          style={{ fontSize: isMobile ? "0.9rem" : undefined }}
+                        ></i>
                         <strong>Group Camping Experiences</strong> - Perfect for
                         families and friends
                       </li>
                     </ul>
                   </div>
                   <div className="col-md-6">
-                    <h3 className="h5 mb-3">What You&apos;ll See</h3>
-                    <ul className="list-unstyled">
+                    <h3
+                      className="h5 mb-3"
+                      style={{ fontSize: isMobile ? "0.95rem" : undefined }}
+                    >
+                      What You&apos;ll See
+                    </h3>
+                    <ul
+                      className="list-unstyled"
+                      style={{ fontSize: isMobile ? "0.8rem" : undefined }}
+                    >
                       <li className="mb-2">
-                        <i className="bx bx-check-circle text-primary-custom me-2"></i>
+                        <i
+                          className="bx bx-check-circle text-primary-custom me-2"
+                          style={{ fontSize: isMobile ? "0.9rem" : undefined }}
+                        ></i>
                         <strong>Modern Amenities</strong> - Clean facilities and
                         comfortable accommodations
                       </li>
                       <li className="mb-2">
-                        <i className="bx bx-check-circle text-primary-custom me-2"></i>
+                        <i
+                          className="bx bx-check-circle text-primary-custom me-2"
+                          style={{ fontSize: isMobile ? "0.9rem" : undefined }}
+                        ></i>
                         <strong>Natural Beauty</strong> - Lush gardens and
                         mountain backdrops
                       </li>
                       <li className="mb-2">
-                        <i className="bx bx-check-circle text-primary-custom me-2"></i>
+                        <i
+                          className="bx bx-check-circle text-primary-custom me-2"
+                          style={{ fontSize: isMobile ? "0.9rem" : undefined }}
+                        ></i>
                         <strong>Social Events</strong> - Parties, celebrations,
                         and group activities
                       </li>
                       <li className="mb-2">
-                        <i className="bx bx-check-circle text-primary-custom me-2"></i>
+                        <i
+                          className="bx bx-check-circle text-primary-custom me-2"
+                          style={{ fontSize: isMobile ? "0.9rem" : undefined }}
+                        ></i>
                         <strong>Memorable Moments</strong> - Real guest
                         experiences and happy memories
                       </li>
@@ -674,7 +802,7 @@ export default function GalleryPage() {
                     style={{
                       transition: "transform 0.3s ease",
                       objectFit: "cover",
-                      height: "250px",
+                      height: isMobile ? "200px" : "250px",
                     }}
                   />
                   <div
@@ -687,13 +815,28 @@ export default function GalleryPage() {
                     }}
                   >
                     <div className="text-white">
-                      <h6 className="mb-1">{item.title}</h6>
-                      <small className="d-block">{item.description}</small>
+                      <h6
+                        className="mb-1"
+                        style={{ fontSize: isMobile ? "0.85rem" : undefined }}
+                      >
+                        {item.title}
+                      </h6>
+                      <small
+                        className="d-block"
+                        style={{ fontSize: isMobile ? "0.7rem" : undefined }}
+                      >
+                        {item.description}
+                      </small>
                     </div>
                   </div>
                   {item.featured && (
                     <div className="featured-badge position-absolute top-0 end-0 m-2">
-                      <span className="badge bg-primary-custom">Featured</span>
+                      <span
+                        className="badge bg-primary-custom"
+                        style={{ fontSize: isMobile ? "0.65rem" : undefined }}
+                      >
+                        Featured
+                      </span>
                     </div>
                   )}
                 </div>
@@ -748,10 +891,16 @@ export default function GalleryPage() {
                   borderBottomRightRadius: "1rem",
                 }}
               >
-                <h5 className="mb-1">
+                <h5
+                  className="mb-1"
+                  style={{ fontSize: isMobile ? "0.9rem" : undefined }}
+                >
                   {getImageDetails(selectedImage)?.title}
                 </h5>
-                <p className="mb-0 small">
+                <p
+                  className="mb-0 small"
+                  style={{ fontSize: isMobile ? "0.75rem" : undefined }}
+                >
                   {getImageDetails(selectedImage)?.description}
                 </p>
               </div>
