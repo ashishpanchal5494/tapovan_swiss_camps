@@ -193,7 +193,7 @@ const VideoSection: React.FC = () => {
         try {
           v.pause();
           v.currentTime = 0;
-        } catch (error) {
+        } catch {
           // Ignore pause errors
         }
       }

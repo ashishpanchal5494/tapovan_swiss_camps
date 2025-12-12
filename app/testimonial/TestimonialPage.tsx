@@ -12,10 +12,8 @@ import {
   FaThumbsUp,
   FaSync,
   FaGoogle,
-  FaArrowRight,
   FaCalendarCheck,
   FaWhatsapp,
-  FaPhone,
   FaCheckCircle,
 } from "react-icons/fa";
 import { useGoogleReviews } from "@/hooks/useGoogleReviews";
@@ -294,6 +292,7 @@ const TestimonialPage: React.FC = memo(() => {
   const [isMobile, setIsMobile] = useState(false);
   const [isClient, setIsClient] = useState(false);
   const [showGoogleReviews, setShowGoogleReviews] = useState(true);
+  const pathname = usePathname();
 
   // Fetch Google Reviews
   const {
@@ -493,12 +492,11 @@ const TestimonialPage: React.FC = memo(() => {
     []
   );
 
+  const showBreadcrumb = pathname === "/testimonial";
+
   if (!isClient) {
     return <Loading />;
   }
-
-  const pathname = usePathname();
-  const showBreadcrumb = pathname === "/testimonial";
 
   return (
     <>
