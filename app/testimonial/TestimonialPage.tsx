@@ -200,7 +200,7 @@ type Testimonial = {
 };
 
 const TestimonialCard = memo(
-  ({ testimonial, index }: { testimonial: Testimonial; index: number }) => {
+  ({ testimonial }: { testimonial: Testimonial }) => {
     return (
       <div className="keen-slider__slide" key={testimonial.id}>
         <div className="single-testimonial-box px-2">
@@ -961,11 +961,10 @@ const TestimonialPage: React.FC = memo(() => {
 
           {/* Testimonials Slider */}
           <div ref={sliderRef} className="keen-slider">
-            {allTestimonials.map((testimonial, index) => (
+            {allTestimonials.map((testimonial) => (
               <TestimonialCard
                 key={testimonial.id}
                 testimonial={testimonial}
-                index={index}
               />
             ))}
           </div>
