@@ -10,13 +10,10 @@ import {
   FaQuoteRight,
   FaMapMarkerAlt,
   FaThumbsUp,
-  FaSync,
-  FaGoogle,
   FaCalendarCheck,
   FaWhatsapp,
   FaCheckCircle,
 } from "react-icons/fa";
-import { useGoogleReviews } from "@/hooks/useGoogleReviews";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 
@@ -200,16 +197,10 @@ type Testimonial = {
   text: string;
   verified?: boolean;
   platform: string;
-  source?: string;
 };
 
 const TestimonialCard = memo(
   ({ testimonial, index }: { testimonial: Testimonial; index: number }) => {
-    // Debug logging for first few testimonials
-    if (index < 3) {
-      console.log(`Testimonial ${index}:`, testimonial);
-    }
-
     return (
       <div className="keen-slider__slide" key={testimonial.id}>
         <div className="single-testimonial-box px-2">
@@ -224,11 +215,6 @@ const TestimonialCard = memo(
                 <FaStar key={i} className="star-filled" />
               ))}
               <span className="rating-text">({testimonial.rating}.0)</span>
-              {testimonial.source === "google-maps" && (
-                <div className="google-badge">
-                  <FaGoogle className="google-icon" />
-                </div>
-              )}
             </div>
 
             <p className="testimonial-text">{testimonial.text}</p>
@@ -291,18 +277,7 @@ TestimonialCard.displayName = "TestimonialCard";
 const TestimonialPage: React.FC = memo(() => {
   const [isMobile, setIsMobile] = useState(false);
   const [isClient, setIsClient] = useState(false);
-  const [showGoogleReviews, setShowGoogleReviews] = useState(true);
   const pathname = usePathname();
-
-  // Fetch Google Reviews
-  const {
-    reviews: googleReviews,
-    loading: reviewsLoading,
-    error: reviewsError,
-    lastUpdated,
-    isCached,
-    refreshReviews,
-  } = useGoogleReviews();
 
   // Memoized resize handler
   const handleResize = useCallback(() => {
@@ -346,62 +321,10 @@ const TestimonialPage: React.FC = memo(() => {
 
   const [sliderRef] = useKeenSlider<HTMLDivElement>(sliderConfig);
 
-  // Combine static testimonials with Google Reviews
+  // Use static testimonials
   const allTestimonials = useMemo(() => {
-    if (showGoogleReviews && googleReviews.length > 0) {
-      const normalized = googleReviews.map(
-        (gr: {
-          id?: string;
-          authorName?: string;
-          authorLocation?: string;
-          rating?: number | string;
-          time?: string | number | Date;
-          text?: string;
-        }) => ({
-          id: gr.id || `${gr.authorName}-${gr.time || ""}`,
-          image: "/assets/img/testimonial/default-avatar.svg",
-          name: gr.authorName || "Guest",
-          location: gr.authorLocation || "India",
-          rating: Number(gr.rating ?? 5) || 5,
-          date: (() => {
-            if (gr.time === undefined) return undefined;
-            if (gr.time instanceof Date) return gr.time.toISOString();
-            if (typeof gr.time === "number" || typeof gr.time === "string") {
-              const d = new Date(gr.time);
-              return isNaN(d.getTime()) ? undefined : d.toISOString();
-            }
-            return undefined;
-          })(),
-          text: gr.text || "",
-          verified: true,
-          platform: "Google Reviews",
-          source: "google-maps",
-        })
-      );
-      const mixedTestimonials = [...normalized, ...testimonials];
-      return mixedTestimonials.slice(0, 20);
-    }
     return testimonials;
-  }, [googleReviews, showGoogleReviews]);
-
-  // Debug logging (removed for production)
-  // Uncomment below for debugging if needed:
-  // useEffect(() => {
-  //   if (isClient && process.env.NODE_ENV === 'development') {
-  //     console.log("Google Reviews:", googleReviews.length);
-  //     console.log("Show Google Reviews:", showGoogleReviews);
-  //     console.log("All Testimonials:", allTestimonials.length);
-  //     console.log("Reviews Loading:", reviewsLoading);
-  //     console.log("Reviews Error:", reviewsError);
-  //   }
-  // }, [
-  //   googleReviews,
-  //   showGoogleReviews,
-  //   allTestimonials,
-  //   reviewsLoading,
-  //   reviewsError,
-  //   isClient,
-  // ]);
+  }, []);
 
   // Memoized structured data
   const reviewStructuredData = useMemo(
@@ -715,36 +638,6 @@ const TestimonialPage: React.FC = memo(() => {
           font-size: 0.8rem;
         }
 
-        .google-badge {
-          display: inline-flex;
-          align-items: center;
-          background: #4285f4;
-          color: white;
-          padding: 0.2rem 0.5rem;
-          border-radius: 12px;
-          font-size: 0.7rem;
-          margin-left: 0.5rem;
-        }
-
-        .google-icon {
-          font-size: 0.8rem;
-        }
-
-        .google-reviews-controls {
-          border-top: 1px solid rgba(255, 255, 255, 0.2);
-          padding-top: 1rem;
-        }
-
-        .google-reviews-controls .btn {
-          border-radius: 20px;
-          font-weight: 600;
-          transition: all 0.3s ease;
-        }
-
-        .google-reviews-controls .btn:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
 
         .fa-spin {
           animation: fa-spin 1s infinite linear;
@@ -1043,55 +936,6 @@ const TestimonialPage: React.FC = memo(() => {
                 Based on <strong>50+ verified reviews</strong> from Google
                 Reviews, TripAdvisor, and our guests
               </p>
-              {/* Google Reviews Controls */}
-              <div className="google-reviews-controls mt-3">
-                <div className="d-flex justify-content-center align-items-center gap-3">
-                  <button
-                    className={`btn btn-sm ${
-                      showGoogleReviews ? "btn-success" : "btn-outline-success"
-                    }`}
-                    onClick={() => setShowGoogleReviews(!showGoogleReviews)}
-                  >
-                    <FaGoogle className="me-1" />
-                    {showGoogleReviews ? "Hide" : "Show"} Google Reviews
-                  </button>
-
-                  {showGoogleReviews && (
-                    <button
-                      className="btn btn-sm btn-outline-primary"
-                      onClick={refreshReviews}
-                      disabled={reviewsLoading}
-                    >
-                      <FaSync
-                        className={`me-1 ${reviewsLoading ? "fa-spin" : ""}`}
-                      />
-                      Refresh
-                    </button>
-                  )}
-                </div>
-
-                {showGoogleReviews && googleReviews.length > 0 && (
-                  <div className="mt-2">
-                    <small className="text-muted">
-                      Showing {googleReviews.length} live Google Reviews
-                      {isCached && <span className="ms-2">(Cached)</span>}
-                      {lastUpdated && (
-                        <span className="ms-2">
-                          Last updated: {new Date(lastUpdated).toLocaleString()}
-                        </span>
-                      )}
-                    </small>
-                  </div>
-                )}
-
-                {reviewsError && (
-                  <div className="mt-2">
-                    <small className="text-danger">
-                      Error loading Google Reviews: {reviewsError}
-                    </small>
-                  </div>
-                )}
-              </div>
             </div>
           </div>
 
@@ -1116,36 +960,15 @@ const TestimonialPage: React.FC = memo(() => {
           </div>
 
           {/* Testimonials Slider */}
-          {reviewsLoading ? (
-            <div className="text-center py-5">
-              <div className="spinner-border text-primary" role="status">
-                <span className="visually-hidden">Loading reviews...</span>
-              </div>
-              <p className="mt-3">Loading Google Reviews...</p>
-            </div>
-          ) : (
-            <div ref={sliderRef} className="keen-slider">
-              {allTestimonials.map((testimonial, index) => (
-                <TestimonialCard
-                  key={testimonial.id}
-                  testimonial={testimonial}
-                  index={index}
-                />
-              ))}
-            </div>
-          )}
-
-          {/* Debug Info */}
-          {isClient && (
-            <div className="mt-3 text-center">
-              <small className="text-muted">
-                Showing {allTestimonials.length} testimonials
-                {showGoogleReviews && googleReviews.length > 0 && (
-                  <span> ({googleReviews.length} from Google)</span>
-                )}
-              </small>
-            </div>
-          )}
+          <div ref={sliderRef} className="keen-slider">
+            {allTestimonials.map((testimonial, index) => (
+              <TestimonialCard
+                key={testimonial.id}
+                testimonial={testimonial}
+                index={index}
+              />
+            ))}
+          </div>
         </div>
       </div>
 
