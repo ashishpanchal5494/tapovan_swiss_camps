@@ -5030,11 +5030,11 @@ Hero Section CSS
   }
 
   .hero-background {
-    height: 60vh !important;
+    height: 40vh !important;
   }
 
   .hero-content {
-    min-height: 60vh;
+    min-height: 40vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -5078,15 +5078,15 @@ Hero Section CSS
 /* Small phones */
 @media (max-width: 576px) {
   .hero-section {
-    min-height: 60vh;
+    min-height: 40vh;
   }
 
   .hero-background {
-    height: 60vh !important;
+    height: 40vh !important;
   }
 
   .hero-content {
-    min-height: 60vh;
+    min-height: 40vh;
   }
 
   .hero-content h1 {
@@ -6408,106 +6408,29 @@ Room Details Area CSS
 /*==========================
 Video Section CSS
 ============================*/
-.video-section {
-  position: relative;
-  width: 100%;
-  overflow: hidden;
-  padding: 0;
-  margin: 0;
-}
 
-.video-section .container {
-  padding-left: 0;
-  padding-right: 0;
-}
-
-.video-slider-wrapper {
+.video-wrapper {
   width: 100%;
-  height: calc(var(--vh, 1vh) * 90);
-  position: relative;
+  aspect-ratio: 16 / 9;
+  background: #000;
   overflow: hidden;
-  min-height: 300px;
 }
 
 .video-slider {
   display: flex;
   height: 100%;
-  transition: transform 0.8s ease-in-out;
-  will-change: transform;
+  transition: transform 0.6s ease;
 }
 
 .video-slide {
+  width: 100%;
   height: 100%;
   object-fit: cover;
   flex-shrink: 0;
-  display: block;
+  background: white;
 }
 
-@media (max-width: 768px) {
-  .video-slider-wrapper {
-    height: calc(var(--vh, 1vh) * 50);
-    min-height: 250px;
-  }
 
-  .video-slide {
-    height: 100%;
-  }
-}
-
-@media (max-width: 480px) {
-  .video-slider-wrapper {
-    height: calc(var(--vh, 1vh) * 40);
-    min-height: 200px;
-  }
-
-  .video-slide {
-    height: 100%;
-  }
-}
-
-/* Video Section Header Mobile Responsive */
-@media (max-width: 767px) {
-  .video-section-header {
-    margin-bottom: 16px !important;
-    padding: 0 10px;
-  }
-
-  .video-section-title {
-    font-size: 1.3rem !important;
-    line-height: 1.3 !important;
-    margin-bottom: 8px !important;
-  }
-
-  .video-section-description {
-    font-size: 0.8rem !important;
-    line-height: 1.4 !important;
-    margin-bottom: 12px !important;
-  }
-}
-
-@media (min-width: 768px) and (max-width: 991px) {
-  .video-section-title {
-    font-size: 2rem !important;
-    line-height: 1.3 !important;
-  }
-
-  .video-section-description {
-    font-size: 1rem !important;
-    line-height: 1.5 !important;
-  }
-}
-
-@media (min-width: 992px) {
-  .video-section-title {
-    font-size: 2.5rem !important;
-    line-height: 1.3 !important;
-  }
-
-  .video-section-description {
-    font-size: 1.125rem !important;
-    line-height: 1.6 !important;
-  }
-}
 
 /*==========================
 Loading Component CSS
@@ -6739,7 +6662,7 @@ Tents Page Mobile Responsive CSS
 /* Tents Section Mobile Styles */
 @media (max-width: 767px) {
   .tents-section {
-    padding-top: 20px !important;
+  
     padding-bottom: 20px !important;
   }
 

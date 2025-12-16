@@ -325,10 +325,8 @@ const TentsClient: React.FC = () => {
 
           {/* <div className="row align-items-center"> */}
           <div className="col-12 col-lg-12">
-            <div className="hero-content">
-              <div className="hero-icon ">
-                <i className="bx bx-tent tents-hero-icon text-primary-custom"></i>
-              </div>
+            <div style={{marginTop: "40px"}} className="hero-content">
+              
               <h1 className="tents-hero-title text-center fw-bold text-dark mb-2 mb-md-4">
                 Luxury{" "}
                 <span className="text-primary-custom">Camping Tent </span>
@@ -410,7 +408,7 @@ const TentsClient: React.FC = () => {
 
       {/* Tents Section */}
       <section id="tents-section" className="tents-section ">
-        <div className="container">
+        <div className="container mb-20">
           <div className="row">
             <div className="col-12">
               <div className="section-header text-center mb-3 mb-md-5">
