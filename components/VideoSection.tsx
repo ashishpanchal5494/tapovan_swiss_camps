@@ -79,7 +79,7 @@ const VideoSection = () => {
           {videos.map((src, index) => (
             <video
               key={src}
-              ref={(el) => (videoRefs.current[index] = el as any)}
+              ref={(el) => (videoRefs.current[index] = el)}
               src={src}
               muted
               playsInline
