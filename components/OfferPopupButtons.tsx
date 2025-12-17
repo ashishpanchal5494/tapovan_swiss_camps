@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { FaTimes,  } from "react-icons/fa";
+import Image from "next/image";
 import { IoIosCloseCircleOutline } from "react-icons/io";
 
 
@@ -33,10 +33,14 @@ const OfferModal = ({ isOpen, onClose, imageSrc, altText }: OfferModalProps) => 
           <button className="offer-modal-close" onClick={onClose} aria-label="Close">
             <IoIosCloseCircleOutline />
           </button>
-          <img
+          <Image
             src={imageSrc}
             alt={altText}
             className="offer-modal-image"
+            width={800}
+            height={600}
+            style={{ width: "auto", height: "auto" }}
+            priority
           />
         </div>
       </div>
@@ -97,10 +101,12 @@ const OfferPopupButtons = () => {
           >
            
              {/* Small Christmas Logo */}
-  <img
+  <Image
     src="/assets/offer_icons/christmas_icon.png"
     alt="Christmas"
     className="offer-badge"
+    width={65}
+    height={60}
   />
 
             <div className="offer-pulse" />
@@ -123,10 +129,12 @@ const OfferPopupButtons = () => {
             onMouseLeave={() => setShowTooltip(null)}
             aria-label="View New Year Offer"
           >
-             <img
+             <Image
     src="/assets/offer_icons/new_year_icon.png"
     alt="New Year"
     className="offer-badge"
+    width={65}
+    height={60}
   />
             <div className="offer-pulse" />
             <div className="offer-ripple" />

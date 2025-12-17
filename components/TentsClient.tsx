@@ -4,7 +4,6 @@ import React, { useEffect, useState } from "react";
 import TentCard from "@/components/TentCard";
 import { usePathname, useSearchParams } from "next/navigation";
 import Link from "next/link";
-import Image from "next/image";
 import Script from "next/script";
 import { tentRooms } from "../app/tents/tentData";
 
