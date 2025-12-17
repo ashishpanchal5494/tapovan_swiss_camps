@@ -10,6 +10,7 @@ import "boxicons/css/boxicons.min.css";
 
 import Layout from "@/components/Layout";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import OfferPopupButtons from "@/components/OfferPopupButtons";
 import Script from "next/script";
 
 const readexPro = Readex_Pro({
@@ -364,6 +365,7 @@ export default function RootLayout({
             })}
           </Script>
           <WhatsAppButton />
+          <OfferPopupButtons />
         </Layout>
       </body>
     </html>

@@ -246,7 +246,7 @@ const TentsClient: React.FC = () => {
             </nav>
           )}
 
-          <section className="offer-slider ">
+          {/* <section className="offer-slider ">
             <div
               id="offerCarousel"
               className="carousel slide offer-carousel"
@@ -293,7 +293,7 @@ const TentsClient: React.FC = () => {
                     <Image
                       width={500}
                       height={500}
-                      src="/assets/offers/new_year.png"
+                      src="/assets/offers/newyear_banner.png"
                       className="offer-image"
                       alt="New Year Offer Tapovan Swiss Camps"
                       loading="lazy"
@@ -321,7 +321,7 @@ const TentsClient: React.FC = () => {
                 </div>
               </div>
             </div>
-          </section>
+          </section> */}
 
           {/* <div className="row align-items-center"> */}
           <div className="col-12 col-lg-12">
