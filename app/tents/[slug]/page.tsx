@@ -1,7 +1,8 @@
-import React from "react";
+import React, { Suspense } from "react";
 import TentDetailsPage from "./TentDetailsPage";
 import { Metadata, ResolvingMetadata } from "next";
 import { getTentBySlug, getAllTentSlugs } from "../tentData";
+import Loading from "@/components/Loading";
 
 // Generate static params for all tent slugs
 export async function generateStaticParams() {
@@ -136,7 +137,11 @@ export async function generateMetadata(
 }
 
 function TentDetails() {
-  return <TentDetailsPage />;
+  return (
+    <Suspense fallback={<Loading fullscreen size="large" text="Loading tent details..." />}>
+      <TentDetailsPage />
+    </Suspense>
+  );
 }
 
 export default TentDetails;
