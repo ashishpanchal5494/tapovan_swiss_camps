@@ -31,8 +31,10 @@ const TentCard: React.FC<TentCardProps> = memo(
     beds,
     baths,
     adults,
-    perHeadPrice: _initialPerHeadPrice,
-    perHeadMainPrice: _initialPerHeadMainPrice,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    perHeadPrice: _perHeadPrice,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    perHeadMainPrice: _perHeadMainPrice,
     basePrice,
     mainBasePrice,
     totalDays = 1,
