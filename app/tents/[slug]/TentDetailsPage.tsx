@@ -35,12 +35,17 @@ const TentDetailsPage: React.FC = () => {
   const [personsPerTent, setPersonsPerTent] = useState<number>(5);
   const [totalDays, setTotalDays] = useState<number>(1);
 
+  // Extract search params values for dependency array
+  const adultsParam = searchParams?.get("adults") || null;
+  const checkInParam = searchParams?.get("checkIn") || null;
+  const checkOutParam = searchParams?.get("checkOut") || null;
+  const daysParam = searchParams?.get("days") || null;
+
   // Update from URL params when they change
   useEffect(() => {
     if (!searchParams) return;
     
     // Update adults from URL
-    const adultsParam = searchParams.get("adults");
     if (adultsParam) {
       const adultsValue = parseInt(adultsParam, 10);
       if (!isNaN(adultsValue) && adultsValue >= 1 && adultsValue <= 50) {
@@ -52,8 +57,8 @@ const TentDetailsPage: React.FC = () => {
     }
 
     // Calculate totalDays from checkIn/checkOut dates
-    const checkIn = searchParams.get("checkIn") || "";
-    const checkOut = searchParams.get("checkOut") || "";
+    const checkIn = checkInParam || "";
+    const checkOut = checkOutParam || "";
     
     if (checkIn && checkOut) {
       const startDate = new Date(checkIn);
@@ -67,7 +72,6 @@ const TentDetailsPage: React.FC = () => {
       setTotalDays(days);
     } else {
       // Check if days param exists directly
-      const daysParam = searchParams.get("days");
       if (daysParam) {
         const daysValue = parseInt(daysParam, 10);
         if (!isNaN(daysValue) && daysValue >= 1 && daysValue <= 30) {
@@ -77,12 +81,7 @@ const TentDetailsPage: React.FC = () => {
         setTotalDays(1);
       }
     }
-  }, [
-    searchParams?.get("adults"),
-    searchParams?.get("checkIn"),
-    searchParams?.get("checkOut"),
-    searchParams?.get("days"),
-  ]);
+  }, [searchParams, adultsParam, checkInParam, checkOutParam, daysParam]);
 
   const handleChange = (
     e: React.ChangeEvent<

@@ -83,7 +83,7 @@ export default function NewYearOfferSEO() {
     description:
       "Join us for an unforgettable New Year celebration in Rishikesh! Experience luxury camping with AC tents, enjoy Ganga river views, bonfire, delicious food, adventure activities, and create lasting memories. Special New Year packages available.",
     startDate: "2025-12-31T18:00:00+05:30",
-    endDate: "2016-01-02T11:00:00+05:30",
+    endDate: "2026-01-02T11:00:00+05:30",
     eventStatus: "https://schema.org/EventScheduled",
     eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
     location: {
@@ -115,8 +115,8 @@ export default function NewYearOfferSEO() {
       priceCurrency: "INR",
       availability: "https://schema.org/InStock",
       url: "https://www.tapovanswisscampsofficial.com",
-      validFrom: "2024-12-01",
-      validThrough: "2025-01-31",
+      validFrom: "2025-12-01",
+      validThrough: "2026-01-31",
     },
     image: [
       "https://www.tapovanswisscampsofficial.com/assets/offers/new_year_offer.png",
@@ -152,7 +152,7 @@ export default function NewYearOfferSEO() {
         <h2>Celebrate New Year 2026 at Best Camping Resort in Rishikesh</h2>
         <p>
           Welcome the New Year 2026 with an extraordinary camping experience at
-          Tapovan Swiss Camps, Rishikesh's premier luxury camping destination.
+          Tapovan Swiss Camps, Rishikesh&apos;s premier luxury camping destination.
           Our exclusive New Year offer brings you the best of adventure,
           comfort, and celebration by the holy Ganges River. Book your New Year
           getaway now and avail special discounts on premium AC tents and cooler
@@ -195,7 +195,7 @@ export default function NewYearOfferSEO() {
           </li>
         </ul>
 
-        <h2>New Year 2025 Camping Packages & Prices</h2>
+        <h2>New Year 2026 Camping Packages & Prices</h2>
         <p>
           Our New Year special offer includes discounted rates on all camping
           packages. Starting from just ₹999 per person, you can enjoy a
@@ -208,16 +208,16 @@ export default function NewYearOfferSEO() {
         <p>
           Tapovan Swiss Camps is the best choice for New Year celebrations in
           Rishikesh. Located in the serene Tapovan area, we offer the perfect
-          blend of luxury and adventure. Whether you're planning a romantic
-          getaway, family vacation, or friends' trip, our New Year packages are
+          blend of luxury and adventure. Whether you&apos;re planning a romantic
+          getaway, family vacation, or friends&apos; trip, our New Year packages are
           designed to make your celebration memorable.
         </p>
 
         <h2>Book Your New Year 2026 Camping Now</h2>
         <p>
-          Don't miss out on this limited-time New Year offer! Book your stay at
-          Tapovan Swiss Camps today and secure the best rates for New Year 2025.
-          Our special packages are valid until January 31, 2025. Call us at
+          Don&apos;t miss out on this limited-time New Year offer! Book your stay at
+          Tapovan Swiss Camps today and secure the best rates for New Year 2026.
+          Our special packages are valid until January 31, 2026. Call us at
           +91-7906924003 or book online to avail exclusive New Year discounts.
         </p>
 
