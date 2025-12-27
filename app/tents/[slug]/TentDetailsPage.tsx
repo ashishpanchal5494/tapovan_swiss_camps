@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState, useMemo } from "react";
-import { useParams } from "next/navigation";
+import { useParams, useSearchParams } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import Loading from "@/components/Loading";
@@ -20,6 +20,7 @@ import { getTentBySlug, Tent } from "../tentData";
 
 const TentDetailsPage: React.FC = () => {
   const params = useParams();
+  const searchParams = useSearchParams();
   const [activeTab, setActiveTab] = useState("photo");
   const [isClient, setIsClient] = useState(false);
   const [tent, setTent] = useState<Tent | null>(null);
@@ -30,6 +31,59 @@ const TentDetailsPage: React.FC = () => {
     message: "",
   });
 
+  // Get initial values from URL params or defaults
+  const [personsPerTent, setPersonsPerTent] = useState<number>(5);
+  const [totalDays, setTotalDays] = useState<number>(1);
+
+  // Update from URL params when they change
+  useEffect(() => {
+    if (!searchParams) return;
+    
+    // Update adults from URL
+    const adultsParam = searchParams.get("adults");
+    if (adultsParam) {
+      const adultsValue = parseInt(adultsParam, 10);
+      if (!isNaN(adultsValue) && adultsValue >= 1 && adultsValue <= 50) {
+        setPersonsPerTent(adultsValue);
+      }
+    } else {
+      // Default to 5 if no param
+      setPersonsPerTent(5);
+    }
+
+    // Calculate totalDays from checkIn/checkOut dates
+    const checkIn = searchParams.get("checkIn") || "";
+    const checkOut = searchParams.get("checkOut") || "";
+    
+    if (checkIn && checkOut) {
+      const startDate = new Date(checkIn);
+      const endDate = new Date(checkOut);
+      const timeDiff = endDate.getTime() - startDate.getTime();
+      let days = Math.ceil(timeDiff / (1000 * 3600 * 24));
+
+      if (days < 1) days = 1;
+      if (days > 30) days = 30;
+
+      setTotalDays(days);
+    } else {
+      // Check if days param exists directly
+      const daysParam = searchParams.get("days");
+      if (daysParam) {
+        const daysValue = parseInt(daysParam, 10);
+        if (!isNaN(daysValue) && daysValue >= 1 && daysValue <= 30) {
+          setTotalDays(daysValue);
+        }
+      } else {
+        setTotalDays(1);
+      }
+    }
+  }, [
+    searchParams?.get("adults"),
+    searchParams?.get("checkIn"),
+    searchParams?.get("checkOut"),
+    searchParams?.get("days"),
+  ]);
+
   const handleChange = (
     e: React.ChangeEvent<
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
@@ -37,6 +91,69 @@ const TentDetailsPage: React.FC = () => {
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const calculatePrice = (
+    basePrice: number,
+    beds: number,
+    mainBasePrice: number
+  ) => {
+    let perHeadPrice = basePrice;
+    let perHeadMainPrice = mainBasePrice;
+
+    if (beds === 5) {
+      if (personsPerTent === 2) {
+        perHeadPrice = Math.round(basePrice * 1.6);
+        perHeadMainPrice = Math.round(mainBasePrice * 1.6);
+      } else if (personsPerTent === 3) {
+        perHeadPrice = Math.round(basePrice * 1.3);
+        perHeadMainPrice = Math.round(mainBasePrice * 1.3);
+      } else if (personsPerTent === 4) {
+        perHeadPrice = Math.round(basePrice * 1.1);
+        perHeadMainPrice = Math.round(mainBasePrice * 1.1);
+      }
+    }
+
+    const totalPrice = perHeadPrice * personsPerTent * totalDays;
+    const totalMainPrice = perHeadMainPrice * personsPerTent * totalDays;
+
+    return { perHeadPrice, perHeadMainPrice, totalPrice, totalMainPrice };
+  };
+
+  const handleAdultsChange = (newValue: number) => {
+    if (newValue >= 1 && newValue <= 50) {
+      setPersonsPerTent(newValue);
+    }
+  };
+
+  const incrementAdults = () => {
+    if (personsPerTent < 50) {
+      setPersonsPerTent((prev) => prev + 1);
+    }
+  };
+
+  const decrementAdults = () => {
+    if (personsPerTent > 1) {
+      setPersonsPerTent((prev) => prev - 1);
+    }
+  };
+
+  const handleDaysChange = (newValue: number) => {
+    if (newValue >= 1 && newValue <= 30) {
+      setTotalDays(newValue);
+    }
+  };
+
+  const incrementDays = () => {
+    if (totalDays < 30) {
+      setTotalDays((prev) => prev + 1);
+    }
+  };
+
+  const decrementDays = () => {
+    if (totalDays > 1) {
+      setTotalDays((prev) => prev - 1);
+    }
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -300,32 +417,194 @@ const TentDetailsPage: React.FC = () => {
                 {/* Room Details */}
                 <div className="mb-4">
                   <h3 className="title">{tent.title}</h3>
-                  <span className="price d-block">
-                    {" "}
-                    <span
-                      style={{
-                        textDecoration: "line-through",
-                        color: "#F2003D",
-                        marginRight: 5,
-                      }}
-                    >
-                      ₹{tent.mainPrice}
-                    </span>{" "}
-                    ₹{tent.price}.00
-                  </span>
-                  <small className="d-block mb-2">
-                    Starting from ₹{tent.price} per tent
-                  </small>
-                  <div className="mb-4">
-                    <h4>
-                      The displayed price is based on an occupancy of up to five
-                      guests.
-                      <p className="mt-2">
-                        Please check the pricing based on your occupancy{" "}
-                        <Link href="/">Home</Link>
-                      </p>
-                    </h4>
+                  
+                  {/* Price Display */}
+                  {tent && (() => {
+                    const { perHeadPrice, perHeadMainPrice, totalPrice, totalMainPrice } = calculatePrice(
+                      tent.price,
+                      tent.beds,
+                      tent.mainPrice
+                    );
+                    return (
+                      <>
+                        <div className="mb-3">
+                          <span className="price d-block">
+                            <span
+                              style={{
+                                textDecoration: "line-through",
+                                color: "#F2003D",
+                                marginRight: 5,
+                              }}
+                            >
+                              ₹{perHeadMainPrice}
+                            </span>{" "}
+                            <span style={{ fontSize: "24px", fontWeight: "bold" }}>
+                              ₹{perHeadPrice}
+                            </span>
+                            <small className="d-block mt-1" style={{ fontSize: "14px", color: "#666" }}>
+                              Per Head
+                            </small>
+                          </span>
+                        </div>
+                        
+                        {/* Total Price Display */}
+                        <div className="mb-3 p-3" style={{ backgroundColor: "#f8f9fa", borderRadius: "8px", border: "1px solid #dee2e6" }}>
+                          <div className="d-flex justify-content-between align-items-center mb-2">
+                            <span style={{ fontSize: "14px", fontWeight: 500 }}>Total Price:</span>
+                            <div>
+                              <span
+                                style={{
+                                  textDecoration: "line-through",
+                                  color: "#F2003D",
+                                  marginRight: 8,
+                                  fontSize: "16px",
+                                }}
+                              >
+                                ₹{totalMainPrice}
+                              </span>
+                              <span style={{ fontSize: "20px", fontWeight: "bold", color: "#507650" }}>
+                                ₹{totalPrice}
+                              </span>
+                            </div>
+                          </div>
+                          <small className="text-muted" style={{ fontSize: "12px" }}>
+                            For {personsPerTent} {personsPerTent === 1 ? "person" : "persons"} × {totalDays} {totalDays === 1 ? "day" : "days"}
+                          </small>
+                        </div>
+                      </>
+                    );
+                  })()}
+
+                  {/* Adults Input */}
+                  <div className="mb-3">
+                    <label className="form-label mb-2" style={{ fontSize: "14px", fontWeight: 500 }}>
+                      Adults:
+                    </label>
+                    <div className="d-flex align-items-center">
+                      <button
+                        type="button"
+                        className="btn btn-outline-secondary"
+                        onClick={decrementAdults}
+                        disabled={personsPerTent <= 1}
+                        style={{
+                          width: "40px",
+                          height: "40px",
+                          padding: 0,
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          borderTopRightRadius: 0,
+                          borderBottomRightRadius: 0,
+                        }}
+                      >
+                        <i className="bx bx-minus" style={{ fontSize: "20px" }}></i>
+                      </button>
+                      <input
+                        type="number"
+                        className="form-control text-center"
+                        value={personsPerTent}
+                        onChange={(e) => {
+                          const value = parseInt(e.target.value, 10);
+                          if (!isNaN(value)) {
+                            handleAdultsChange(value);
+                          }
+                        }}
+                        min={1}
+                        max={50}
+                        style={{
+                          width: "80px",
+                          height: "40px",
+                          borderRadius: 0,
+                          borderLeft: "none",
+                          borderRight: "none",
+                        }}
+                      />
+                      <button
+                        type="button"
+                        className="btn btn-outline-secondary"
+                        onClick={incrementAdults}
+                        disabled={personsPerTent >= 50}
+                        style={{
+                          width: "40px",
+                          height: "40px",
+                          padding: 0,
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          borderTopLeftRadius: 0,
+                          borderBottomLeftRadius: 0,
+                        }}
+                      >
+                        <i className="bx bx-plus" style={{ fontSize: "20px" }}></i>
+                      </button>
+                    </div>
                   </div>
+
+                  {/* Days Input */}
+                  <div className="mb-3">
+                    <label className="form-label mb-2" style={{ fontSize: "14px", fontWeight: 500 }}>
+                      Days:
+                    </label>
+                    <div className="d-flex align-items-center">
+                      <button
+                        type="button"
+                        className="btn btn-outline-secondary"
+                        onClick={decrementDays}
+                        disabled={totalDays <= 1}
+                        style={{
+                          width: "40px",
+                          height: "40px",
+                          padding: 0,
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          borderTopRightRadius: 0,
+                          borderBottomRightRadius: 0,
+                        }}
+                      >
+                        <i className="bx bx-minus" style={{ fontSize: "20px" }}></i>
+                      </button>
+                      <input
+                        type="number"
+                        className="form-control text-center"
+                        value={totalDays}
+                        onChange={(e) => {
+                          const value = parseInt(e.target.value, 10);
+                          if (!isNaN(value)) {
+                            handleDaysChange(value);
+                          }
+                        }}
+                        min={1}
+                        max={30}
+                        style={{
+                          width: "80px",
+                          height: "40px",
+                          borderRadius: 0,
+                          borderLeft: "none",
+                          borderRight: "none",
+                        }}
+                      />
+                      <button
+                        type="button"
+                        className="btn btn-outline-secondary"
+                        onClick={incrementDays}
+                        disabled={totalDays >= 30}
+                        style={{
+                          width: "40px",
+                          height: "40px",
+                          padding: 0,
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          borderTopLeftRadius: 0,
+                          borderBottomLeftRadius: 0,
+                        }}
+                      >
+                        <i className="bx bx-plus" style={{ fontSize: "20px" }}></i>
+                      </button>
+                    </div>
+                  </div>
+
                   <div className="mb-2">
                     <p>
                       Enjoy a clean and spacious tent equipped with comfortable

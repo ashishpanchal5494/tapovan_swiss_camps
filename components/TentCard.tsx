@@ -1,6 +1,9 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
-import React, { memo } from "react";
+import React, { memo, useState } from "react";
+import { useSearchParams } from "next/navigation";
 
 interface TentCardProps {
   slug: string;
@@ -13,6 +16,9 @@ interface TentCardProps {
   description: string;
   perHeadPrice: number;
   perHeadMainPrice: number;
+  basePrice: number;
+  mainBasePrice: number;
+  totalDays?: number;
   linkBooking: string;
   dataAosDuration: number;
 }
@@ -25,11 +31,85 @@ const TentCard: React.FC<TentCardProps> = memo(
     beds,
     baths,
     adults,
-    perHeadPrice,
-    perHeadMainPrice,
+    perHeadPrice: initialPerHeadPrice,
+    perHeadMainPrice: initialPerHeadMainPrice,
+    basePrice,
+    mainBasePrice,
+    totalDays = 1,
     description,
     linkBooking,
   }) => {
+    const searchParams = useSearchParams();
+    const initialAdults = typeof adults === "string" ? parseInt(adults, 10) : adults;
+    const [personsPerTent, setPersonsPerTent] = useState<number>(initialAdults);
+
+    // Build URL with preserved search parameters
+    const buildDetailsUrl = () => {
+      const baseUrl = `/tents/${slug}`;
+      const params = new URLSearchParams();
+      
+      // Preserve all search params
+      if (searchParams) {
+        searchParams.forEach((value, key) => {
+          params.append(key, value);
+        });
+      }
+      
+      const queryString = params.toString();
+      return queryString ? `${baseUrl}?${queryString}` : baseUrl;
+    };
+
+    const calculatePrice = (
+      basePrice: number,
+      beds: number,
+      mainBasePrice: number
+    ) => {
+      let perHeadPrice = basePrice;
+      let perHeadMainPrice = mainBasePrice;
+
+      if (beds === 5) {
+        if (personsPerTent === 2) {
+          perHeadPrice = Math.round(basePrice * 1.6);
+          perHeadMainPrice = Math.round(mainBasePrice * 1.6);
+        } else if (personsPerTent === 3) {
+          perHeadPrice = Math.round(basePrice * 1.3);
+          perHeadMainPrice = Math.round(mainBasePrice * 1.3);
+        } else if (personsPerTent === 4) {
+          perHeadPrice = Math.round(basePrice * 1.1);
+          perHeadMainPrice = Math.round(mainBasePrice * 1.1);
+        }
+      }
+
+      const totalPrice = perHeadPrice * personsPerTent * totalDays;
+      const totalMainPrice = perHeadMainPrice * personsPerTent * totalDays;
+
+      return { perHeadPrice, perHeadMainPrice, totalPrice, totalMainPrice };
+    };
+
+    const { perHeadPrice, perHeadMainPrice } = calculatePrice(
+      basePrice,
+      beds,
+      mainBasePrice
+    );
+
+    const handleAdultsChange = (newValue: number) => {
+      if (newValue >= 1 && newValue <= beds) {
+        setPersonsPerTent(newValue);
+      }
+    };
+
+    const incrementAdults = () => {
+      if (personsPerTent < beds) {
+        setPersonsPerTent((prev) => prev + 1);
+      }
+    };
+
+    const decrementAdults = () => {
+      if (personsPerTent > 1) {
+        setPersonsPerTent((prev) => prev - 1);
+      }
+    };
+
     const getBathCount = (
       adults: number | string,
       defaultBaths: number | string
@@ -52,7 +132,7 @@ const TentCard: React.FC<TentCardProps> = memo(
         : defaultBaths;
     };
 
-    const bathCount = getBathCount(adults, baths);
+    const bathCount = getBathCount(personsPerTent, baths);
 
     return (
       <div className="col-lg-4 col-md-6">
@@ -110,7 +190,7 @@ const TentCard: React.FC<TentCardProps> = memo(
             <div className="features d-flex mb-3">
               <span className="border-end me-3 pe-3">
                 <i className="bx bx-bed text-[#507650] me-2"></i>
-                {adults ? adults : beds} Bed
+                {personsPerTent ? personsPerTent : beds} Bed
               </span>
               <span
                 style={{ fontSize: 11, marginTop: 4 }}
@@ -131,12 +211,77 @@ const TentCard: React.FC<TentCardProps> = memo(
               {description.split(" ").length > 20 && "..."}
             </p>
 
+            {/* Adults Input */}
+            <div className="mb-3">
+              <label className="form-label mb-2" style={{ fontSize: "14px", fontWeight: 500 }}>
+                Adults:
+              </label>
+              <div className="d-flex align-items-center">
+                <button
+                  type="button"
+                  className="btn btn-outline-secondary"
+                  onClick={decrementAdults}
+                  disabled={personsPerTent <= 1}
+                  style={{
+                    width: "40px",
+                    height: "40px",
+                    padding: 0,
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    borderTopRightRadius: 0,
+                    borderBottomRightRadius: 0,
+                  }}
+                >
+                  <i className="bx bx-minus" style={{ fontSize: "20px" }}></i>
+                </button>
+                <input
+                  type="number"
+                  className="form-control text-center"
+                  value={personsPerTent}
+                  onChange={(e) => {
+                    const value = parseInt(e.target.value, 10);
+                    if (!isNaN(value)) {
+                      handleAdultsChange(value);
+                    }
+                  }}
+                  min={1}
+                  max={beds}
+                  style={{
+                    width: "80px",
+                    height: "40px",
+                    borderRadius: 0,
+                    borderLeft: "none",
+                    borderRight: "none",
+                  }}
+                />
+                <button
+                  type="button"
+                  className="btn btn-outline-secondary"
+                  onClick={incrementAdults}
+                  disabled={personsPerTent >= beds}
+                  style={{
+                    width: "40px",
+                    height: "40px",
+                    padding: 0,
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    borderTopLeftRadius: 0,
+                    borderBottomLeftRadius: 0,
+                  }}
+                >
+                  <i className="bx bx-plus" style={{ fontSize: "20px" }}></i>
+                </button>
+              </div>
+            </div>
+
             <div className="d-flex justify-content-between">
               <Link
                 style={{ color: "white" }}
                 className="btn style1 rounded py-2 px-4"
                 prefetch={true}
-                href={`/tents/${slug}`}
+                href={buildDetailsUrl()}
               >
                 View Details
               </Link>

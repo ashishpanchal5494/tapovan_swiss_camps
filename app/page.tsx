@@ -5,11 +5,28 @@ import Script from "next/script";
 
 export const metadata: Metadata = {
   title:
-    "Tapovan Swiss Camps - Best Luxury Camping in Rishikesh | AC Tents @ ₹999 | Book Now",
+    "New Year 2026 Special Offer - Best Luxury Camping in Rishikesh | AC Tents @ ₹1999 | Tapovan Swiss Camps",
 
   description:
-    "Best luxury camping in Rishikesh! Tapovan Swiss Camps offers premium AC tents, cooler tents with Ganga river views. Enjoy swimming, rafting, yoga, bonfire & delicious food. Perfect for families, couples & adventure lovers. Book your unforgettable camping experience in Rishikesh starting ₹999!",
+    "🎉 New Year 2026 Special Offer! Best luxury camping in Rishikesh with exclusive discounts. Tapovan Swiss Camps offers premium AC tents, cooler tents with Ganga river views. Enjoy New Year bonfire, swimming, rafting, yoga & delicious food. Perfect for families, couples & adventure lovers. Book your New Year celebration in Rishikesh starting ₹1999! Limited time offer.",
   keywords: [
+    // New Year Offer Keywords
+    "new year camping rishikesh",
+    "new year 2026 offer rishikesh",
+    "new year camping packages rishikesh",
+    "new year celebration rishikesh",
+    "new year special offer rishikesh",
+    "rishikesh new year camping",
+    "new year camping near ganga",
+    "new year bonfire camping rishikesh",
+    "new year adventure camping rishikesh",
+    "best new year camping rishikesh",
+    "new year ac tents rishikesh",
+    "new year luxury camping rishikesh",
+    "rishikesh new year 2025 packages",
+    "new year camping deals rishikesh",
+    "new year camping discount rishikesh",
+    
     // Primary Keywords
     "camping in rishikesh",
     "best camping in rishikesh",
@@ -114,9 +131,9 @@ export const metadata: Metadata = {
     url: "https://www.tapovanswisscampsofficial.com",
     siteName: "Tapovan Swiss Camps",
     title:
-      "Tapovan Swiss Camps - Best Luxury Camping in Rishikesh | AC Tents @ ₹999",
+      "New Year 2026 Special Offer - Best Luxury Camping in Rishikesh | AC Tents @ ₹1999",
     description:
-      "Book your stay at Tapovan Swiss Camps! Enjoy luxury AC tents, cooler tents with Ganga river views, swimming, rafting, yoga, bonfire & delicious food. Perfect for families, couples & adventure lovers. Best camping in Rishikesh starting ₹999!",
+      "🎉 New Year 2026 Special Offer! Book your stay at Tapovan Swiss Camps! Enjoy luxury AC tents, cooler tents with Ganga river views, New Year bonfire, swimming, rafting, yoga & delicious food. Perfect for families, couples & adventure lovers. Best New Year camping in Rishikesh starting ₹1999! Limited time offer.",
     images: [
       {
         url: "https://www.tapovanswisscampsofficial.com/assets/img/room/gardenPhoto.webp",
@@ -143,9 +160,9 @@ export const metadata: Metadata = {
     site: "@tapovanswisscamps",
     creator: "@tapovanswisscamps",
     title:
-      "Tapovan Swiss Camps - Best Luxury Camping in Rishikesh | AC Tents @ ₹999",
+      "New Year 2026 Special Offer - Best Luxury Camping in Rishikesh | AC Tents @ ₹1999",
     description:
-      "Best luxury camping in Rishikesh! AC tents, Ganga views, swimming, rafting, yoga & more. Book now @ ₹999!",
+      "🎉 New Year 2026 Special Offer! Best luxury camping in Rishikesh! AC tents, Ganga views, New Year bonfire, swimming, rafting, yoga & more. Book now @ ₹1999! Limited time offer.",
     images: [
       "https://www.tapovanswisscampsofficial.com/assets/img/room/gardenPhoto.webp",
     ],
@@ -191,7 +208,7 @@ function Home() {
       latitude: "30.1394296",
       longitude: "78.315361",
     },
-    priceRange: "₹999-₹2999",
+    priceRange: "₹999-₹1999",
     amenityFeature: [
       {
         "@type": "LocationFeatureSpecification",

@@ -50,9 +50,8 @@ const OfferModal = ({ isOpen, onClose, imageSrc, altText }: OfferModalProps) => 
 
 const OfferPopupButtons = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const [showChristmasModal, setShowChristmasModal] = useState(false);
   const [showNewYearModal, setShowNewYearModal] = useState(false);
-  const [showTooltip, setShowTooltip] = useState<"christmas" | "newyear" | null>(null);
+  const [showTooltip, setShowTooltip] = useState<"newyear" | null>(null);
   const [autoShowTooltips, setAutoShowTooltips] = useState(false);
   const [wasAutoOpened, setWasAutoOpened] = useState(false);
 
@@ -64,10 +63,10 @@ const OfferPopupButtons = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  // Auto-open Christmas offer popup after 2 seconds when app opens
+  // Auto-open New Year offer popup after 2 seconds when app opens
   useEffect(() => {
     const autoOpenTimer = setTimeout(() => {
-      setShowChristmasModal(true);
+      setShowNewYearModal(true);
       setWasAutoOpened(true);
     }, 2000);
 
@@ -76,7 +75,7 @@ const OfferPopupButtons = () => {
 
   // Show tooltips for 7 seconds when user closes the auto-opened popup
   useEffect(() => {
-    if (!showChristmasModal && wasAutoOpened) {
+    if (!showNewYearModal && wasAutoOpened) {
       setAutoShowTooltips(true);
       const hideTimer = setTimeout(() => {
         setAutoShowTooltips(false);
@@ -85,41 +84,11 @@ const OfferPopupButtons = () => {
 
       return () => clearTimeout(hideTimer);
     }
-  }, [showChristmasModal, wasAutoOpened]);
+  }, [showNewYearModal, wasAutoOpened]);
 
   return (
     <>
       <div className={`offer-buttons-container ${isVisible ? "visible" : ""}`}>
-        {/* Christmas Offer Button */}
-        <div className="offer-button-wrapper">
-          <button
-            className="offer-button christmas-button"
-            onClick={() => setShowChristmasModal(true)}
-            onMouseEnter={() => setShowTooltip("christmas")}
-            onMouseLeave={() => setShowTooltip(null)}
-            aria-label="View Christmas Offer"
-          >
-           
-             {/* Small Christmas Logo */}
-  <Image
-    src="/assets/offer_icons/christmas_icon.png"
-    alt="Christmas"
-    className="offer-badge"
-    width={65}
-    height={60}
-  />
-
-            <div className="offer-pulse" />
-            <div className="offer-ripple" />
-          </button>
-          {(showTooltip === "christmas" || (autoShowTooltips && !showTooltip)) && (
-            <div className="offer-tooltip">
-              <span>Christmas Offer</span>
-              <div className="tooltip-arrow" />
-            </div>
-          )}
-        </div>
-
         {/* New Year Offer Button */}
         <div className="offer-button-wrapper">
           <button
@@ -147,14 +116,6 @@ const OfferPopupButtons = () => {
           )}
         </div>
       </div>
-
-      {/* Christmas Offer Modal */}
-      <OfferModal
-        isOpen={showChristmasModal}
-        onClose={() => setShowChristmasModal(false)}
-        imageSrc="/assets/offers/christmas_offer.png"
-        altText="Christmas Offer"
-      />
 
       {/* New Year Offer Modal */}
       <OfferModal

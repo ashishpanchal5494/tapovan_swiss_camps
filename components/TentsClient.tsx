@@ -444,6 +444,9 @@ const TentsClient: React.FC = () => {
                   linkBooking={room.linkBooking}
                   perHeadMainPrice={perHeadMainPrice}
                   perHeadPrice={perHeadPrice}
+                  basePrice={room.price}
+                  mainBasePrice={room.mainPrice}
+                  totalDays={totalDays}
                   dataAosDuration={1200 + index * 200}
                 />
               );

@@ -39,7 +39,7 @@ export const tentRooms: Tent[] = [
     metaDescription: "Stay in a luxury AC tent in Tapovan Rishikesh with 5 beds, attached bath & modern comfort. Best riverside camping experience for families @ ₹1499.",
     altText: "Luxury AC Glamping Tent in Rishikesh with mountain views",
     mainPrice: 1999,
-    price: 1499,
+    price: 1299,
     image: "assets/img/room/ACTent1.webp",
     beds: 5,
     baths: 1,

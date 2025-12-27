@@ -63,7 +63,7 @@ function BookingPage() {
     const totalDays = parseInt(formData.days || "1");
 
     const tentData = {
-      "Luxury (AC) Tent": { price: 1499, mainPrice: 1999, beds: 5 },
+      "Luxury (AC) Tent": { price: 1299, mainPrice: 1999, beds: 5 },
       "Luxury (Cooler) Tent": { price: 1199, mainPrice: 1499, beds: 5 },
       "Ordinary Tent": { price: 999, mainPrice: 1199, beds: 3 },
     }[formData.tentType];
@@ -604,7 +604,7 @@ function BookingPage() {
                           <strong>Luxury AC Tent</strong>
                           <br />
                           <span style={{ color: "#507650", fontWeight: "600" }}>
-                            ₹1,599/person
+                            ₹1299/person
                           </span>
                         </div>
                         <div
@@ -620,7 +620,7 @@ function BookingPage() {
                           <strong>Luxury Cooler Tent</strong>
                           <br />
                           <span style={{ color: "#507650", fontWeight: "600" }}>
-                            ₹1,299/person
+                            ₹1199/person
                           </span>
                         </div>
                         <div
