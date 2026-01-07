@@ -160,9 +160,9 @@ const TentsClient: React.FC = () => {
   const tentsStructuredData = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    name: "Luxury Camping Tents in Tapovan Rishikesh | Christmas & New Year Special Offers",
+    name: "Luxury Camping Tents in Tapovan Rishikesh | Premium Glamping by Ganga River",
     description:
-      "Premium glamping experience with luxury tents near Ganga river. Special Christmas & New Year offers available! Choose from AC tents, cooler tents, and budget options. Book now for festive season discounts.",
+      "Premium glamping experience with luxury AC tents, cooler tents, and budget options near Ganga river. Experience riverside camping with modern amenities, swimming pool, rafting, yoga, and delicious food. Perfect for families, couples, and adventure lovers. Book now for the best camping experience in Rishikesh!",
     url: "https://tapovanswisscampsofficial.com/tents",
     image: "https://tapovanswisscampsofficial.com/assets/img/room/ACTent1.webp",
     mainEntity: {
@@ -181,9 +181,9 @@ const TentsClient: React.FC = () => {
             price: tent.price,
             priceCurrency: "INR",
             availability: "https://schema.org/InStock",
-            priceValidUntil: "2025-01-31",
+            priceValidUntil: "2025-12-31",
             description:
-              "Special Christmas & New Year offers available. Book now for festive season discounts on luxury camping tents in Rishikesh.",
+              "Premium luxury camping tents with modern amenities, Ganga river views, and world-class facilities. Book now for the best camping experience in Rishikesh!",
           },
         },
       })),
@@ -196,24 +196,19 @@ const TentsClient: React.FC = () => {
         url: "https://tapovanswisscampsofficial.com/assets/img/logo.png",
       },
     },
-    specialAnnouncement: [
-      {
-        "@type": "SpecialAnnouncement",
-        name: "Christmas Special Offer",
-        text: "Celebrate Christmas by the Ganga! Special discounts on all tent types. Perfect for families and groups looking for a magical riverside Christmas experience in Rishikesh.",
-        datePublished: "2024-12-01",
-        expires: "2024-12-31",
-        category: "SpecialOffer",
-      },
-      {
-        "@type": "SpecialAnnouncement",
-        name: "New Year Special Offer",
-        text: "Ring in the New Year with an unforgettable glamping experience! Special New Year packages available on AC tents, cooler tents, and budget options.",
-        datePublished: "2024-12-15",
-        expires: "2025-01-15",
-        category: "SpecialOffer",
-      },
-    ],
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: "4.8",
+      reviewCount: "150",
+      bestRating: "5",
+    },
+    offers: {
+      "@type": "AggregateOffer",
+      lowPrice: "999",
+      highPrice: "2999",
+      priceCurrency: "INR",
+      offerCount: tentRooms.length,
+    },
   };
 
   return (

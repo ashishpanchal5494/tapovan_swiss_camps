@@ -8,9 +8,9 @@ export const generateMetadata = (): Metadata => {
 
   return {
     title:
-      "Luxury Camping Tents in Tapovan Rishikesh | Christmas & New Year Special Offers | Premium Glamping @ ₹999 | Tapovan Swiss Camps",
+      "Luxury Camping Tents in Tapovan Rishikesh | Premium Glamping @ ₹999 | AC Tents by Ganga River | Tapovan Swiss Camps",
     description:
-      "Experience luxury camping in Tapovan Rishikesh with premium AC tents, cooler tents & riverside glamping starting ₹999. Special Christmas & New Year offers available! Enjoy Ganga river views, attached washrooms, family amenities & adventure activities. Best camping experience for couples, families & groups in Rishikesh. Book now for festive season discounts!",
+      "Experience luxury camping in Tapovan Rishikesh with premium AC tents, cooler tents & riverside glamping starting ₹999. Enjoy stunning Ganga river views, attached washrooms, modern amenities, swimming pool, rafting, yoga & delicious food. Best camping experience for couples, families & groups in Rishikesh. 4.8★ rated with 150+ reviews. Book now!",
     keywords: [
       "luxury camping tents rishikesh",
       "premium glamping tapovan rishikesh",
@@ -42,16 +42,23 @@ export const generateMetadata = (): Metadata => {
       "weekend camping rishikesh",
       "holiday camping rishikesh",
       "camping booking rishikesh",
-      "christmas camping rishikesh",
-      "new year camping rishikesh",
-      "christmas offer camping rishikesh",
-      "new year offer camping rishikesh",
-      "festive season camping rishikesh",
-      "christmas special tents rishikesh",
-      "new year special tents rishikesh",
+      "summer camping rishikesh",
+      "winter camping rishikesh",
+      "monsoon camping rishikesh",
+      "weekend getaway rishikesh",
       "holiday camping packages rishikesh",
-      "christmas glamping rishikesh",
-      "new year glamping rishikesh",
+      "vacation camping rishikesh",
+      "luxury glamping rishikesh",
+      "premium tent stay rishikesh",
+      "best rated camping rishikesh",
+      "top camping resort rishikesh",
+      "5 star camping rishikesh",
+      "camping with rafting package rishikesh",
+      "yoga retreat camping rishikesh",
+      "adventure sports camping rishikesh",
+      "riverside luxury camping rishikesh",
+      "tapovan area camping rishikesh",
+      "shivpuri camping with amenities",
     ],
     robots: {
       index: true,
@@ -66,31 +73,25 @@ export const generateMetadata = (): Metadata => {
     },
     openGraph: {
       title:
-        "Luxury Camping Tents in Tapovan Rishikesh | Christmas & New Year Special Offers | Premium Glamping @ ₹999",
+        "Luxury Camping Tents in Tapovan Rishikesh | Premium Glamping @ ₹999 | AC Tents by Ganga River",
       description:
-        "Discover luxury camping in Tapovan Rishikesh with Swiss tents by the Ganga. Special Christmas & New Year offers available! Stay in AC, cooler, or ordinary tents with premium amenities and serene views. Perfect for couples, families, and adventure seekers. Book now for festive season discounts and experience the best riverside glamping starting at ₹999.",
+        "Discover luxury camping in Tapovan Rishikesh with Swiss tents by the Ganga. Stay in AC, cooler, or ordinary tents with premium amenities, Ganga river views, swimming pool, rafting, yoga & delicious food. Perfect for couples, families, and adventure seekers. Book now and experience the best riverside glamping starting at ₹999. 4.8★ rated.",
       url: `${baseUrl}/tents`,
       type: "website",
       siteName: "Tapovan Swiss Camps",
       locale: "en_IN",
       images: [
         {
-          url: `${baseUrl}/assets/offers/christmas.jpg`,
-          width: 1200,
-          height: 630,
-          alt: "Christmas Special Offer at Tapovan Swiss Camps Rishikesh",
-        },
-        {
-          url: `${baseUrl}/assets/offers/new_year.png`,
-          width: 1200,
-          height: 630,
-          alt: "New Year Special Offer at Tapovan Swiss Camps Rishikesh",
-        },
-        {
           url: `${baseUrl}/assets/img/room/ACTent1.webp`,
           width: 1200,
           height: 630,
           alt: "Luxury AC Tent at Tapovan Swiss Camps Rishikesh",
+        },
+        {
+          url: `${baseUrl}/assets/img/room/gardenPhoto.webp`,
+          width: 1200,
+          height: 630,
+          alt: "Luxury Camping Tents with Ganga River View at Tapovan Swiss Camps",
         },
         {
           url: `${baseUrl}/assets/img/room/coolerTent1.webp`,
@@ -109,10 +110,10 @@ export const generateMetadata = (): Metadata => {
     twitter: {
       card: "summary_large_image",
       title:
-        "Luxury Camping Tents in Tapovan Rishikesh | Christmas & New Year Offers | Premium Glamping @ ₹999",
+        "Luxury Camping Tents in Tapovan Rishikesh | Premium Glamping @ ₹999 | AC Tents by Ganga",
       description:
-        "Experience luxury camping in Tapovan Rishikesh with premium tents by the Ganga. Special Christmas & New Year offers available! AC, cooler & budget tents available. Book now for the best riverside glamping experience with festive season discounts!",
-      images: [`${baseUrl}/assets/offers/christmas.jpg`],
+        "Experience luxury camping in Tapovan Rishikesh with premium tents by the Ganga. AC, cooler & budget tents available with modern amenities, swimming pool, rafting & yoga. Book now for the best riverside glamping experience! 4.8★ rated.",
+      images: [`${baseUrl}/assets/img/room/ACTent1.webp`],
     },
     other: {
       "geo.region": "IN-UT",

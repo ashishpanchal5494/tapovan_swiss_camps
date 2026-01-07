@@ -4,7 +4,6 @@ import { useEffect, useState, useRef, type ReactNode, Suspense } from "react";
 import dynamic from "next/dynamic";
 import Script from "next/script";
 import Loading from "@/components/Loading";
-import NewYearOfferSEO from "@/components/NewYearOfferSEO";
 
 // Optimize dynamic imports with better loading strategies
 const HeroSection = dynamic(() => import("@/components/HeroSection"), {
@@ -198,8 +197,6 @@ export default function Home() {
         })}
       </Script>
 
-      {/* ✅ New Year Offer SEO */}
-      <NewYearOfferSEO />
 
       <div className="page-wrapper">
         <Suspense fallback={<Loading />}>

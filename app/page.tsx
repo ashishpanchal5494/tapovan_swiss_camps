@@ -5,28 +5,10 @@ import Script from "next/script";
 
 export const metadata: Metadata = {
   title:
-    "New Year 2026 Special Offer - Best Luxury Camping in Rishikesh | AC Tents @ ₹1999 | Tapovan Swiss Camps",
-
+    "Best Luxury Camping in Rishikesh | AC Tents @ ₹999 | Premium Glamping by Ganga River | Tapovan Swiss Camps",
   description:
-    "🎉 New Year 2026 Special Offer! Best luxury camping in Rishikesh with exclusive discounts. Tapovan Swiss Camps offers premium AC tents, cooler tents with Ganga river views. Enjoy New Year bonfire, swimming, rafting, yoga & delicious food. Perfect for families, couples & adventure lovers. Book your New Year celebration in Rishikesh starting ₹1999! Limited time offer.",
+    "Best luxury camping in Rishikesh! Tapovan Swiss Camps offers premium AC tents, cooler tents with stunning Ganga river views. Enjoy swimming pool, river rafting, yoga sessions, bonfire & delicious food. Perfect for families, couples & adventure lovers. Book your unforgettable camping experience in Rishikesh starting ₹999! 4.8★ rated with 150+ reviews.",
   keywords: [
-    // New Year Offer Keywords
-    "new year camping rishikesh",
-    "new year 2026 offer rishikesh",
-    "new year camping packages rishikesh",
-    "new year celebration rishikesh",
-    "new year special offer rishikesh",
-    "rishikesh new year camping",
-    "new year camping near ganga",
-    "new year bonfire camping rishikesh",
-    "new year adventure camping rishikesh",
-    "best new year camping rishikesh",
-    "new year ac tents rishikesh",
-    "new year luxury camping rishikesh",
-    "rishikesh new year 2025 packages",
-    "new year camping deals rishikesh",
-    "new year camping discount rishikesh",
-    
     // Primary Keywords
     "camping in rishikesh",
     "best camping in rishikesh",
@@ -117,6 +99,36 @@ export const metadata: Metadata = {
     "best camping in rishikesh for adventure lovers",
     "premium camping in rishikesh with rafting",
     "swiss tents in rishikesh with ganga view",
+    
+    // Seasonal & Event Keywords
+    "summer camping rishikesh",
+    "winter camping rishikesh",
+    "monsoon camping rishikesh",
+    "weekend getaway rishikesh",
+    "holiday camping rishikesh",
+    "vacation camping rishikesh",
+    
+    // Experience & Quality Keywords
+    "5 star camping rishikesh",
+    "luxury glamping rishikesh",
+    "premium tent stay rishikesh",
+    "best rated camping rishikesh",
+    "top camping resort rishikesh",
+    "award winning camping rishikesh",
+    
+    // Activity-Specific Keywords
+    "camping with rafting package rishikesh",
+    "yoga retreat camping rishikesh",
+    "adventure sports camping rishikesh",
+    "meditation camping rishikesh",
+    "nature photography camping rishikesh",
+    
+    // Location-Specific Long-tail
+    "camping near ganga river rishikesh",
+    "riverside luxury camping rishikesh",
+    "tapovan area camping rishikesh",
+    "shivpuri camping with amenities",
+    "neelkanth road camping rishikesh",
   ],
   metadataBase: new URL("https://www.tapovanswisscampsofficial.com"),
   alternates: {
@@ -131,9 +143,9 @@ export const metadata: Metadata = {
     url: "https://www.tapovanswisscampsofficial.com",
     siteName: "Tapovan Swiss Camps",
     title:
-      "New Year 2026 Special Offer - Best Luxury Camping in Rishikesh | AC Tents @ ₹1999",
+      "Best Luxury Camping in Rishikesh | AC Tents @ ₹999 | Premium Glamping by Ganga River",
     description:
-      "🎉 New Year 2026 Special Offer! Book your stay at Tapovan Swiss Camps! Enjoy luxury AC tents, cooler tents with Ganga river views, New Year bonfire, swimming, rafting, yoga & delicious food. Perfect for families, couples & adventure lovers. Best New Year camping in Rishikesh starting ₹1999! Limited time offer.",
+      "Book your stay at Tapovan Swiss Camps! Enjoy luxury AC tents, cooler tents with stunning Ganga river views, swimming pool, river rafting, yoga sessions, bonfire & delicious food. Perfect for families, couples & adventure lovers. Best camping in Rishikesh starting ₹999! 4.8★ rated.",
     images: [
       {
         url: "https://www.tapovanswisscampsofficial.com/assets/img/room/gardenPhoto.webp",
@@ -160,9 +172,9 @@ export const metadata: Metadata = {
     site: "@tapovanswisscamps",
     creator: "@tapovanswisscamps",
     title:
-      "New Year 2026 Special Offer - Best Luxury Camping in Rishikesh | AC Tents @ ₹1999",
+      "Best Luxury Camping in Rishikesh | AC Tents @ ₹999 | Premium Glamping by Ganga",
     description:
-      "🎉 New Year 2026 Special Offer! Best luxury camping in Rishikesh! AC tents, Ganga views, New Year bonfire, swimming, rafting, yoga & more. Book now @ ₹1999! Limited time offer.",
+      "Best luxury camping in Rishikesh! AC tents, Ganga river views, swimming pool, rafting, yoga & more. Perfect for families & couples. Book now @ ₹999! 4.8★ rated.",
     images: [
       "https://www.tapovanswisscampsofficial.com/assets/img/room/gardenPhoto.webp",
     ],
@@ -276,6 +288,61 @@ function Home() {
     paymentAccepted: "Cash, Credit Card, UPI, Net Banking",
   };
 
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "What is the best camping experience in Rishikesh?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Tapovan Swiss Camps offers the best luxury camping experience in Rishikesh with premium AC tents, cooler tents, stunning Ganga river views, swimming pool, river rafting, yoga sessions, bonfire, and delicious food. Perfect for families, couples, and adventure lovers starting from ₹999.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "What are the camping prices in Rishikesh?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Camping prices in Rishikesh at Tapovan Swiss Camps start from ₹999 per person for cooler tents and ₹1799 for luxury AC tents. Prices include accommodation, meals, bonfire, and access to all facilities. Special group discounts available.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Is camping in Rishikesh safe?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes, Tapovan Swiss Camps ensures complete safety with 24/7 security, trained staff, and all necessary safety measures. Our campsite is well-maintained and follows all safety protocols for a secure and enjoyable camping experience.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "What activities are available during camping in Rishikesh?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Camping at Tapovan Swiss Camps includes river rafting, swimming in our pool, yoga sessions, evening bonfire, volleyball, adventure sports, and exploration of nearby attractions. All activities are supervised by trained professionals.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "What is included in the camping package?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Our camping package includes luxury tent accommodation (AC or cooler tents), all meals (breakfast, lunch, dinner), evening bonfire, access to swimming pool, basic adventure activities, and all modern amenities. Special packages may include rafting and other adventure activities.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Can I book camping for a group in Rishikesh?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes, Tapovan Swiss Camps welcomes groups and offers special group discounts. We have tents suitable for families, friends, and corporate groups. Contact us at +91-7906924003 for customized group packages and special rates.",
+        },
+      },
+    ],
+  };
+
   return (
     <>
       <Script
@@ -283,6 +350,13 @@ function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(structuredData),
+        }}
+      />
+      <Script
+        id="faq-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(faqSchema),
         }}
       />
       <HomePageClient />

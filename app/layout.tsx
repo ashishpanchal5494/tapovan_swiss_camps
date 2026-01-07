@@ -10,7 +10,6 @@ import "boxicons/css/boxicons.min.css";
 
 import Layout from "@/components/Layout";
 import WhatsAppButton from "@/components/WhatsAppButton";
-import OfferPopupButtons from "@/components/OfferPopupButtons";
 import Script from "next/script";
 
 const readexPro = Readex_Pro({
@@ -284,6 +283,21 @@ export default function RootLayout({
                 reviewCount: "150",
                 bestRating: "5",
               },
+              potentialAction: {
+                "@type": "ReserveAction",
+                target: {
+                  "@type": "EntryPoint",
+                  urlTemplate: "https://www.tapovanswisscampsofficial.com/booking-form",
+                  actionPlatform: [
+                    "http://schema.org/DesktopWebPlatform",
+                    "http://schema.org/MobileWebPlatform",
+                  ],
+                },
+                result: {
+                  "@type": "Reservation",
+                  name: "Camping Reservation at Tapovan Swiss Camps",
+                },
+              },
               image: [
                 "https://www.tapovanswisscampsofficial.com/assets/img/room/gardenPhoto.webp",
                 "https://www.tapovanswisscampsofficial.com/assets/img/room/ACTent1.webp",
@@ -365,7 +379,6 @@ export default function RootLayout({
             })}
           </Script>
           <WhatsAppButton />
-          <OfferPopupButtons />
         </Layout>
       </body>
     </html>
