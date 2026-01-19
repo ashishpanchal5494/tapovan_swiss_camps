@@ -799,6 +799,8 @@ export default function GalleryPage() {
                     width={400}
                     height={300}
                     loading="lazy"
+                    quality={85}
+                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
                     style={{
                       transition: "transform 0.3s ease",
                       objectFit: "cover",

@@ -44,6 +44,9 @@ const TeamCard: React.FC<TeamMemberProps> = ({
               src={image.startsWith("/") ? image : `/${image}`}
               alt={`${name} - ${role} at Tapovan Swiss Camps`}
               className="img-fluid w-100"
+              loading="lazy"
+              quality={85}
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
               style={{ height: "300px", objectFit: "cover" }}
             />
           </Link>

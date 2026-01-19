@@ -348,17 +348,17 @@ function Home() {
       <Script
         id="structured-data"
         type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(structuredData),
-        }}
-      />
+        strategy="afterInteractive"
+      >
+        {JSON.stringify(structuredData)}
+      </Script>
       <Script
         id="faq-schema"
         type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(faqSchema),
-        }}
-      />
+        strategy="afterInteractive"
+      >
+        {JSON.stringify(faqSchema)}
+      </Script>
       <HomePageClient />
     </>
   );
