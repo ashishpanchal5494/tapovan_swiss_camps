@@ -137,6 +137,9 @@ export async function generateMetadata(
   };
 }
 
+// Required for static export
+export const dynamic = 'force-static'
+
 function TeamDetails() {
   return <TeamDetailsPage />;
 }

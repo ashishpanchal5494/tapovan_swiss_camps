@@ -3,6 +3,9 @@ import { getAllTeamMemberSlugs } from './team/teamData'
 import { getAllTentSlugs } from './tents/tentData'
 import { getAllBlogSlugs } from '@/data/blogData'
 
+// Required for static export
+export const dynamic = 'force-static'
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://tapovanswisscampsofficial.com'
   

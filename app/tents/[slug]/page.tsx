@@ -136,6 +136,9 @@ export async function generateMetadata(
   };
 }
 
+// Required for static export
+export const dynamic = 'force-static'
+
 function TentDetails() {
   return (
     <Suspense fallback={<Loading fullscreen size="large" text="Loading tent details..." />}>
