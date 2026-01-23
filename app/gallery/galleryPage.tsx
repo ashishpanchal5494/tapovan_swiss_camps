@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import dynamic from "next/dynamic";
 import { usePathname } from "next/navigation";
@@ -396,6 +396,7 @@ export default function GalleryPage() {
   const [visibleCount, setVisibleCount] = useState(pageSize);
   const [isClient, setIsClient] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const preloadedImagesRef = useRef<Set<string>>(new Set());
 
   const pathname = usePathname();
   const showBreadcrumb = pathname === "/gallery";
@@ -474,6 +475,7 @@ export default function GalleryPage() {
   }
 
   const openModal = (image: string) => {
+    prefetchImage(image);
     setSelectedImage(image);
     document.body.style.overflow = "hidden"; // Prevent scrolling
   };
@@ -485,6 +487,14 @@ export default function GalleryPage() {
 
   const getImageDetails = (imagePath: string) => {
     return ImageData.find((img) => img.image === imagePath);
+  };
+
+  const prefetchImage = (imagePath: string) => {
+    if (typeof window === "undefined") return;
+    if (preloadedImagesRef.current.has(imagePath)) return;
+    const preloadImg = new window.Image();
+    preloadImg.src = imagePath;
+    preloadedImagesRef.current.add(imagePath);
   };
 
   return (
@@ -795,6 +805,9 @@ export default function GalleryPage() {
                 <div
                   className="gallery-item position-relative overflow-hidden rounded-3 shadow-sm"
                   onClick={() => openModal(item.image)}
+                  onMouseEnter={() => prefetchImage(item.image)}
+                  onFocus={() => prefetchImage(item.image)}
+                  onTouchStart={() => prefetchImage(item.image)}
                   style={{ cursor: "pointer" }}
                 >
                   <Image
@@ -901,6 +914,8 @@ export default function GalleryPage() {
               height={600}
               className="modal-img rounded-3"
               loading="eager"
+              fetchPriority="high"
+              priority
               quality={80}
               sizes="90vw"
               placeholder="blur"
