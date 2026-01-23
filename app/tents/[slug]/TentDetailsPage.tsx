@@ -207,7 +207,7 @@ const TentDetailsPage: React.FC = () => {
       },
       offers: {
         "@type": "Offer",
-        url: `https://tapovanswisscampsofficial.com/tents/${tent.slug}`,
+        url: `https://www.tapovanswisscampsofficial.com/tents/${tent.slug}`,
         priceCurrency: "INR",
         price: tent.price,
         priceValidUntil: "2024-12-31",
@@ -312,19 +312,19 @@ const TentDetailsPage: React.FC = () => {
           "@type": "ListItem",
           position: 1,
           name: "Home",
-          item: "https://tapovanswisscampsofficial.com",
+                  item: "https://www.tapovanswisscampsofficial.com",
         },
         {
           "@type": "ListItem",
           position: 2,
           name: "Tents",
-          item: "https://tapovanswisscampsofficial.com/tents",
+                  item: "https://www.tapovanswisscampsofficial.com/tents",
         },
         {
           "@type": "ListItem",
           position: 3,
           name: tent.title,
-          item: `https://tapovanswisscampsofficial.com/tents/${tent.slug}`,
+                  item: `https://www.tapovanswisscampsofficial.com/tents/${tent.slug}`,
         },
       ],
     };
@@ -851,17 +851,18 @@ const TentDetailsPage: React.FC = () => {
                           }}
                           className="swiper-container zoom-top"
                         >
-                          {tent.images.map((item) => (
+                          {tent.images.map((item, index) => (
                             <SwiperSlide key={item.id}>
                               <Image
                                 src={item.url}
                                 alt={`${tent.title} at Tapovan Swiss Camps - ${item.alt}`}
                                 width={1200}
                                 height={675}
-                                loading="lazy"
+                                loading={index === 0 ? "eager" : "lazy"}
                                 className="img-responsive m-auto"
-                                quality={100}
-                                priority={false}
+                                quality={70}
+                                priority={index === 0}
+                                fetchPriority={index === 0 ? "high" : "auto"}
                                 placeholder="blur"
                                 blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
                                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 60vw"
@@ -892,11 +893,11 @@ const TentDetailsPage: React.FC = () => {
                                 alt={item.alt}
                                 width={300}
                                 height={200}
-                                quality={100}
+                                quality={50}
                                 loading="lazy"
                                 placeholder="blur"
                                 blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
-                                sizes="(max-width: 768px) 25vw, 20vw"
+                                sizes="(max-width: 768px) 20vw, 140px"
                               />
                             </SwiperSlide>
                           ))}

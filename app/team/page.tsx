@@ -1,7 +1,7 @@
 import TeamPage from "./TeamPage";
 import { Metadata } from "next";
 
-const baseUrl = "https://tapovanswisscampsofficial.com";
+const baseUrl = "https://www.tapovanswisscampsofficial.com";
 
 export const metadata: Metadata = {
   title:

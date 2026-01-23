@@ -9,13 +9,17 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: 'tapovanswisscampsofficial.com',
       },
+      {
+        protocol: 'https',
+        hostname: 'www.tapovanswisscampsofficial.com',
+      },
     ],
     formats: ['image/webp', 'image/avif'],
     minimumCacheTTL: 31536000, // 1 year - prevents frequent re-optimization on VPS
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
     dangerouslyAllowSVG: true,
-    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
+    contentSecurityPolicy: "default-src 'self'; script-src 'none';",
   },
   headers: async () => {
     // Only apply aggressive caching in production

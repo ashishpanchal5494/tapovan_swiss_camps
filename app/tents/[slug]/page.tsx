@@ -16,11 +16,15 @@ type Props = {
   params: Promise<{ slug: string }>;
 };
 
+type PageProps = {
+  params: { slug: string };
+};
+
 export async function generateMetadata(
   { params }: Props,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
-  const baseUrl = "https://tapovanswisscampsofficial.com";
+  const baseUrl = "https://www.tapovanswisscampsofficial.com";
   const resolvedParams = await params;
   const tent = getTentBySlug(resolvedParams.slug);
 
@@ -31,7 +35,8 @@ export async function generateMetadata(
     };
   }
 
-  const { title, metaDescription, image, altText, price, beds, baths } = tent;
+  const { title, metaDescription, image, altText, price, beds, baths, seoTitle } =
+    tent;
   const imageUrl = image.startsWith("/")
     ? `${baseUrl}${image}`
     : `${baseUrl}/${image}`;
@@ -40,7 +45,9 @@ export async function generateMetadata(
   const previousImages = (await parent).openGraph?.images || [];
 
   return {
-    title: `${title} in Tapovan Rishikesh | Premium Camping Experience @ ₹${price} | Tapovan Swiss Camps`,
+    title:
+      seoTitle ||
+      `${title} in Tapovan Rishikesh | Premium Camping Experience @ ₹${price} | Tapovan Swiss Camps`,
     description: `${metaDescription} Book now for the best ${title.toLowerCase()} experience in Rishikesh with modern amenities, riverside location, and exceptional hospitality.`,
     alternates: {
       canonical: url,
@@ -136,13 +143,106 @@ export async function generateMetadata(
   };
 }
 
+function TentDetails({ params }: PageProps) {
+  const baseUrl = "https://www.tapovanswisscampsofficial.com";
+  const tent = getTentBySlug(params.slug);
 
+  const imageUrl = tent?.image
+    ? tent.image.startsWith("/")
+      ? `${baseUrl}${tent.image}`
+      : `${baseUrl}/${tent.image}`
+    : `${baseUrl}/assets/img/room/ACTent1.webp`;
 
-function TentDetails() {
+  const productSchema = tent
+    ? {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        name: tent.title,
+        description: tent.metaDescription,
+        image: imageUrl,
+        brand: {
+          "@type": "Brand",
+          name: "Tapovan Swiss Camps",
+        },
+        category: tent.category,
+        url: `${baseUrl}/tents/${tent.slug}`,
+        offers: {
+          "@type": "Offer",
+          price: tent.price,
+          priceCurrency: "INR",
+          availability: "https://schema.org/InStock",
+          url: `${baseUrl}/tents/${tent.slug}`,
+        },
+        additionalProperty: [
+          ...tent.features.map((feature) => ({
+            "@type": "PropertyValue",
+            name: "Feature",
+            value: feature,
+          })),
+          ...tent.amenities.map((amenity) => ({
+            "@type": "PropertyValue",
+            name: "Amenity",
+            value: amenity,
+          })),
+          {
+            "@type": "PropertyValue",
+            name: "Beds",
+            value: tent.beds,
+          },
+          {
+            "@type": "PropertyValue",
+            name: "Bathrooms",
+            value: tent.baths,
+          },
+        ],
+      }
+    : null;
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: baseUrl,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Tents",
+        item: `${baseUrl}/tents`,
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: tent?.title || "Tent Details",
+        item: `${baseUrl}/tents/${params.slug}`,
+      },
+    ],
+  };
+
   return (
-    <Suspense fallback={<Loading fullscreen size="large" text="Loading tent details..." />}>
-      <TentDetailsPage />
-    </Suspense>
+    <>
+      {productSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
+        />
+      )}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <Suspense
+        fallback={
+          <Loading fullscreen size="large" text="Loading tent details..." />
+        }
+      >
+        <TentDetailsPage />
+      </Suspense>
+    </>
   );
 }
 

@@ -20,7 +20,7 @@ export async function generateMetadata(
   { params }: Props,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
-  const baseUrl = "https://tapovanswisscampsofficial.com";
+  const baseUrl = "https://www.tapovanswisscampsofficial.com";
 
   // Resolve the promises
   const resolvedParams = await params;

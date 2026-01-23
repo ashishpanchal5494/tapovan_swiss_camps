@@ -4,7 +4,6 @@ import React, { useEffect, useState } from "react";
 import TentCard from "@/components/TentCard";
 import { usePathname, useSearchParams } from "next/navigation";
 import Link from "next/link";
-import Script from "next/script";
 import { tentRooms } from "../app/tents/tentData";
 
 const TentsClient: React.FC = () => {
@@ -101,14 +100,22 @@ const TentsClient: React.FC = () => {
       startAutoSwipe();
     };
 
+    const indicatorHandlers: Array<{
+      indicator: Element;
+      handler: () => void;
+    }> = [];
+
     // Handle indicator clicks
     indicators.forEach((indicator, index) => {
-      indicator.addEventListener("click", () => {
+      const handler = () => {
         currentIndex = index;
         showSlide(currentIndex);
         stopAutoSwipe();
         startAutoSwipe(); // Restart timer
-      });
+      };
+
+      indicator.addEventListener("click", handler);
+      indicatorHandlers.push({ indicator, handler });
     });
 
     // Add hover listeners
@@ -123,8 +130,8 @@ const TentsClient: React.FC = () => {
       stopAutoSwipe();
       carouselElement.removeEventListener("mouseenter", handleMouseEnter);
       carouselElement.removeEventListener("mouseleave", handleMouseLeave);
-      indicators.forEach((indicator) => {
-        indicator.removeEventListener("click", () => {});
+      indicatorHandlers.forEach(({ indicator, handler }) => {
+        indicator.removeEventListener("click", handler);
       });
     };
   }, []);
@@ -156,71 +163,8 @@ const TentsClient: React.FC = () => {
     return { perHeadPrice, perHeadMainPrice, totalPrice, totalMainPrice };
   };
 
-  // Enhanced structured data for tents page
-  const tentsStructuredData = {
-    "@context": "https://schema.org",
-    "@type": "CollectionPage",
-    name: "Luxury Camping Tents in Tapovan Rishikesh | Premium Glamping by Ganga River",
-    description:
-      "Premium glamping experience with luxury AC tents, cooler tents, and budget options near Ganga river. Experience riverside camping with modern amenities, swimming pool, rafting, yoga, and delicious food. Perfect for families, couples, and adventure lovers. Book now for the best camping experience in Rishikesh!",
-    url: "https://tapovanswisscampsofficial.com/tents",
-    image: "https://tapovanswisscampsofficial.com/assets/img/room/ACTent1.webp",
-    mainEntity: {
-      "@type": "ItemList",
-      numberOfItems: tentRooms.length,
-      itemListElement: tentRooms.map((tent, index) => ({
-        "@type": "ListItem",
-        position: index + 1,
-        item: {
-          "@type": "Product",
-          name: tent.title,
-          description: tent.metaDescription,
-          image: `https://tapovanswisscampsofficial.com/${tent.image}`,
-          offers: {
-            "@type": "Offer",
-            price: tent.price,
-            priceCurrency: "INR",
-            availability: "https://schema.org/InStock",
-            priceValidUntil: "2025-12-31",
-            description:
-              "Premium luxury camping tents with modern amenities, Ganga river views, and world-class facilities. Book now for the best camping experience in Rishikesh!",
-          },
-        },
-      })),
-    },
-    publisher: {
-      "@type": "Organization",
-      name: "Tapovan Swiss Camps",
-      logo: {
-        "@type": "ImageObject",
-        url: "https://tapovanswisscampsofficial.com/assets/img/logo.png",
-      },
-    },
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: "4.8",
-      reviewCount: "150",
-      bestRating: "5",
-    },
-    offers: {
-      "@type": "AggregateOffer",
-      lowPrice: "999",
-      highPrice: "2999",
-      priceCurrency: "INR",
-      offerCount: tentRooms.length,
-    },
-  };
-
   return (
     <>
-      <Script
-        id="tents-structured-data"
-        type="application/ld+json"
-        strategy="afterInteractive"
-      >
-        {JSON.stringify(tentsStructuredData)}
-      </Script>
-
       {/* Hero Section */}
       <section className="pt-20 pt-md-30 pt-lg-40 tents-hero bg-gradient-to-br from-green-50 via-blue-50 to-indigo-50 py-8 py-md-12 py-lg-16 relative overflow-hidden">
         <div className="hero-pattern absolute inset-0 opacity-10"></div>

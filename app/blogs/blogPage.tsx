@@ -12,11 +12,6 @@ const BlogCard = dynamic(() => import("@/components/BlogCard"), {
   ssr: true,
 });
 
-// Lazy load Loading component
-const Loading = dynamic(() => import("@/components/Loading"), {
-  ssr: false,
-});
-
 // Memoized blog data to prevent unnecessary re-renders
 const memoizedBlogData = blogData;
 
@@ -125,7 +120,6 @@ const generateStructuredData = () => {
 };
 
 const BlogPage: React.FC = memo(() => {
-  const [isClient, setIsClient] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
   const pathname = usePathname();
@@ -145,7 +139,6 @@ const BlogPage: React.FC = memo(() => {
     };
 
     // Initial setup
-    setIsClient(true);
     checkMobile();
 
     // Add event listener
@@ -159,16 +152,6 @@ const BlogPage: React.FC = memo(() => {
 
   // Memoized structured data
   const structuredData = useMemo(() => generateStructuredData(), []);
-
-  if (!isClient) {
-    return (
-      <Suspense
-        fallback={<div className="loading-placeholder">Loading blogs...</div>}
-      >
-        <Loading />
-      </Suspense>
-    );
-  }
 
   return (
     <>

@@ -7,7 +7,7 @@ import { getAllBlogSlugs } from '@/data/blogData'
 export const dynamic = 'force-static'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://tapovanswisscampsofficial.com'
+  const baseUrl = 'https://www.tapovanswisscampsofficial.com'
   
   // Get all team member slugs
   const teamSlugs = getAllTeamMemberSlugs()

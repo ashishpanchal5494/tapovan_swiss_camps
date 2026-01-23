@@ -332,7 +332,7 @@ const TestimonialPage: React.FC = memo(() => {
       "@context": "https://schema.org",
       "@type": "LocalBusiness",
       name: "Tapovan Swiss Camps",
-      image: "https://tapovanswisscampsofficial.com/assets/img/logo.png",
+      image: "https://www.tapovanswisscampsofficial.com/assets/img/logo.png",
       description:
         "Premium camping and glamping experience in Rishikesh with luxury tents, adventure activities, and scenic mountain views",
       address: {
@@ -349,7 +349,7 @@ const TestimonialPage: React.FC = memo(() => {
         longitude: "78.3127861",
       },
       telephone: "+917906924003",
-      url: "https://tapovanswisscampsofficial.com",
+      url: "https://www.tapovanswisscampsofficial.com",
       priceRange: "₹₹",
       aggregateRating: {
         "@type": "AggregateRating",

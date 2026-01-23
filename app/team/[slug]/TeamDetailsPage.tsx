@@ -29,12 +29,12 @@ const TeamDetailsPage: React.FC = () => {
     jobTitle: data.role,
     description: data.description,
     image: data.image.startsWith("/")
-      ? `https://tapovanswisscampsofficial.com${data.image}`
+      ? `https://www.tapovanswisscampsofficial.com${data.image}`
       : data.image,
     worksFor: {
       "@type": "Organization",
       name: "Tapovan Swiss Camps",
-      url: "https://tapovanswisscampsofficial.com",
+      url: "https://www.tapovanswisscampsofficial.com",
       address: {
         "@type": "PostalAddress",
         addressLocality: "Rishikesh",

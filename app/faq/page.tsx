@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import FAQPage from "./FAQPage";
 
-const BASE_URL = "https://tapovanswisscampsofficial.com";
+const BASE_URL = "https://www.tapovanswisscampsofficial.com";
 
 export async function generateMetadata(): Promise<Metadata> {
   const title =

@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next'
 
 
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = 'https://tapovanswisscampsofficial.com'
+  const baseUrl = 'https://www.tapovanswisscampsofficial.com'
   
   return {
     rules: [
@@ -13,5 +13,6 @@ export default function robots(): MetadataRoute.Robots {
       },
     ],
     sitemap: `${baseUrl}/sitemap.xml`,
+    host: baseUrl,
   }
 }

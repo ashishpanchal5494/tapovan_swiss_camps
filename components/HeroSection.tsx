@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useCallback } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { useRouter } from "next/navigation";
@@ -22,13 +22,6 @@ const DatePicker = dynamic(
   }
 ) as React.ComponentType<Record<string, unknown>>;
 
-// Lazy load CSS
-if (typeof window !== "undefined") {
-  // @ts-expect-error - CSS module import
-  import("react-datepicker/dist/react-datepicker.css").catch(() => {
-    // CSS import failed, but this is non-critical
-  });
-}
 import {
   FaCalendarAlt,
   FaUsers,
@@ -37,28 +30,79 @@ import {
   FaSearch,
 } from "react-icons/fa";
 
+const slides = [
+  {
+    id: 1,
+    title: "Luxury Riverside Camping",
+    subtitle: "Experience Nature in Comfort",
+    text: "Discover the perfect luxury at Tapovan Swiss Camps. Wake up to the sound of flowing Ganga and enjoy premium amenities in our luxury tents.",
+    btnText: "Explore Tents",
+    link: "/tents",
+    bgImage: "/assets/img/slider/slider-1.webp",
+    overlay: "rgba(0,0,0,0.4)",
+  },
+  {
+    id: 2,
+    title: "Adventure Awaits You",
+    subtitle: "Rafting, Yoga & More",
+    text: "From thrilling white-water rafting to peaceful yoga sessions by the river, create unforgettable memories with our adventure packages.",
+    btnText: "Book Adventure",
+    link: "/booking-form",
+    bgImage: "/assets/img/slider/slider-2.webp",
+    overlay: "rgba(0,0,0,0.3)",
+  },
+  {
+    id: 3,
+    title: "Family Paradise",
+    subtitle: "Where Memories Are Made",
+    text: "Perfect for families, couples, and groups. Enjoy swimming, bonfires, delicious food, and create lasting memories in the lap of nature.",
+    btnText: "Plan Your Stay",
+    link: "/contact",
+    bgImage: "/assets/img/slider/slider-3.webp",
+    overlay: "rgba(0,0,0,0.5)",
+  },
+];
+
+type SearchData = {
+  checkIn: Date | null;
+  checkOut: Date | null;
+  adults: number | "";
+  children: number | "";
+  tentType: string;
+};
+
 const HeroSection: React.FC = () => {
   const [activeSlide, setActiveSlide] = useState(0);
   const router = useRouter();
-  const [searchData, setSearchData] = useState({
-    checkIn: null as Date | null,
-    checkOut: null as Date | null,
-    adults: 0,
-    children: 0,
+  const [searchData, setSearchData] = useState<SearchData>({
+    checkIn: null,
+    checkOut: null,
+    adults: "",
+    children: "",
     tentType: "",
   });
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
-    setSearchData({ ...searchData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    if (name === "adults" || name === "children") {
+      setSearchData((prev) => ({
+        ...prev,
+        [name]: value === "" ? "" : Number(value),
+      }));
+      return;
+    }
+    setSearchData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleDateChange = (name: string, date: Date | null) => {
-    setSearchData((prev) => ({
-      ...prev,
-      [name]: date,
-    }));
+  const handleDateChange = (name: "checkIn" | "checkOut", date: Date | null) => {
+    setSearchData((prev) => {
+      if (name === "checkIn" && date && prev.checkOut && prev.checkOut < date) {
+        return { ...prev, checkIn: date, checkOut: null };
+      }
+      return { ...prev, [name]: date };
+    });
   };
 
   const formatDateLocal = (date: Date | null): string => {
@@ -70,57 +114,40 @@ const HeroSection: React.FC = () => {
   };
 
   const handleSearch = () => {
-    const queryObject: Record<string, string> = {
-      checkIn: formatDateLocal(searchData.checkIn),
-      checkOut: formatDateLocal(searchData.checkOut),
-      adults: String(searchData.adults),
-      children: String(searchData.children),
-      tentType: searchData.tentType,
-    };
+    const params = new URLSearchParams();
+    const checkIn = formatDateLocal(searchData.checkIn);
+    const checkOut = formatDateLocal(searchData.checkOut);
 
-    const query = new URLSearchParams(queryObject).toString();
-    router.push(`/tents?${query}`);
+    if (checkIn) params.set("checkIn", checkIn);
+    if (checkOut) params.set("checkOut", checkOut);
+    if (searchData.adults !== "") {
+      params.set("adults", String(searchData.adults));
+    }
+    if (searchData.children !== "") {
+      params.set("children", String(searchData.children));
+    }
+    if (searchData.tentType) {
+      params.set("tentType", searchData.tentType);
+    }
+
+    const query = params.toString();
+    router.push(query ? `/tents?${query}` : "/tents");
   };
-
-  const slides = [
-    {
-      id: 1,
-      title: "Luxury Riverside Camping",
-      subtitle: "Experience Nature in Comfort",
-      text: "Discover the perfect luxury at Tapovan Swiss Camps. Wake up to the sound of flowing Ganga and enjoy premium amenities in our luxury tents.",
-      btnText: "Explore Tents",
-      link: "/tents",
-      bgImage: "/assets/img/slider/slider-1.webp",
-      overlay: "rgba(0,0,0,0.4)",
-    },
-    {
-      id: 2,
-      title: "Adventure Awaits You",
-      subtitle: "Rafting, Yoga & More",
-      text: "From thrilling white-water rafting to peaceful yoga sessions by the river, create unforgettable memories with our adventure packages.",
-      btnText: "Book Adventure",
-      link: "/booking-form",
-      bgImage: "/assets/img/slider/slider-2.webp",
-      overlay: "rgba(0,0,0,0.3)",
-    },
-    {
-      id: 3,
-      title: "Family Paradise",
-      subtitle: "Where Memories Are Made",
-      text: "Perfect for families, couples, and groups. Enjoy swimming, bonfires, delicious food, and create lasting memories in the lap of nature.",
-      btnText: "Plan Your Stay",
-      link: "/contact",
-      bgImage: "/assets/img/slider/slider-3.webp",
-      overlay: "rgba(0,0,0,0.5)",
-    },
-  ];
 
   const nextSlide = useCallback(() => {
     setActiveSlide((prev) => (prev + 1) % slides.length);
   }, [slides.length]);
 
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    // @ts-expect-error - CSS module import
+    import("react-datepicker/dist/react-datepicker.css").catch(() => {
+      // CSS import failed, but this is non-critical
+    });
+  }, []);
+
   // Auto-advance slides
-  React.useEffect(() => {
+  useEffect(() => {
     const interval = setInterval(nextSlide, 6000);
     return () => clearInterval(interval);
   }, [nextSlide]);
@@ -144,7 +171,10 @@ const HeroSection: React.FC = () => {
               }}
             />
           ))}
-          <div className="hero-overlay" />
+          <div
+            className="hero-overlay"
+            style={{ backgroundColor: slides[activeSlide].overlay }}
+          />
         </div>
 
         {/* Content */}
@@ -164,7 +194,7 @@ const HeroSection: React.FC = () => {
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: 0.2, duration: 0.6 }}
-                    className="hero-badge mb-4"
+                    className="hero-badge mb-4 d-none d-lg-block"
                   >
                     <span className="badge bg-primary-custom text-white px-4 py-2 rounded-pill fs-6">
                       {slides[activeSlide].subtitle}
@@ -241,6 +271,7 @@ const HeroSection: React.FC = () => {
                       className="form-control form-control-lg"
                       placeholderText="Select date"
                       dateFormat="dd/MM/yyyy"
+                      minDate={new Date()}
                     />
                   </div>
                 </div>
@@ -258,6 +289,7 @@ const HeroSection: React.FC = () => {
                       className="form-control form-control-lg"
                       placeholderText="Select date"
                       dateFormat="dd/MM/yyyy"
+                      minDate={searchData.checkIn || new Date()}
                     />
                   </div>
                 </div>
@@ -357,6 +389,7 @@ const HeroSection: React.FC = () => {
                       className="form-control form-control-lg"
                       placeholderText="Select date"
                       dateFormat="dd/MM/yyyy"
+                      minDate={new Date()}
                     />
                   </div>
                 </div>
@@ -374,6 +407,7 @@ const HeroSection: React.FC = () => {
                       className="form-control form-control-lg"
                       placeholderText="Select date"
                       dateFormat="dd/MM/yyyy"
+                      minDate={searchData.checkIn || new Date()}
                     />
                   </div>
                 </div>
@@ -454,6 +488,22 @@ const HeroSection: React.FC = () => {
           </motion.div>
         </div>
       </div>
+      <style jsx>{`
+        @media (max-width: 991.98px) {
+          .hero-section {
+            min-height: 70vh;
+          }
+          .hero-background,
+          .hero-bg-slide {
+            height: 100%;
+            min-height: 70vh;
+          }
+          .hero-bg-slide {
+            background-size: cover;
+            background-position: center;
+          }
+        }
+      `}</style>
     </>
   );
 };

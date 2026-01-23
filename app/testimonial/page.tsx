@@ -47,19 +47,19 @@ export const metadata: Metadata = {
       "5-Star Camping Reviews | Tapovan Swiss Camps - #1 Rated Camping in Rishikesh",
     description:
       "50+ verified 5-star guest reviews for Tapovan Swiss Camps - India's top-rated luxury camping destination in Rishikesh. Real testimonials from happy guests about premium tents, scenic views, and exceptional hospitality.",
-    url: "https://tapovanswisscampsofficial.com/testimonial",
+    url: "https://www.tapovanswisscampsofficial.com/testimonial",
     type: "website",
     locale: "en_IN",
     siteName: "Tapovan Swiss Camps",
     images: [
       {
-        url: "https://tapovanswisscampsofficial.com/assets/img/room/group.webp",
+        url: "https://www.tapovanswisscampsofficial.com/assets/img/room/group.webp",
         width: 1200,
         height: 630,
         alt: "Happy guests enjoying luxury camping at Tapovan Swiss Camps in Rishikesh",
       },
       {
-        url: "https://tapovanswisscampsofficial.com/assets/img/gallery/gardenPhoto.webp",
+        url: "https://www.tapovanswisscampsofficial.com/assets/img/gallery/gardenPhoto.webp",
         width: 1200,
         height: 630,
         alt: "Beautiful mountain views and luxury tents at Tapovan Swiss Camps",
@@ -73,11 +73,11 @@ export const metadata: Metadata = {
     description:
       "50+ verified 5-star guest reviews for India's top-rated luxury camping destination in Rishikesh. Real testimonials from happy guests.",
     images: [
-      "https://tapovanswisscampsofficial.com/assets/img/room/group.webp",
+      "https://www.tapovanswisscampsofficial.com/assets/img/room/group.webp",
     ],
   },
   alternates: {
-    canonical: "https://tapovanswisscampsofficial.com/testimonial",
+    canonical: "https://www.tapovanswisscampsofficial.com/testimonial",
   },
   category: "Travel & Tourism",
   classification: "Camping Reviews and Testimonials",

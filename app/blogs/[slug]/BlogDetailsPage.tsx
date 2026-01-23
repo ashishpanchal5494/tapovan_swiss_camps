@@ -5,6 +5,7 @@ import Image from "next/image";
 import { notFound, useParams } from "next/navigation";
 import Link from "next/link";
 import { blogData, getBlogBySlug } from "@/data/blogData";
+import { tentRooms } from "@/app/tents/tentData";
 
 // (No lazy components required here)
 
@@ -267,6 +268,7 @@ const BlogDetailsPage: React.FC = memo(() => {
               width={800}
               height={450}
               priority
+              fetchPriority="high"
               quality={90}
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 800px"
               placeholder="blur"
@@ -358,6 +360,57 @@ const BlogDetailsPage: React.FC = memo(() => {
             </div>
           </div>
 
+          <div
+            className="tent-links"
+            style={{
+              marginTop: "30px",
+              padding: "20px",
+              backgroundColor: "#f9fbf9",
+              borderRadius: "10px",
+              border: "1px solid #e6efe6",
+            }}
+          >
+            <h2 style={{ fontSize: "20px", marginBottom: "12px" }}>
+              Explore Our Tent Stays
+            </h2>
+            <p style={{ color: "#666", marginBottom: "12px" }}>
+              Planning your stay in Rishikesh? Compare our tent options and book
+              the perfect riverside experience.
+            </p>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: "10px" }}>
+              <Link
+                href="/tents"
+                style={{
+                  textDecoration: "none",
+                  padding: "6px 12px",
+                  borderRadius: "999px",
+                  backgroundColor: "#507650",
+                  color: "#fff",
+                  fontWeight: "500",
+                }}
+              >
+                View All Tents
+              </Link>
+              {tentRooms.map((tent) => (
+                <Link
+                  key={tent.slug}
+                  href={`/tents/${tent.slug}`}
+                  style={{
+                    textDecoration: "none",
+                    padding: "6px 12px",
+                    borderRadius: "999px",
+                    backgroundColor: "#fff",
+                    border: "1px solid #dfe8df",
+                    color: "#507650",
+                    fontWeight: "500",
+                  }}
+                >
+                  {tent.title}
+                </Link>
+              ))}
+            </div>
+          </div>
+
           {/* FAQ Section */}
           {blog.faq && blog.faq.length > 0 && (
             <div
@@ -430,7 +483,7 @@ const BlogDetailsPage: React.FC = memo(() => {
               href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(
                 blog.title
               )}&url=${encodeURIComponent(
-                `${BASE_URL}/blog/${blog.slug}` // Use BASE_URL here
+                `${BASE_URL}/blogs/${blog.slug}` // Use BASE_URL here
               )}`}
               target="_blank"
               rel="noopener noreferrer"
@@ -440,7 +493,7 @@ const BlogDetailsPage: React.FC = memo(() => {
             <Link
               style={{ textDecoration: "none" }}
               href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
-                `${BASE_URL}/blog/${blog.slug}` // Use BASE_URL here
+                `${BASE_URL}/blogs/${blog.slug}` // Use BASE_URL here
               )}`}
               target="_blank"
               rel="noopener noreferrer"

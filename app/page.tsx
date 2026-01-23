@@ -198,6 +198,14 @@ export const metadata: Metadata = {
 };
 
 function Home() {
+  const websiteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "Tapovan Swiss Camps",
+    url: "https://www.tapovanswisscampsofficial.com",
+    inLanguage: "en-IN",
+  };
+
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "LodgingBusiness",
@@ -345,6 +353,10 @@ function Home() {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+      />
       <Script
         id="structured-data"
         type="application/ld+json"

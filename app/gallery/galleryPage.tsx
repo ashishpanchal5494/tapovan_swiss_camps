@@ -387,9 +387,13 @@ const ImageData: GalleryImage[] = [
 ];
 
 export default function GalleryPage() {
+  const blurDataUrl =
+    "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k=";
+  const pageSize = 12;
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [filteredImages, setFilteredImages] = useState(ImageData);
+  const [visibleCount, setVisibleCount] = useState(pageSize);
   const [isClient, setIsClient] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
@@ -458,6 +462,7 @@ export default function GalleryPage() {
         ImageData.filter((img) => img.category === selectedCategory)
       );
     }
+    setVisibleCount(pageSize);
   }, [selectedCategory]);
 
   const handleCategoryChange = (categoryId: string) => {
@@ -785,7 +790,7 @@ export default function GalleryPage() {
       <section className="gallery-section py-4 py-md-5">
         <div className="container">
           <div className="row">
-            {filteredImages.map((item) => (
+            {filteredImages.slice(0, visibleCount).map((item, index) => (
               <div key={item.id} className="col-6 col-md-4 col-lg-3 mb-4">
                 <div
                   className="gallery-item position-relative overflow-hidden rounded-3 shadow-sm"
@@ -798,9 +803,12 @@ export default function GalleryPage() {
                     className="gallery-img w-100 h-auto"
                     width={400}
                     height={300}
-                    loading="lazy"
-                    quality={85}
+                    loading={index < 4 ? "eager" : "lazy"}
+                    quality={75}
                     sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                    fetchPriority={index < 2 ? "high" : "auto"}
+                    placeholder="blur"
+                    blurDataURL={blurDataUrl}
                     style={{
                       transition: "transform 0.3s ease",
                       objectFit: "cover",
@@ -845,6 +853,20 @@ export default function GalleryPage() {
               </div>
             ))}
           </div>
+          {filteredImages.length > visibleCount && (
+            <div className="d-flex justify-content-center mt-3">
+              <button
+                className="btn btn-primary-custom text-white px-4"
+                onClick={() =>
+                  setVisibleCount((prev) =>
+                    Math.min(prev + pageSize, filteredImages.length)
+                  )
+                }
+              >
+                Load More Photos
+              </button>
+            </div>
+          )}
         </div>
       </section>
 
@@ -878,6 +900,11 @@ export default function GalleryPage() {
               width={800}
               height={600}
               className="modal-img rounded-3"
+              loading="eager"
+              quality={80}
+              sizes="90vw"
+              placeholder="blur"
+              blurDataURL={blurDataUrl}
               style={{
                 maxWidth: "90vw",
                 maxHeight: "90vh",

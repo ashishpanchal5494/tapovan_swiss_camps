@@ -21,14 +21,14 @@ const TeamPage: React.FC = () => {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: "Tapovan Swiss Camps",
-    url: "https://tapovanswisscampsofficial.com",
-    logo: "https://tapovanswisscampsofficial.com/assets/img/logo.png",
+    url: "https://www.tapovanswisscampsofficial.com",
+    logo: "https://www.tapovanswisscampsofficial.com/assets/img/logo.png",
     employee: teamMembers.map((member) => ({
       "@type": "Person",
       name: member.name,
       jobTitle: member.role,
       description: member.description,
-      image: `https://tapovanswisscampsofficial.com/${member.image}`,
+      image: `https://www.tapovanswisscampsofficial.com/${member.image}`,
 
       sameAs: Object.values(member.socialLinks).filter((link) => link !== "#"),
     })),
@@ -49,13 +49,13 @@ const TeamPage: React.FC = () => {
               "@type": "ListItem",
               position: 1,
               name: "Home",
-              item: "https://tapovanswisscampsofficial.com",
+              item: "https://www.tapovanswisscampsofficial.com",
             },
             {
               "@type": "ListItem",
               position: 2,
               name: "Our Team",
-              item: "https://tapovanswisscampsofficial.com/team",
+              item: "https://www.tapovanswisscampsofficial.com/team",
             },
           ],
         })}

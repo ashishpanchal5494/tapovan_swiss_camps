@@ -116,13 +116,13 @@ function PrivacyPolicyPage() {
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://tapovanswisscampsofficial.com",
+        item: "https://www.tapovanswisscampsofficial.com",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Privacy Policy",
-        item: "https://tapovanswisscampsofficial.com/privacy-policy",
+        item: "https://www.tapovanswisscampsofficial.com/privacy-policy",
       },
     ],
   };

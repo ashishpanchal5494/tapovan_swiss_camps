@@ -2,15 +2,19 @@ import React, { Suspense } from "react";
 import Loading from "@/components/Loading";
 import TentsClient from "@/components/TentsClient";
 import { Metadata } from "next";
+import { tentRooms } from "./tentData";
 
 export const generateMetadata = (): Metadata => {
-  const baseUrl = "https://tapovanswisscampsofficial.com";
+  const baseUrl = "https://www.tapovanswisscampsofficial.com";
 
   return {
     title:
       "Luxury Camping Tents in Tapovan Rishikesh | Premium Glamping @ ₹999 | AC Tents by Ganga River | Tapovan Swiss Camps",
     description:
       "Experience luxury camping in Tapovan Rishikesh with premium AC tents, cooler tents & riverside glamping starting ₹999. Enjoy stunning Ganga river views, attached washrooms, modern amenities, swimming pool, rafting, yoga & delicious food. Best camping experience for couples, families & groups in Rishikesh. 4.8★ rated with 150+ reviews. Book now!",
+    alternates: {
+      canonical: `${baseUrl}/tents`,
+    },
     keywords: [
       "luxury camping tents rishikesh",
       "premium glamping tapovan rishikesh",
@@ -125,8 +129,89 @@ export const generateMetadata = (): Metadata => {
 };
 
 const Tents: React.FC = () => {
+  const baseUrl = "https://www.tapovanswisscampsofficial.com";
+  const collectionSchema = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: "Luxury Camping Tents in Tapovan Rishikesh | Premium Glamping by Ganga River",
+    description:
+      "Premium glamping experience with luxury AC tents, cooler tents, and budget options near Ganga river. Experience riverside camping with modern amenities, swimming pool, rafting, yoga, and delicious food.",
+    url: `${baseUrl}/tents`,
+    image: `${baseUrl}/assets/img/room/ACTent1.webp`,
+    mainEntity: {
+      "@type": "ItemList",
+      numberOfItems: tentRooms.length,
+      itemListElement: tentRooms.map((tent, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        item: {
+          "@type": "Product",
+          name: tent.title,
+          description: tent.metaDescription,
+          image: tent.image.startsWith("/")
+            ? `${baseUrl}${tent.image}`
+            : `${baseUrl}/${tent.image}`,
+          url: `${baseUrl}/tents/${tent.slug}`,
+          brand: {
+            "@type": "Brand",
+            name: "Tapovan Swiss Camps",
+          },
+          offers: {
+            "@type": "Offer",
+            price: tent.price,
+            priceCurrency: "INR",
+            availability: "https://schema.org/InStock",
+            url: `${baseUrl}/tents/${tent.slug}`,
+          },
+        },
+      })),
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "Tapovan Swiss Camps",
+      logo: {
+        "@type": "ImageObject",
+        url: `${baseUrl}/assets/img/logo.png`,
+      },
+    },
+    offers: {
+      "@type": "AggregateOffer",
+      lowPrice: "999",
+      highPrice: "2999",
+      priceCurrency: "INR",
+      offerCount: tentRooms.length,
+    },
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: baseUrl,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Tents",
+        item: `${baseUrl}/tents`,
+      },
+    ],
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       <Suspense fallback={<Loading />}>
         <TentsClient />
       </Suspense>
