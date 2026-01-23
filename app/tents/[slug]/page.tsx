@@ -13,7 +13,7 @@ export async function generateStaticParams() {
 }
 
 type PageProps = {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 };
 
 export async function generateMetadata(
@@ -21,7 +21,8 @@ export async function generateMetadata(
   parent: ResolvingMetadata
 ): Promise<Metadata> {
   const baseUrl = "https://www.tapovanswisscampsofficial.com";
-  const tent = getTentBySlug(params.slug);
+  const resolvedParams = await params;
+  const tent = getTentBySlug(resolvedParams.slug);
 
   if (!tent) {
     return {
@@ -35,7 +36,7 @@ export async function generateMetadata(
   const imageUrl = image.startsWith("/")
     ? `${baseUrl}${image}`
     : `${baseUrl}/${image}`;
-  const url = `${baseUrl}/tents/${params.slug}`; // Clean canonical URL
+  const url = `${baseUrl}/tents/${resolvedParams.slug}`; // Clean canonical URL
 
   const previousImages = (await parent).openGraph?.images || [];
 
@@ -138,9 +139,10 @@ export async function generateMetadata(
   };
 }
 
-function TentDetails({ params }: PageProps) {
+async function TentDetails({ params }: PageProps) {
   const baseUrl = "https://www.tapovanswisscampsofficial.com";
-  const tent = getTentBySlug(params.slug);
+  const resolvedParams = await params;
+  const tent = getTentBySlug(resolvedParams.slug);
 
   const imageUrl = tent?.image
     ? tent.image.startsWith("/")
@@ -213,7 +215,7 @@ function TentDetails({ params }: PageProps) {
         "@type": "ListItem",
         position: 3,
         name: tent?.title || "Tent Details",
-        item: `${baseUrl}/tents/${params.slug}`,
+        item: `${baseUrl}/tents/${resolvedParams.slug}`,
       },
     ],
   };
