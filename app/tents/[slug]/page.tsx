@@ -12,21 +12,16 @@ export async function generateStaticParams() {
   }));
 }
 
-type Props = {
-  params: Promise<{ slug: string }>;
-};
-
 type PageProps = {
   params: { slug: string };
 };
 
 export async function generateMetadata(
-  { params }: Props,
+  { params }: PageProps,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
   const baseUrl = "https://www.tapovanswisscampsofficial.com";
-  const resolvedParams = await params;
-  const tent = getTentBySlug(resolvedParams.slug);
+  const tent = getTentBySlug(params.slug);
 
   if (!tent) {
     return {
@@ -40,7 +35,7 @@ export async function generateMetadata(
   const imageUrl = image.startsWith("/")
     ? `${baseUrl}${image}`
     : `${baseUrl}/${image}`;
-  const url = `${baseUrl}/tents/${resolvedParams.slug}`; // Clean canonical URL
+  const url = `${baseUrl}/tents/${params.slug}`; // Clean canonical URL
 
   const previousImages = (await parent).openGraph?.images || [];
 

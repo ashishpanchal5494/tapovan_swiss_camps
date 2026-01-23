@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { useRouter } from "next/navigation";
@@ -134,10 +134,6 @@ const HeroSection: React.FC = () => {
     router.push(query ? `/tents?${query}` : "/tents");
   };
 
-  const nextSlide = useCallback(() => {
-    setActiveSlide((prev) => (prev + 1) % slides.length);
-  }, [slides.length]);
-
   useEffect(() => {
     if (typeof window === "undefined") return;
     // @ts-expect-error - CSS module import
@@ -148,9 +144,11 @@ const HeroSection: React.FC = () => {
 
   // Auto-advance slides
   useEffect(() => {
-    const interval = setInterval(nextSlide, 6000);
+    const interval = setInterval(() => {
+      setActiveSlide((prev) => (prev + 1) % slides.length);
+    }, 6000);
     return () => clearInterval(interval);
-  }, [nextSlide]);
+  }, []);
 
   return (
     <>
