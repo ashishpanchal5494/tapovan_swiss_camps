@@ -54,7 +54,7 @@ function ContactPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // TODO: Replace with actual API call
+    // Placeholder: wire backend later
     setSuccessMessage("Thanks for reaching out! We'll be in touch very soon.");
     setTimeout(() => setSuccessMessage(""), 5000);
   };

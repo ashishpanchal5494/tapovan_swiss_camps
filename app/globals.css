@@ -6759,6 +6759,16 @@ Video Section CSS
   background: white;
 }
 
+@media (min-width: 992px) {
+  .video-wrapper {
+    max-width: 980px;
+    margin: 0 auto;
+    border: 1px solid #e4e4e4;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  }
+}
+
 
 
 /*==========================

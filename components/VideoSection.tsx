@@ -10,7 +10,10 @@ const videos = [
 
 const VideoSection = () => {
   const [activeVideo, setActiveVideo] = useState(0);
+  const [isInView, setIsInView] = useState(false);
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
+  const sectionRef = useRef<HTMLElement | null>(null);
 
   const playVideo = async (video: HTMLVideoElement) => {
     try {
@@ -28,6 +31,12 @@ const VideoSection = () => {
   useEffect(() => {
     videoRefs.current.forEach((video, index) => {
       if (!video) return;
+
+      if (!isInView || prefersReducedMotion) {
+        video.pause();
+        video.currentTime = 0;
+        return;
+      }
 
       if (index === activeVideo) {
         video.muted = true;
@@ -50,7 +59,29 @@ const VideoSection = () => {
         video.currentTime = 0;
       }
     });
-  }, [activeVideo]);
+  }, [activeVideo, isInView, prefersReducedMotion]);
+
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsInView(entry.isIntersecting),
+      { rootMargin: "200px 0px", threshold: 0.1 }
+    );
+
+    observer.observe(section);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const media = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const update = () => setPrefersReducedMotion(media.matches);
+
+    update();
+    media.addEventListener("change", update);
+    return () => media.removeEventListener("change", update);
+  }, []);
 
   const nextVideo = useCallback(
     () => setActiveVideo((prev) => (prev + 1) % videos.length),
@@ -58,7 +89,7 @@ const VideoSection = () => {
   );
 
   return (
-    <section className="video-section">
+    <section className="video-section" ref={sectionRef}>
             {/* ✅ YOUR CONTENT ADDED HERE */}
       <div className="text-center mb-3 mb-md-4 mb-lg-5 video-section-header">
         <h2 className="video-section-title fw-bold text-dark mb-2 mb-md-3 mb-lg-4">
@@ -85,7 +116,7 @@ const VideoSection = () => {
               src={src}
               muted
               playsInline
-              preload={index === activeVideo ? "auto" : "metadata"}
+              preload={index === activeVideo && isInView ? "auto" : "metadata"}
               className="video-slide"
               onEnded={nextVideo}
             />
