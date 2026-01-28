@@ -12,6 +12,7 @@ const VideoSection = () => {
   const [activeVideo, setActiveVideo] = useState(0);
   const [isInView, setIsInView] = useState(false);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+  const [isPageVisible, setIsPageVisible] = useState(true);
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
   const sectionRef = useRef<HTMLElement | null>(null);
 
@@ -32,7 +33,7 @@ const VideoSection = () => {
     videoRefs.current.forEach((video, index) => {
       if (!video) return;
 
-      if (!isInView || prefersReducedMotion) {
+      if (!isInView || prefersReducedMotion || !isPageVisible) {
         video.pause();
         video.currentTime = 0;
         return;
@@ -59,15 +60,16 @@ const VideoSection = () => {
         video.currentTime = 0;
       }
     });
-  }, [activeVideo, isInView, prefersReducedMotion]);
+  }, [activeVideo, isInView, prefersReducedMotion, isPageVisible]);
 
   useEffect(() => {
     const section = sectionRef.current;
     if (!section) return;
 
     const observer = new IntersectionObserver(
-      ([entry]) => setIsInView(entry.isIntersecting),
-      { rootMargin: "200px 0px", threshold: 0.1 }
+      ([entry]) =>
+        setIsInView(entry.isIntersecting && entry.intersectionRatio >= 0.35),
+      { rootMargin: "0px", threshold: [0.35] }
     );
 
     observer.observe(section);
@@ -81,6 +83,14 @@ const VideoSection = () => {
     update();
     media.addEventListener("change", update);
     return () => media.removeEventListener("change", update);
+  }, []);
+
+  useEffect(() => {
+    const updateVisibility = () => setIsPageVisible(!document.hidden);
+    updateVisibility();
+    document.addEventListener("visibilitychange", updateVisibility);
+    return () =>
+      document.removeEventListener("visibilitychange", updateVisibility);
   }, []);
 
   const nextVideo = useCallback(
@@ -116,7 +126,11 @@ const VideoSection = () => {
               src={src}
               muted
               playsInline
-              preload={index === activeVideo && isInView ? "auto" : "metadata"}
+              preload={
+                index === activeVideo && isInView && isPageVisible
+                  ? "auto"
+                  : "none"
+              }
               className="video-slide"
               onEnded={nextVideo}
             />

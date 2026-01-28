@@ -396,6 +396,7 @@ export default function GalleryPage() {
   const [visibleCount, setVisibleCount] = useState(pageSize);
   const [isClient, setIsClient] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [isModalLoading, setIsModalLoading] = useState(false);
   const preloadedImagesRef = useRef<Set<string>>(new Set());
 
   const pathname = usePathname();
@@ -476,12 +477,14 @@ export default function GalleryPage() {
 
   const openModal = (image: string) => {
     prefetchImage(image);
+    setIsModalLoading(true);
     setSelectedImage(image);
     document.body.style.overflow = "hidden"; // Prevent scrolling
   };
 
   const closeModal = () => {
     setSelectedImage(null);
+    setIsModalLoading(false);
     document.body.style.overflow = "auto"; // Re-enable scrolling
   };
 
@@ -898,6 +901,15 @@ export default function GalleryPage() {
             className="modal-content position-relative"
             onClick={(e) => e.stopPropagation()}
           >
+            {isModalLoading && (
+              <div
+                className="position-absolute top-50 start-50 translate-middle text-white d-flex align-items-center gap-2"
+                style={{ zIndex: 10001 }}
+              >
+                <span className="spinner-border spinner-border-sm" />
+                <span>Loading image...</span>
+              </div>
+            )}
             <button
               className="btn-close position-absolute top-0 end-0 m-3"
               onClick={closeModal}
@@ -920,10 +932,15 @@ export default function GalleryPage() {
               sizes="90vw"
               placeholder="blur"
               blurDataURL={blurDataUrl}
+              unoptimized
+              onLoadingComplete={() => setIsModalLoading(false)}
+              onError={() => setIsModalLoading(false)}
               style={{
                 maxWidth: "90vw",
                 maxHeight: "90vh",
                 objectFit: "contain",
+                opacity: isModalLoading ? 0 : 1,
+                transition: "opacity 0.2s ease",
               }}
             />
             {getImageDetails(selectedImage) && (
