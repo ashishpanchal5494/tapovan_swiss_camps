@@ -16,6 +16,7 @@
     "aos": "^2.3.4",
     "bootstrap": "^5.3.3",
     "boxicons": "^2.1.4",
+    "date-fns-jalali": "4.0.0-0",
     "fancybox": "^3.0.1",
     "framer-motion": "^12.4.11",
     "jquery": "^3.7.1",
@@ -45,5 +46,8 @@
     "eslint": "^9",
     "eslint-config-next": "15.1.7",
     "typescript": "^5"
-  }
+  },
+  "overrides": {
+  "date-fns-jalali": "4.0.0-0"
+}
 }
