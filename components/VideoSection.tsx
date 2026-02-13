@@ -13,6 +13,7 @@ const VideoSection = () => {
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
   const [isPageVisible, setIsPageVisible] = useState(true);
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
+  const isVideoBuffered = useRef<boolean[]>(videos.map(() => false));
 
   const playVideo = async (video: HTMLVideoElement) => {
     try {
@@ -33,7 +34,6 @@ const VideoSection = () => {
 
       if (prefersReducedMotion || !isPageVisible) {
         video.pause();
-        video.currentTime = 0;
         return;
       }
 
@@ -41,7 +41,6 @@ const VideoSection = () => {
         video.muted = true;
         video.playsInline = true;
         video.preload = "auto";
-        video.currentTime = 0;
 
         if (video.readyState >= 3) {
           requestAnimationFrame(() => playVideo(video));
@@ -51,13 +50,26 @@ const VideoSection = () => {
             video.removeEventListener("canplay", onCanPlay);
           };
           video.addEventListener("canplay", onCanPlay);
-          video.load();
+          if (!isVideoBuffered.current[index]) {
+            video.load();
+          }
         }
       } else {
         video.pause();
-        video.currentTime = 0;
       }
     });
+  }, [activeVideo, prefersReducedMotion, isPageVisible]);
+
+  useEffect(() => {
+    // Warm up the next video so transition is smooth on slower servers.
+    const nextIndex = (activeVideo + 1) % videos.length;
+    const nextVideo = videoRefs.current[nextIndex];
+    if (!nextVideo || prefersReducedMotion || !isPageVisible) return;
+
+    nextVideo.preload = "auto";
+    if (!isVideoBuffered.current[nextIndex]) {
+      nextVideo.load();
+    }
   }, [activeVideo, prefersReducedMotion, isPageVisible]);
 
   useEffect(() => {
@@ -110,9 +122,18 @@ const VideoSection = () => {
               src={src}
               muted
               playsInline
-              preload={index === activeVideo && isPageVisible ? "auto" : "none"}
+              preload={
+                isPageVisible &&
+                (index === activeVideo ||
+                  index === (activeVideo + 1) % videos.length)
+                  ? "auto"
+                  : "metadata"
+              }
               className="video-slide"
-              onEnded={nextVideo}
+              onLoadedData={() => {
+                isVideoBuffered.current[index] = true;
+              }}
+              onEnded={index === activeVideo ? nextVideo : undefined}
             />
           ))}
         </div>
