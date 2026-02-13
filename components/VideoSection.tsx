@@ -1,76 +1,130 @@
 "use client";
 
-import { useState, useRef, useEffect, useCallback } from "react";
+import { useState, useRef, useEffect } from "react";
 
-const videos = [
-  "/assets/video/garden.mp4",
-  "/assets/video/pool.mp4",
-  "/assets/video/vollyball.mp4",
-];
+declare global {
+  interface Window {
+    YT?: {
+      Player: new (
+        element: HTMLElement,
+        config: {
+          videoId: string;
+          playerVars?: Record<string, string | number>;
+          events?: {
+            onReady?: (event: { target: YouTubePlayer }) => void;
+            onStateChange?: (event: { data: number; target: YouTubePlayer }) => void;
+          };
+        }
+      ) => YouTubePlayer;
+      PlayerState: {
+        ENDED: number;
+      };
+    };
+    onYouTubeIframeAPIReady?: () => void;
+  }
+}
+
+interface YouTubePlayer {
+  playVideo: () => void;
+  pauseVideo: () => void;
+  mute: () => void;
+  seekTo: (seconds: number, allowSeekAhead?: boolean) => void;
+  loadVideoById: (videoId: string) => void;
+  destroy: () => void;
+}
+
+const videos = ["TvdBCChG7Ow", "a4M5WPz7xKA", "gsQxyaxodMk"];
 
 const VideoSection = () => {
   const [activeVideo, setActiveVideo] = useState(0);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
   const [isPageVisible, setIsPageVisible] = useState(true);
-  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
-  const isVideoBuffered = useRef<boolean[]>(videos.map(() => false));
-
-  const playVideo = async (video: HTMLVideoElement) => {
-    try {
-      await video.play();
-    } catch {
-      // iOS fallback — play after user interaction
-      const unlock = () => {
-        video.play().catch(() => {});
-        document.removeEventListener("touchstart", unlock);
-      };
-      document.addEventListener("touchstart", unlock, { once: true });
-    }
-  };
+  const [apiReady, setApiReady] = useState(false);
+  const playerHostRef = useRef<HTMLDivElement | null>(null);
+  const playerRef = useRef<YouTubePlayer | null>(null);
 
   useEffect(() => {
-    videoRefs.current.forEach((video, index) => {
-      if (!video) return;
+    if (window.YT?.Player) {
+      setApiReady(true);
+      return;
+    }
 
-      if (prefersReducedMotion || !isPageVisible) {
-        video.pause();
-        return;
-      }
+    const existingScript = document.querySelector<HTMLScriptElement>(
+      'script[src="https://www.youtube.com/iframe_api"]'
+    );
 
-      if (index === activeVideo) {
-        video.muted = true;
-        video.playsInline = true;
-        video.preload = "auto";
+    if (!existingScript) {
+      const script = document.createElement("script");
+      script.src = "https://www.youtube.com/iframe_api";
+      script.async = true;
+      document.body.appendChild(script);
+    }
 
-        if (video.readyState >= 3) {
-          requestAnimationFrame(() => playVideo(video));
-        } else {
-          const onCanPlay = () => {
-            requestAnimationFrame(() => playVideo(video));
-            video.removeEventListener("canplay", onCanPlay);
-          };
-          video.addEventListener("canplay", onCanPlay);
-          if (!isVideoBuffered.current[index]) {
-            video.load();
+    const previousReady = window.onYouTubeIframeAPIReady;
+    window.onYouTubeIframeAPIReady = () => {
+      previousReady?.();
+      setApiReady(true);
+    };
+
+    return () => {
+      window.onYouTubeIframeAPIReady = previousReady;
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!apiReady || !window.YT?.Player) return;
+
+    const host = playerHostRef.current;
+    if (!host || playerRef.current) return;
+
+    playerRef.current = new window.YT!.Player(host, {
+      videoId: videos[0],
+      playerVars: {
+        autoplay: 0,
+        controls: 0,
+        rel: 0,
+        modestbranding: 1,
+        playsinline: 1,
+        fs: 0,
+        iv_load_policy: 3,
+        enablejsapi: 1,
+        origin: window.location.origin,
+      },
+      events: {
+        onReady: (event) => {
+          event.target.mute();
+          if (!prefersReducedMotion && isPageVisible) {
+            event.target.playVideo();
           }
-        }
-      } else {
-        video.pause();
-      }
+        },
+        onStateChange: (event) => {
+          if (event.data === window.YT?.PlayerState.ENDED) {
+            setActiveVideo((prev) => (prev + 1) % videos.length);
+          }
+        },
+      },
     });
-  }, [activeVideo, prefersReducedMotion, isPageVisible]);
+  }, [apiReady]);
 
   useEffect(() => {
-    // Warm up the next video so transition is smooth on slower servers.
-    const nextIndex = (activeVideo + 1) % videos.length;
-    const nextVideo = videoRefs.current[nextIndex];
-    if (!nextVideo || prefersReducedMotion || !isPageVisible) return;
+    const player = playerRef.current;
+    if (!player) return;
 
-    nextVideo.preload = "auto";
-    if (!isVideoBuffered.current[nextIndex]) {
-      nextVideo.load();
+    player.loadVideoById(videos[activeVideo]);
+    player.mute();
+  }, [activeVideo]);
+
+  useEffect(() => {
+    const player = playerRef.current;
+    if (!player) return;
+
+    if (prefersReducedMotion || !isPageVisible) {
+      player.pauseVideo();
+      return;
     }
-  }, [activeVideo, prefersReducedMotion, isPageVisible]);
+
+    player.playVideo();
+  }, [isPageVisible, prefersReducedMotion]);
 
   useEffect(() => {
     const media = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -89,14 +143,15 @@ const VideoSection = () => {
       document.removeEventListener("visibilitychange", updateVisibility);
   }, []);
 
-  const nextVideo = useCallback(
-    () => setActiveVideo((prev) => (prev + 1) % videos.length),
-    []
-  );
+  useEffect(() => {
+    return () => {
+      playerRef.current?.destroy();
+      playerRef.current = null;
+    };
+  }, []);
 
   return (
     <section className="video-section">
-            {/* ✅ YOUR CONTENT ADDED HERE */}
       <div className="text-center mb-3 mb-md-4 mb-lg-5 video-section-header">
         <h2 className="video-section-title fw-bold text-dark mb-2 mb-md-3 mb-lg-4">
           Experience Our{" "}
@@ -109,34 +164,7 @@ const VideoSection = () => {
       </div>
 
       <div className="video-wrapper">
-        <div
-          className="video-slider"
-          style={{ transform: `translateX(-${activeVideo * 100}%)` }}
-        >
-          {videos.map((src, index) => (
-            <video
-              key={src}
-              ref={(el) => {
-                videoRefs.current[index] = el;
-              }}
-              src={src}
-              muted
-              playsInline
-              preload={
-                isPageVisible &&
-                (index === activeVideo ||
-                  index === (activeVideo + 1) % videos.length)
-                  ? "auto"
-                  : "metadata"
-              }
-              className="video-slide"
-              onLoadedData={() => {
-                isVideoBuffered.current[index] = true;
-              }}
-              onEnded={index === activeVideo ? nextVideo : undefined}
-            />
-          ))}
-        </div>
+        <div ref={playerHostRef} className="youtube-player-host" />
       </div>
     </section>
   );
