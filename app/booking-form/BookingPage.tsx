@@ -62,13 +62,15 @@ function BookingPage() {
     const totalPersons = parseInt(formData.adults || "1");
     const totalDays = parseInt(formData.days || "1");
 
-    const tentData: any = {
+    const tentaDataMap: Record<string, { price: number; mainPrice: number; beds: number }> = {
       "Holi 1 Night Stay": { price: 1800, mainPrice: 2000, beds: 3 },
       "Holi 2 Night Stay": { price: 3000, mainPrice: 3500, beds: 3 },
       "Luxury (AC) Tent": { price: 1499, mainPrice: 1999, beds: 5 },
       "Luxury (Cooler) Tent": { price: 1299, mainPrice: 1499, beds: 5 },
       "Ordinary Tent": { price: 999, mainPrice: 1199, beds: 3 },
-    }[formData.tentType];
+    };
+
+    const tentData = tentaDataMap[formData.tentType];
 
     let message = `${activeTab === "camping"
       ? `Camping Booking Details:`
