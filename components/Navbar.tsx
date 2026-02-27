@@ -104,10 +104,10 @@ const Navbar = () => {
                 <div className="col-xl-7 col-lg-6 col-md-6">
                   <div className="header-top-left">
                     <ul
-                      className={`contact-info list-style`}
+                      className={`contact-info list-style d-flex flex-wrap gap-3`}
                     >
-                      <li className="mobile-padding-fix" style={{ marginBottom: "5px" }}>
-                        <i className="bx bx-phone-call"></i>
+                      <li className="mobile-padding-fix d-flex align-items-center m-0">
+                        <i className="bx bx-phone-call me-1"></i>
                         <Link
                           style={{
                             textDecoration: "none",
@@ -118,8 +118,8 @@ const Navbar = () => {
                           +91 790 692 4003
                         </Link>
                       </li>
-                      <li style={{ marginBottom: "5px" }}>
-                        <i className="bx bx-phone-call"></i>
+                      <li className="d-flex align-items-center m-0">
+                        <i className="bx bx-phone-call me-1"></i>
                         <Link
                           style={{
                             textDecoration: "none",
@@ -130,7 +130,7 @@ const Navbar = () => {
                           +91 807 757 0122
                         </Link>
                       </li>
-                      <li className="d-none d-lg-flex d-md-flex" style={{ marginBottom: "5px" }}>
+                      <li className="d-none d-lg-flex d-md-flex align-items-center m-0">
                         <i className="bx bx-envelope"></i>
                         <Link
                           style={{
