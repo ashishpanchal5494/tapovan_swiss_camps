@@ -44,7 +44,7 @@ const TentDetailsPage: React.FC = () => {
   // Update from URL params when they change
   useEffect(() => {
     if (!searchParams) return;
-    
+
     // Update adults from URL
     if (adultsParam) {
       const adultsValue = parseInt(adultsParam, 10);
@@ -59,7 +59,7 @@ const TentDetailsPage: React.FC = () => {
     // Calculate totalDays from checkIn/checkOut dates
     const checkIn = checkInParam || "";
     const checkOut = checkOutParam || "";
-    
+
     if (checkIn && checkOut) {
       const startDate = new Date(checkIn);
       const endDate = new Date(checkOut);
@@ -312,19 +312,19 @@ const TentDetailsPage: React.FC = () => {
           "@type": "ListItem",
           position: 1,
           name: "Home",
-                  item: "https://www.tapovanswisscampsofficial.com",
+          item: "https://www.tapovanswisscampsofficial.com",
         },
         {
           "@type": "ListItem",
           position: 2,
           name: "Tents",
-                  item: "https://www.tapovanswisscampsofficial.com/tents",
+          item: "https://www.tapovanswisscampsofficial.com/tents",
         },
         {
           "@type": "ListItem",
           position: 3,
           name: tent.title,
-                  item: `https://www.tapovanswisscampsofficial.com/tents/${tent.slug}`,
+          item: `https://www.tapovanswisscampsofficial.com/tents/${tent.slug}`,
         },
       ],
     };
@@ -416,7 +416,7 @@ const TentDetailsPage: React.FC = () => {
                 {/* Room Details */}
                 <div className="mb-4">
                   <h3 className="title">{tent.title}</h3>
-                  
+
                   {/* Price Display */}
                   {tent && (() => {
                     const { perHeadPrice, perHeadMainPrice, totalPrice, totalMainPrice } = calculatePrice(
@@ -445,7 +445,7 @@ const TentDetailsPage: React.FC = () => {
                             </small>
                           </span>
                         </div>
-                        
+
                         {/* Total Price Display */}
                         <div className="mb-3 p-3" style={{ backgroundColor: "#f8f9fa", borderRadius: "8px", border: "1px solid #dee2e6" }}>
                           <div className="d-flex justify-content-between align-items-center mb-2">
@@ -812,9 +812,8 @@ const TentDetailsPage: React.FC = () => {
                 >
                   <li className="nav-item">
                     <button
-                      className={`nav-link shadow ${
-                        activeTab === "photo" ? "active" : ""
-                      }`}
+                      className={`nav-link shadow ${activeTab === "photo" ? "active" : ""
+                        }`}
                       onClick={() => setActiveTab("photo")}
                     >
                       <span className="d-none d-md-inline">Photos</span>
@@ -823,9 +822,8 @@ const TentDetailsPage: React.FC = () => {
                   </li>
                   <li className="nav-item">
                     <button
-                      className={`nav-link shadow ${
-                        activeTab === "map" ? "active" : ""
-                      }`}
+                      className={`nav-link shadow ${activeTab === "map" ? "active" : ""
+                        }`}
                       onClick={() => setActiveTab("map")}
                     >
                       <span className="d-none d-md-inline">Map</span>
@@ -866,7 +864,6 @@ const TentDetailsPage: React.FC = () => {
                                 placeholder="blur"
                                 blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
                                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 60vw"
-                                unoptimized
                               />
                             </SwiperSlide>
                           ))}
@@ -899,7 +896,6 @@ const TentDetailsPage: React.FC = () => {
                                 placeholder="blur"
                                 blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
                                 sizes="(max-width: 768px) 20vw, 140px"
-                                unoptimized
                               />
                             </SwiperSlide>
                           ))}
@@ -1193,8 +1189,8 @@ const TentDetailsPage: React.FC = () => {
                             {tent.capacity.min === 1
                               ? "solo travelers"
                               : tent.capacity.max <= 3
-                              ? "couples and small families"
-                              : "families and groups"}
+                                ? "couples and small families"
+                                : "families and groups"}
                             .
                           </div>
                         </div>

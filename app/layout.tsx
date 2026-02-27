@@ -16,6 +16,7 @@ const readexPro = Readex_Pro({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
   variable: "--font-readex-pro",
+  display: "swap",
 });
 
 export const metadata: Metadata = {

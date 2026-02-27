@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { useRouter } from "next/navigation";
 import dynamic from "next/dynamic";
@@ -158,20 +159,43 @@ const HeroSection: React.FC = () => {
           {slides.map((slide, index) => (
             <div
               key={slide.id}
-              className={`hero-bg-slide ${
-                index === activeSlide ? "active" : ""
-              }`}
+              className={`hero-bg-slide ${index === activeSlide ? "active" : ""
+                }`}
               style={{
-                backgroundImage: `url(${slide.bgImage})`,
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-                backgroundRepeat: "no-repeat",
+                position: "absolute",
+                top: 0,
+                left: 0,
+                width: "100%",
+                height: "100%",
+                zIndex: index === activeSlide ? 1 : 0,
+                opacity: index === activeSlide ? 1 : 0,
+                transition: "opacity 1s ease-in-out",
               }}
-            />
+            >
+              <Image
+                src={slide.bgImage}
+                alt={slide.title}
+                fill
+                priority={index === 0}
+                sizes="100vw"
+                style={{
+                  objectFit: "cover",
+                  objectPosition: "center",
+                }}
+              />
+            </div>
           ))}
           <div
             className="hero-overlay"
-            style={{ backgroundColor: slides[activeSlide].overlay }}
+            style={{
+              backgroundColor: slides[activeSlide].overlay,
+              position: "absolute",
+              top: 0,
+              left: 0,
+              width: "100%",
+              height: "100%",
+              zIndex: 2,
+            }}
           />
         </div>
 

@@ -44,23 +44,44 @@ function AboutPageClient() {
   }, []);
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      import("odometer").then((module) => {
-        counters.forEach((counter, index) => {
-          if (odometerRefs.current[index]) {
-            const odometerInstance = new module.default({
-              el: odometerRefs.current[index]!,
-              value: 0,
-              format: "(,ddd)",
-              duration: 2000,
+    if (typeof window === "undefined") return;
+
+    const observerOption = {
+      root: null,
+      rootMargin: "0px",
+      threshold: 0.1,
+    };
+
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          import("odometer").then((module) => {
+            counters.forEach((counter, index) => {
+              if (odometerRefs.current[index]) {
+                const odometerInstance = new module.default({
+                  el: odometerRefs.current[index]!,
+                  value: 0,
+                  format: "(,ddd)",
+                  duration: 2000,
+                });
+                setTimeout(() => {
+                  odometerInstance.update(counter.target);
+                }, 500);
+              }
             });
-            setTimeout(() => {
-              odometerInstance.update(counter.target);
-            }, 500);
-          }
-        });
+          });
+          // Unobserve after firing once
+          obs.disconnect();
+        }
       });
+    }, observerOption);
+
+    // Observe the first counter element as a proxy for the section
+    if (odometerRefs.current[0]) {
+      observer.observe(odometerRefs.current[0]);
     }
+
+    return () => observer.disconnect();
   }, []);
 
   const localBusinessSchema = {
@@ -548,10 +569,13 @@ function AboutPageClient() {
                   <strong>Q: What types of tents do you offer?</strong>
                 </p>
                 <p>
-                  <strong>A:</strong> We offer three types of luxury tents:
-                  Luxury AC Tents (₹1,599/person), Luxury Cooler Tents
-                  (₹1,299/person), and Ordinary Tents (₹999/person). All tents
-                  include comfortable beds, clean washrooms, and modern
+                  We offer three types of tents:{" "}
+                  <strong>
+                    Luxury AC Tents (₹1,499/person), Luxury Cooler Tents
+                    (₹1,299/person), and Ordinary Tents (₹999/person)
+                  </strong>
+                  . All tents include comfortable beds, modern amenities, and
+                  modern
                   amenities.
                 </p>
 

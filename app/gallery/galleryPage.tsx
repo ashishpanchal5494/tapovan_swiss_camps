@@ -526,9 +526,8 @@ export default function GalleryPage() {
 
       {/* Hero Section */}
       <section
-        className={`gallery-hero bg-gradient-to-br from-green-50 to-blue-50 ${
-          isMobile ? "pt-200" : "pt-60"
-        }`}
+        className={`gallery-hero bg-gradient-to-br from-green-50 to-blue-50 ${isMobile ? "pt-200" : "pt-60"
+          }`}
       >
         {showBreadcrumb && (
           <nav aria-label="breadcrumb" className="container mb-2 mb-md-4">
@@ -651,11 +650,10 @@ export default function GalleryPage() {
                 {categories.map((category) => (
                   <button
                     key={category.id}
-                    className={`btn-[#507650] rounded-pill px-3 px-md-4 py-2 text-nowrap ${
-                      selectedCategory === category.id
+                    className={`btn-[#507650] rounded-pill px-3 px-md-4 py-2 text-nowrap ${selectedCategory === category.id
                         ? "btn-primary-custom text-white"
                         : "btn"
-                    }`}
+                      }`}
                     onClick={() => handleCategoryChange(category.id)}
                     style={{
                       fontSize: isMobile ? "0.75rem" : undefined,
@@ -932,7 +930,6 @@ export default function GalleryPage() {
               sizes="90vw"
               placeholder="blur"
               blurDataURL={blurDataUrl}
-              unoptimized
               onLoadingComplete={() => setIsModalLoading(false)}
               onError={() => setIsModalLoading(false)}
               style={{

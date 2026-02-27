@@ -4,12 +4,9 @@ import { useEffect, useState, useRef, type ReactNode, Suspense } from "react";
 import dynamic from "next/dynamic";
 import Script from "next/script";
 import Loading from "@/components/Loading";
+import HoliOfferPopup from "@/components/HoliOfferPopup";
 
-// Optimize dynamic imports with better loading strategies
-const HeroSection = dynamic(() => import("@/components/HeroSection"), {
-  ssr: true, // Hero should be SSR for better LCP
-  loading: () => <Loading />,
-});
+import HeroSection from "@/components/HeroSection";
 
 const TentsClient = dynamic(() => import("@/components/TentsClient"), {
   ssr: false,
@@ -59,22 +56,10 @@ function Defer({ children }: { children: ReactNode }) {
 }
 
 export default function Home() {
-  const [showInitialLoader, setShowInitialLoader] = useState(true);
-
-  // Show one global full-page loader when the app first opens
-  useEffect(() => {
-    const timeout = window.setTimeout(() => {
-      setShowInitialLoader(false);
-    }, 1500);
-
-    return () => window.clearTimeout(timeout);
-  }, []);
-
   return (
     <>
-      {showInitialLoader && (
-        <Loading fullscreen size="large" text="Loading..." duration={3000} />
-      )}
+
+      <HoliOfferPopup />
 
       {/* ✅ Enhanced Structured Data */}
       <Script
@@ -199,9 +184,7 @@ export default function Home() {
 
 
       <div className="page-wrapper">
-        <Suspense fallback={<Loading />}>
-          <HeroSection />
-        </Suspense>
+        <HeroSection />
 
         <Suspense fallback={<Loading />}>
           <TentsClient />

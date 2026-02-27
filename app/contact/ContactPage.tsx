@@ -264,7 +264,7 @@ function ContactPage() {
               name: "What types of tents are available for camping in Rishikesh?",
               acceptedAnswer: {
                 "@type": "Answer",
-                text: "We offer three types of luxury tents: Luxury AC Tents (₹1,599/person), Luxury Cooler Tents (₹1,299/person), and Ordinary Tents (₹999/person). All include comfortable beds and modern amenities.",
+                text: "We offer three types of luxury tents: Luxury AC Tents (₹1,499/person), Luxury Cooler Tents (₹1,299/person), and Ordinary Tents (₹999/person). All include comfortable beds and modern amenities.",
               },
             },
             {
@@ -614,7 +614,7 @@ function ContactPage() {
                     </h5>
                     <p style={{ color: "#666", margin: 0, fontSize: "14px" }}>
                       <strong>A:</strong> We offer three types of luxury tents:
-                      Luxury AC Tents (₹1,599/person), Luxury Cooler Tents
+                      Luxury AC Tents (₹1,499/person), Luxury Cooler Tents
                       (₹1,299/person), and Ordinary Tents (₹999/person). All
                       include comfortable beds and modern amenities.
                     </p>

@@ -1,8 +1,9 @@
 "use client";
 
 import React, { useEffect, useState, useMemo, memo, useCallback } from "react";
-import { useKeenSlider } from "keen-slider/react";
-import "keen-slider/keen-slider.min.css";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper/modules";
+import "swiper/css";
 import Loading from "@/components/Loading";
 import {
   FaStar,
@@ -202,29 +203,28 @@ type Testimonial = {
 const TestimonialCard = memo(
   ({ testimonial }: { testimonial: Testimonial }) => {
     return (
-      <div className="keen-slider__slide" key={testimonial.id}>
-        <div className="single-testimonial-box px-2">
-          <div className="content-bg">
-            <div className="quote-icon">
-              <FaQuoteLeft className="quote-left" />
-              <FaQuoteRight className="quote-right" />
+      <div className="single-testimonial-box px-2">
+        <div className="content-bg">
+          <div className="quote-icon">
+            <FaQuoteLeft className="quote-left" />
+            <FaQuoteRight className="quote-right" />
+          </div>
+
+          <div className="rating-stars mb-3">
+            {[...Array<number>(testimonial.rating)].map((_, i) => (
+              <FaStar key={i} className="star-filled" />
+            ))}
+            <span className="rating-text">({testimonial.rating}.0)</span>
+          </div>
+
+          <p className="testimonial-text">{testimonial.text}</p>
+
+          <div className="testimonial-meta">
+            <div className="verified-badge">
+              <FaThumbsUp className="verified-icon" />
+              <span>Verified {testimonial.platform}</span>
             </div>
-
-            <div className="rating-stars mb-3">
-              {[...Array<number>(testimonial.rating)].map((_, i) => (
-                <FaStar key={i} className="star-filled" />
-              ))}
-              <span className="rating-text">({testimonial.rating}.0)</span>
-            </div>
-
-            <p className="testimonial-text">{testimonial.text}</p>
-
-            <div className="testimonial-meta">
-              <div className="verified-badge">
-                <FaThumbsUp className="verified-icon" />
-                <span>Verified {testimonial.platform}</span>
-              </div>
-              {/* <div className="review-date">
+            {/* <div className="review-date">
                 {testimonial.date
                   ? typeof testimonial.date === "string" &&
                     testimonial.date.includes("-")
@@ -232,11 +232,11 @@ const TestimonialCard = memo(
                     : testimonial.date
                   : "Recent"}
               </div> */}
-            </div>
           </div>
+        </div>
 
-          <div className="client-info mt-1">
-            {/* <div className="client-avatar">
+        <div className="client-info mt-1">
+          {/* <div className="client-avatar">
               <Image
                 width={80}
                 height={80}
@@ -258,12 +258,11 @@ const TestimonialCard = memo(
                 </div>
               )}
             </div> */}
-            <div className="client-details">
-              <h3 className="client-name">{testimonial.name}</h3>
-              <div className="client-location">
-                <FaMapMarkerAlt className="location-icon" />
-                <span>{testimonial.location || "India"}</span>
-              </div>
+          <div className="client-details">
+            <h3 className="client-name">{testimonial.name}</h3>
+            <div className="client-location">
+              <FaMapMarkerAlt className="location-icon" />
+              <span>{testimonial.location || "India"}</span>
             </div>
           </div>
         </div>
@@ -290,36 +289,6 @@ const TestimonialPage: React.FC = memo(() => {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, [handleResize]);
-
-  // Memoized slider configuration
-  const sliderConfig = useMemo(
-    () => ({
-      loop: true,
-      slides: {
-        perView: isMobile ? 1 : 3,
-        spacing: 15,
-      },
-      breakpoints: {
-        "(max-width: 992px)": {
-          slides: { perView: 2, spacing: 15 },
-        },
-        "(max-width: 768px)": {
-          slides: { perView: 1, spacing: 10 },
-        },
-      },
-      created(slider: unknown) {
-        const s = slider as {
-          next: () => void;
-          on: (event: string, cb: () => void) => void;
-        };
-        const id = setInterval(() => s.next(), 6000);
-        s.on("destroyed", () => clearInterval(id));
-      },
-    }),
-    [isMobile]
-  );
-
-  const [sliderRef] = useKeenSlider<HTMLDivElement>(sliderConfig);
 
   // Use static testimonials
   const allTestimonials = useMemo(() => {
@@ -652,7 +621,7 @@ const TestimonialPage: React.FC = memo(() => {
           }
         }
 
-        .keen-slider {
+        .swiper {
           padding: 2rem 0;
         }
 
@@ -960,14 +929,33 @@ const TestimonialPage: React.FC = memo(() => {
           </div>
 
           {/* Testimonials Slider */}
-          <div ref={sliderRef} className="keen-slider">
+          <Swiper
+            modules={[Autoplay]}
+            spaceBetween={15}
+            slidesPerView={1}
+            loop={true}
+            autoplay={{
+              delay: 5000,
+              disableOnInteraction: false,
+            }}
+            breakpoints={{
+              768: {
+                slidesPerView: 2,
+                spaceBetween: 10,
+              },
+              992: {
+                slidesPerView: 3,
+                spaceBetween: 15,
+              },
+            }}
+            className="pb-4"
+          >
             {allTestimonials.map((testimonial) => (
-              <TestimonialCard
-                key={testimonial.id}
-                testimonial={testimonial}
-              />
+              <SwiperSlide key={testimonial.id}>
+                <TestimonialCard testimonial={testimonial} />
+              </SwiperSlide>
             ))}
-          </div>
+          </Swiper>
         </div>
       </div>
 

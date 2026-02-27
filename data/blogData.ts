@@ -45,7 +45,7 @@ export const blogData: BlogPost[] = [
       },
       {
         question: "What are the top luxury camping options in Rishikesh?",
-        answer: "Tapovan Swiss Camps offers three types of luxury tents: Luxury AC Tents (₹1,599/person), Luxury Cooler Tents (₹1,299/person), and Premium Ordinary Tents (₹999/person). All include comfortable beds, modern amenities, and riverside views."
+        answer: "Tapovan Swiss Camps offers three types of luxury tents: Luxury AC Tents (₹1,499/person), Luxury Cooler Tents (₹1,299/person), and Premium Ordinary Tents (₹999/person). All include comfortable beds, modern amenities, and riverside views."
       },
       {
         question: "Is luxury camping in Rishikesh safe for families?",
@@ -293,7 +293,7 @@ export const blogData: BlogPost[] = [
             
             <div style="background: #fff3e0; padding: 20px; border-radius: 10px; text-align: center;">
               <h4 style="color: #f57c00; margin-bottom: 10px;">🌡️ Luxury AC Tents</h4>
-              <p style="font-size: 24px; font-weight: bold; color: #f57c00; margin: 10px 0;">₹1,599/person</p>
+              <p style="font-size: 24px; font-weight: bold; color: #f57c00; margin: 10px 0;">₹1,499/person</p>
               <p style="font-size: 14px; margin: 0;">Climate-controlled luxury with all amenities</p>
             </div>
           </div>
