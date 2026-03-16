@@ -40,6 +40,7 @@ const slides = [
     btnText: "Explore Tents",
     link: "/tents",
     bgImage: "/assets/img/slider/slider-1.webp",
+    alt: "Luxury Riverside Camping in Rishikesh - Tapovan Swiss Camps",
     overlay: "rgba(0,0,0,0.4)",
   },
   {
@@ -50,6 +51,7 @@ const slides = [
     btnText: "Book Adventure",
     link: "/booking-form",
     bgImage: "/assets/img/slider/slider-2.webp",
+    alt: "Adventure Rafting and Camping in Rishikesh",
     overlay: "rgba(0,0,0,0.3)",
   },
   {
@@ -60,6 +62,7 @@ const slides = [
     btnText: "Plan Your Stay",
     link: "/contact",
     bgImage: "/assets/img/slider/slider-3.webp",
+    alt: "Family Camping in Rishikesh at Tapovan Swiss Camps",
     overlay: "rgba(0,0,0,0.5)",
   },
 ];
@@ -174,7 +177,7 @@ const HeroSection: React.FC = () => {
             >
               <Image
                 src={slide.bgImage}
-                alt={slide.title}
+                alt={slide.alt || slide.title}
                 fill
                 priority={index === 0}
                 sizes="100vw"

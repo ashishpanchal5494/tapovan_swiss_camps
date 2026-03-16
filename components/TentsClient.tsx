@@ -263,13 +263,13 @@ const TentsClient: React.FC = () => {
 
           {/* <div className="row align-items-center"> */}
           <div className="col-12 col-lg-12">
-            <div style={{marginTop: "40px"}} className="hero-content">
-              
+            <div style={{ marginTop: "40px" }} className="hero-content">
+
               <h1 className="tents-hero-title text-center fw-bold text-dark mb-2 mb-md-4">
-                Luxury{" "}
-                <span className="text-primary-custom">Camping Tent </span>
+                Best{" "}
+                <span className="text-primary-custom">Luxury Camping in Rishikesh </span>
                 <span className="d-md-none"> </span>
-                in Tapovan Rishikesh
+                & Luxury Tents
               </h1>
               <p className="tents-hero-description text-muted mb-3 mb-md-5 mb-lg-6">
                 Experience the perfect blend of nature and comfort in our

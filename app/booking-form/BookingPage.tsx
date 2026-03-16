@@ -63,8 +63,6 @@ function BookingPage() {
     const totalDays = parseInt(formData.days || "1");
 
     const tentaDataMap: Record<string, { price: number; mainPrice: number; beds: number }> = {
-      "Holi 1 Night Stay": { price: 1800, mainPrice: 2000, beds: 3 },
-      "Holi 2 Night Stay": { price: 3000, mainPrice: 3500, beds: 3 },
       "Luxury (AC) Tent": { price: 1499, mainPrice: 1999, beds: 5 },
       "Luxury (Cooler) Tent": { price: 1299, mainPrice: 1499, beds: 5 },
       "Ordinary Tent": { price: 999, mainPrice: 1199, beds: 3 },
@@ -146,9 +144,9 @@ function BookingPage() {
           "@context": "https://schema.org",
           "@type": "WebPage",
           "@id": "https://www.tapovanswisscampsofficial.com/booking-form",
-          name: "Book Holi Camping Offer 2026 in Rishikesh - Tapovan Swiss Camps",
+          name: "Book Camping in Rishikesh - Tapovan Swiss Camps",
           description:
-            "Celebrate Holi 2026 at Tapovan Swiss Camps in Rishikesh! Book our Holi Dhamaka packages starting ₹1800 with DJ Party, luxury tents, meals, pool & colours.",
+            "Book Tapovan Swiss Camps in Rishikesh! Book our luxury packages starting ₹999 with DJ Party, luxury tents, meals & pool.",
           url: "https://www.tapovanswisscampsofficial.com/booking-form",
           inLanguage: "en-IN",
           isPartOf: {
@@ -162,7 +160,7 @@ function BookingPage() {
             name: "Tapovan Swiss Camps",
             url: "https://www.tapovanswisscampsofficial.com",
             telephone: "+917906924003",
-            priceRange: "₹1800-₹3000",
+            priceRange: "₹999-₹1499",
             address: {
               "@type": "PostalAddress",
               streetAddress: "Tapovan",
@@ -173,26 +171,26 @@ function BookingPage() {
             },
             hasOfferCatalog: {
               "@type": "OfferCatalog",
-              name: "Holi Adventure Booking Services",
+              name: "Adventure Booking Services",
               itemListElement: [
                 {
                   "@type": "Offer",
                   itemOffered: {
                     "@type": "Service",
-                    name: "Holi 1 Night Stay + Party",
-                    description: "1 Night Luxury Swiss Camp stay, meals, snacks, DJ, bonfire, colors",
+                    name: "Luxury AC Tent Stay",
+                    description: "Luxury AC Camp stay, meals, snacks, DJ, bonfire",
                   },
-                  price: "1800",
+                  price: "1499",
                   priceCurrency: "INR",
                 },
                 {
                   "@type": "Offer",
                   itemOffered: {
                     "@type": "Service",
-                    name: "Holi 2 Night Stay + Dhamaka",
-                    description: "2 Nights Luxury Swiss Camp stay, meals, DJ, bonfire, pool access, colors",
+                    name: "Ordinary Tent Stay",
+                    description: "Ordinary Tent stay, meals, DJ, bonfire",
                   },
-                  price: "3000",
+                  price: "999",
                   priceCurrency: "INR",
                 },
               ],
@@ -221,26 +219,18 @@ function BookingPage() {
           mainEntity: [
             {
               "@type": "Question",
-              name: "What is included in the Rishikesh Holi Camping Package 2026?",
+              name: "What is included in the Rishikesh Camping Package?",
               acceptedAnswer: {
                 "@type": "Answer",
-                text: "Our Holi Dhamaka Party package includes Luxury Swiss Camps with blankets, Welcome Drink, Lunch, Unlimited Snacks, DJ Party (Bollywood & Hollywood), Dinner (Veg & Non-Veg), Common Bonfire, Holi colours & festive decor, Swimming Pool Access, and Outdoor Games.",
+                text: "Our Camping package includes Luxury Swiss Camps with blankets, Welcome Drink, Lunch, Unlimited Snacks, DJ Party (Bollywood & Hollywood), Dinner (Veg & Non-Veg), Common Bonfire, Swimming Pool Access, and Outdoor Games.",
               },
             },
             {
               "@type": "Question",
-              name: "What are the prices for the Holi 2026 camping event in Rishikesh?",
+              name: "What are the prices for the camping event in Rishikesh?",
               acceptedAnswer: {
                 "@type": "Answer",
-                text: "We offer two packages: 1 Night Stay + Holi Party for ₹1,800 per person and 2 Night Stay + Holi Dhamaka for ₹3,000 per person. Kids below 5 years are free (sharing with parents).",
-              },
-            },
-            {
-              "@type": "Question",
-              name: "When is the main Holi event at Tapovan Swiss Camps?",
-              acceptedAnswer: {
-                "@type": "Answer",
-                text: "The main Holi event is on 4 March 2026. You can book our packages to encompass this date with standard check-in and check-out at around 11:00 AM.",
+                text: "We offer different packages starting from ₹999 per person up to ₹1,499 for Luxury AC tents. Kids below 5 years are free (sharing with parents).",
               },
             },
             {
@@ -253,7 +243,7 @@ function BookingPage() {
             },
             {
               "@type": "Question",
-              name: "Is alcohol allowed during the Holi Party?",
+              name: "Is alcohol allowed during the Party?",
               acceptedAnswer: {
                 "@type": "Answer",
                 text: "Alcohol is not available at the camp, and drugs are strictly prohibited to ensure a safe and family-friendly environment.",
@@ -302,12 +292,12 @@ function BookingPage() {
           <div className="seo-content-section mb-5">
             <h1 className="text-center mb-3" itemProp="name">
               {activeTab === "camping"
-                ? "🏕️ Book Best Holi Camping Offer 2026 in Rishikesh | Holi Dhamaka Party"
+                ? "🏕️ Book Best Camping in Rishikesh | Luxury Tents & Adventure"
                 : "🚣 Book White Water Rafting in Rishikesh | Best Ganga River Adventure"}
             </h1>
             <p className="text-center" itemProp="description">
               {activeTab === "camping"
-                ? "Celebrate Holi 2026 in the beautiful lap of mountains away from city crowds! Enjoy our Holi Dhamaka Party on 4 March 2026 with music, DJ, bonfire, delicious food, colours & luxury Swiss tents starting @ ₹1800 per person."
+                ? "Experience the best camping in Rishikesh! Enjoy luxury Swiss tents starting @ ₹999 per person with music, DJ, bonfire, delicious food, and thrilling adventure activities."
                 : "Enjoy thrilling rafting on the Ganges with certified guides. Choose from 12km, 16km or 22km rafting stretches. Book now for instant confirmation!"}
             </p>
 
@@ -340,10 +330,10 @@ function BookingPage() {
                 }}
               >
                 <div style={{ textAlign: "center" }}>
-                  <strong>🎉 Special Holi Event</strong>
+                  <strong>🏕️ Riverside Location</strong>
                   <br />
                   <span style={{ color: "#666", fontSize: "14px" }}>
-                    4 March 2026 Celebration
+                    Scenic Beauty
                   </span>
                 </div>
                 <div style={{ textAlign: "center" }}>
@@ -354,10 +344,10 @@ function BookingPage() {
                   </span>
                 </div>
                 <div style={{ textAlign: "center" }}>
-                  <strong>� Best Price Guarantee</strong>
+                  <strong>💯 Best Price Guarantee</strong>
                   <br />
                   <span style={{ color: "#666", fontSize: "14px" }}>
-                    Holi Packages from ₹1,800
+                    Packages from ₹999
                   </span>
                 </div>
                 <div style={{ textAlign: "center" }}>
@@ -583,38 +573,7 @@ function BookingPage() {
                   >
                     {activeTab === "camping" ? (
                       <>
-                        <div
-                          className="pricing-card"
-                          style={{
-                            padding: "10px 15px",
-                            backgroundColor: "white",
-                            borderRadius: "8px",
-                            border: "1px solid #507650",
-                            textAlign: "center",
-                          }}
-                        >
-                          <strong>Holi 1 Night Stay & Party</strong>
-                          <br />
-                          <span style={{ color: "#507650", fontWeight: "600" }}>
-                            ₹1800/person
-                          </span>
-                        </div>
-                        <div
-                          className="pricing-card"
-                          style={{
-                            padding: "10px 15px",
-                            backgroundColor: "white",
-                            borderRadius: "8px",
-                            border: "1px solid #507650",
-                            textAlign: "center",
-                          }}
-                        >
-                          <strong>Holi 2 Night Stay & Dhamaka</strong>
-                          <br />
-                          <span style={{ color: "#507650", fontWeight: "600" }}>
-                            ₹3000/person
-                          </span>
-                        </div>
+
                         <div
                           className="pricing-card"
                           style={{
@@ -799,8 +758,6 @@ function BookingPage() {
                         name="tentType"
                         value={formData.tentType}
                         options={[
-                          "Holi 1 Night Stay",
-                          "Holi 2 Night Stay",
                           "Luxury (AC) Tent",
                           "Luxury (Cooler) Tent",
                           "Ordinary Tent",

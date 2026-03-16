@@ -5,9 +5,9 @@ import Script from "next/script";
 
 export const metadata: Metadata = {
   title:
-    "Best Luxury Camping in Rishikesh | AC Tents @ ₹999 | Premium Glamping by Ganga River | Tapovan Swiss Camps",
+    "Camping in Rishikesh | Best Luxury Tents @ ₹999 | Tapovan Swiss Camps",
   description:
-    "Best luxury camping in Rishikesh! Tapovan Swiss Camps offers premium AC tents, cooler tents with stunning Ganga river views. Enjoy swimming pool, river rafting, yoga sessions, bonfire & delicious food. Perfect for families, couples & adventure lovers. Book your unforgettable camping experience in Rishikesh starting ₹999! 4.8★ rated with 150+ reviews.",
+    "Camping in Rishikesh at Tapovan Swiss Camps. Offers premium AC tents, cooler tents with stunning Ganga river views. Enjoy swimming pool, river rafting, yoga sessions, bonfire & delicious food. Book your camping experience starting ₹999! 4.8★ rated.",
   keywords: [
     // Primary Keywords
     "camping in rishikesh",
@@ -99,7 +99,7 @@ export const metadata: Metadata = {
     "best camping in rishikesh for adventure lovers",
     "premium camping in rishikesh with rafting",
     "swiss tents in rishikesh with ganga view",
-    
+
     // Seasonal & Event Keywords
     "summer camping rishikesh",
     "winter camping rishikesh",
@@ -107,7 +107,7 @@ export const metadata: Metadata = {
     "weekend getaway rishikesh",
     "holiday camping rishikesh",
     "vacation camping rishikesh",
-    
+
     // Experience & Quality Keywords
     "5 star camping rishikesh",
     "luxury glamping rishikesh",
@@ -115,14 +115,14 @@ export const metadata: Metadata = {
     "best rated camping rishikesh",
     "top camping resort rishikesh",
     "award winning camping rishikesh",
-    
+
     // Activity-Specific Keywords
     "camping with rafting package rishikesh",
     "yoga retreat camping rishikesh",
     "adventure sports camping rishikesh",
     "meditation camping rishikesh",
     "nature photography camping rishikesh",
-    
+
     // Location-Specific Long-tail
     "camping near ganga river rishikesh",
     "riverside luxury camping rishikesh",
@@ -143,9 +143,9 @@ export const metadata: Metadata = {
     url: "https://www.tapovanswisscampsofficial.com",
     siteName: "Tapovan Swiss Camps",
     title:
-      "Best Luxury Camping in Rishikesh | AC Tents @ ₹999 | Premium Glamping by Ganga River",
+      "Camping in Rishikesh | Best Luxury Tents @ ₹999 | Tapovan Swiss Camps",
     description:
-      "Book your stay at Tapovan Swiss Camps! Enjoy luxury AC tents, cooler tents with stunning Ganga river views, swimming pool, river rafting, yoga sessions, bonfire & delicious food. Perfect for families, couples & adventure lovers. Best camping in Rishikesh starting ₹999! 4.8★ rated.",
+      "Camping in Rishikesh at Tapovan Swiss Camps! Enjoy luxury AC tents, cooler tents with stunning Ganga river views, swimming pool, river rafting, yoga sessions, bonfire & delicious food. Best camping in Rishikesh starting ₹999!",
     images: [
       {
         url: "https://www.tapovanswisscampsofficial.com/assets/img/room/gardenPhoto.webp",
@@ -172,9 +172,9 @@ export const metadata: Metadata = {
     site: "@tapovanswisscamps",
     creator: "@tapovanswisscamps",
     title:
-      "Best Luxury Camping in Rishikesh | AC Tents @ ₹999 | Premium Glamping by Ganga",
+      "Camping in Rishikesh | Best Luxury Tents @ ₹999 | Tapovan Swiss Camps",
     description:
-      "Best luxury camping in Rishikesh! AC tents, Ganga river views, swimming pool, rafting, yoga & more. Perfect for families & couples. Book now @ ₹999! 4.8★ rated.",
+      "Camping in Rishikesh at Tapovan Swiss Camps! AC tents, Ganga river views, swimming pool, rafting, yoga & more. Book now @ ₹999!",
     images: [
       "https://www.tapovanswisscampsofficial.com/assets/img/room/gardenPhoto.webp",
     ],

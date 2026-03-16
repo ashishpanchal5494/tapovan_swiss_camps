@@ -4,7 +4,7 @@ import { useEffect, useState, useRef, type ReactNode, Suspense } from "react";
 import dynamic from "next/dynamic";
 import Script from "next/script";
 import Loading from "@/components/Loading";
-import HoliOfferPopup from "@/components/HoliOfferPopup";
+
 
 import HeroSection from "@/components/HeroSection";
 
@@ -24,6 +24,10 @@ const VideoSection = dynamic(() => import("@/components/VideoSection"), {
 const BlogPage = dynamic(() => import("../app/blogs/blogPage"), {
   ssr: false,
   loading: () => <Loading />,
+});
+
+const SeoContent = dynamic(() => import("@/components/SeoContent"), {
+  ssr: false,
 });
 
 // (Removed unused TestimonialPage import)
@@ -58,8 +62,6 @@ function Defer({ children }: { children: ReactNode }) {
 export default function Home() {
   return (
     <>
-
-      <HoliOfferPopup />
 
       {/* ✅ Enhanced Structured Data */}
       <Script
@@ -198,6 +200,9 @@ export default function Home() {
         <Defer>
           <Suspense fallback={<Loading />}>
             <BlogPage />
+          </Suspense>
+          <Suspense fallback={null}>
+            <SeoContent />
           </Suspense>
         </Defer>
       </div>

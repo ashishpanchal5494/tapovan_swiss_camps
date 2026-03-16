@@ -55,8 +55,8 @@ const VideoSection = () => {
     <section ref={sectionRef} className="video-section">
       <div className="text-center mb-3 mb-md-4 mb-lg-5 video-section-header">
         <h2 className="video-section-title fw-bold text-dark mb-2 mb-md-3 mb-lg-4">
-          Experience Our{" "}
-          <span className="text-primary-custom">Beautiful Campsite</span>
+          Experience Beautiful{" "}
+          <span className="text-primary-custom">Camping</span> at Our Riverside Campsite
         </h2>
         <p className="video-section-description text-muted mb-2 mb-md-3">
           Take a virtual tour of our luxury camping facilities and natural

@@ -4,22 +4,12 @@ import BookingPage from "./BookingPage";
 const BASE_URL = "https://www.tapovanswisscampsofficial.com";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const title =
-    "Book Holi Camping & Party in Rishikesh 2026 - Tapovan Swiss Camps | ₹1800";
+  const title = "Book Camping & Rafting in Rishikesh 2026 - Tapovan Swiss Camps";
   const description =
-    "Celebrate Holi 2026 in Rishikesh! Book Tapovan Swiss Camps Holi Dhamaka Party with DJ, meals, colours, and luxury camping starting at ₹1800. Main Event: 4 March 2026.";
+    "Book Tapovan Swiss Camps in Rishikesh with DJ, meals, and luxury camping starting at ₹999.";
 
   const keywords = [
-    "holi camping in rishikesh",
-    "holi party in rishikesh",
-    "holi packages rishikesh 2026",
-    "holi camping offer rishikesh",
-    "rishikesh holi celebration",
-    "book holi camping in rishikesh",
-    "holi dhamaka party rishikesh",
-    "tapovan swiss camps holi",
-    "holi luxury camping rishikesh",
-    "holi event 4 march 2026",
+
     "rishikesh camping booking",
     "rishikesh rafting booking",
     "tapovan swiss camps booking",

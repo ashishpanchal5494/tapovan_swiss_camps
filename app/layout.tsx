@@ -21,7 +21,7 @@ const readexPro = Readex_Pro({
 
 export const metadata: Metadata = {
   title:
-    "Tapovan Swiss Camps - Best Luxury Camping in Rishikesh | AC Tents @ ₹999 | Book Now",
+    "Camping in Rishikesh | Best Luxury AC Tents @ ₹999 | Tapovan Swiss Camps",
   description:
     "Best luxury camping in Rishikesh! Tapovan Swiss Camps offers premium AC tents, cooler tents with Ganga river views. Enjoy swimming, rafting, yoga, bonfire & delicious food. Perfect for families, couples & adventure lovers. Book your unforgettable camping experience in Rishikesh starting ₹999!",
   keywords: [
@@ -135,9 +135,9 @@ export const metadata: Metadata = {
     url: "https://www.tapovanswisscampsofficial.com",
     siteName: "Tapovan Swiss Camps",
     title:
-      "Tapovan Swiss Camps - Best Luxury Camping in Rishikesh | AC Tents @ ₹999",
+      "Camping in Rishikesh | Best Luxury AC Tents @ ₹999 | Tapovan Swiss Camps",
     description:
-      "Book your stay at Tapovan Swiss Camps! Enjoy luxury AC tents, cooler tents with Ganga river views, swimming, rafting, yoga, bonfire & delicious food. Perfect for families, couples & adventure lovers. Best camping in Rishikesh starting ₹999!",
+      "Camping in Rishikesh: Book your stay at Tapovan Swiss Camps! Enjoy luxury AC tents, cooler tents with Ganga river views, swimming, rafting, yoga, bonfire & delicious food. Best camping in Rishikesh starting ₹999!",
     images: [
       {
         url: "https://www.tapovanswisscampsofficial.com/assets/img/room/gardenPhoto.webp",
@@ -164,9 +164,9 @@ export const metadata: Metadata = {
     site: "@tapovanswisscamps",
     creator: "@tapovanswisscamps",
     title:
-      "Tapovan Swiss Camps - Best Luxury Camping in Rishikesh | AC Tents @ ₹999",
+      "Camping in Rishikesh | Best Luxury AC Tents @ ₹999 | Tapovan Swiss Camps",
     description:
-      "Best luxury camping in Rishikesh! AC tents, Ganga views, swimming, rafting, yoga & more. Book now @ ₹999!",
+      "Camping in Rishikesh: AC tents, Ganga views, swimming, rafting, yoga & more. Book now @ ₹999!",
     images: [
       "https://www.tapovanswisscampsofficial.com/assets/img/room/gardenPhoto.webp",
     ],
